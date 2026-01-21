@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>WUXING · Global Supply Hub</title>
+  <title>Wuxing Valve · Products</title>
 
   <!-- SEO / OpenGraph -->
-  <meta name="description" content="WUXING：Valve & Industrial + Animal Nutrition & Feed Additives + Cross-border Products. Multi-language landing with card navigation." />
-  <meta property="og:title" content="WUXING · Global Supply Hub" />
-  <meta property="og:description" content="Valves / Animal Nutrition / Products — Multi-language cards, fast contact, and auto product listing (manifest.json)." />
+  <meta name="description" content="Wuxing Valve — multi-language valve product showcase. Cards render from manifest.json and images." />
+  <meta property="og:title" content="Wuxing Valve · Products" />
+  <meta property="og:description" content="Valve product showcase: multi-language, fast contact, and auto cards from manifest.json." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/og.jpg" />
   <meta property="og:url" content="/" />
@@ -26,32 +26,29 @@
     .brand{display:flex;gap:10px;align-items:center}
     .brand a{color:var(--text);text-decoration:none;font-weight:900;letter-spacing:.3px}
     .brand small{color:var(--muted);font-weight:700}
-    .nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
-    .nav a{font-size:13px;text-decoration:none;color:var(--text);background:#fff;border:1px solid var(--border);padding:7px 10px;border-radius:999px}
-    .nav a:hover{background:#f1f5ff;border-color:#cfe0ff}
+
     .lang{display:inline-flex;gap:6px;align-items:center;background:#fff;border:1px solid var(--border);border-radius:999px;padding:6px}
     .lang button{appearance:none;border:none;cursor:pointer;padding:6px 10px;border-radius:999px;color:var(--muted);background:transparent;font-weight:700}
     .lang button.active{color:#fff;background:var(--primary);box-shadow:0 0 0 6px var(--ring) inset}
 
     .wrap{max-width:1200px;margin:0 auto;padding:18px 16px 56px}
-    .hero{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;justify-content:space-between;margin:10px 0 6px}
-    h1{font-size:28px;margin:0}
-    p.lead{color:var(--muted);margin:8px 0 0;max-width:920px;line-height:1.6}
+    h1{font-size:28px;margin:10px 0 8px}
+    p.lead{color:var(--muted);margin:0 0 10px;line-height:1.6;max-width:980px}
 
-    .contactbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:14px 0 18px}
+    .contactbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:10px 0 16px}
     .contactbar a,.contactbar span{background:#fff;border:1px solid var(--border);padding:8px 10px;border-radius:10px;color:var(--text);text-decoration:none;font-size:14px}
     .contactbar a:hover{background:#f1f5ff;border-color:#cfe0ff}
 
-    .section{margin-top:22px}
-    .section h2{margin:0 0 8px;font-size:18px}
-    .section p{margin:0 0 12px;color:var(--muted);line-height:1.6}
-
-    .grid{display:grid;grid-template-columns:repeat(1,minmax(0,1fr));gap:16px}
+    .grid{display:grid;grid-template-columns:repeat(1,minmax(0,1fr));gap:24px}
     @media(min-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
     @media(min-width:960px){.grid{grid-template-columns:repeat(3,1fr)}}
+
     .card{position:relative;overflow:hidden;border-radius:14px;background:var(--card);border:1px solid var(--border);
-      box-shadow:0 2px 10px rgba(0,0,0,.06);transition:transform .18s ease, box-shadow .18s ease}
+      box-shadow:0 2px 10px rgba(0,0,0,.06);transform:translateY(6px);opacity:0;animation:rise .45s ease forwards;
+      transition:transform .18s ease, box-shadow .18s ease}
     .card:hover{transform:translateY(-2px); box-shadow:0 6px 20px rgba(0,0,0,.12)}
+    @keyframes rise{to{transform:none;opacity:1}}
+
     .thumb{aspect-ratio:4/3;width:100%;display:block;object-fit:cover;background:#f1f3f5}
     .body{padding:12px 14px 16px}
     .title{font-weight:900;margin:2px 0 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#111}
@@ -59,7 +56,11 @@
     .badge{position:absolute;top:10px;left:10px;background:#111;color:#fff;padding:2px 8px;border-radius:999px;font-size:12px;opacity:.85}
     .cardlink{display:block;text-decoration:none;color:inherit}
 
-    .mutebox{background:#fff;border:1px dashed var(--border);border-radius:14px;padding:12px 14px;color:var(--muted);line-height:1.6}
+    .skeleton{position:relative;overflow:hidden;background:var(--skeleton)}
+    .skeleton::after{content:"";position:absolute;inset:0;transform:translateX(-100%);background:linear-gradient(90deg, transparent, var(--skeleton-shimmer), transparent);animation:shimmer 1.2s infinite}
+    @keyframes shimmer{to{transform:translateX(100%)}}
+
+    .mutebox{background:#fff;border:1px dashed var(--border);border-radius:14px;padding:12px 14px;color:var(--muted);line-height:1.6;margin-top:16px}
 
     footer{border-top:1px solid var(--border);text-align:center;padding:14px;color:var(--muted);margin-top:26px}
 
@@ -78,15 +79,8 @@
 <body>
   <header>
     <div class="brand">
-      <a href="./">WUXING</a>
-      <small id="brandSub">Valve · Nutrition · Trade</small>
-    </div>
-
-    <div class="nav" aria-label="primary">
-      <a href="#valves" id="navValves">Valves</a>
-      <a href="#nutrition" id="navNutrition">Nutrition</a>
-      <a href="#products" id="navProducts">Products</a>
-      <a href="#contact" id="navContact">Contact</a>
+      <a href="./" id="brandName">Wuxing Valve</a>
+      <small id="brandSub">Industrial Valves</small>
     </div>
 
     <div class="lang" id="langSwitcher" aria-label="language">
@@ -97,51 +91,21 @@
   </header>
 
   <div class="wrap">
-    <div class="hero">
-      <div>
-        <h1 id="heading">全球供应入口</h1>
-        <p class="lead" id="sub"></p>
-      </div>
-    </div>
-
     <div class="contactbar" id="contactBar"></div>
 
-    <!-- Valves -->
-    <section class="section" id="valves">
-      <h2 id="hValves">阀门 · 工业流体</h2>
-      <p id="pValves"></p>
-      <div class="grid" id="gridValves"></div>
-      <div class="mutebox" id="valvesNote"></div>
-    </section>
+    <h1 id="heading">阀门产品展示</h1>
+    <p class="lead" id="sub"></p>
 
-    <!-- Nutrition -->
-    <section class="section" id="nutrition">
-      <h2 id="hNutrition">动物营养 · 饲料添加剂</h2>
-      <p id="pNutrition"></p>
-      <div class="grid" id="gridNutrition"></div>
-      <div class="mutebox" id="nutritionNote"></div>
-    </section>
+    <div class="grid" id="grid">
+      <div class="card"><div class="thumb skeleton"></div><div class="body"><div class="title skeleton" style="height:18px;width:60%"></div><p class="desc skeleton" style="height:38px"></p></div></div>
+      <div class="card"><div class="thumb skeleton"></div><div class="body"><div class="title skeleton" style="height:18px;width:60%"></div><p class="desc skeleton" style="height:38px"></p></div></div>
+      <div class="card"><div class="thumb skeleton"></div><div class="body"><div class="title skeleton" style="height:18px;width:60%"></div><p class="desc skeleton" style="height:38px"></p></div></div>
+    </div>
 
-    <!-- Products (Eindeepseek-style auto listing) -->
-    <section class="section" id="products">
-      <h2 id="hProducts">产品展示 · 自动卡片</h2>
-      <p id="pProducts"></p>
-      <div class="grid" id="gridProducts">
-        <div class="card"><div class="thumb" style="background:#eef1f5"></div><div class="body"><div class="title" style="height:18px;background:#eef1f5;border-radius:8px;width:60%"></div><p class="desc" style="height:38px;background:#eef1f5;border-radius:8px"></p></div></div>
-        <div class="card"><div class="thumb" style="background:#eef1f5"></div><div class="body"><div class="title" style="height:18px;background:#eef1f5;border-radius:8px;width:60%"></div><p class="desc" style="height:38px;background:#eef1f5;border-radius:8px"></p></div></div>
-        <div class="card"><div class="thumb" style="background:#eef1f5"></div><div class="body"><div class="title" style="height:18px;background:#eef1f5;border-radius:8px;width:60%"></div><p class="desc" style="height:38px;background:#eef1f5;border-radius:8px"></p></div></div>
-      </div>
-      <div class="mutebox" id="productsNote"></div>
-    </section>
-
-    <section class="section" id="contact">
-      <h2 id="hContact">联系</h2>
-      <p id="pContact"></p>
-      <div class="mutebox" id="contactNote"></div>
-    </section>
-
-    <footer>© <span id="y"></span> WUXING</footer>
+    <div class="mutebox" id="hintBox" style="display:none"></div>
   </div>
+
+  <footer>© <span id="y"></span> Wuxing Valve</footer>
 
   <!-- Cookie banner (only shows for EN/DE) -->
   <div class="cookie-wrap" id="cookieWrap" aria-live="polite">
@@ -158,149 +122,62 @@
   </div>
 
   <script>
-    /* ---------------- i18n ---------------- */
+    /* ---------- i18n ---------- */
     const I18N = {
       zh:{
-        brandSub:'阀门 · 动物营养 · 跨境产品',
-        heading:'全球供应入口',
-        sub:'一个站点整合：阀门工业品、动物营养/饲料添加剂、以及跨境产品展示。支持多语言、卡片导航、以及自动读取产品清单（manifest.json）。',
-        navValves:'阀门', navNutrition:'营养', navProducts:'产品', navContact:'联系',
-
-        hValves:'阀门 · 工业流体',
-        pValves:'主打工业阀门与配套：按应用场景/压力等级/材质快速进入。',
-        valvesNote:'提示：下面每个卡片默认指向本域名下的分类页（如 /valves/gate.html）。你可以先用占位页，后续再补充产品参数、材质、标准、证书与案例。',
-        hNutrition:'动物营养 · 饲料添加剂',
-        pNutrition:'按品类快速进入：氨基酸/维生素/矿物质/酶制剂/益生菌等；以及常用饲料添加剂与畜牧用品。',
-        nutritionNote:'提示：这些卡片是“结构整合入口”。你可以把原站点的重要页面内容整理成你自己的分类页，放到 /nutrition/ 下面。',
-        hProducts:'产品展示 · 自动卡片',
-        pProducts:'支持“像 eindeepsseek 一样”的自动产品卡片：读取 /manifest.json + 识别 assets/imgs/product-*/1.png 后生成卡片。',
-        productsNote:'要启用自动产品卡片：把原 eindeepsseek 的 manifest.json、assets/、products/ 等文件拷贝到本仓库对应目录即可（或你也可以自己生成新的 manifest.json）。',
-        hContact:'联系',
-        pContact:'询盘/合作/样品与物流咨询：',
-        contactNote:'你可以在 CONTACT 里换成阀门事业部与营养事业部不同的邮箱/WhatsApp。',
-
+        brandSub:'工业阀门 · 外贸供应',
+        title:'阀门产品展示',
+        sub:'Wuxing Valve 提供工业阀门产品与定制服务，支持 OEM/ODM、现货与项目配套。欢迎询盘获取参数表、材质/标准、测试报告与交期。',
         email:'邮件',whats:'WhatsApp',phone:'电话',wechat:'微信',
-        cookie:{
-          text:'我们使用 Cookie（仅 Google Analytics）来了解访问与改善网站。你可以接受或拒绝非必要 Cookie。查看 <a href="/privacy.html" target="_blank" rel="noopener">隐私政策</a>。',
-          accept:'接受', reject:'拒绝'
-        }
+        hintNoManifest:'未找到 manifest.json。请在仓库根目录添加 manifest.json，并按 assets/imgs/product-*/1.png 放置图片。',
+        hintNoImg:'找到了 manifest.json，但没有匹配到图片（assets/imgs/product-*/1.png）。请检查路径/大小写。'
       },
       en:{
-        brandSub:'Valve · Nutrition · Trade',
-        heading:'Global Supply Hub',
-        sub:'One site, three tracks: Industrial valves, animal nutrition & feed additives, and cross-border product showcase. Multi-language, card navigation, and auto product listing (manifest.json).',
-        navValves:'Valves', navNutrition:'Nutrition', navProducts:'Products', navContact:'Contact',
-
-        hValves:'Valves · Industrial Flow',
-        pValves:'Quick entry by application / pressure class / material.',
-        valvesNote:'Tip: Each card links to a local category page (e.g., /valves/gate.html). Start with placeholders, then add specs, materials, standards, certificates and cases.',
-        hNutrition:'Animal Nutrition · Feed Additives',
-        pNutrition:'Quick entry by category: amino acids, vitamins, minerals, enzymes, probiotics, plus feed additives and livestock supplies.',
-        nutritionNote:'Tip: These are structured entry cards. You can migrate/condense your key pages into /nutrition/ as your own content.',
-        hProducts:'Products · Auto Cards',
-        pProducts:'Auto product cards (Eindeepseek-style): reads /manifest.json and checks assets/imgs/product-*/1.png.',
-        productsNote:'To enable: copy your manifest.json + assets/ + products/ from the Eindeepseek repo into this repo (or generate a new manifest.json).',
-        hContact:'Contact',
-        pContact:'RFQ / cooperation / samples & logistics:',
-        contactNote:'You can split contacts for Valve BU vs Nutrition BU in CONTACT.',
-
+        brandSub:'Industrial Valves · Supply',
+        title:'Valve Products',
+        sub:'Wuxing Valve supplies industrial valves with OEM/ODM, RTS and project support. Contact us for specs, materials/standards, test reports and lead time.',
         email:'Email',whats:'WhatsApp',phone:'Phone',wechat:'WeChat',
-        cookie:{
-          text:'We use cookies (only Google Analytics) to understand traffic and improve our site. You can accept or reject non-essential cookies. See our <a href="/privacy.html" target="_blank" rel="noopener">Privacy Notice</a>.',
-          accept:'Accept', reject:'Reject'
-        }
+        hintNoManifest:'manifest.json not found. Add it to repo root and place images as assets/imgs/product-*/1.png.',
+        hintNoImg:'manifest.json found, but no matching images (assets/imgs/product-*/1.png). Check path/case.'
       },
       de:{
-        brandSub:'Ventile · Ernährung · Handel',
-        heading:'Globaler Supply Hub',
-        sub:'Eine Seite, drei Bereiche: Industrieventile, Tierernährung & Futterzusätze sowie Produkt-Showcase. Mehrsprachig, Karten-Navigation und automatische Produktliste (manifest.json).',
-        navValves:'Ventile', navNutrition:'Ernährung', navProducts:'Produkte', navContact:'Kontakt',
-
-        hValves:'Ventile · Industrie',
-        pValves:'Schneller Einstieg nach Anwendung / Druckstufe / Material.',
-        valvesNote:'Tipp: Jede Karte verlinkt auf eine lokale Kategorieseite (z. B. /valves/gate.html). Erst Platzhalter, dann Datenblätter, Standards, Zertifikate und Cases ergänzen.',
-        hNutrition:'Tierernährung · Futterzusätze',
-        pNutrition:'Einstieg nach Kategorien: Aminosäuren, Vitamine, Mineralien, Enzyme, Probiotika sowie Futterzusätze und Zubehör.',
-        nutritionNote:'Tipp: Dies sind strukturierte Einstiegskarten. Du kannst die wichtigsten Inhalte als eigene Seiten unter /nutrition/ ablegen.',
-        hProducts:'Produkte · Auto-Karten',
-        pProducts:'Automatische Produktkarten (wie Eindeepseek): liest /manifest.json und prüft assets/imgs/product-*/1.png.',
-        productsNote:'Aktivieren: manifest.json + assets/ + products/ aus dem Eindeepseek-Repo hierher kopieren (oder eine neue manifest.json erzeugen).',
-        hContact:'Kontakt',
-        pContact:'Anfrage / Kooperation / Muster & Logistik:',
-        contactNote:'In CONTACT kannst du Kontakte je Business Unit trennen.',
-
+        brandSub:'Industrieventile · Supply',
+        title:'Ventil-Produkte',
+        sub:'Wuxing Valve liefert Industrieventile mit OEM/ODM, Lagerware und Projekt-Support. Kontaktieren Sie uns für Spezifikationen, Materialien/Normen, Prüfberichte und Lieferzeit.',
         email:'E-Mail',whats:'WhatsApp',phone:'Telefon',wechat:'WeChat',
-        cookie:{
-          text:'Wir verwenden Cookies (nur Google Analytics), um den Traffic zu verstehen und die Website zu verbessern. Sie können nicht notwendige Cookies akzeptieren oder ablehnen. Siehe <a href="/privacy.html" target="_blank" rel="noopener">Datenschutzhinweise</a>。',
-          accept:'Akzeptieren', reject:'Ablehnen'
-        }
+        hintNoManifest:'manifest.json nicht gefunden. Bitte im Repo-Root anlegen und Bilder unter assets/imgs/product-*/1.png ablegen.',
+        hintNoImg:'manifest.json gefunden, aber keine Bilder (assets/imgs/product-*/1.png). Pfad/Groß-Kleinschreibung prüfen.'
       }
     };
 
-    /* ---------------- language ---------------- */
     const qs = new URLSearchParams(location.search);
     const currentLang = (qs.get('lang') || localStorage.getItem('lang') || 'zh').toLowerCase();
     localStorage.setItem('lang', currentLang);
     const t = I18N[currentLang] || I18N.zh;
 
-    // top texts
     document.getElementById('brandSub').textContent = t.brandSub;
-    document.getElementById('heading').textContent = t.heading;
+    document.getElementById('heading').textContent = t.title;
     document.getElementById('sub').textContent = t.sub;
 
-    // nav i18n
-    document.getElementById('navValves').textContent = t.navValves;
-    document.getElementById('navNutrition').textContent = t.navNutrition;
-    document.getElementById('navProducts').textContent = t.navProducts;
-    document.getElementById('navContact').textContent = t.navContact;
-
-    // sections
-    document.getElementById('hValves').textContent = t.hValves;
-    document.getElementById('pValves').textContent = t.pValves;
-    document.getElementById('valvesNote').textContent = t.valvesNote;
-
-    document.getElementById('hNutrition').textContent = t.hNutrition;
-    document.getElementById('pNutrition').textContent = t.pNutrition;
-    document.getElementById('nutritionNote').textContent = t.nutritionNote;
-
-    document.getElementById('hProducts').textContent = t.hProducts;
-    document.getElementById('pProducts').textContent = t.pProducts;
-    document.getElementById('productsNote').textContent = t.productsNote;
-
-    document.getElementById('hContact').textContent = t.hContact;
-    document.getElementById('pContact').textContent = t.pContact;
-    document.getElementById('contactNote').textContent = t.contactNote;
-
-    // lang buttons
     [...document.querySelectorAll('#langSwitcher button')].forEach(b=>{
       if(b.dataset.lang===currentLang) b.classList.add('active');
       b.onclick=()=>{
-        const lang=b.dataset.lang; localStorage.setItem('lang',lang);
-        const url=new URL(location.href); url.searchParams.set('lang',lang);
-        location.href=url.toString();
+        const lang=b.dataset.lang;localStorage.setItem('lang',lang);
+        const url=new URL(location.href);url.searchParams.set('lang',lang);location.href=url.toString();
       };
     });
 
-    /* ---------------- contacts (edit here) ---------------- */
-    const CONTACT = {
-      email:'wengandy128@gmail.com',
-      whatsapp:'+86 15888791812',
-      phone:'+86 15888791812',
-      wechat:'15888791812',
-      // optional: separate BU contacts
-      valveEmail:'',
-      nutritionEmail:''
-    };
-
-    document.getElementById('contactBar').innerHTML = `
+    /* ---------- contacts (edit here) ---------- */
+    const CONTACT={email:'wengandy128@gmail.com',whatsapp:'+86 15888791812',phone:'+86 15888791812',wechat:'15888791812'};
+    document.getElementById('contactBar').innerHTML=`
       <a href="mailto:${CONTACT.email}">📧 ${t.email}: ${CONTACT.email}</a>
       <a href="https://wa.me/${CONTACT.whatsapp.replace(/[^0-9]/g,'')}" target="_blank" rel="noopener">💬 ${t.whats}</a>
       <a href="tel:${CONTACT.phone.replace(/\s/g,'')}">📞 ${t.phone}: ${CONTACT.phone}</a>
       <span>🟩 ${t.wechat}: ${CONTACT.wechat}</span>
     `;
 
-    /* ---------------- cookie consent + GA (keep your GA or change) ---------------- */
-    const GA_ID = 'G-SP9BZHN30E';  // ←如果要换成 wuxing 的 GA，就改这里
+    /* ---------- cookie consent + GA ---------- */
+    const GA_ID = 'G-SP9BZHN30E';
     function loadGA(){
       if(window.__gaLoaded) return;
       window.__gaLoaded = true;
@@ -318,15 +195,10 @@
     const consentKey='cookieConsent:v1';
     const saved = localStorage.getItem(consentKey);
 
-    // zh: 不展示弹窗，直接启用 GA（你也可以改成全部都弹窗）
     if(currentLang==='zh'){
       loadGA();
     }else{
       const wrap = document.getElementById('cookieWrap');
-      document.getElementById('cookieText').innerHTML = (t.cookie?.text || I18N.en.cookie.text);
-      document.getElementById('cookieAccept').textContent = (t.cookie?.accept || 'Accept');
-      document.getElementById('cookieReject').textContent = (t.cookie?.reject || 'Reject');
-
       function show(){ wrap.style.display='block'; }
       function hide(){ wrap.style.display='none'; }
 
@@ -348,7 +220,7 @@
       };
     }
 
-    /* ---------------- helpers ---------------- */
+    /* ---------- helpers ---------- */
     function fetchWithTimeout(url,ms=1500){
       const ctl=new AbortController(); const id=setTimeout(()=>ctl.abort(),ms);
       return fetch(url,{cache:'no-store',signal:ctl.signal}).finally(()=>clearTimeout(id));
@@ -358,72 +230,16 @@
       catch(e){}
       return null;
     }
-    async function exists(url){
+    async function existsPng(url){
       try{ const r=await fetchWithTimeout(url,1200); return r.ok; }catch(e){ return false; }
     }
 
-    function cardHTML({href,img,badge,title,desc,external=false}){
-      const thumb = img ? `<img class="thumb" src="${img}" alt="${title}" loading="lazy" decoding="async">`
-                        : `<div class="thumb" style="display:flex;align-items:center;justify-content:center;font-weight:900;font-size:22px">🔗</div>`;
-      return `
-        <a class="cardlink" href="${href}" ${external ? 'target="_blank" rel="noopener"' : ''}>
-          <article class="card">
-            ${thumb}
-            <div class="body">
-              <div class="title">${title}</div>
-              <p class="desc">${desc||''}</p>
-            </div>
-            ${badge ? `<span class="badge">${badge}</span>` : ''}
-          </article>
-        </a>`;
-    }
+    /* ---------- build cards ---------- */
+    async function build(){
+      const grid=document.getElementById('grid');
+      const hint=document.getElementById('hintBox');
+      grid.innerHTML='';
 
-    /* ---------------- build Valves cards ---------------- */
-    const VALVE_CARDS = [
-      { href:'/valves/gate.html',  badge:'Valve', title:{zh:'闸阀 Gate Valve', en:'Gate Valve', de:'Schieber'}, desc:{zh:'常用隔断/启闭；可按标准/材质/压力分型。', en:'Isolation & on/off. Split by standard/material/pressure.', de:'Absperrung & Auf/Zu. Nach Standard/Material/Druck.'}},
-      { href:'/valves/globe.html', badge:'Valve', title:{zh:'截止阀 Globe Valve', en:'Globe Valve', de:'Sitzventil'}, desc:{zh:'调节/截断；适合需要节流的场景。', en:'Throttling & shutoff.', de:'Drosseln & Absperren.'}},
-      { href:'/valves/check.html', badge:'Valve', title:{zh:'止回阀 Check Valve', en:'Check Valve', de:'Rückschlagventil'}, desc:{zh:'防倒流；常见升降/旋启/双瓣等结构。', en:'Backflow prevention.', de:'Rückflussverhinderung.'}},
-      { href:'/valves/ball.html',  badge:'Valve', title:{zh:'球阀 Ball Valve', en:'Ball Valve', de:'Kugelhahn'}, desc:{zh:'启闭迅速；可配软密封/金属硬密封。', en:'Fast on/off; soft seat / metal seat.', de:'Schnelles Schalten; weich/metalldicht.'}},
-      { href:'/valves/materials.html', badge:'Materials', title:{zh:'材质与工艺', en:'Materials & Process', de:'Material & Prozess'}, desc:{zh:'碳钢/不锈钢/合金钢；锻造/铸造与检测。', en:'CS/SS/Alloy; forged/cast & NDT.', de:'CS/SS/Legierung; Schmiede/Guss & NDT.'}},
-      { href:'/valves/standards.html', badge:'Standards', title:{zh:'标准与证书', en:'Standards & Certs', de:'Normen & Zertifikate'}, desc:{zh:'API/ASME/EN/ISO；测试、质检、出货文件。', en:'API/ASME/EN/ISO; testing & docs.', de:'API/ASME/EN/ISO; Prüfung & Doku.'}},
-    ];
-
-    function buildValves(){
-      const grid = document.getElementById('gridValves');
-      grid.innerHTML = VALVE_CARDS.map(c=>{
-        const title = c.title[currentLang] || c.title.en || c.title.zh;
-        const desc  = c.desc[currentLang]  || c.desc.en  || c.desc.zh;
-        return cardHTML({href:c.href, img:c.img||'', badge:c.badge, title, desc});
-      }).join('');
-    }
-
-    /* ---------------- build Nutrition cards ---------------- */
-    const NUTRI_CARDS = [
-      { href:'/nutrition/amino.html', badge:'Nutrition', title:{zh:'氨基酸 & 蛋白', en:'Amino Acids & Proteins', de:'Aminosäuren & Proteine'}, desc:{zh:'基础营养与增长支持。', en:'Core nutrition & growth support.', de:'Basisernährung & Wachstum.'}},
-      { href:'/nutrition/vitamins.html', badge:'Nutrition', title:{zh:'维生素补充', en:'Vitamin Supplements', de:'Vitamin-Zusätze'}, desc:{zh:'提升吸收与健康表现。', en:'Support health & performance.', de:'Gesundheit & Leistung.'}},
-      { href:'/nutrition/minerals.html', badge:'Nutrition', title:{zh:'矿物质补充', en:'Mineral Supplements', de:'Mineralstoffe'}, desc:{zh:'平衡微量元素与骨骼/免疫。', en:'Balance trace minerals.', de:'Spurenelemente ausgleichen.'}},
-      { href:'/nutrition/enzymes.html', badge:'Nutrition', title:{zh:'酶制剂', en:'Enzymes', de:'Enzyme'}, desc:{zh:'改善消化与饲料利用率。', en:'Improve digestion & efficiency.', de:'Verdauung & Effizienz.'}},
-      { href:'/nutrition/probiotics.html', badge:'Nutrition', title:{zh:'益生菌/益生元', en:'Probiotics & Prebiotics', de:'Pro-/Präbiotika'}, desc:{zh:'肠道健康与稳定性。', en:'Gut health & stability.', de:'Darmgesundheit.'}},
-      { href:'/nutrition/additives.html', badge:'Additives', title:{zh:'饲料添加剂', en:'Feed Additives', de:'Futterzusätze'}, desc:{zh:'酸度调节/防腐/甜味/增稠等。', en:'Acidity, preservatives, sweeteners, thickeners…', de:'Säure, Konservierung, Süße, Verdickung…'}},
-      { href:'/nutrition/supplies.html', badge:'Supplies', title:{zh:'畜牧用品', en:'Livestock Supplies', de:'Zubehör'}, desc:{zh:'常见耗材与管理用品入口。', en:'Consumables & farm supplies.', de:'Verbrauchs- & Farmbedarf.'}},
-      { href:'https://www.livestocksupplieszz.com/', badge:'Source', title:{zh:'原站入口（参考）', en:'Source Site (reference)', de:'Quelle (Referenz)'}, desc:{zh:'如需保留原站访问入口可使用此卡片。', en:'Keep a reference link if needed.', de:'Referenzlink optional.'}, external:true}
-    ];
-
-    function buildNutrition(){
-      const grid = document.getElementById('gridNutrition');
-      grid.innerHTML = NUTRI_CARDS.map(c=>{
-        const title = c.title[currentLang] || c.title.en || c.title.zh;
-        const desc  = c.desc[currentLang]  || c.desc.en  || c.desc.zh;
-        return cardHTML({href:c.href, img:c.img||'', badge:c.badge, title, desc, external:!!c.external});
-      }).join('');
-    }
-
-    /* ---------------- Products: Eindeepseek-style auto listing ---------------- */
-    async function buildProducts(){
-      const grid = document.getElementById('gridProducts');
-      grid.innerHTML = '';
-
-      // Try manifest.json in current repo root
       const mf = await (async()=>{
         for(const u of ['manifest.json','/manifest.json','./manifest.json']){
           const d = await tryJson(u);
@@ -434,15 +250,9 @@
 
       const items = Array.isArray(mf?.items) ? mf.items : [];
 
-      // If no manifest, show helpful box + optional external link
-      if(!items.length){
-        grid.innerHTML = cardHTML({
-          href:'https://www.eindeepseek.com/',
-          badge:'External',
-          title: (currentLang==='zh' ? '暂无本地 manifest.json（点击打开原站）' : currentLang==='de' ? 'Keine lokale manifest.json (zum Original öffnen)' : 'No local manifest.json (open original)'),
-          desc:  (currentLang==='zh' ? '把 manifest.json + assets/ + products/ 拷贝到本仓库即可生成卡片。' : currentLang==='de' ? 'Kopiere manifest.json + assets/ + products/ hierher, dann erscheinen Karten.' : 'Copy manifest.json + assets/ + products/ into this repo to render cards.'),
-          external:true
-        });
+      if(!mf){
+        hint.style.display='block';
+        hint.textContent = t.hintNoManifest;
         return;
       }
 
@@ -450,39 +260,38 @@
         const id = Number(it.id); if(!id) continue;
         const slug = `product-${id}`;
         const img = `assets/imgs/${slug}/1.png`;
-        if(!(await exists(img))) continue;
+
+        if(!(await existsPng(img))) continue;
 
         const title = it?.title?.[currentLang] || it?.title?.en || it?.title?.zh || `Product ${id}`;
         const hrefURL = new URL(it?.href || `products/${slug}.html`, location.href);
         hrefURL.searchParams.set('lang', currentLang);
 
-        grid.insertAdjacentHTML('beforeend', cardHTML({
-          href: hrefURL.toString(),
-          img,
-          badge: currentLang.toUpperCase(),
-          title,
-          desc: ''
-        }));
+        const a=document.createElement('a');
+        a.className='cardlink';
+        a.href=hrefURL.toString();
+        a.innerHTML = `<article class="card">
+          <img class="thumb" src="${img}" alt="${title}" loading="lazy" decoding="async">
+          <div class="body">
+            <div class="title">${title}</div>
+            <p class="desc"></p>
+          </div>
+          <span class="badge">${currentLang.toUpperCase()}</span>
+        </article>`;
+        grid.appendChild(a);
       }
 
       if(!grid.children.length){
-        grid.innerHTML = `<div class="mutebox">${currentLang==='zh'
-          ? 'manifest.json 有内容，但找不到对应图片 assets/imgs/product-*/1.png（请检查路径）。'
-          : currentLang==='de'
-            ? 'manifest.json vorhanden, aber keine Bilder assets/imgs/product-*/1.png gefunden (Pfad prüfen).'
-            : 'manifest.json found, but no images assets/imgs/product-*/1.png (check paths).'
-        }</div>`;
+        hint.style.display='block';
+        hint.textContent = t.hintNoImg;
       }
     }
 
-    /* ---------------- init ---------------- */
-    buildValves();
-    buildNutrition();
-    buildProducts();
-    document.getElementById('y').textContent = new Date().getFullYear();
+    build();
+    document.getElementById('y').textContent=new Date().getFullYear();
   </script>
 
-  <!-- ▼▼ FX widget (your original one; kept as-is) ▼▼ -->
+  <!-- ▼▼ FX widget：保留你原来的实时汇率浮窗 ▼▼ -->
   <script>
   (() => {
     const CCY = ['CNY','USD','EUR','TWD'];
@@ -494,9 +303,9 @@
     const qs = new URLSearchParams(location.search);
     const lang = (qs.get('lang') || localStorage.getItem('lang') || 'zh').toLowerCase();
     const I18N = {
-      zh: {title:'实时汇率换算',amount:'金额',swap:'交换',refresh:'刷新',source:'数据源：exchangerate.host',loading:'加载中…',error:'网络错误',na:'不可用',hint:'点击展开换算'},
-      en: {title:'Live FX Converter',amount:'Amount',swap:'Swap',refresh:'Refresh',source:'Source: exchangerate.host',loading:'Loading…',error:'Network error',na:'N/A',hint:'Click to expand'},
-      de: {title:'Live Wechselkursrechner',amount:'Betrag',swap:'Tauschen',refresh:'Aktualisieren',source:'Quelle: exchangerate.host',loading:'Laden…',error:'Netzwerkfehler',na:'Nicht verfügbar',hint:'Klicken zum Öffnen'}
+      zh:{title:'实时汇率换算',amount:'金额',swap:'交换',refresh:'刷新',source:'数据源：exchangerate.host',loading:'加载中…',error:'网络错误',na:'不可用',hint:'点击展开换算'},
+      en:{title:'Live FX Converter',amount:'Amount',swap:'Swap',refresh:'Refresh',source:'Source: exchangerate.host',loading:'Loading…',error:'Network error',na:'N/A',hint:'Click to expand'},
+      de:{title:'Live Wechselkursrechner',amount:'Betrag',swap:'Tauschen',refresh:'Aktualisieren',source:'Quelle: exchangerate.host',loading:'Laden…',error:'Netzwerkfehler',na:'Nicht verfügbar',hint:'Klicken zum Öffnen'}
     };
     const T = I18N[lang] || I18N.zh;
 
