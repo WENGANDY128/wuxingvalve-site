@@ -1,0 +1,6 @@
+Size: DN50 / DN80 / DN100 (customizable)
+Pressure: PN16 / PN25 (options)
+Material: WCB / CF8 / CF8M
+Ends: Flanged / Threaded / BW
+Standard: API 6D / ANSI / DIN (optional)
+Test: Shell/Seat test (report available)

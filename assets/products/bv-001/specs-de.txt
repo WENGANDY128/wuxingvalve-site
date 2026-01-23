@@ -1,0 +1,6 @@
+Nennweite: DN50 / DN80 / DN100 (anpassbar)
+Druck: PN16 / PN25 (Optionen)
+Werkstoff: WCB / CF8 / CF8M
+Anschluss: Flansch / Gewinde / Schweißende
+Norm: API 6D / ANSI / DIN (optional)
+Prüfung: Gehäuse-/Sitzprüfung (Bericht verfügbar)
