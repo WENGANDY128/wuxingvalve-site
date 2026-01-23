@@ -1,0 +1,17 @@
+---
+pagination:
+  data: collections.products
+  size: 1000
+permalink: "products/index.html"
+---
+
+<h1>Products</h1>
+<ul>
+{% for item in collections.products %}
+  <li>
+    <a href="/products/{{ item.data.slug }}/">
+      {{ item.data.title_en }} / {{ item.data.title_zh }} / {{ item.data.title_de }}
+    </a>
+  </li>
+{% endfor %}
+</ul>
