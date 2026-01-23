@@ -6,9 +6,9 @@
   <title>Wuxing Valve · Products</title>
 
   <!-- SEO / OpenGraph -->
-  <meta name="description" content="Wuxing Valve — multi-language valve product showcase. Cards render from manifest.json and images." />
+  <meta name="description" content="Wuxing Valve — multi-language valve product showcase. Cards render from local_products.json and assets/uploads." />
   <meta property="og:title" content="Wuxing Valve · Products" />
-  <meta property="og:description" content="Valve product showcase: multi-language, fast contact, and auto cards from manifest.json." />
+  <meta property="og:description" content="Valve product showcase: multi-language, fast contact, and auto cards from local_products.json." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/og.jpg" />
   <meta property="og:url" content="/" />
@@ -129,24 +129,27 @@
         title:'阀门产品展示',
         sub:'Wuxing Valve 提供工业阀门产品与定制服务，支持 OEM/ODM、现货与项目配套。欢迎询盘获取参数表、材质/标准、测试报告与交期。',
         email:'邮件',whats:'WhatsApp',phone:'电话',wechat:'微信',
-        hintNoManifest:'未找到 manifest.json。请在仓库根目录添加 manifest.json，并按 assets/imgs/product-*/1.png 放置图片。',
-        hintNoImg:'找到了 manifest.json，但没有匹配到图片（assets/imgs/product-*/1.png）。请检查路径/大小写。'
+        hintNoJson:'未找到 local_products.json。请把 GUI 生成的 local_products.json 上传到仓库根目录（与 index.html 同级）。',
+        hintEmpty:'读取到了 local_products.json，但没有产品数据。请在 GUI 里 New + Save 后再导出/保存。',
+        hintImg:'产品有了，但图片路径找不到。请确认图片都在 assets/uploads/ 下，并且 JSON 里的图片路径包含 assets/uploads/xxx.jpg（不要是 C:\\Users\\...）。'
       },
       en:{
         brandSub:'Industrial Valves · Supply',
         title:'Valve Products',
         sub:'Wuxing Valve supplies industrial valves with OEM/ODM, RTS and project support. Contact us for specs, materials/standards, test reports and lead time.',
         email:'Email',whats:'WhatsApp',phone:'Phone',wechat:'WeChat',
-        hintNoManifest:'manifest.json not found. Add it to repo root and place images as assets/imgs/product-*/1.png.',
-        hintNoImg:'manifest.json found, but no matching images (assets/imgs/product-*/1.png). Check path/case.'
+        hintNoJson:'local_products.json not found. Upload it to the repo root (same level as index.html).',
+        hintEmpty:'local_products.json loaded, but no products found. Please create products in the GUI and export/save again.',
+        hintImg:'Products loaded but images not found. Make sure images are under assets/uploads and JSON paths are relative (assets/uploads/xxx.jpg), not C:\\Users\\...'
       },
       de:{
         brandSub:'Industrieventile · Supply',
         title:'Ventil-Produkte',
         sub:'Wuxing Valve liefert Industrieventile mit OEM/ODM, Lagerware und Projekt-Support. Kontaktieren Sie uns für Spezifikationen, Materialien/Normen, Prüfberichte und Lieferzeit.',
         email:'E-Mail',whats:'WhatsApp',phone:'Telefon',wechat:'WeChat',
-        hintNoManifest:'manifest.json nicht gefunden. Bitte im Repo-Root anlegen und Bilder unter assets/imgs/product-*/1.png ablegen.',
-        hintNoImg:'manifest.json gefunden, aber keine Bilder (assets/imgs/product-*/1.png). Pfad/Groß-Kleinschreibung prüfen.'
+        hintNoJson:'local_products.json nicht gefunden. Bitte im Repo-Root hochladen (gleiche Ebene wie index.html).',
+        hintEmpty:'local_products.json geladen, aber keine Produkte gefunden. Bitte im GUI Produkte anlegen und erneut exportieren/speichern.',
+        hintImg:'Produkte geladen, aber Bilder nicht gefunden. Bitte Bilder unter assets/uploads ablegen und relative Pfade (assets/uploads/xxx.jpg) nutzen, nicht C:\\Users\\...'
       }
     };
 
@@ -176,7 +179,7 @@
       <span>🟩 ${t.wechat}: ${CONTACT.wechat}</span>
     `;
 
-    /* ---------- cookie consent + GA ---------- */
+    /* ---------- cookie consent + GA (KEEP) ---------- */
     const GA_ID = 'G-1T6921REMX';
     function loadGA(){
       if(window.__gaLoaded) return;
@@ -221,69 +224,171 @@
     }
 
     /* ---------- helpers ---------- */
-    function fetchWithTimeout(url,ms=1500){
+    function fetchWithTimeout(url,ms=2000){
       const ctl=new AbortController(); const id=setTimeout(()=>ctl.abort(),ms);
       return fetch(url,{cache:'no-store',signal:ctl.signal}).finally(()=>clearTimeout(id));
     }
     async function tryJson(url){
-      try{ const r=await fetchWithTimeout(url,2000); if(r.ok) return await r.json(); }
+      try{ const r=await fetchWithTimeout(url,2500); if(r.ok) return await r.json(); }
       catch(e){}
       return null;
     }
-    async function existsPng(url){
-      try{ const r=await fetchWithTimeout(url,1200); return r.ok; }catch(e){ return false; }
+
+    // 把 Windows 绝对路径 / 乱路径，尽量转成站内相对路径（assets/uploads/...）
+    function normalizeAssetPath(p){
+      if(!p) return '';
+      const s = String(p).replaceAll('\\','/');
+
+      const low = s.toLowerCase();
+
+      // 如果包含 assets/uploads
+      const k1 = low.indexOf('assets/uploads/');
+      if(k1 >= 0) return s.slice(k1);
+
+      // 如果包含 /assets/uploads
+      const k2 = low.indexOf('/assets/uploads/');
+      if(k2 >= 0) return s.slice(k2+1);
+
+      // 已经是相对路径（比如 assets/... 或 http...）
+      return s;
     }
 
-    /* ---------- build cards ---------- */
+    function pickLangText(v){
+      if(!v) return '';
+      if(typeof v === 'string') return v;
+      // 常见结构：{zh,en,de}
+      return v[currentLang] || v.zh || v.en || v.de || '';
+    }
+
+    // 尽量兼容你 GUI 的字段命名差异
+    function getTitle(p){
+      return (
+        pickLangText(p.title) ||
+        (currentLang==='zh' ? p.title_zh : currentLang==='de' ? p.title_de : p.title_en) ||
+        p.name || p.product_name || p.slug || p.sku || ''
+      );
+    }
+    function getDesc(p){
+      return (
+        pickLangText(p.desc) ||
+        pickLangText(p.description) ||
+        (currentLang==='zh' ? p.desc_zh : currentLang==='de' ? p.desc_de : p.desc_en) ||
+        ''
+      );
+    }
+    function getTags(p){
+      if(Array.isArray(p.tags)) return p.tags;
+      if(typeof p.tags === 'string') return p.tags.split(',').map(s=>s.trim()).filter(Boolean);
+      if(Array.isArray(p.tag_list)) return p.tag_list;
+      return [];
+    }
+    function getHref(p, slugFallback){
+      // 如果你以后有详情页，可以在 JSON 里加 href
+      const href = p.href || p.url || '';
+      if(href) return href;
+      // 如果你没有详情页，就不跳转（避免 404）
+      return '#';
+    }
+    function getCover(p){
+      const c = p.cover_image || p.cover || p.coverImage || p.image || '';
+      const g = Array.isArray(p.gallery) ? p.gallery[0] : '';
+      return normalizeAssetPath(c || g || '');
+    }
+
+    /* ---------- build cards (NEW: from local_products.json) ---------- */
     async function build(){
       const grid=document.getElementById('grid');
       const hint=document.getElementById('hintBox');
-      grid.innerHTML='';
+      hint.style.display='none';
+      hint.textContent='';
 
-      const mf = await (async()=>{
-        for(const u of ['manifest.json','/manifest.json','./manifest.json']){
+      // 先显示 skeleton（你原本 grid 里就有）
+      // 等加载完再替换
+      const data = await (async()=>{
+        for(const u of ['local_products.json','/local_products.json','./local_products.json']){
           const d = await tryJson(u);
           if(d) return d;
         }
         return null;
       })();
 
-      const items = Array.isArray(mf?.items) ? mf.items : [];
-
-      if(!mf){
+      if(!data){
+        grid.innerHTML='';
         hint.style.display='block';
-        hint.textContent = t.hintNoManifest;
+        hint.textContent = t.hintNoJson;
         return;
       }
 
-      for(const it of items){
-        const id = Number(it.id); if(!id) continue;
-        const slug = `product-${id}`;
-        const img = `assets/imgs/${slug}/1.png`;
+      // 兼容：{products:[...]} / {items:[...]} / 直接 [...]
+      const items = Array.isArray(data) ? data : (Array.isArray(data.products) ? data.products : (Array.isArray(data.items) ? data.items : []));
+      if(!items.length){
+        grid.innerHTML='';
+        hint.style.display='block';
+        hint.textContent = t.hintEmpty;
+        return;
+      }
 
-        if(!(await existsPng(img))) continue;
+      // 渲染
+      grid.innerHTML='';
+      let imgErrorCount = 0;
 
-        const title = it?.title?.[currentLang] || it?.title?.en || it?.title?.zh || `Product ${id}`;
-        const hrefURL = new URL(it?.href || `products/${slug}.html`, location.href);
-        hrefURL.searchParams.set('lang', currentLang);
+      for(const p of items){
+        const title = getTitle(p) || 'Product';
+        const desc  = getDesc(p) || '';
+        const tags  = getTags(p);
+        const sku   = p.sku || p.SKU || '';
+        const slug  = p.slug || p.handle || '';
+        const imgSrc = getCover(p);
+        const href = getHref(p, slug);
+
+        const hrefURL = new URL(href === '#' ? location.href : href, location.href);
+        // 如果不是 #，才追加 lang
+        if(href !== '#') hrefURL.searchParams.set('lang', currentLang);
 
         const a=document.createElement('a');
         a.className='cardlink';
-        a.href=hrefURL.toString();
+        a.href = (href === '#') ? 'javascript:void(0)' : hrefURL.toString();
+
+        const badge = currentLang.toUpperCase();
+        const safeTitle = String(title).replaceAll('"','&quot;');
+
+        // desc 空也没关系
         a.innerHTML = `<article class="card">
-          <img class="thumb" src="${img}" alt="${title}" loading="lazy" decoding="async">
+          <img class="thumb" src="${imgSrc || ''}" alt="${safeTitle}" loading="lazy" decoding="async">
           <div class="body">
-            <div class="title">${title}</div>
-            <p class="desc"></p>
+            <div class="title">${title}${sku ? ` <span style="font-weight:700;color:#666;font-size:12px">(${sku})</span>` : ''}</div>
+            <p class="desc">${desc || ''}</p>
+            ${tags.length ? `<div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:6px">${tags.slice(0,6).map(tg=>`<span style="font-size:12px;border:1px solid var(--border);background:#fff;border-radius:999px;padding:3px 8px;color:var(--muted)">${tg}</span>`).join('')}</div>` : ''}
           </div>
-          <span class="badge">${currentLang.toUpperCase()}</span>
+          <span class="badge">${badge}</span>
         </article>`;
+
+        // 图片 onerror：给个兜底（不让整卡片消失）
+        const imgEl = a.querySelector('img.thumb');
+        if(imgEl){
+          imgEl.onerror = ()=>{
+            imgErrorCount++;
+            imgEl.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(
+              `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600">
+                <rect width="100%" height="100%" fill="#f1f3f5"/>
+                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+                  fill="#9aa0a6" font-family="Arial" font-size="20">Image not found</text>
+              </svg>`
+            );
+          };
+          if(!imgSrc){
+            // 直接触发占位
+            imgEl.onerror();
+          }
+        }
+
         grid.appendChild(a);
       }
 
-      if(!grid.children.length){
+      // 如果图片大量缺失，给提示（但不影响展示）
+      if(imgErrorCount >= Math.min(3, items.length)){
         hint.style.display='block';
-        hint.textContent = t.hintNoImg;
+        hint.textContent = t.hintImg;
       }
     }
 
@@ -487,17 +592,18 @@
     compute();
   })();
   </script>
+
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-<script>
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", (user) => {
-      if (!user) {
-        window.netlifyIdentity.on("login", () => {
-          document.location.href = "/admin/";
-        });
-      }
-    });
-  }
-</script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", (user) => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
 </body>
 </html>
