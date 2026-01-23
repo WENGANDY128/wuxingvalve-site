@@ -5,10 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Wuxing Valve · Products</title>
 
-  <!-- SEO / OpenGraph -->
-  <meta name="description" content="Wuxing Valve — multi-language valve product showcase. Cards render from local_products.json and assets/uploads." />
+  <meta name="description" content="Wuxing Valve — industrial valve product showcase. Cards render from products.json." />
   <meta property="og:title" content="Wuxing Valve · Products" />
-  <meta property="og:description" content="Valve product showcase: multi-language, fast contact, and auto cards from local_products.json." />
+  <meta property="og:description" content="Industrial valve product showcase with multi-language pages." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="/og.jpg" />
   <meta property="og:url" content="/" />
@@ -18,7 +17,7 @@
     :root{
       --bg:#f7f8fa; --text:#222; --muted:#555; --primary:#2b7de9;
       --card:#fff; --border:#ddd; --ring:rgba(43,125,233,.18);
-      --skeleton:#eef1f5; --skeleton-shimmer:#f7f8fb;
+      --shadow:0 2px 10px rgba(0,0,0,.06);
     }
     *{box-sizing:border-box}
     body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:var(--bg);color:var(--text)}
@@ -35,20 +34,21 @@
     h1{font-size:28px;margin:10px 0 8px}
     p.lead{color:var(--muted);margin:0 0 10px;line-height:1.6;max-width:980px}
 
-    .contactbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:10px 0 16px}
+    .contactbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:10px 0 12px}
     .contactbar a,.contactbar span{background:#fff;border:1px solid var(--border);padding:8px 10px;border-radius:10px;color:var(--text);text-decoration:none;font-size:14px}
     .contactbar a:hover{background:#f1f5ff;border-color:#cfe0ff}
+
+    .filters{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 18px}
+    .pill{border:1px solid var(--border);background:#fff;border-radius:999px;padding:7px 10px;font-weight:800;color:var(--muted);cursor:pointer}
+    .pill.active{background:var(--primary);border-color:var(--primary);color:#fff}
 
     .grid{display:grid;grid-template-columns:repeat(1,minmax(0,1fr));gap:24px}
     @media(min-width:640px){.grid{grid-template-columns:repeat(2,1fr)}}
     @media(min-width:960px){.grid{grid-template-columns:repeat(3,1fr)}}
 
     .card{position:relative;overflow:hidden;border-radius:14px;background:var(--card);border:1px solid var(--border);
-      box-shadow:0 2px 10px rgba(0,0,0,.06);transform:translateY(6px);opacity:0;animation:rise .45s ease forwards;
-      transition:transform .18s ease, box-shadow .18s ease}
+      box-shadow:var(--shadow);transition:transform .18s ease, box-shadow .18s ease}
     .card:hover{transform:translateY(-2px); box-shadow:0 6px 20px rgba(0,0,0,.12)}
-    @keyframes rise{to{transform:none;opacity:1}}
-
     .thumb{aspect-ratio:4/3;width:100%;display:block;object-fit:cover;background:#f1f3f5}
     .body{padding:12px 14px 16px}
     .title{font-weight:900;margin:2px 0 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#111}
@@ -56,15 +56,11 @@
     .badge{position:absolute;top:10px;left:10px;background:#111;color:#fff;padding:2px 8px;border-radius:999px;font-size:12px;opacity:.85}
     .cardlink{display:block;text-decoration:none;color:inherit}
 
-    .skeleton{position:relative;overflow:hidden;background:var(--skeleton)}
-    .skeleton::after{content:"";position:absolute;inset:0;transform:translateX(-100%);background:linear-gradient(90deg, transparent, var(--skeleton-shimmer), transparent);animation:shimmer 1.2s infinite}
-    @keyframes shimmer{to{transform:translateX(100%)}}
-
     .mutebox{background:#fff;border:1px dashed var(--border);border-radius:14px;padding:12px 14px;color:var(--muted);line-height:1.6;margin-top:16px}
 
     footer{border-top:1px solid var(--border);text-align:center;padding:14px;color:var(--muted);margin-top:26px}
 
-    /* Cookie banner */
+    /* Cookie banner (shows for EN/DE only) */
     .cookie-wrap{position:fixed;left:0;right:0;bottom:0;z-index:50;display:none}
     .cookie-bar{max-width:1200px;margin:10px auto;background:#111;color:#fff;border-radius:12px;padding:14px;border:1px solid #000a;display:flex;flex-wrap:wrap;gap:10px;align-items:center;box-shadow:0 6px 24px rgba(0,0,0,.25)}
     .cookie-bar p{margin:0;line-height:1.5;flex:1 1 320px;color:#e6e6e6}
@@ -93,21 +89,18 @@
   <div class="wrap">
     <div class="contactbar" id="contactBar"></div>
 
-    <h1 id="heading">阀门产品展示</h1>
+    <h1 id="heading">产品展示</h1>
     <p class="lead" id="sub"></p>
 
-    <div class="grid" id="grid">
-      <div class="card"><div class="thumb skeleton"></div><div class="body"><div class="title skeleton" style="height:18px;width:60%"></div><p class="desc skeleton" style="height:38px"></p></div></div>
-      <div class="card"><div class="thumb skeleton"></div><div class="body"><div class="title skeleton" style="height:18px;width:60%"></div><p class="desc skeleton" style="height:38px"></p></div></div>
-      <div class="card"><div class="thumb skeleton"></div><div class="body"><div class="title skeleton" style="height:18px;width:60%"></div><p class="desc skeleton" style="height:38px"></p></div></div>
-    </div>
+    <div class="filters" id="filters"></div>
+
+    <div class="grid" id="grid"></div>
 
     <div class="mutebox" id="hintBox" style="display:none"></div>
   </div>
 
   <footer>© <span id="y"></span> Wuxing Valve</footer>
 
-  <!-- Cookie banner (only shows for EN/DE) -->
   <div class="cookie-wrap" id="cookieWrap" aria-live="polite">
     <div class="cookie-bar">
       <p id="cookieText">
@@ -129,27 +122,30 @@
         title:'阀门产品展示',
         sub:'Wuxing Valve 提供工业阀门产品与定制服务，支持 OEM/ODM、现货与项目配套。欢迎询盘获取参数表、材质/标准、测试报告与交期。',
         email:'邮件',whats:'WhatsApp',phone:'电话',wechat:'微信',
-        hintNoJson:'未找到 local_products.json。请把 GUI 生成的 local_products.json 上传到仓库根目录（与 index.html 同级）。',
-        hintEmpty:'读取到了 local_products.json，但没有产品数据。请在 GUI 里 New + Save 后再导出/保存。',
-        hintImg:'产品有了，但图片路径找不到。请确认图片都在 assets/uploads/ 下，并且 JSON 里的图片路径包含 assets/uploads/xxx.jpg（不要是 C:\\Users\\...）。'
+        all:'全部',
+        hintNoJson:'未找到 products.json。请把 products.json 上传到仓库根目录（与 index.html 同级）。',
+        hintEmpty:'products.json 读取成功，但没有产品数据。',
+        hintImg:'部分图片加载失败。请确认图片路径是 assets/products/<id>/cover.jpg，并且文件名大小写一致。'
       },
       en:{
         brandSub:'Industrial Valves · Supply',
         title:'Valve Products',
         sub:'Wuxing Valve supplies industrial valves with OEM/ODM, RTS and project support. Contact us for specs, materials/standards, test reports and lead time.',
         email:'Email',whats:'WhatsApp',phone:'Phone',wechat:'WeChat',
-        hintNoJson:'local_products.json not found. Upload it to the repo root (same level as index.html).',
-        hintEmpty:'local_products.json loaded, but no products found. Please create products in the GUI and export/save again.',
-        hintImg:'Products loaded but images not found. Make sure images are under assets/uploads and JSON paths are relative (assets/uploads/xxx.jpg), not C:\\Users\\...'
+        all:'All',
+        hintNoJson:'products.json not found. Upload it to the repo root (same level as index.html).',
+        hintEmpty:'products.json loaded, but no products found.',
+        hintImg:'Some images failed to load. Ensure cover paths are like assets/products/<id>/cover.jpg and filenames match case.'
       },
       de:{
         brandSub:'Industrieventile · Supply',
         title:'Ventil-Produkte',
         sub:'Wuxing Valve liefert Industrieventile mit OEM/ODM, Lagerware und Projekt-Support. Kontaktieren Sie uns für Spezifikationen, Materialien/Normen, Prüfberichte und Lieferzeit.',
         email:'E-Mail',whats:'WhatsApp',phone:'Telefon',wechat:'WeChat',
-        hintNoJson:'local_products.json nicht gefunden. Bitte im Repo-Root hochladen (gleiche Ebene wie index.html).',
-        hintEmpty:'local_products.json geladen, aber keine Produkte gefunden. Bitte im GUI Produkte anlegen und erneut exportieren/speichern.',
-        hintImg:'Produkte geladen, aber Bilder nicht gefunden. Bitte Bilder unter assets/uploads ablegen und relative Pfade (assets/uploads/xxx.jpg) nutzen, nicht C:\\Users\\...'
+        all:'Alle',
+        hintNoJson:'products.json nicht gefunden. Bitte im Repo-Root hochladen (gleiche Ebene wie index.html).',
+        hintEmpty:'products.json geladen, aber keine Produkte gefunden.',
+        hintImg:'Einige Bilder konnten nicht geladen werden. Pfade wie assets/products/<id>/cover.jpg verwenden und Groß-/Kleinschreibung beachten.'
       }
     };
 
@@ -179,9 +175,10 @@
       <span>🟩 ${t.wechat}: ${CONTACT.wechat}</span>
     `;
 
-    /* ---------- cookie consent + GA (KEEP) ---------- */
-    const GA_ID = 'G-1T6921REMX';
+    /* ---------- cookie consent + GA (optional) ---------- */
+    const GA_ID = 'G-REPLACE_ME'; // TODO: replace with your GA4 id
     function loadGA(){
+      if(GA_ID==='G-REPLACE_ME') return; // do nothing until set
       if(window.__gaLoaded) return;
       window.__gaLoaded = true;
       const s=document.createElement('script');
@@ -193,11 +190,10 @@
       gtag('js', new Date());
       gtag('config', GA_ID);
     }
-    function disableGA(){ window['ga-disable-'+GA_ID] = true; }
+    function disableGA(){ if(GA_ID!=='G-REPLACE_ME') window['ga-disable-'+GA_ID] = true; }
 
     const consentKey='cookieConsent:v1';
     const saved = localStorage.getItem(consentKey);
-
     if(currentLang==='zh'){
       loadGA();
     }else{
@@ -224,386 +220,128 @@
     }
 
     /* ---------- helpers ---------- */
-    function fetchWithTimeout(url,ms=2000){
-      const ctl=new AbortController(); const id=setTimeout(()=>ctl.abort(),ms);
-      return fetch(url,{cache:'no-store',signal:ctl.signal}).finally(()=>clearTimeout(id));
-    }
-    async function tryJson(url){
-      try{ const r=await fetchWithTimeout(url,2500); if(r.ok) return await r.json(); }
-      catch(e){}
-      return null;
-    }
-
-    // 把 Windows 绝对路径 / 乱路径，尽量转成站内相对路径（assets/uploads/...）
-    function normalizeAssetPath(p){
-      if(!p) return '';
-      const s = String(p).replaceAll('\\','/');
-
-      const low = s.toLowerCase();
-
-      // 如果包含 assets/uploads
-      const k1 = low.indexOf('assets/uploads/');
-      if(k1 >= 0) return s.slice(k1);
-
-      // 如果包含 /assets/uploads
-      const k2 = low.indexOf('/assets/uploads/');
-      if(k2 >= 0) return s.slice(k2+1);
-
-      // 已经是相对路径（比如 assets/... 或 http...）
-      return s;
-    }
-
     function pickLangText(v){
       if(!v) return '';
       if(typeof v === 'string') return v;
-      // 常见结构：{zh,en,de}
       return v[currentLang] || v.zh || v.en || v.de || '';
     }
 
-    // 尽量兼容你 GUI 的字段命名差异
-    function getTitle(p){
-      return (
-        pickLangText(p.title) ||
-        (currentLang==='zh' ? p.title_zh : currentLang==='de' ? p.title_de : p.title_en) ||
-        p.name || p.product_name || p.slug || p.sku || ''
+    async function fetchJSON(url){
+      try{
+        const r = await fetch(url, {cache:'no-store'});
+        if(r.ok) return await r.json();
+      }catch(e){}
+      return null;
+    }
+
+    function imgFallback(el){
+      el.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(
+        `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600">
+          <rect width="100%" height="100%" fill="#f1f3f5"/>
+          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+            fill="#9aa0a6" font-family="Arial" font-size="20">Image not found</text>
+        </svg>`
       );
     }
-    function getDesc(p){
-      return (
-        pickLangText(p.desc) ||
-        pickLangText(p.description) ||
-        (currentLang==='zh' ? p.desc_zh : currentLang==='de' ? p.desc_de : p.desc_en) ||
-        ''
-      );
-    }
-    function getTags(p){
-      if(Array.isArray(p.tags)) return p.tags;
-      if(typeof p.tags === 'string') return p.tags.split(',').map(s=>s.trim()).filter(Boolean);
-      if(Array.isArray(p.tag_list)) return p.tag_list;
-      return [];
-    }
-    function getHref(p, slugFallback){
-      // 如果你以后有详情页，可以在 JSON 里加 href
-      const href = p.href || p.url || '';
-      if(href) return href;
-      // 如果你没有详情页，就不跳转（避免 404）
-      return '#';
-    }
-    function getCover(p){
-      const c = p.cover_image || p.cover || p.coverImage || p.image || '';
-      const g = Array.isArray(p.gallery) ? p.gallery[0] : '';
-      return normalizeAssetPath(c || g || '');
+
+    let ALL = [];
+    let currentSeries = 'all';
+
+    function renderFilters(seriesList){
+      const box = document.getElementById('filters');
+      box.innerHTML = '';
+      const mk = (key, label)=>{
+        const b = document.createElement('button');
+        b.className = 'pill' + (key===currentSeries ? ' active':'');
+        b.textContent = label;
+        b.onclick = ()=>{ currentSeries = key; renderFilters(seriesList); renderGrid(); };
+        box.appendChild(b);
+      };
+      mk('all', t.all);
+      seriesList.forEach(s=>{
+        const label = pickLangText(s.series_title) || s.series;
+        mk(s.series, label);
+      });
     }
 
-    /* ---------- build cards (NEW: from local_products.json) ---------- */
-    async function build(){
-      const grid=document.getElementById('grid');
-      const hint=document.getElementById('hintBox');
-      hint.style.display='none';
-      hint.textContent='';
+    function renderGrid(){
+      const grid = document.getElementById('grid');
+      const hint = document.getElementById('hintBox');
+      hint.style.display='none'; hint.textContent='';
+      grid.innerHTML = '';
 
-      // 先显示 skeleton（你原本 grid 里就有）
-      // 等加载完再替换
-      const data = await (async()=>{
-        for(const u of ['local_products.json','/local_products.json','./local_products.json']){
-          const d = await tryJson(u);
-          if(d) return d;
-        }
-        return null;
-      })();
-
-      if(!data){
-        grid.innerHTML='';
-        hint.style.display='block';
-        hint.textContent = t.hintNoJson;
-        return;
-      }
-
-      // 兼容：{products:[...]} / {items:[...]} / 直接 [...]
-      const items = Array.isArray(data) ? data : (Array.isArray(data.products) ? data.products : (Array.isArray(data.items) ? data.items : []));
+      const items = currentSeries==='all' ? ALL : ALL.filter(p=>p.series===currentSeries);
       if(!items.length){
-        grid.innerHTML='';
         hint.style.display='block';
         hint.textContent = t.hintEmpty;
         return;
       }
 
-      // 渲染
-      grid.innerHTML='';
-      let imgErrorCount = 0;
-
+      let imgError = 0;
       for(const p of items){
-        const title = getTitle(p) || 'Product';
-        const desc  = getDesc(p) || '';
-        const tags  = getTags(p);
-        const sku   = p.sku || p.SKU || '';
-        const slug  = p.slug || p.handle || '';
-        const imgSrc = getCover(p);
-        const href = getHref(p, slug);
+        const title = pickLangText(p.title) || p.id;
+        const desc  = pickLangText(p.sub) || '';
+        const cover = p.cover || '';
+        const badge = (pickLangText(p.series_title) || p.series || '').slice(0,12) || currentLang.toUpperCase();
 
-        const hrefURL = new URL(href === '#' ? location.href : href, location.href);
-        // 如果不是 #，才追加 lang
-        if(href !== '#') hrefURL.searchParams.set('lang', currentLang);
+        const a = document.createElement('a');
+        a.className = 'cardlink';
+        const u = new URL('product.html', location.href);
+        u.searchParams.set('id', p.id);
+        u.searchParams.set('lang', currentLang);
+        a.href = u.toString();
 
-        const a=document.createElement('a');
-        a.className='cardlink';
-        a.href = (href === '#') ? 'javascript:void(0)' : hrefURL.toString();
-
-        const badge = currentLang.toUpperCase();
-        const safeTitle = String(title).replaceAll('"','&quot;');
-
-        // desc 空也没关系
         a.innerHTML = `<article class="card">
-          <img class="thumb" src="${imgSrc || ''}" alt="${safeTitle}" loading="lazy" decoding="async">
+          <img class="thumb" src="${cover}" alt="${title}">
           <div class="body">
-            <div class="title">${title}${sku ? ` <span style="font-weight:700;color:#666;font-size:12px">(${sku})</span>` : ''}</div>
-            <p class="desc">${desc || ''}</p>
-            ${tags.length ? `<div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:6px">${tags.slice(0,6).map(tg=>`<span style="font-size:12px;border:1px solid var(--border);background:#fff;border-radius:999px;padding:3px 8px;color:var(--muted)">${tg}</span>`).join('')}</div>` : ''}
+            <div class="title">${title}</div>
+            <p class="desc">${desc}</p>
           </div>
           <span class="badge">${badge}</span>
         </article>`;
 
-        // 图片 onerror：给个兜底（不让整卡片消失）
-        const imgEl = a.querySelector('img.thumb');
-        if(imgEl){
-          imgEl.onerror = ()=>{
-            imgErrorCount++;
-            imgEl.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(
-              `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600">
-                <rect width="100%" height="100%" fill="#f1f3f5"/>
-                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
-                  fill="#9aa0a6" font-family="Arial" font-size="20">Image not found</text>
-              </svg>`
-            );
-          };
-          if(!imgSrc){
-            // 直接触发占位
-            imgEl.onerror();
-          }
-        }
+        const img = a.querySelector('img.thumb');
+        img.onerror = ()=>{ imgError++; imgFallback(img); };
+        if(!cover) img.onerror();
 
         grid.appendChild(a);
       }
 
-      // 如果图片大量缺失，给提示（但不影响展示）
-      if(imgErrorCount >= Math.min(3, items.length)){
+      if(imgError >= 2){
         hint.style.display='block';
         hint.textContent = t.hintImg;
       }
     }
 
-    build();
+    async function init(){
+      const data = await fetchJSON('products.json') || await fetchJSON('/products.json') || await fetchJSON('./products.json');
+      if(!data){
+        const hint = document.getElementById('hintBox');
+        hint.style.display='block';
+        hint.textContent = t.hintNoJson;
+        return;
+      }
+      ALL = Array.isArray(data.products) ? data.products : (Array.isArray(data) ? data : []);
+      if(!ALL.length){
+        const hint = document.getElementById('hintBox');
+        hint.style.display='block';
+        hint.textContent = t.hintEmpty;
+        return;
+      }
+
+      // unique series list (preserve first title)
+      const map = new Map();
+      for(const p of ALL){
+        if(!p.series) continue;
+        if(!map.has(p.series)) map.set(p.series, {series:p.series, series_title:p.series_title});
+      }
+      const seriesList = [...map.values()];
+      renderFilters(seriesList);
+      renderGrid();
+    }
+
+    init();
     document.getElementById('y').textContent=new Date().getFullYear();
-  </script>
-
-  <!-- ▼▼ FX widget：保留你原来的实时汇率浮窗 ▼▼ -->
-  <script>
-  (() => {
-    const CCY = ['CNY','USD','EUR','TWD'];
-    const SUMMARY_PAIRS = [['USD','CNY'],['EUR','USD'],['EUR','CNY']];
-    const DEC = 4;
-    const POLL_MS = 5 * 60 * 1000;
-    const STORE = 'fxWidget:v2';
-
-    const qs = new URLSearchParams(location.search);
-    const lang = (qs.get('lang') || localStorage.getItem('lang') || 'zh').toLowerCase();
-    const I18N = {
-      zh:{title:'实时汇率换算',amount:'金额',swap:'交换',refresh:'刷新',source:'数据源：exchangerate.host',loading:'加载中…',error:'网络错误',na:'不可用',hint:'点击展开换算'},
-      en:{title:'Live FX Converter',amount:'Amount',swap:'Swap',refresh:'Refresh',source:'Source: exchangerate.host',loading:'Loading…',error:'Network error',na:'N/A',hint:'Click to expand'},
-      de:{title:'Live Wechselkursrechner',amount:'Betrag',swap:'Tauschen',refresh:'Aktualisieren',source:'Quelle: exchangerate.host',loading:'Laden…',error:'Netzwerkfehler',na:'Nicht verfügbar',hint:'Klicken zum Öffnen'}
-    };
-    const T = I18N[lang] || I18N.zh;
-
-    const css = `
-    :root{--fx-bg:#111;--fx-fg:#fff;--fx-line:#333;--fx-shadow:0 14px 44px rgba(0,0,0,.4);}
-    .fx-mini{position:fixed;right:16px;bottom:16px;z-index:99998;display:flex;gap:10px;align-items:center;
-      padding:12px 14px;border-radius:16px;background:var(--card,#fff);color:var(--text,#111);
-      border:1px solid var(--border,#ddd);box-shadow:0 6px 22px rgba(0,0,0,.12);cursor:pointer}
-    .fx-pill{display:flex;gap:8px;align-items:center;font-weight:900;
-      background:var(--primary,#2b7de9);color:#fff;border-radius:999px;padding:8px 12px}
-    .fx-rates{display:flex;gap:10px;flex-wrap:wrap;font-variant-numeric:tabular-nums}
-    .fx-rate{background:#f1f3f5;border:1px solid #e3e6ea;border-radius:10px;padding:6px 8px}
-    .fx-hint{font-size:12px;color:#888;margin-left:4px}
-    .fx-wrap{position:fixed;right:16px;bottom:84px;z-index:99999;background:var(--fx-bg);color:var(--fx-fg);
-      border:1px solid #000;border-radius:18px;box-shadow:var(--fx-shadow);width:420px;max-width:calc(100vw - 32px);display:none}
-    .fx-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--fx-line)}
-    .fx-title{font-weight:900;font-size:18px;letter-spacing:.2px}
-    .fx-close{all:unset;cursor:pointer;background:#222;border:1px solid var(--fx-line);padding:6px 10px;border-radius:10px}
-    .fx-body{padding:16px}
-    .fx-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:center}
-    .fx-input,.fx-select{width:100%;padding:12px;border-radius:12px;border:1px solid var(--fx-line);background:#222;color:#fff;font-size:16px}
-    .fx-arrow{color:#bbb;text-align:center;font-size:18px}
-    .fx-out{margin-top:12px;padding:12px;border:1px solid var(--fx-line);border-radius:12px;background:#1b1b1b;display:flex;align-items:center;justify-content:space-between;min-height:48px;font-size:16px}
-    .fx-tools{padding:12px;display:flex;gap:10px}
-    .fx-btn{cursor:pointer;border:1px solid var(--fx-line);background:#222;color:#fff;border-radius:10px;padding:8px 12px;font-weight:800}
-    .fx-foot{padding:12px;font-size:12px;color:#9aa;display:flex;justify-content:space-between;border-top:1px solid var(--fx-line)}
-    .fx-link{color:#9ec5ff;text-decoration:none}
-    `;
-    const style = document.createElement('style');
-    style.textContent = css;
-    document.head.appendChild(style);
-
-    const mini = document.createElement('div');
-    mini.className = 'fx-mini';
-    mini.innerHTML = `
-      <div class="fx-pill">FX</div>
-      <div class="fx-rates" id="fx-mini-rates">
-        <span class="fx-rate">—</span><span class="fx-rate">—</span><span class="fx-rate">—</span>
-      </div>
-      <span class="fx-hint">${T.hint}</span>
-    `;
-
-    const wrap = document.createElement('section');
-    wrap.className = 'fx-wrap';
-    wrap.setAttribute('role','dialog');
-    wrap.innerHTML = `
-      <div class="fx-head">
-        <div class="fx-title">${T.title}</div>
-        <button class="fx-close" type="button" aria-label="Close">×</button>
-      </div>
-      <div class="fx-body">
-        <div class="fx-grid">
-          <input class="fx-input" id="fx-amt" type="number" min="0" step="0.01" placeholder="${T.amount}">
-          <select class="fx-select" id="fx-from"></select>
-          <div class="fx-arrow">→</div>
-          <select class="fx-select" id="fx-to"></select>
-        </div>
-        <div class="fx-out">
-          <span id="fx-res">—</span>
-          <span id="fx-ts"></span>
-        </div>
-        <div class="fx-tools">
-          <button class="fx-btn" id="fx-swap" type="button">${T.swap}</button>
-          <button class="fx-btn" id="fx-refresh" type="button">${T.refresh}</button>
-        </div>
-      </div>
-      <div class="fx-foot">
-        <span>${T.source}</span>
-        <a class="fx-link" href="https://exchangerate.host" target="_blank" rel="noopener">API</a>
-      </div>
-    `;
-
-    document.body.appendChild(mini);
-    document.body.appendChild(wrap);
-
-    const $ = sel => wrap.querySelector(sel);
-    const amt = $('#fx-amt'), fromSel = $('#fx-from'), toSel = $('#fx-to'), res = $('#fx-res'), ts = $('#fx-ts');
-    const miniRatesEl = mini.querySelector('#fx-mini-rates');
-
-    (function initSelects(){
-      CCY.forEach(c=>{
-        const o1 = document.createElement('option'); o1.value=c; o1.textContent=c; fromSel.appendChild(o1);
-        const o2 = document.createElement('option'); o2.value=c; o2.textContent=c; toSel.appendChild(o2);
-      });
-      try{
-        const saved = JSON.parse(localStorage.getItem(STORE) || '{}');
-        fromSel.value = saved.from || 'CNY';
-        toSel.value = saved.to || 'USD';
-        amt.value = saved.amt ?? 100;
-      }catch{ fromSel.value='CNY'; toSel.value='USD'; amt.value=100; }
-    })();
-
-    let cache = { base: null, ts: 0, rates: null, date: '' };
-    const now = () => Date.now();
-
-    async function fetchRates(base){
-      try{
-        const u = `https://api.exchangerate.host/latest?base=${encodeURIComponent(base)}`;
-        const r = await fetch(u, { cache: 'no-store' });
-        if(!r.ok) throw new Error('host http');
-        const j = await r.json();
-        if(!j || !j.rates) throw new Error('host json');
-        cache = { base: j.base || base, ts: now(), rates: j.rates, date: j.date || '' };
-        return;
-      }catch(e){}
-      const u2 = `https://open.er-api.com/v6/latest/${encodeURIComponent(base)}`;
-      const r2 = await fetch(u2, { cache: 'no-store' });
-      const j2 = await r2.json();
-      if(j2 && j2.rates){
-        cache = { base: j2.base_code || base, ts: now(), rates: j2.rates, date: (j2.time_last_update_utc || '').replace(' at','') };
-        return;
-      }
-      throw new Error('rate fetch failed');
-    }
-
-    function fmt(n){ return Number(n).toLocaleString(undefined,{ maximumFractionDigits: DEC }); }
-
-    function getCross(baseRates, from, to){
-      if(from === cache.base){ return baseRates[to]; }
-      if(to === cache.base){ return 1 / baseRates[from]; }
-      return (baseRates[to] != null && baseRates[from] != null) ? (baseRates[to] / baseRates[from]) : null;
-    }
-
-    function renderMiniRates(){
-      const out = [];
-      for(const [a,b] of SUMMARY_PAIRS){
-        const rate = getCross(cache.rates || {}, a, b);
-        out.push(`<span class="fx-rate">${a}/${b} ${rate != null ? fmt(rate) : T.na}</span>`);
-      }
-      miniRatesEl.innerHTML = out.join('');
-    }
-
-    async function compute(){
-      const a = parseFloat(amt.value || '0');
-      const from = fromSel.value, to = toSel.value;
-      localStorage.setItem(STORE, JSON.stringify({ amt: amt.value, from, to }));
-      try{
-        if(cache.base !== from || !cache.rates || (now() - cache.ts) > POLL_MS){
-          res.textContent = T.loading;
-          await fetchRates(from);
-        }
-        if(a){
-          const rate = cache.rates[to];
-          if(rate == null){ res.textContent = T.na; ts.textContent=''; }
-          else { res.textContent = `${from} ${fmt(a)} = ${to} ${fmt(a * rate)}`; ts.textContent = cache.date; }
-        }else{
-          res.textContent = '—'; ts.textContent = cache.date || '';
-        }
-        renderMiniRates();
-      }catch(e){
-        res.textContent = T.error;
-        miniRatesEl.innerHTML = `<span class="fx-rate">${T.error}</span>`;
-      }
-    }
-
-    [amt, fromSel, toSel].forEach(el => el.addEventListener('input', compute));
-    wrap.querySelector('.fx-close').addEventListener('click', () => { wrap.style.display='none'; });
-    wrap.querySelector('#fx-refresh').addEventListener('click', () => { cache.base=null; compute(); });
-    wrap.querySelector('#fx-swap').addEventListener('click', () => {
-      const f = fromSel.value; fromSel.value = toSel.value; toSel.value = f; compute();
-    });
-
-    mini.addEventListener('click', () => {
-      const show = wrap.style.display !== 'block';
-      wrap.style.display = show ? 'block' : 'none';
-      if(show){ compute(); amt.focus(); }
-    });
-
-    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') wrap.style.display='none'; });
-
-    let timer = setInterval(() => {
-      if(wrap.style.display === 'block'){ cache.base=null; compute(); }
-    }, POLL_MS);
-    document.addEventListener('visibilitychange', () => {
-      if(document.hidden){ clearInterval(timer); timer=null; }
-      else if(!timer){ timer=setInterval(()=>{ if(wrap.style.display === 'block'){ cache.base=null; compute(); } }, POLL_MS); }
-    });
-
-    compute();
-  })();
-  </script>
-
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <script>
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", (user) => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
-      });
-    }
   </script>
 </body>
 </html>

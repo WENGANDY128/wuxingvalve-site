@@ -1,0 +1,64 @@
+{
+  "products": [
+    {
+      "id": "bv-001",
+      "series": "ball-valve",
+      "series_title": {
+        "zh": "球阀系列",
+        "en": "Ball Valve Series",
+        "de": "Kugelhahn-Serie"
+      },
+      "title": {
+        "zh": "不锈钢球阀 DN50 PN16",
+        "en": "Stainless Steel Ball Valve DN50 PN16",
+        "de": "Edelstahl Kugelhahn DN50 PN16"
+      },
+      "sub": {
+        "zh": "两片式 / 全通径 / 可定制连接方式",
+        "en": "2-piece / full bore / customizable ends",
+        "de": "2-teilig / Vollbohrung / Anschlüsse anpassbar"
+      },
+      "cover": "assets/products/bv-001/cover.jpg"
+    },
+    {
+      "id": "bv-002",
+      "series": "ball-valve",
+      "series_title": {
+        "zh": "球阀系列",
+        "en": "Ball Valve Series",
+        "de": "Kugelhahn-Serie"
+      },
+      "title": {
+        "zh": "碳钢球阀 DN80 PN25",
+        "en": "Carbon Steel Ball Valve DN80 PN25",
+        "de": "Kohlenstoffstahl Kugelhahn DN80 PN25"
+      },
+      "sub": {
+        "zh": "API/ANSI 可选 / 适用于油气与化工",
+        "en": "API/ANSI options / for oil & gas and chemical",
+        "de": "API/ANSI Optionen / für Öl & Gas und Chemie"
+      },
+      "cover": "assets/products/bv-002/cover.jpg"
+    },
+    {
+      "id": "gv-001",
+      "series": "gate-valve",
+      "series_title": {
+        "zh": "闸阀系列",
+        "en": "Gate Valve Series",
+        "de": "Schieber-Serie"
+      },
+      "title": {
+        "zh": "闸阀 DN100 PN16",
+        "en": "Gate Valve DN100 PN16",
+        "de": "Absperrschieber DN100 PN16"
+      },
+      "sub": {
+        "zh": "法兰连接 / WCB 或不锈钢 / 可出厂测试",
+        "en": "Flanged / WCB or SS / factory test available",
+        "de": "Flansch / WCB oder Edelstahl / Werksprüfung möglich"
+      },
+      "cover": "assets/products/gv-001/cover.jpg"
+    }
+  ]
+}

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wuxing Valve · Product</title>
+  <meta name="description" content="Wuxing Valve product detail page (multi-language)." />
+  <style>
+    :root{
+      --bg:#f7f8fa; --text:#222; --muted:#555; --primary:#2b7de9;
+      --card:#fff; --border:#ddd; --ring:rgba(43,125,233,.18);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:var(--bg);color:var(--text)}
+    header{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:#fff;border-bottom:1px solid var(--border)}
+    .brand{display:flex;gap:10px;align-items:center}
+    .brand a{color:var(--text);text-decoration:none;font-weight:900;letter-spacing:.3px}
+    .brand small{color:var(--muted);font-weight:700}
+
+    .lang{display:inline-flex;gap:6px;align-items:center;background:#fff;border:1px solid var(--border);border-radius:999px;padding:6px}
+    .lang button{appearance:none;border:none;cursor:pointer;padding:6px 10px;border-radius:999px;color:var(--muted);background:transparent;font-weight:700}
+    .lang button.active{color:#fff;background:var(--primary);box-shadow:0 0 0 6px var(--ring) inset}
+
+    .wrap{max-width:1100px;margin:0 auto;padding:18px 16px 56px}
+    h1{font-size:30px;margin:12px 0 8px;text-align:center}
+    .sub{color:var(--muted);line-height:1.6;margin:0 auto 10px;max-width:980px;text-align:center;white-space:pre-wrap}
+
+    .model-cards{display:grid;gap:14px;margin:18px auto 10px;grid-template-columns:repeat(3,minmax(220px,1fr));max-width:900px}
+    .model-card{border:2px solid var(--border);border-radius:12px;background:var(--card);cursor:pointer;overflow:hidden;transition:.2s}
+    .model-card:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,.05)}
+    .model-card.active{border-color:var(--primary)}
+    .model-card img{width:100%;height:140px;object-fit:cover;display:block;background:#f2f3f5}
+    .meta{padding:10px 12px;font-weight:800}
+    .meta small{display:block;color:var(--muted);font-weight:700;margin-top:2px}
+
+    .grid{display:grid;grid-template-columns:58% 42%;grid-gap:16px;align-items:start;margin-top:10px}
+    .box{padding:12px;background:var(--card);border:1px solid var(--border);border-radius:12px}
+    .box h2{margin:0 0 8px;font-size:18px;font-weight:900;color:#111}
+    .box p{margin:0;color:var(--muted);line-height:1.6;white-space:pre-wrap}
+    .box ul{margin:8px 0 0;padding-left:18px;line-height:1.6}
+    .box li{margin:2px 0}
+
+    .carousel{position:relative;overflow:hidden;border-radius:14px;border:1px solid var(--border);background:var(--card);aspect-ratio:16/9}
+    .track{display:flex;transition:transform .45s ease;height:100%}
+    .slide{min-width:100%;height:100%}
+    .slide img{width:100%;height:100%;display:block;object-fit:contain;object-position:center;background:#f2f3f5}
+    .navBtn{position:absolute;top:50%;transform:translateY(-50%);background:#fff;border:1px solid var(--border);
+      border-radius:10px;padding:8px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+    .prev{left:8px}.next{right:8px}
+    .dots{display:flex;justify-content:center;gap:6px;margin-top:8px}
+    .dot{width:8px;height:8px;border-radius:50%;background:#cfd3da;border:none;cursor:pointer}
+    .dot.active{background:var(--primary)}
+    .btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+    .btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:900;border-radius:12px;padding:10px 12px;border:1px solid var(--border);background:#fff;color:#111}
+    .btn.primary{background:var(--primary);border-color:var(--primary);color:#fff}
+    .btn:hover{filter:brightness(.98)}
+
+    @media (max-width: 900px){
+      .model-cards{grid-template-columns:repeat(3,minmax(160px,1fr));max-width:100%}
+      .model-card img{height:110px}
+      .grid{grid-template-columns:1fr}
+      .carousel{aspect-ratio:4/3}
+    }
+    @media (max-width: 560px){
+      .model-cards{grid-template-columns:repeat(3,minmax(120px,1fr))}
+      .model-card img{height:90px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <a href="./" id="homeLink">Wuxing Valve</a>
+      <small id="brandSub">Industrial Valves</small>
+    </div>
+    <div class="lang" id="langSwitcher" aria-label="language">
+      <button data-lang="zh">ZH</button>
+      <button data-lang="en">EN</button>
+      <button data-lang="de">DE</button>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <h1 id="title">Product</h1>
+    <p class="sub" id="subtitle"></p>
+
+    <div class="model-cards" id="modelCards"></div>
+
+    <div class="grid">
+      <div>
+        <div class="carousel" id="carousel" style="display:none">
+          <div class="track" id="track"></div>
+          <button class="navBtn prev" id="prev" aria-label="Previous">◀</button>
+          <button class="navBtn next" id="next" aria-label="Next">▶</button>
+        </div>
+        <div class="dots" id="dots"></div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div class="box" id="specBox" style="display:none">
+          <h2 id="specTitle">Specs</h2>
+          <ul id="specList"></ul>
+        </div>
+        <div class="box" id="detailBox" style="display:none">
+          <h2 id="detailTitle">Details</h2>
+          <p id="detailText"></p>
+        </div>
+
+        <div class="box">
+          <h2 id="contactTitle">Contact</h2>
+          <div class="btnrow" id="contactBtns"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const I18N = {
+      zh:{brandSub:'工业阀门 · 外贸供应', specs:'参数', details:'详细描述', contact:'联系', back:'返回首页', noid:'缺少产品 id 参数。', notfound:'未找到该产品。', more:'同系列产品'},
+      en:{brandSub:'Industrial Valves · Supply', specs:'Specs', details:'Details', contact:'Contact', back:'Back', noid:'Missing product id.', notfound:'Product not found.', more:'More in this series'},
+      de:{brandSub:'Industrieventile · Supply', specs:'Spezifikationen', details:'Beschreibung', contact:'Kontakt', back:'Zurück', noid:'Produkt-ID fehlt.', notfound:'Produkt nicht gefunden.', more:'Mehr aus der Serie'}
+    };
+
+    const CONTACT={email:'wengandy128@gmail.com',whatsapp:'+86 15888791812',phone:'+86 15888791812',wechat:'15888791812'};
+
+    const qs = new URLSearchParams(location.search);
+    const lang = (qs.get('lang') || localStorage.getItem('lang') || 'zh').toLowerCase();
+    localStorage.setItem('lang', lang);
+    const t = I18N[lang] || I18N.zh;
+
+    document.getElementById('brandSub').textContent = t.brandSub;
+
+    // language switcher
+    [...document.querySelectorAll('#langSwitcher button')].forEach(b=>{
+      if(b.dataset.lang===lang) b.classList.add('active');
+      b.onclick=()=>{
+        const u=new URL(location.href);
+        u.searchParams.set('lang', b.dataset.lang);
+        location.href=u.toString();
+      };
+    });
+
+    // home link keeps lang
+    const home = new URL('index.html', location.href);
+    home.searchParams.set('lang', lang);
+    document.getElementById('homeLink').href = home.toString();
+
+    function pick(v){
+      if(!v) return '';
+      if(typeof v === 'string') return v;
+      return v[lang] || v.en || v.zh || v.de || '';
+    }
+
+    async function fetchJSON(url){
+      try{
+        const r = await fetch(url, {cache:'no-store'});
+        if(r.ok) return await r.json();
+      }catch(e){}
+      return null;
+    }
+
+    async function fetchText(url){
+      try{
+        const r = await fetch(url, {cache:'no-store'});
+        if(r.ok) return (await r.text()).trim();
+      }catch(e){}
+      return '';
+    }
+
+    function imgFallbackURL(){
+      return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(
+        `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600">
+          <rect width="100%" height="100%" fill="#f1f3f5"/>
+          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+            fill="#9aa0a6" font-family="Arial" font-size="20">Image not found</text>
+        </svg>`
+      );
+    }
+
+    function existsImage(url){
+      return new Promise(resolve=>{
+        const im=new Image();
+        im.onload=()=>resolve(true);
+        im.onerror=()=>resolve(false);
+        im.src=url;
+      });
+    }
+
+    function productFolder(id){ return `assets/products/${id}`; }
+
+    async function loadCarousel(id){
+      const track = document.getElementById('track');
+      const dots = document.getElementById('dots');
+      const carousel = document.getElementById('carousel');
+      const prevBtn = document.getElementById('prev');
+      const nextBtn = document.getElementById('next');
+
+      track.innerHTML=''; dots.innerHTML='';
+
+      const imgs = [];
+      // try jpg then png
+      for(let i=1;i<=20;i++){
+        const jpg = `${productFolder(id)}/${i}.jpg`;
+        const png = `${productFolder(id)}/${i}.png`;
+        if(await existsImage(jpg)) imgs.push(jpg);
+        else if(await existsImage(png)) imgs.push(png);
+        else break;
+      }
+
+      if(!imgs.length){
+        carousel.style.display='none';
+        dots.style.display='none';
+        return;
+      }
+
+      carousel.style.display='block';
+      const many = imgs.length > 1;
+      dots.style.display = many ? 'flex':'none';
+      prevBtn.style.display = nextBtn.style.display = many ? 'block':'none';
+
+      imgs.forEach((src, idx)=>{
+        const s=document.createElement('div');
+        s.className='slide';
+        s.innerHTML=`<img src="${src}" alt="image ${idx+1}">`;
+        const im = s.querySelector('img');
+        im.onerror = ()=>{ im.src = imgFallbackURL(); };
+        track.appendChild(s);
+
+        if(many){
+          const d=document.createElement('button');
+          d.className='dot'+(idx===0?' active':'');
+          d.onclick=()=>go(idx);
+          dots.appendChild(d);
+        }
+      });
+
+      let index = 0;
+      function update(){
+        track.style.transform = `translateX(${-index*100}%)`;
+        if(many){
+          [...dots.children].forEach((d,i)=>d.classList.toggle('active', i===index));
+        }
+      }
+      function go(i){ index=Math.max(0, Math.min(imgs.length-1, i)); update(); }
+      prevBtn.onclick=()=>go(index-1);
+      nextBtn.onclick=()=>go(index+1);
+      update();
+    }
+
+    async function loadSpecsDetails(id){
+      // fallback order: current lang -> en -> zh -> de
+      const order = [lang,'en','zh','de'];
+      let specsText='', detailsText='';
+
+      for(const lg of order){
+        if(!specsText) specsText = await fetchText(`${productFolder(id)}/specs-${lg}.txt`);
+        if(!detailsText) detailsText = await fetchText(`${productFolder(id)}/details-${lg}.txt`);
+      }
+
+      const specBox = document.getElementById('specBox');
+      const detailBox = document.getElementById('detailBox');
+
+      document.getElementById('specTitle').textContent = t.specs;
+      document.getElementById('detailTitle').textContent = t.details;
+
+      if(specsText){
+        const ul = document.getElementById('specList');
+        ul.innerHTML='';
+        specsText.split(/\r?\n/).map(s=>s.trim()).filter(Boolean).forEach(line=>{
+          const li=document.createElement('li');
+          li.textContent=line;
+          ul.appendChild(li);
+        });
+        specBox.style.display='block';
+      }else{
+        specBox.style.display='none';
+      }
+
+      if(detailsText){
+        document.getElementById('detailText').textContent = detailsText;
+        detailBox.style.display='block';
+      }else{
+        detailBox.style.display='none';
+      }
+    }
+
+    function renderContacts(){
+      document.getElementById('contactTitle').textContent = t.contact;
+      const box = document.getElementById('contactBtns');
+      box.innerHTML = `
+        <a class="btn primary" href="mailto:${CONTACT.email}">📧 ${CONTACT.email}</a>
+        <a class="btn" href="https://wa.me/${CONTACT.whatsapp.replace(/[^0-9]/g,'')}" target="_blank" rel="noopener">💬 WhatsApp</a>
+        <a class="btn" href="tel:${CONTACT.phone.replace(/\s/g,'')}">📞 ${CONTACT.phone}</a>
+        <a class="btn" href="javascript:void(0)">🟩 WeChat: ${CONTACT.wechat}</a>
+      `;
+    }
+
+    function updateURL(id){
+      const u = new URL(location.href);
+      u.searchParams.set('id', id);
+      u.searchParams.set('lang', lang);
+      history.replaceState(null, '', u.toString());
+    }
+
+    async function main(){
+      renderContacts();
+
+      const id = (qs.get('id') || '').trim();
+      if(!id){
+        document.getElementById('title').textContent = t.noid;
+        return;
+      }
+
+      const data = await fetchJSON('products.json') || await fetchJSON('/products.json') || await fetchJSON('./products.json');
+      const list = Array.isArray(data?.products) ? data.products : [];
+      const cur = list.find(x=>x.id===id);
+
+      if(!cur){
+        document.getElementById('title').textContent = t.notfound;
+        return;
+      }
+
+      document.getElementById('title').textContent = pick(cur.title) || cur.id;
+      document.getElementById('subtitle').textContent = pick(cur.sub) || '';
+
+      // series cards
+      const seriesItems = list.filter(x=>x.series===cur.series);
+      const box = document.getElementById('modelCards');
+      box.innerHTML='';
+      for(const p of seriesItems){
+        const card = document.createElement('div');
+        card.className = 'model-card' + (p.id===id ? ' active':'');
+        const thumb = p.cover || `${productFolder(p.id)}/cover.jpg`;
+        const title = pick(p.title) || p.id;
+        const sub = pick(p.sub) || '';
+        card.innerHTML = `<img src="${thumb}" alt="${title}"><div class="meta">${title}<small>${sub}</small></div>`;
+        card.onclick=()=>{
+          updateURL(p.id);
+          location.reload(); // simplest and robust (no SPA state bugs)
+        };
+        const img = card.querySelector('img');
+        img.onerror = ()=>{ img.src = imgFallbackURL(); };
+        box.appendChild(card);
+      }
+
+      await loadCarousel(id);
+      await loadSpecsDetails(id);
+    }
+
+    main();
+  </script>
+</body>
+</html>
