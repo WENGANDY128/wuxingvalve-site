@@ -1,0 +1,36 @@
+{
+  "products": [
+    {
+      "sku": "TEST-002",
+      "slug": "test-product2",
+      "title_zh": "测试产品2",
+      "title_en": "Test Product2",
+      "title_de": "Testprodukt2",
+      "desc_zh": "",
+      "desc_en": "",
+      "desc_de": "",
+      "tags": [
+        "test",
+        "valve"
+      ],
+      "params": [
+        {
+          "k": "Material",
+          "v": "WCB2"
+        },
+        {
+          "k": "Size",
+          "v": "DN502"
+        }
+      ],
+      "cover_local": "C:/Users/asus/Desktop/图/1ba1a2349b8595678373a1ab86d9950.jpg",
+      "gallery_local": [
+        "C:/Users/asus/Desktop/图/7b56dffb301264086cf983652c24829.jpg",
+        "C:/Users/asus/Desktop/图/7cf51146161d0b5a3a0014ae811e490.jpg"
+      ],
+      "body": "",
+      "updated_at": "2026-01-23T07:06:43.534164Z"
+    }
+  ],
+  "updated_at": "2026-01-23T07:06:43.534164Z"
+}
