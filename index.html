@@ -28,17 +28,15 @@
     .contactRow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
 
 
-/* Shrink header on scroll (mobile only) */
-@media (max-width: 620px){
-  header{transition:box-shadow .2s ease}
-  .wrap{transition:padding .25s ease}
-  .contactRow{max-height:120px;overflow:hidden;transition:max-height .25s ease, opacity .2s ease, margin-top .25s ease}
-  header.compact .wrap{padding-top:8px;padding-bottom:8px}
-  header.compact .logo{height:28px}
-  header.compact .brandSub{display:none}
-  header.compact .contactRow{max-height:0;opacity:0;margin-top:0;pointer-events:none}
-  header.compact{box-shadow:0 6px 20px rgba(0,0,0,.06)}
-}
+/* Shrink header on scroll (all devices) */
+header{transition:box-shadow .2s ease}
+.wrap{transition:padding .25s ease}
+.contactRow{max-height:160px;overflow:hidden;transition:max-height .25s ease, opacity .2s ease, margin-top .25s ease, transform .25s ease}
+header.compact .wrap{padding-top:8px;padding-bottom:8px}
+header.compact .logo{height:28px}
+header.compact .brandSub{display:none}
+header.compact .contactRow{max-height:0;opacity:0;margin-top:0;transform:translateY(-6px);pointer-events:none}
+header.compact{box-shadow:0 6px 20px rgba(0,0,0,.06)}
     .chip{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);padding:8px 12px;border-radius:999px;color:#111827}
     .chip small{color:var(--muted)}
     main .wrap{padding-top:22px;padding-bottom:44px}
@@ -120,11 +118,11 @@
 
     
 <div class="contactRow">
-    <a class="chip" href="mailto:wengandy128@gmail.com">📧 <small>邮箱:</small> wengandy128@gmail.com</a>
-    <a class="chip" href="mailto:andy@wuxingvalve.com">📧 <small>邮箱:</small> andy@wuxingvalve.com</a>
-    <a class="chip" href="https://wa.me/8615888791812" target="_blank" rel="noopener">💬 <small>WhatsApp</small> +86 15888791812</a>
-    <a class="chip" href="tel:+8615888791812">📞 <small>电话:</small> +86 15888791812</a>
-    <span class="chip">🟩 <small>微信:</small> 15888791812</span>
+    <a class="chip" href="mailto:wengandy128@gmail.com">📧 <small data-i18n-contact="email">邮箱:</small> wengandy128@gmail.com</a>
+    <a class="chip" href="mailto:andy@wuxingvalve.com">📧 <small data-i18n-contact="email">邮箱:</small> andy@wuxingvalve.com</a>
+    <a class="chip" href="https://wa.me/8615888791812" target="_blank" rel="noopener">💬 <small data-i18n-contact="whatsapp">WhatsApp</small> +86 15888791812</a>
+    <a class="chip" href="tel:+8615888791812">📞 <small data-i18n-contact="phone">电话:</small> +86 15888791812</a>
+    <span class="chip">🟩 <small data-i18n-contact="wechat">微信:</small> 15888791812</span>
   </div>
     </div>
   </div>
@@ -165,6 +163,23 @@
   const SUPPORTED = ["zh","en","es","de"];
 
   const I18N = {"all": {"zh": "全部", "en": "All", "es": "Todo", "de": "Alle"}, "fert": {"zh": "化肥应用", "en": "Fertilizer", "es": "Fertilizantes", "de": "Düngemittel"}, "control": {"zh": "控制/切断阀", "en": "Control & Isolation", "es": "Control y aislamiento", "de": "Regel/Absperr"}, "check": {"zh": "止回阀", "en": "Check valves", "es": "Retención", "de": "Rückschlag"}, "ball": {"zh": "球阀", "en": "Ball valves", "es": "Bola", "de": "Kugel"}, "fittings": {"zh": "管件/密封", "en": "Fittings & sealing", "es": "Accesorios y sellado", "de": "Formteile/Dichtung"}, "certificates": {"zh": "资质证书", "en": "Certificates", "es": "Certificados", "de": "Zertifikate"}, "title": {"zh": "产品展示", "en": "Products", "es": "Productos", "de": "Produkte"}, "intro": {"zh": "Wuxing Valve 提供工业阀门产品与定制服务，支持 OEM/ODM、现货与项目配套。欢迎询盘获取参数表、材质/标准、测试报告与交期。", "en": "Wuxing Valve provides industrial valves and customization services (OEM/ODM), in‑stock supply and project support. Contact us for datasheets, materials/standards, test reports and lead time.", "es": "Wuxing Valve ofrece válvulas industriales y servicios de personalización (OEM/ODM), suministro en stock y soporte para proyectos. Contáctenos para fichas técnicas, materiales/normas, informes de prueba y plazo de entrega.", "de": "Wuxing Valve bietet Industriearmaturen und kundenspezifische Lösungen (OEM/ODM), Lagerware sowie Projektunterstützung. Kontaktieren Sie uns für Datenblätter, Werkstoffe/Normen, Prüfberichte und Lieferzeit."}, "about": {"zh": "关于我们", "en": "About us", "es": "Sobre nosotros", "de": "Über uns"}, "addr": {"zh": "地址", "en": "Address", "es": "Dirección", "de": "Adresse"}, "analytics_msg": {"en": "We use Google Analytics 4 (GA4) only with your consent.", "es": "Usamos Google Analytics 4 (GA4) solo con su consentimiento.", "de": "Wir verwenden Google Analytics 4 (GA4) nur mit Ihrer Zustimmung."}, "accept": {"en": "Accept", "es": "Aceptar", "de": "Akzeptieren"}, "decline": {"en": "Decline", "es": "Rechazar", "de": "Ablehnen"}, "learn": {"en": "Privacy", "es": "Privacidad", "de": "Datenschutz"}};
+
+  const CONTACT_I18N = {
+    email:   { zh: "邮箱:",   en: "Email:",    es: "Correo:",    de: "E‑Mail:" },
+    phone:   { zh: "电话:",   en: "Phone:",    es: "Teléfono:",  de: "Telefon:" },
+    wechat:  { zh: "微信:",   en: "WeChat:",   es: "WeChat:",    de: "WeChat:" },
+    whatsapp:{ zh: "WhatsApp",en: "WhatsApp",  es: "WhatsApp",   de: "WhatsApp" }
+  };
+
+  function applyContactLabels(lang){
+    document.querySelectorAll('[data-i18n-contact]').forEach(el=>{
+      const key = el.getAttribute('data-i18n-contact');
+      const map = CONTACT_I18N[key];
+      if(!map) return;
+      el.textContent = map[lang] || map.en || "";
+    });
+  }
+
   const ABOUT = {"zh": "浙江五星阀门有限公司原系永嘉五星阀门总厂，始建于上世纪80年代，位于“泵阀之乡”温州瓯北。公司占地约15000㎡，配备数控机床及理化/计量/无损检测能力，通过 ISO9001 及国家特种设备（压力管道）相关认证。主营高压角式截止阀、止回阀、平衡阀、闸阀、保温阀、硬密封球阀、高压管件及钛合金阀门，广泛应用于化工、化肥、制药、供热、石化等行业。", "en": "Zhejiang Wuxing Valve Co., Ltd. (formerly Yongjia Wuxing Valve Factory) was founded in the 1980s in Oubei, Wenzhou—China’s well‑known pump & valve hub. Our industrial park covers about 15,000 m² with CNC machining, physical/chemical testing, metrology and NDT capabilities. We are certified to ISO 9001 and hold relevant special‑equipment approvals for pressure piping. We manufacture high‑pressure angle globe/throttle valves, check valves, balanced valves, gate valves, jacketed valves, hard‑seated ball valves, high‑pressure fittings and titanium‑alloy valves for chemical, fertilizer, pharma, heating and petrochemical industries.", "es": "Zhejiang Wuxing Valve Co., Ltd. (antes Yongjia Wuxing Valve Factory) fue fundada en la década de 1980 en Oubei, Wenzhou, reconocida zona industrial de bombas y válvulas. Contamos con un parque industrial de ~15.000 m², con mecanizado CNC, laboratorio físico‑químico, metrología y capacidad de END (NDT). Estamos certificados ISO 9001 y disponemos de aprobaciones relacionadas con equipos especiales para tuberías a presión. Fabricamos válvulas de globo/estrangulación en ángulo de alta presión, válvulas de retención, válvulas balanceadas, válvulas de compuerta, válvulas con camisa calefactora, válvulas de bola de asiento duro, accesorios de alta presión y válvulas de aleación de titanio para los sectores químico, fertilizantes, фарма, calefacción y petroquímico.", "de": "Zhejiang Wuxing Valve Co., Ltd. (ehemals Yongjia Wuxing Valve Factory) wurde in den 1980er‑Jahren in Oubei, Wenzhou – einem bekannten Pumpen‑ und Ventilcluster – gegründet. Unser Industriegelände umfasst ca. 15.000 m² mit CNC‑Fertigung sowie physikalisch/chemischer Prüfung, Messtechnik und ZfP/NDT. Wir sind nach ISO 9001 zertifiziert und verfügen über relevante Zulassungen für Druckleitungen. Wir fertigen Hochdruck‑Winkel‑Globe/Drosselventile, Rückschlagventile, Ausgleichsventile, Schieber, Heizmantel‑Ventile, hartdichtende Kugelhähne, Hochdruck‑Rohrformteile sowie Titanlegierungs‑Ventile für Chemie, Düngemittel, Pharma, Wärmeversorgung und Petrochemie."};
   const ADDRESS = {"zh": "浙江省永嘉县瓯北五星工业区", "en": "Wuxing Industrial Zone, Oubei, Yongjia County, Zhejiang, China", "es": "Zona Industrial Wuxing, Oubei, Condado de Yongjia, Zhejiang, China", "de": "Wuxing Industriegebiet, Oubei, Landkreis Yongjia, Zhejiang, China"};
 
@@ -197,6 +212,7 @@
     document.getElementById("aboutText").textContent = ABOUT[lang] || ABOUT.en;
     document.getElementById("addrLabel").textContent = t("addr", lang);
     document.getElementById("addrText").textContent = ADDRESS[lang] || ADDRESS.en;
+    applyContactLabels(lang);
   }
 
   async function fetchJSON(url) {
@@ -353,12 +369,10 @@
   const header = document.getElementById('siteHeader');
   if(!header) return;
 
-  const mq = window.matchMedia('(max-width: 620px)');
   let compact = false;
 
   const onScroll = () => {
     const y = window.scrollY || document.documentElement.scrollTop || 0;
-    // enter compact after 60px, exit when back near top
     if(!compact && y > 60){
       header.classList.add('compact');
       compact = true;
@@ -368,21 +382,8 @@
     }
   };
 
-  const apply = () => {
-    if(mq.matches){
-      window.addEventListener('scroll', onScroll, {passive:true});
-      onScroll();
-    }else{
-      window.removeEventListener('scroll', onScroll);
-      header.classList.remove('compact');
-      compact = false;
-    }
-  };
-
-  if(mq.addEventListener) mq.addEventListener('change', apply);
-  else mq.addListener(apply); // Safari fallback
-
-  apply();
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
 })();
 </script>
 
