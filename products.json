@@ -1,64 +1,498 @@
 {
   "products": [
     {
-      "id": "bv-001",
-      "series": "ball-valve",
+      "id": "fert-001",
+      "series": "fertilizer",
       "series_title": {
-        "zh": "球阀系列",
-        "en": "Ball Valve Series",
-        "de": "Kugelhahn-Serie"
+        "zh": "化肥用",
+        "en": "Fertilizer Service",
+        "es": "Servicio para Fertilizantes",
+        "de": "Düngerindustrie"
       },
+      "tags": [
+        "fertilizer"
+      ],
+      "cover": "assets/products/fert-001/cover.jpg",
       "title": {
-        "zh": "不锈钢球阀 DN50 PN16",
-        "en": "Stainless Steel Ball Valve DN50 PN16",
-        "de": "Edelstahl Kugelhahn DN50 PN16"
+        "zh": "J L 47Y-160C 320C型角式平衡截止阀、节流阀（法兰式）",
+        "en": "J L 47 Y-160 C 320 C Angle Balanced Globe Valve / Throttling Valve(Flanged)",
+        "es": "J L 47 Y-160 C 320 C En ángulo Equilibrada Válvula de globo / Válvula de estrangulación(Con bridas)",
+        "de": "J L 47 Y-160 C 320 C Eck- ausgeglichenes Absperrventil / Drosselventil(Flansch)"
       },
       "sub": {
-        "zh": "两片式 / 全通径 / 可定制连接方式",
-        "en": "2-piece / full bore / customizable ends",
-        "de": "2-teilig / Vollbohrung / Anschlüsse anpassbar"
-      },
-      "cover": "assets/products/bv-001/cover.jpg"
+        "zh": "化肥工况 / 耐腐蚀",
+        "en": "Fertilizer service / Corrosion resistant",
+        "es": "Servicio para fertilizantes / resistente a la corrosión",
+        "de": "Düngerbetrieb / korrosionsbeständig"
+      }
     },
     {
-      "id": "bv-002",
-      "series": "ball-valve",
+      "id": "fert-002",
+      "series": "fertilizer",
       "series_title": {
-        "zh": "球阀系列",
-        "en": "Ball Valve Series",
-        "de": "Kugelhahn-Serie"
+        "zh": "化肥用",
+        "en": "Fertilizer Service",
+        "es": "Servicio para Fertilizantes",
+        "de": "Düngerindustrie"
       },
+      "tags": [
+        "fertilizer"
+      ],
+      "cover": "assets/products/fert-002/cover.jpg",
       "title": {
-        "zh": "碳钢球阀 DN80 PN25",
-        "en": "Carbon Steel Ball Valve DN80 PN25",
-        "de": "Kohlenstoffstahl Kugelhahn DN80 PN25"
+        "zh": "（冲击手轮）角式截止阀、节流阀",
+        "en": "(Impact Handwheel) Angle Globe Valve / Throttling Valve",
+        "es": "(Impact Handwheel) En ángulo Válvula de globo / Válvula de estrangulación",
+        "de": "(Schlaghandrad) Eck- Absperrventil / Drosselventil"
       },
       "sub": {
-        "zh": "API/ANSI 可选 / 适用于油气与化工",
-        "en": "API/ANSI options / for oil & gas and chemical",
-        "de": "API/ANSI Optionen / für Öl & Gas und Chemie"
-      },
-      "cover": "assets/products/bv-002/cover.jpg"
+        "zh": "化肥工况 / 耐腐蚀",
+        "en": "Fertilizer service / Corrosion resistant",
+        "es": "Servicio para fertilizantes / resistente a la corrosión",
+        "de": "Düngerbetrieb / korrosionsbeständig"
+      }
     },
     {
-      "id": "gv-001",
-      "series": "gate-valve",
+      "id": "fert-003",
+      "series": "fertilizer",
       "series_title": {
-        "zh": "闸阀系列",
-        "en": "Gate Valve Series",
-        "de": "Schieber-Serie"
+        "zh": "化肥用",
+        "en": "Fertilizer Service",
+        "es": "Servicio para Fertilizantes",
+        "de": "Düngerindustrie"
       },
+      "tags": [
+        "fertilizer"
+      ],
+      "cover": "assets/products/fert-003/cover.jpg",
       "title": {
-        "zh": "闸阀 DN100 PN16",
-        "en": "Gate Valve DN100 PN16",
-        "de": "Absperrschieber DN100 PN16"
+        "zh": "BQ41F 夹套保温球阀",
+        "en": "BQ 41 F Jacketed Insulated Ball Valve",
+        "es": "BQ 41 F Con camisa térmica Válvula de bola",
+        "de": "BQ 41 F Mantel-/Isolier- Kugelhahn"
       },
       "sub": {
-        "zh": "法兰连接 / WCB 或不锈钢 / 可出厂测试",
-        "en": "Flanged / WCB or SS / factory test available",
-        "de": "Flansch / WCB oder Edelstahl / Werksprüfung möglich"
+        "zh": "化肥工况 / 耐腐蚀",
+        "en": "Fertilizer service / Corrosion resistant",
+        "es": "Servicio para fertilizantes / resistente a la corrosión",
+        "de": "Düngerbetrieb / korrosionsbeständig"
+      }
+    },
+    {
+      "id": "fert-004",
+      "series": "fertilizer",
+      "series_title": {
+        "zh": "化肥用",
+        "en": "Fertilizer Service",
+        "es": "Servicio para Fertilizantes",
+        "de": "Düngerindustrie"
       },
-      "cover": "assets/products/gv-001/cover.jpg"
+      "tags": [
+        "fertilizer"
+      ],
+      "cover": "assets/products/fert-004/cover.jpg",
+      "title": {
+        "zh": "F J L 47 H Y 角式平衡截止阀、节流阀（方型）",
+        "en": "F J L 47 H Y Angle Balanced Globe Valve / Throttling Valve(Square-body)",
+        "es": "F J L 47 H Y En ángulo Equilibrada Válvula de globo / Válvula de estrangulación(Cuerpo cuadrado)",
+        "de": "F J L 47 H Y Eck- ausgeglichenes Absperrventil / Drosselventil(Quadratgehäuse)"
+      },
+      "sub": {
+        "zh": "化肥工况 / 耐腐蚀",
+        "en": "Fertilizer service / Corrosion resistant",
+        "es": "Servicio para fertilizantes / resistente a la corrosión",
+        "de": "Düngerbetrieb / korrosionsbeständig"
+      }
+    },
+    {
+      "id": "fert-005",
+      "series": "fertilizer",
+      "series_title": {
+        "zh": "化肥用",
+        "en": "Fertilizer Service",
+        "es": "Servicio para Fertilizantes",
+        "de": "Düngerindustrie"
+      },
+      "tags": [
+        "fertilizer"
+      ],
+      "cover": "assets/products/fert-005/cover.jpg",
+      "title": {
+        "zh": "F J L 947 H Y 型角式平衡截止阀、节流阀（方型）",
+        "en": "F J L 947 H Y Angle Balanced Globe Valve / Throttling Valve(Square-body)",
+        "es": "F J L 947 H Y En ángulo Equilibrada Válvula de globo / Válvula de estrangulación(Cuerpo cuadrado)",
+        "de": "F J L 947 H Y Eck- ausgeglichenes Absperrventil / Drosselventil(Quadratgehäuse)"
+      },
+      "sub": {
+        "zh": "化肥工况 / 耐腐蚀",
+        "en": "Fertilizer service / Corrosion resistant",
+        "es": "Servicio para fertilizantes / resistente a la corrosión",
+        "de": "Düngerbetrieb / korrosionsbeständig"
+      }
+    },
+    {
+      "id": "fert-006",
+      "series": "fertilizer",
+      "series_title": {
+        "zh": "化肥用",
+        "en": "Fertilizer Service",
+        "es": "Servicio para Fertilizantes",
+        "de": "Düngerindustrie"
+      },
+      "tags": [
+        "fertilizer"
+      ],
+      "cover": "assets/products/fert-006/cover.jpg",
+      "title": {
+        "zh": "G J L 344 H Y 型蜗轮传动角式截止阀、节流阀",
+        "en": "G J L 344 H Y Worm-gear Operated Angle Globe Valve / Throttling Valve",
+        "es": "G J L 344 H Y Accionamiento por tornillo sinfín En ángulo Válvula de globo / Válvula de estrangulación",
+        "de": "G J L 344 H Y Schneckengetriebe Eck- Absperrventil / Drosselventil"
+      },
+      "sub": {
+        "zh": "化肥工况 / 耐腐蚀",
+        "en": "Fertilizer service / Corrosion resistant",
+        "es": "Servicio para fertilizantes / resistente a la corrosión",
+        "de": "Düngerbetrieb / korrosionsbeständig"
+      }
+    },
+    {
+      "id": "fert-007",
+      "series": "fertilizer",
+      "series_title": {
+        "zh": "化肥用",
+        "en": "Fertilizer Service",
+        "es": "Servicio para Fertilizantes",
+        "de": "Düngerindustrie"
+      },
+      "tags": [
+        "fertilizer"
+      ],
+      "cover": "assets/products/fert-007/cover.jpg",
+      "title": {
+        "zh": "GJ L44H Y截止阀",
+        "en": "GJ L 44 H YGlobe Valve",
+        "es": "GJ L 44 H YVálvula de globo",
+        "de": "GJ L 44 H YAbsperrventil"
+      },
+      "sub": {
+        "zh": "化肥工况 / 耐腐蚀",
+        "en": "Fertilizer service / Corrosion resistant",
+        "es": "Servicio para fertilizantes / resistente a la corrosión",
+        "de": "Düngerbetrieb / korrosionsbeständig"
+      }
+    },
+    {
+      "id": "fert-008",
+      "series": "fertilizer",
+      "series_title": {
+        "zh": "化肥用",
+        "en": "Fertilizer Service",
+        "es": "Servicio para Fertilizantes",
+        "de": "Düngerindustrie"
+      },
+      "tags": [
+        "fertilizer"
+      ],
+      "cover": "assets/products/fert-008/cover.jpg",
+      "title": {
+        "zh": "H42H 蝶式直通止回阀",
+        "en": "H 42 H Wafer-type Straight-through Check Valve",
+        "es": "H 42 H Tipo wafer Paso recto Válvula de retención",
+        "de": "H 42 H Wafer-Typ Durchgangs- Rückschlagventil"
+      },
+      "sub": {
+        "zh": "化肥工况 / 耐腐蚀",
+        "en": "Fertilizer service / Corrosion resistant",
+        "es": "Servicio para fertilizantes / resistente a la corrosión",
+        "de": "Düngerbetrieb / korrosionsbeständig"
+      }
+    },
+    {
+      "id": "fert-009",
+      "series": "fertilizer",
+      "series_title": {
+        "zh": "化肥用",
+        "en": "Fertilizer Service",
+        "es": "Servicio para Fertilizantes",
+        "de": "Düngerindustrie"
+      },
+      "tags": [
+        "fertilizer"
+      ],
+      "cover": "assets/products/fert-009/cover.jpg",
+      "title": {
+        "zh": "H43W 直通式止回阀",
+        "en": "H 43 W Straight-through Check Valve",
+        "es": "H 43 W Paso recto Válvula de retención",
+        "de": "H 43 W Durchgangs- Rückschlagventil"
+      },
+      "sub": {
+        "zh": "化肥工况 / 耐腐蚀",
+        "en": "Fertilizer service / Corrosion resistant",
+        "es": "Servicio para fertilizantes / resistente a la corrosión",
+        "de": "Düngerbetrieb / korrosionsbeständig"
+      }
+    },
+    {
+      "id": "fert-010",
+      "series": "fertilizer",
+      "series_title": {
+        "zh": "化肥用",
+        "en": "Fertilizer Service",
+        "es": "Servicio para Fertilizantes",
+        "de": "Düngerindustrie"
+      },
+      "tags": [
+        "fertilizer"
+      ],
+      "cover": "assets/products/fert-010/cover.jpg",
+      "title": {
+        "zh": "H72W 对夹立式止回阀（DN10-200）",
+        "en": "H 72 W Wafer Vertical Check Valve(DN 10–200)",
+        "es": "H 72 W Wafer Vertical Válvula de retención(DN 10–200)",
+        "de": "H 72 W Wafer Vertikal Rückschlagventil(DN 10–200)"
+      },
+      "sub": {
+        "zh": "化肥工况 / 耐腐蚀",
+        "en": "Fertilizer service / Corrosion resistant",
+        "es": "Servicio para fertilizantes / resistente a la corrosión",
+        "de": "Düngerbetrieb / korrosionsbeständig"
+      }
+    },
+    {
+      "id": "fert-011",
+      "series": "fertilizer",
+      "series_title": {
+        "zh": "化肥用",
+        "en": "Fertilizer Service",
+        "es": "Servicio para Fertilizantes",
+        "de": "Düngerindustrie"
+      },
+      "tags": [
+        "fertilizer"
+      ],
+      "cover": "assets/products/fert-011/cover.jpg",
+      "title": {
+        "zh": "异径管",
+        "en": "Reducer",
+        "es": "Reducción",
+        "de": "Reduzierstück"
+      },
+      "sub": {
+        "zh": "化肥工况 / 耐腐蚀",
+        "en": "Fertilizer service / Corrosion resistant",
+        "es": "Servicio para fertilizantes / resistente a la corrosión",
+        "de": "Düngerbetrieb / korrosionsbeständig"
+      }
+    },
+    {
+      "id": "fert-012",
+      "series": "fertilizer",
+      "series_title": {
+        "zh": "化肥用",
+        "en": "Fertilizer Service",
+        "es": "Servicio para Fertilizantes",
+        "de": "Düngerindustrie"
+      },
+      "tags": [
+        "fertilizer"
+      ],
+      "cover": "assets/products/fert-012/cover.jpg",
+      "title": {
+        "zh": "英标（BS）VH56-250MOD角式对焊截止阀",
+        "en": "BS VH 56-250 MOD Angle Butt-weld Globe Valve",
+        "es": "BS VH 56-250 MOD En ángulo Soldadura a tope Válvula de globo",
+        "de": "BS VH 56-250 MOD Eck- Stumpfschweiß Absperrventil"
+      },
+      "sub": {
+        "zh": "化肥工况 / 耐腐蚀",
+        "en": "Fertilizer service / Corrosion resistant",
+        "es": "Servicio para fertilizantes / resistente a la corrosión",
+        "de": "Düngerbetrieb / korrosionsbeständig"
+      }
+    },
+    {
+      "id": "fert-013",
+      "series": "fertilizer",
+      "series_title": {
+        "zh": "化肥用",
+        "en": "Fertilizer Service",
+        "es": "Servicio para Fertilizantes",
+        "de": "Düngerindustrie"
+      },
+      "tags": [
+        "fertilizer"
+      ],
+      "cover": "assets/products/fert-013/cover.jpg",
+      "title": {
+        "zh": "J946Y直通平衡截止、节流阀",
+        "en": "J 946 YStraight-through Balanced / Throttling Valve",
+        "es": "J 946 YPaso recto Equilibrada / Válvula de estrangulación",
+        "de": "J 946 YDurchgangs- ausgeglichenes / Drosselventil"
+      },
+      "sub": {
+        "zh": "化肥工况 / 耐腐蚀",
+        "en": "Fertilizer service / Corrosion resistant",
+        "es": "Servicio para fertilizantes / resistente a la corrosión",
+        "de": "Düngerbetrieb / korrosionsbeständig"
+      }
+    },
+    {
+      "id": "fert-014",
+      "series": "fertilizer",
+      "series_title": {
+        "zh": "化肥用",
+        "en": "Fertilizer Service",
+        "es": "Servicio para Fertilizantes",
+        "de": "Düngerindustrie"
+      },
+      "tags": [
+        "fertilizer"
+      ],
+      "cover": "assets/products/fert-014/cover.jpg",
+      "title": {
+        "zh": "Q71高压球阀",
+        "en": "Q 71 High Pressure Ball Valve",
+        "es": "Q 71 Alta presión Válvula de bola",
+        "de": "Q 71 Hochdruck Kugelhahn"
+      },
+      "sub": {
+        "zh": "化肥工况 / 耐腐蚀",
+        "en": "Fertilizer service / Corrosion resistant",
+        "es": "Servicio para fertilizantes / resistente a la corrosión",
+        "de": "Düngerbetrieb / korrosionsbeständig"
+      }
+    },
+    {
+      "id": "fert-015",
+      "series": "fertilizer",
+      "series_title": {
+        "zh": "化肥用",
+        "en": "Fertilizer Service",
+        "es": "Servicio para Fertilizantes",
+        "de": "Düngerindustrie"
+      },
+      "tags": [
+        "fertilizer"
+      ],
+      "cover": "assets/products/fert-015/cover.jpg",
+      "title": {
+        "zh": "法兰（Flange）",
+        "en": "Flange(Flange)",
+        "es": "Brida(Brida)",
+        "de": "Flansch(Flansch)"
+      },
+      "sub": {
+        "zh": "化肥工况 / 耐腐蚀",
+        "en": "Fertilizer service / Corrosion resistant",
+        "es": "Servicio para fertilizantes / resistente a la corrosión",
+        "de": "Düngerbetrieb / korrosionsbeständig"
+      }
+    },
+    {
+      "id": "fert-016",
+      "series": "fertilizer",
+      "series_title": {
+        "zh": "化肥用",
+        "en": "Fertilizer Service",
+        "es": "Servicio para Fertilizantes",
+        "de": "Düngerindustrie"
+      },
+      "tags": [
+        "fertilizer"
+      ],
+      "cover": "assets/products/fert-016/cover.jpg",
+      "title": {
+        "zh": "高压角式止回阀",
+        "en": "High Pressure Angle Check Valve",
+        "es": "Alta presión En ángulo Válvula de retención",
+        "de": "Hochdruck Eck- Rückschlagventil"
+      },
+      "sub": {
+        "zh": "化肥工况 / 耐腐蚀",
+        "en": "Fertilizer service / Corrosion resistant",
+        "es": "Servicio para fertilizantes / resistente a la corrosión",
+        "de": "Düngerbetrieb / korrosionsbeständig"
+      }
+    },
+    {
+      "id": "fert-017",
+      "series": "fertilizer",
+      "series_title": {
+        "zh": "化肥用",
+        "en": "Fertilizer Service",
+        "es": "Servicio para Fertilizantes",
+        "de": "Düngerindustrie"
+      },
+      "tags": [
+        "fertilizer"
+      ],
+      "cover": "assets/products/fert-017/cover.jpg",
+      "title": {
+        "zh": "美标（ANSI）150Lb-2500Lb 角式截止阀、节流阀",
+        "en": "ANSI 150 Lb-2500 Lb Angle Globe Valve / Throttling Valve",
+        "es": "ANSI 150 Lb-2500 Lb En ángulo Válvula de globo / Válvula de estrangulación",
+        "de": "ANSI 150 Lb-2500 Lb Eck- Absperrventil / Drosselventil"
+      },
+      "sub": {
+        "zh": "化肥工况 / 耐腐蚀",
+        "en": "Fertilizer service / Corrosion resistant",
+        "es": "Servicio para fertilizantes / resistente a la corrosión",
+        "de": "Düngerbetrieb / korrosionsbeständig"
+      }
+    },
+    {
+      "id": "fert-018",
+      "series": "fertilizer",
+      "series_title": {
+        "zh": "化肥用",
+        "en": "Fertilizer Service",
+        "es": "Servicio para Fertilizantes",
+        "de": "Düngerindustrie"
+      },
+      "tags": [
+        "fertilizer"
+      ],
+      "cover": "assets/products/fert-018/cover.jpg",
+      "title": {
+        "zh": "日标（JIS）K9-250MOD角式对焊疏水阀",
+        "en": "JIS K 9-250 MOD Angle Butt-weld Steam Trap",
+        "es": "JIS K 9-250 MOD En ángulo Soldadura a tope Trampa de vapor",
+        "de": "JIS K 9-250 MOD Eck- Stumpfschweiß Dampfabscheider"
+      },
+      "sub": {
+        "zh": "化肥工况 / 耐腐蚀",
+        "en": "Fertilizer service / Corrosion resistant",
+        "es": "Servicio para fertilizantes / resistente a la corrosión",
+        "de": "Düngerbetrieb / korrosionsbeständig"
+      }
+    },
+    {
+      "id": "fert-019",
+      "series": "fertilizer",
+      "series_title": {
+        "zh": "化肥用",
+        "en": "Fertilizer Service",
+        "es": "Servicio para Fertilizantes",
+        "de": "Düngerindustrie"
+      },
+      "tags": [
+        "fertilizer"
+      ],
+      "cover": "assets/products/fert-019/cover.jpg",
+      "title": {
+        "zh": "透镜垫",
+        "en": "Lens Gasket",
+        "es": "Junta tipo lente",
+        "de": "Linsendichtung"
+      },
+      "sub": {
+        "zh": "化肥工况 / 耐腐蚀",
+        "en": "Fertilizer service / Corrosion resistant",
+        "es": "Servicio para fertilizantes / resistente a la corrosión",
+        "de": "Düngerbetrieb / korrosionsbeständig"
+      }
     }
   ]
 }

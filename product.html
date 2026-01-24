@@ -65,6 +65,25 @@
       .model-cards{grid-template-columns:repeat(3,minmax(120px,1fr))}
       .model-card img{height:90px}
     }
+  /* ---- zoom modal ---- */
+.zoomModal{position:fixed;inset:0;background:rgba(0,0,0,.78);display:none;align-items:center;justify-content:center;z-index:9999}
+.zoomModal.open{display:flex}
+.zoomBox{width:min(92vw,1100px);height:min(92vh,760px);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:14px;overflow:hidden;position:relative}
+.zoomClose{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.55);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:8px 12px;cursor:pointer}
+.zoomHint{position:absolute;left:12px;top:12px;color:#fff;font-size:12px;opacity:.9}
+.zoomStage{width:100%;height:100%;cursor:grab;display:flex;align-items:center;justify-content:center;user-select:none}
+.zoomStage.dragging{cursor:grabbing}
+.zoomImg{max-width:none;max-height:none;will-change:transform;transform-origin:center center}
+  /* Cookie banner (shows for EN/ES/DE only) */
+.cookie-wrap{position:fixed;left:0;right:0;bottom:0;z-index:50;display:none}
+.cookie-bar{max-width:1200px;margin:10px auto;background:#111;color:#fff;border-radius:12px;padding:14px;border:1px solid #000a;display:flex;gap:14px;align-items:center;justify-content:space-between}
+.cookie-bar p{margin:0;line-height:1.35;font-size:14px;opacity:.95}
+.cookie-bar a{color:#fff;text-decoration:underline}
+.cookie-actions{display:flex;gap:10px;flex:0 0 auto}
+.cookie-actions button{border:0;border-radius:10px;padding:10px 14px;font-weight:800;cursor:pointer}
+.cookie-reject{background:#2b2b2b;color:#fff}
+.cookie-accept{background:var(--red);color:#fff}
+@media (max-width:760px){.cookie-bar{flex-direction:column;align-items:stretch}.cookie-actions{justify-content:flex-end}}
   </style>
 </head>
 <body>
@@ -76,7 +95,8 @@
     <div class="lang" id="langSwitcher" aria-label="language">
       <button data-lang="zh">ZH</button>
       <button data-lang="en">EN</button>
-      <button data-lang="de">DE</button>
+      <button data-lang="es">ES</button>
+        <button data-lang="de">DE</button>
     </div>
   </header>
 
@@ -118,8 +138,29 @@
     const I18N = {
       zh:{brandSub:'工业阀门 · 外贸供应', specs:'参数', details:'详细描述', contact:'联系', back:'返回首页', noid:'缺少产品 id 参数。', notfound:'未找到该产品。', more:'同系列产品'},
       en:{brandSub:'Industrial Valves · Supply', specs:'Specs', details:'Details', contact:'Contact', back:'Back', noid:'Missing product id.', notfound:'Product not found.', more:'More in this series'},
-      de:{brandSub:'Industrieventile · Supply', specs:'Spezifikationen', details:'Beschreibung', contact:'Kontakt', back:'Zurück', noid:'Produkt-ID fehlt.', notfound:'Produkt nicht gefunden.', more:'Mehr aus der Serie'}
-    };
+es:{
+  home:'Inicio',
+  products:'Productos',
+  contact:'Contacto',
+  back:'Volver',
+  noid:'Falta el parámetro de producto (id).',
+  notfound:'Producto no encontrado.',
+  related:'Modelos relacionados',
+  specs:'Especificaciones',
+  details:'Detalles',
+  cookiesTitle:'Cookies',
+  cookieMsg:'Para EN/ES/DE, solo recopilamos datos de Google Analytics después de tu confirmación. Puedes aceptar o rechazar cookies no esenciales. Consulta nuestra {privacy}.',
+  cookieAccept:'Aceptar',
+  cookieReject:'Rechazar',
+  privacyLink:'Política de Privacidad',
+  zoomHint:'Rueda: Zoom · Arrastrar: Mover · ESC: Cerrar'
+      }      de:{brandSub:'Industrieventile · Supply', specs:'Spezifikationen', details:'Beschreibung', contact:'Kontakt', back:'Zurück', noid:'Produkt-ID fehlt.', notfound:'Produkt nicht gefunden.', more:'Mehr aus der Serie'}
+        cookieMsg:"Für EN/ES/DE erfassen wir Google-Analytics-Daten erst nach deiner Bestätigung. Du kannst nicht notwendige Cookies akzeptieren oder ablehnen. Siehe {privacy}.",
+        cookieAccept:"Akzeptieren",
+        cookieReject:"Ablehnen",
+        privacyLink:"Datenschutzhinweis",
+        zoomHint:"Mausrad: Zoom · Ziehen: Verschieben · ESC: Schließen",
+      };
 
     const CONTACT={email:'wengandy128@gmail.com',whatsapp:'+86 15888791812',phone:'+86 15888791812',wechat:'15888791812'};
 
@@ -348,6 +389,151 @@
     }
 
     main();
+  /* ---------- image zoom (wheel + drag) ---------- */
+const zoomModal = document.getElementById('zoomModal');
+const zoomClose = document.getElementById('zoomClose');
+const zoomStage = document.getElementById('zoomStage');
+const zoomImg = document.getElementById('zoomImg');
+const zoomHintEl = document.getElementById('zoomHint');
+
+let zoomScale = 1, zoomTx = 0, zoomTy = 0;
+let zoomDragging = false, zoomSx = 0, zoomSy = 0;
+
+function applyZoom(){
+  zoomImg.style.transform = `translate(${zoomTx}px, ${zoomTy}px) scale(${zoomScale})`;
+}
+function openZoom(src){
+  zoomImg.src = src;
+  zoomScale = 1; zoomTx = 0; zoomTy = 0;
+  applyZoom();
+  zoomModal.classList.add('open');
+  zoomModal.setAttribute('aria-hidden','false');
+}
+function closeZoom(){
+  zoomModal.classList.remove('open');
+  zoomModal.setAttribute('aria-hidden','true');
+}
+zoomClose.addEventListener('click', closeZoom);
+zoomModal.addEventListener('click', (e)=>{ if(e.target===zoomModal) closeZoom(); });
+document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && zoomModal.classList.contains('open')) closeZoom(); });
+
+zoomStage.addEventListener('wheel', (e)=>{
+  if(!zoomModal.classList.contains('open')) return;
+  e.preventDefault();
+  const delta = -e.deltaY;
+  const factor = delta>0 ? 1.1 : 0.9;
+  zoomScale = Math.min(6, Math.max(1, zoomScale*factor));
+  applyZoom();
+}, {passive:false});
+
+zoomStage.addEventListener('pointerdown', (e)=>{
+  if(!zoomModal.classList.contains('open')) return;
+  zoomDragging = true;
+  zoomStage.classList.add('dragging');
+  zoomSx = e.clientX - zoomTx;
+  zoomSy = e.clientY - zoomTy;
+  zoomStage.setPointerCapture(e.pointerId);
+});
+zoomStage.addEventListener('pointermove', (e)=>{
+  if(!zoomDragging) return;
+  zoomTx = e.clientX - zoomSx;
+  zoomTy = e.clientY - zoomSy;
+  applyZoom();
+});
+function stopDrag(){
+  zoomDragging = false;
+  zoomStage.classList.remove('dragging');
+}
+zoomStage.addEventListener('pointerup', stopDrag);
+zoomStage.addEventListener('pointercancel', stopDrag);
+
+// Open zoom when clicking on carousel images
+document.getElementById('carousel').addEventListener('click', (e)=>{
+  const img = e.target && e.target.tagName==='IMG' ? e.target : null;
+  if(!img) return;
+  openZoom(img.currentSrc || img.src);
+});
+
+// Update hint text by language
+if(zoomHintEl) zoomHintEl.textContent = t.zoomHint || 'Wheel: Zoom · Drag: Pan · ESC: Close';
+  /* ---------- cookie consent + GA (optional) ---------- */
+const GA_ID = 'G-1T6921REMX'; // GA4 id
+function loadGA(){
+  if(GA_ID==='G-REPLACE_ME') return;
+  if(window.__gaLoaded) return;
+  window.__gaLoaded = true;
+  const s=document.createElement('script');
+  s.async=true; s.src=`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  window.gtag = gtag;
+  gtag('js', new Date());
+  gtag('config', GA_ID);
+}
+function disableGA(){ if(GA_ID!=='G-REPLACE_ME') window['ga-disable-'+GA_ID] = true; }
+
+// Localize cookie banner
+const cookieP2 = document.getElementById('cookieText');
+const privacyA2 = `<a href="/privacy.html" target="_blank" rel="noopener">${t.privacyLink}</a>`;
+if(cookieP2) cookieP2.innerHTML = (t.cookieMsg||'').replace('{privacy}', privacyA2);
+const btnA2 = document.getElementById('cookieAccept');
+const btnR2 = document.getElementById('cookieReject');
+if(btnA2) btnA2.textContent = t.cookieAccept || 'Accept';
+if(btnR2) btnR2.textContent = t.cookieReject || 'Reject';
+
+const consentKey='cookieConsent:v1';
+const saved = localStorage.getItem(consentKey);
+
+if(currentLang==='zh'){
+  loadGA();
+} else {
+  const wrap = document.getElementById('cookieWrap');
+  function show(){ wrap.style.display='block'; }
+  function hide(){ wrap.style.display='none'; }
+
+  if(!saved){
+    disableGA(); show();
+  } else {
+    try{
+      const st = JSON.parse(saved);
+      if(st.stats){
+        loadGA(); hide();
+      } else {
+        disableGA(); hide();
+      }
+    }catch(e){ disableGA(); show(); }
+  }
+
+  document.getElementById('cookieAccept')?.addEventListener('click', ()=>{
+    localStorage.setItem(consentKey, JSON.stringify({stats:true, ts:Date.now()}));
+    loadGA(); hide();
+  });
+  document.getElementById('cookieReject')?.addEventListener('click', ()=>{
+    localStorage.setItem(consentKey, JSON.stringify({stats:false, ts:Date.now()}));
+    disableGA(); hide();
+  });
+}
   </script>
+
+<div id="zoomModal" class="zoomModal" aria-hidden="true">
+  <div class="zoomBox">
+    <div class="zoomHint" id="zoomHint">Wheel: Zoom · Drag: Pan · ESC: Close</div>
+    <button id="zoomClose" class="zoomClose" aria-label="Close">✕</button>
+    <div id="zoomStage" class="zoomStage">
+      <img id="zoomImg" class="zoomImg" alt="zoom">
+    </div>
+  </div>
+</div>
+
+<div class="cookie-wrap" id="cookieWrap" aria-live="polite">
+  <div class="cookie-bar">
+    <p id="cookieText"></p>
+    <div class="cookie-actions">
+      <button class="cookie-reject" id="cookieReject">Reject</button>
+      <button class="cookie-accept" id="cookieAccept">Accept</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>

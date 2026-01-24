@@ -82,7 +82,8 @@
     <div class="lang" id="langSwitcher" aria-label="language">
       <button data-lang="zh">ZH</button>
       <button data-lang="en">EN</button>
-      <button data-lang="de">DE</button>
+      <button data-lang="es">ES</button>
+        <button data-lang="de">DE</button>
     </div>
   </header>
 
@@ -103,10 +104,7 @@
 
   <div class="cookie-wrap" id="cookieWrap" aria-live="polite">
     <div class="cookie-bar">
-      <p id="cookieText">
-        We use cookies (only Google Analytics) to understand traffic and improve our site. You can accept or reject non-essential cookies.
-        See our <a href="/privacy.html" target="_blank" rel="noopener">Privacy Notice</a>.
-      </p>
+      <p id="cookieText"></p>
       <div class="cookie-actions">
         <button class="cookie-reject" id="cookieReject">Reject</button>
         <button class="cookie-accept" id="cookieAccept">Accept</button>
@@ -126,7 +124,12 @@
         hintNoJson:'未找到 products.json。请把 products.json 上传到仓库根目录（与 index.html 同级）。',
         hintEmpty:'products.json 读取成功，但没有产品数据。',
         hintImg:'部分图片加载失败。请确认图片路径是 assets/products/<id>/cover.jpg，并且文件名大小写一致。'
-      },
+        fertilizer:"化肥用",
+        cookieMsg:"我们使用 Cookie（仅 Google Analytics）来了解访问情况并改进网站。你可以接受或拒绝非必要 Cookie。查看我们的{privacy}。",
+        cookieAccept:"接受",
+        cookieReject:"拒绝",
+        privacyLink:"隐私声明"
+      }
       en:{
         brandSub:'Industrial Valves · Supply',
         title:'Valve Products',
@@ -136,8 +139,27 @@
         hintNoJson:'products.json not found. Upload it to the repo root (same level as index.html).',
         hintEmpty:'products.json loaded, but no products found.',
         hintImg:'Some images failed to load. Ensure cover paths are like assets/products/<id>/cover.jpg and filenames match case.'
-      },
-      de:{
+        fertilizer:"Fertilizer Service",
+        cookieMsg:"We use cookies (only Google Analytics) to understand traffic and improve our site. You can accept or reject non-essential cookies. See our {privacy}.",
+        cookieAccept:"Accept",
+        cookieReject:"Reject",
+        privacyLink:"Privacy Notice"
+      }
+es:{
+  brandSub:'Válvulas industriales · Suministro',
+  title:'Productos de Válvulas',
+  sub:'Wuxing Valve suministra válvulas industriales con OEM/ODM, RTS y soporte para proyectos. Contáctenos para fichas técnicas, materiales/estándares, informes de prueba y plazo de entrega.',
+  email:'Correo',whats:'WhatsApp',phone:'Teléfono',wechat:'WeChat',
+  all:'Todo',
+  fertilizer:'Servicio para Fertilizantes',
+  hintNoJson:'No se encontró products.json. Cárguelo en la raíz del repositorio (al mismo nivel que index.html).',
+  hintEmpty:'products.json se cargó, pero no hay productos.',
+  hintImg:'Algunas imágenes no se pudieron cargar. Verifique rutas como assets/products/<id>/cover.jpg y que el nombre coincida (mayúsculas/minúsculas).',
+  cookieMsg:'Usamos cookies (solo Google Analytics) para entender el tráfico y mejorar el sitio. Puedes aceptar o rechazar cookies no esenciales. Consulta nuestra {privacy}.',
+  cookieAccept:'Aceptar',
+  cookieReject:'Rechazar',
+  privacyLink:'Política de Privacidad'
+},      de:{
         brandSub:'Industrieventile · Supply',
         title:'Ventil-Produkte',
         sub:'Wuxing Valve liefert Industrieventile mit OEM/ODM, Lagerware und Projekt-Support. Kontaktieren Sie uns für Spezifikationen, Materialien/Normen, Prüfberichte und Lieferzeit.',
@@ -146,6 +168,11 @@
         hintNoJson:'products.json nicht gefunden. Bitte im Repo-Root hochladen (gleiche Ebene wie index.html).',
         hintEmpty:'products.json geladen, aber keine Produkte gefunden.',
         hintImg:'Einige Bilder konnten nicht geladen werden. Pfade wie assets/products/<id>/cover.jpg verwenden und Groß-/Kleinschreibung beachten.'
+        fertilizer:"Düngerindustrie",
+        cookieMsg:"Wir verwenden Cookies (nur Google Analytics), um den Traffic zu verstehen und unsere Website zu verbessern. Du kannst nicht notwendige Cookies akzeptieren oder ablehnen. Siehe {privacy}.",
+        cookieAccept:"Akzeptieren",
+        cookieReject:"Ablehnen",
+        privacyLink:"Datenschutzhinweis"
       }
     };
 
@@ -192,6 +219,17 @@
     }
     function disableGA(){ if(GA_ID!=='G-REPLACE_ME') window['ga-disable-'+GA_ID] = true; }
 
+    // Localize cookie banner text/buttons
+const cookieP = document.getElementById('cookieText');
+const privacyA = `<a href="/privacy.html" target="_blank" rel="noopener">${t.privacyLink}</a>`;
+if(cookieP){
+  cookieP.innerHTML = (t.cookieMsg || '').replace('{privacy}', privacyA);
+}
+const btnA = document.getElementById('cookieAccept');
+const btnR = document.getElementById('cookieReject');
+if(btnA) btnA.textContent = t.cookieAccept || 'Accept';
+if(btnR) btnR.textContent = t.cookieReject || 'Reject';
+
     const consentKey='cookieConsent:v1';
     const saved = localStorage.getItem(consentKey);
     if(currentLang==='zh'){
@@ -223,7 +261,7 @@
     function pickLangText(v){
       if(!v) return '';
       if(typeof v === 'string') return v;
-      return v[currentLang] || v.zh || v.en || v.de || '';
+      return v[currentLang] || v.zh || v.en || v.es || v.de || '';
     }
 
     async function fetchJSON(url){
@@ -248,17 +286,54 @@
     let currentSeries = 'all';
 
     function renderFilters(seriesList){
-      const box = document.getElementById('filters');
-      box.innerHTML = '';
-      const mk = (key, label)=>{
-        const b = document.createElement('button');
-        b.className = 'pill' + (key===currentSeries ? ' active':'');
-        b.textContent = label;
-        b.onclick = ()=>{ currentSeries = key; renderFilters(seriesList); renderGrid(); };
-        box.appendChild(b);
-      };
-      mk('all', t.all);
-      seriesList.forEach(s=>{
+  const box = document.getElementById('filters');
+  box.innerHTML = '';
+
+  const setUrl = ()=>{
+    const url = new URL(location.href);
+    url.searchParams.set('lang', currentLang);
+    if(filterMode==='tag' && currentTag){
+      url.searchParams.set('tag', currentTag);
+    }else{
+      url.searchParams.delete('tag');
+    }
+    history.replaceState(null,'',url.toString());
+  };
+
+  const mkSeries = (key, label)=>{
+    const b = document.createElement('button');
+    const active = (filterMode==='series' && key===currentSeries);
+    b.className = 'pill' + (active ? ' active':'');
+    b.textContent = label;
+    b.onclick = ()=>{
+      filterMode='series';
+      currentSeries = key;
+      setUrl();
+      renderFilters(seriesList);
+      renderGrid();
+    };
+    box.appendChild(b);
+  };
+
+  const mkTag = (tagKey, label)=>{
+    const b = document.createElement('button');
+    const active = (filterMode==='tag' && currentTag===tagKey);
+    b.className = 'pill' + (active ? ' active':'');
+    b.textContent = label;
+    b.onclick = ()=>{
+      filterMode='tag';
+      currentTag = tagKey;
+      setUrl();
+      renderFilters(seriesList);
+      renderGrid();
+    };
+    box.appendChild(b);
+  };
+
+  mkSeries('all', t.all);
+  mkTag('fertilizer', t.fertilizer);
+
+  seriesList.forEach(s=>{
         const label = pickLangText(s.series_title) || s.series;
         mk(s.series, label);
       });
@@ -270,7 +345,12 @@
       hint.style.display='none'; hint.textContent='';
       grid.innerHTML = '';
 
-      const items = currentSeries==='all' ? ALL : ALL.filter(p=>p.series===currentSeries);
+      let items = ALL;
+      if(filterMode==='tag' && currentTag){
+        items = ALL.filter(p => (p.tags||[]).includes(currentTag));
+      }else{
+        items = (currentSeries==='all') ? ALL : ALL.filter(p=>p.series===currentSeries);
+      }
       if(!items.length){
         hint.style.display='block';
         hint.textContent = t.hintEmpty;
