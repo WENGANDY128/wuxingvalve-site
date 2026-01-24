@@ -229,7 +229,7 @@ back: { zh:"返回产品页", en:"Back to products", es:"Volver a productos", de
   }
 
 
-  functiontion getLang() {
+  function getLang() {
     const u = new URL(location.href);
     const q = (u.searchParams.get("lang") || "").toLowerCase();
     const stored = (localStorage.getItem("lang") || "").toLowerCase();
