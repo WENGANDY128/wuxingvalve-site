@@ -31,11 +31,11 @@
 /* Shrink header on scroll (all devices) */
 header{transition:box-shadow .2s ease}
 .wrap{transition:padding .25s ease}
-.contactRow{max-height:160px;overflow:hidden;transition:max-height .25s ease, opacity .2s ease, margin-top .25s ease, transform .25s ease}
+.contactRow{max-height:160px;overflow:hidden;transition:opacity .18s ease, transform .22s ease}
 header.compact .wrap{padding-top:8px;padding-bottom:8px}
 header.compact .logo{height:28px}
 header.compact .brandSub{display:none}
-header.compact .contactRow{max-height:0;opacity:0;margin-top:0;transform:translateY(-6px);pointer-events:none}
+header.compact .contactRow{max-height:0;opacity:0;margin-top:0;transform:translateY(-18px);pointer-events:none}
 header.compact{box-shadow:0 6px 20px rgba(0,0,0,.06)}
     .chip{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);padding:8px 12px;border-radius:999px;color:#111827}
     .chip small{color:var(--muted)}
@@ -370,20 +370,32 @@ header.compact{box-shadow:0 6px 20px rgba(0,0,0,.06)}
   if(!header) return;
 
   let compact = false;
+  let ticking = false;
 
-  const onScroll = () => {
+  const update = () => {
     const y = window.scrollY || document.documentElement.scrollTop || 0;
-    if(!compact && y > 60){
+
+    // Big hysteresis to prevent jitter from sticky header height/layout changes.
+    // Down-scroll -> compact; near top -> expand.
+    if(!compact && y > 160){
       header.classList.add('compact');
       compact = true;
-    }else if(compact && y < 10){
+    }else if(compact && y < 40){
       header.classList.remove('compact');
       compact = false;
     }
+    ticking = false;
+  };
+
+  const onScroll = () => {
+    if(ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(update);
   };
 
   window.addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
+  window.addEventListener('resize', onScroll, {passive:true});
+  update();
 })();
 </script>
 
