@@ -26,6 +26,19 @@
     .lang button{border:0;background:transparent;padding:7px 10px;border-radius:999px;cursor:pointer;font-weight:700;color:#374151}
     .lang button.active{background:var(--brand);color:#fff}
     .contactRow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+
+
+/* Shrink header on scroll (mobile only) */
+@media (max-width: 620px){
+  header{transition:box-shadow .2s ease}
+  .wrap{transition:padding .25s ease}
+  .contactRow{max-height:120px;overflow:hidden;transition:max-height .25s ease, opacity .2s ease, margin-top .25s ease}
+  header.compact .wrap{padding-top:8px;padding-bottom:8px}
+  header.compact .logo{height:28px}
+  header.compact .brandSub{display:none}
+  header.compact .contactRow{max-height:0;opacity:0;margin-top:0;pointer-events:none}
+  header.compact{box-shadow:0 6px 20px rgba(0,0,0,.06)}
+}
     .chip{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);padding:8px 12px;border-radius:999px;color:#111827}
     .chip small{color:var(--muted)}
     main .wrap{padding-top:22px;padding-bottom:44px}
@@ -51,6 +64,30 @@
     .about p{margin:0;color:#374151;line-height:1.7}
     .about .addr{margin-top:10px;color:#111827;font-weight:800}
     footer{border-top:1px solid var(--line);padding:18px 0;text-align:center;color:var(--muted)}
+
+    /* Mobile: keep contact info from blocking the view */
+    @media (max-width: 620px){
+      .contactRow{
+        flex-wrap:nowrap;
+        overflow-x:auto;
+        -webkit-overflow-scrolling:touch;
+        gap:8px;
+        margin-top:10px;
+        padding-bottom:6px;
+        scrollbar-width:none;
+      }
+      .contactRow::-webkit-scrollbar{display:none}
+      .chip{
+        flex:0 0 auto;
+        padding:6px 10px;
+        font-size:13px;
+        white-space:nowrap;
+      }
+      .chip small{display:none}
+      .logo{height:30px}
+      h1{font-size:28px}
+    }
+
     /* Consent bar */
     .consent{position:fixed;left:14px;right:14px;bottom:14px;z-index:60;display:none}
     .consentBox{max-width:1150px;margin:0 auto;background:#111827;color:#fff;border-radius:16px;padding:14px 14px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;box-shadow:0 12px 30px rgba(0,0,0,.25)}
@@ -63,7 +100,7 @@
   </style>
 </head>
 <body>
-<header>
+<header id="siteHeader">
   <div class="wrap">
     <div class="topbar">
       <a class="brand" href="index.html" aria-label="Wuxing Valve Home">
@@ -309,5 +346,44 @@
   render();
   maybeInitGA4(lang);
 </script>
+
+  <script>
+(function(){
+  const header = document.getElementById('siteHeader');
+  if(!header) return;
+
+  const mq = window.matchMedia('(max-width: 620px)');
+  let compact = false;
+
+  const onScroll = () => {
+    const y = window.scrollY || document.documentElement.scrollTop || 0;
+    // enter compact after 60px, exit when back near top
+    if(!compact && y > 60){
+      header.classList.add('compact');
+      compact = true;
+    }else if(compact && y < 10){
+      header.classList.remove('compact');
+      compact = false;
+    }
+  };
+
+  const apply = () => {
+    if(mq.matches){
+      window.addEventListener('scroll', onScroll, {passive:true});
+      onScroll();
+    }else{
+      window.removeEventListener('scroll', onScroll);
+      header.classList.remove('compact');
+      compact = false;
+    }
+  };
+
+  if(mq.addEventListener) mq.addEventListener('change', apply);
+  else mq.addListener(apply); // Safari fallback
+
+  apply();
+})();
+</script>
+
 </body>
 </html>
