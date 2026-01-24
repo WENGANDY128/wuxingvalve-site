@@ -10,10 +10,10 @@
         "de": "Regel- & Absperrarmaturen"
       },
       "title": {
-        "zh": "JL47Y 角式平衡截止/节流阀（法兰式）",
-        "en": "JL47Y Angle Balanced Globe/Throttle Valve (Flanged)",
-        "es": "JL47Y Válvula de globo/estrangulación balanceada en ángulo (Bridas)",
-        "de": "JL47Y Winkel-Ausgleichs-Globe/Drosselventil (Flansch)"
+        "zh": "J/L 47Y-160C/320C 角式平衡截止/节流阀（法兰式）",
+        "en": "J/L 47Y-160C/320C Angle Balanced Globe/Throttle Valve (Flanged)",
+        "es": "J/L 47Y-160C/320C Válvula de globo/estrangulación balanceada en ángulo (Bridas)",
+        "de": "J/L 47Y-160C/320C Winkel-Ausgleichs-Globe/Drosselventil (Flansch)"
       },
       "sub": {
         "zh": "化肥工况 / 平衡结构 / 稳定调节",
@@ -213,10 +213,10 @@
         "de": "Regel- & Absperrarmaturen"
       },
       "title": {
-        "zh": "FJL47HY 角式平衡截止/节流阀（方型）",
-        "en": "FJL47HY Angle Balanced Globe/Throttle Valve (Square Body)",
-        "es": "FJL47HY Válvula balanceada en ángulo (cuerpo cuadrado)",
-        "de": "FJL47HY Winkel-Ausgleichsventil (quadratisches Gehäuse)"
+        "zh": "F J/L 947 H/Y 角式平衡截止/节流阀（方型）",
+        "en": "F J/L 947 H/Y Angle Balanced Globe/Throttle Valve (Square Body)",
+        "es": "F J/L 947 H/Y Válvula balanceada en ángulo (cuerpo cuadrado)",
+        "de": "F J/L 947 H/Y Winkel-Ausgleichsventil (quadratisches Gehäuse)"
       },
       "sub": {
         "zh": "化肥工况 / 方型阀体 / 易安装",
@@ -279,10 +279,10 @@
         "de": "Regel- & Absperrarmaturen"
       },
       "title": {
-        "zh": "FJL947HY 型角式平衡截止/节流阀（方型）",
-        "en": "FJL947HY Y-type Angle Balanced Globe/Throttle Valve (Square Body)",
-        "es": "FJL947HY Válvula balanceada en ángulo tipo Y (cuerpo cuadrado)",
-        "de": "FJL947HY Y-Typ Winkel-Ausgleichsventil (quadratisches Gehäuse)"
+        "zh": "F J/L 947 H/Y 型角式平衡截止/节流阀（方型）",
+        "en": "F J/L 947 H/Y Y-type Angle Balanced Globe/Throttle Valve (Square Body)",
+        "es": "F J/L 947 H/Y Válvula balanceada en ángulo tipo Y (cuerpo cuadrado)",
+        "de": "F J/L 947 H/Y Y-Typ Winkel-Ausgleichsventil (quadratisches Gehäuse)"
       },
       "sub": {
         "zh": "化肥工况 / Y型流道 / 更低压降",
@@ -345,10 +345,10 @@
         "de": "Regel- & Absperrarmaturen"
       },
       "title": {
-        "zh": "GJL344HY 蜗轮传动角式截止/节流阀",
-        "en": "GJL344HY Worm-Gear Angle Globe/Throttle Valve",
-        "es": "GJL344HY Válvula en ángulo con reductor sinfín (globo/estrangulación)",
-        "de": "GJL344HY Winkel-Globe/Drosselventil mit Schneckengetriebe"
+        "zh": "G J/L 344 H/Y 蜗轮传动角式截止/节流阀",
+        "en": "G J/L 344 H/Y Worm-Gear Angle Globe/Throttle Valve",
+        "es": "G J/L 344 H/Y Válvula en ángulo con reductor sinfín (globo/estrangulación)",
+        "de": "G J/L 344 H/Y Winkel-Globe/Drosselventil mit Schneckengetriebe"
       },
       "sub": {
         "zh": "蜗轮传动 / 大口径省力操作",
@@ -411,10 +411,10 @@
         "de": "Regel- & Absperrarmaturen"
       },
       "title": {
-        "zh": "GJL44HY 截止阀",
-        "en": "GJL44HY Globe Valve",
-        "es": "Válvula de globo GJL44HY",
-        "de": "GJL44HY Durchgangs-Globeventil"
+        "zh": "G J/L 44 H/Y 截止阀",
+        "en": "G J/L 44 H/Y Globe Valve",
+        "es": "Válvula de globo G J/L 44 H/Y",
+        "de": "G J/L 44 H/Y Durchgangs-Globeventil"
       },
       "sub": {
         "zh": "通用截止 / 稳定密封",
