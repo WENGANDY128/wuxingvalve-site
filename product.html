@@ -16,6 +16,8 @@
     .brand{display:flex;gap:10px;align-items:center}
     .brand a{color:var(--text);text-decoration:none;font-weight:900;letter-spacing:.3px}
     .brand small{color:var(--muted);font-weight:700}
+    .logoLink{display:flex;align-items:center;text-decoration:none}
+    .logoImg{height:34px;width:auto;display:block}
 
     .lang{display:inline-flex;gap:6px;align-items:center;background:#fff;border:1px solid var(--border);border-radius:999px;padding:6px}
     .lang button{appearance:none;border:none;cursor:pointer;padding:6px 10px;border-radius:999px;color:var(--muted);background:transparent;font-weight:700}
@@ -65,25 +67,24 @@
       .model-cards{grid-template-columns:repeat(3,minmax(120px,1fr))}
       .model-card img{height:90px}
     }
-  /* ---- zoom modal ---- */
-.zoomModal{position:fixed;inset:0;background:rgba(0,0,0,.78);display:none;align-items:center;justify-content:center;z-index:9999}
-.zoomModal.open{display:flex}
-.zoomBox{width:min(92vw,1100px);height:min(92vh,760px);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18);border-radius:14px;overflow:hidden;position:relative}
-.zoomClose{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.55);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:8px 12px;cursor:pointer}
-.zoomHint{position:absolute;left:12px;top:12px;color:#fff;font-size:12px;opacity:.9}
-.zoomStage{width:100%;height:100%;cursor:grab;display:flex;align-items:center;justify-content:center;user-select:none}
-.zoomStage.dragging{cursor:grabbing}
-.zoomImg{max-width:none;max-height:none;will-change:transform;transform-origin:center center}
-  /* Cookie banner (shows for EN/ES/DE only) */
-.cookie-wrap{position:fixed;left:0;right:0;bottom:0;z-index:50;display:none}
-.cookie-bar{max-width:1200px;margin:10px auto;background:#111;color:#fff;border-radius:12px;padding:14px;border:1px solid #000a;display:flex;gap:14px;align-items:center;justify-content:space-between}
-.cookie-bar p{margin:0;line-height:1.35;font-size:14px;opacity:.95}
-.cookie-bar a{color:#fff;text-decoration:underline}
-.cookie-actions{display:flex;gap:10px;flex:0 0 auto}
-.cookie-actions button{border:0;border-radius:10px;padding:10px 14px;font-weight:800;cursor:pointer}
-.cookie-reject{background:#2b2b2b;color:#fff}
-.cookie-accept{background:var(--red);color:#fff}
-@media (max-width:760px){.cookie-bar{flex-direction:column;align-items:stretch}.cookie-actions{justify-content:flex-end}}
+  
+    /* Cookie banner */
+    .cookie-wrap{position:fixed;left:0;right:0;bottom:0;z-index:50;display:none}
+    .cookie-bar{max-width:1100px;margin:10px auto;background:#111;color:#fff;border-radius:12px;padding:14px;border:1px solid #000a;display:flex;flex-wrap:wrap;gap:10px;align-items:center;box-shadow:0 6px 24px rgba(0,0,0,.25)}
+    .cookie-bar p{margin:0;line-height:1.5;flex:1 1 320px;color:#e6e6e6}
+    .cookie-bar a{color:#9ec5ff}
+    .cookie-actions{display:flex;gap:8px}
+    .cookie-actions button{cursor:pointer;border:none;border-radius:10px;padding:8px 12px;font-weight:800}
+    .cookie-accept{background:#2b7de9;color:#fff}
+    .cookie-reject{background:#fff;color:#111;border:1px solid #ccc}
+
+    /* Zoom modal */
+    .zoom-modal{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;z-index:80}
+    .zoom-inner{position:relative;width:min(1200px,94vw);height:min(86vh,900px);background:#111;border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden}
+    .zoom-close{position:absolute;top:10px;right:10px;z-index:2;background:rgba(255,255,255,.92);border:none;border-radius:10px;padding:8px 10px;font-weight:900;cursor:pointer}
+    .zoom-stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+    .zoom-stage img{max-width:none;max-height:none;user-select:none;cursor:grab;transform-origin:center center}
+
   </style>
 </head>
 <body>
@@ -96,7 +97,7 @@
       <button data-lang="zh">ZH</button>
       <button data-lang="en">EN</button>
       <button data-lang="es">ES</button>
-        <button data-lang="de">DE</button>
+      <button data-lang="de">DE</button>
     </div>
   </header>
 
@@ -134,332 +135,106 @@
     </div>
   </div>
 
+  <div class="cookie-wrap" id="cookieWrap" aria-live="polite">
+    <div class="cookie-bar">
+      <p id="cookieText"></p>
+      <div class="cookie-actions">
+        <button class="cookie-reject" id="cookieReject">Reject</button>
+        <button class="cookie-accept" id="cookieAccept">Accept</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="zoom-modal" id="zoomModal" aria-hidden="true">
+    <div class="zoom-inner" role="dialog" aria-label="Image viewer">
+      <button class="zoom-close" id="zoomClose">✕</button>
+      <div class="zoom-stage">
+        <img id="zoomImg" alt="">
+      </div>
+    </div>
+  </div>
+
   <script>
-    const I18N = {
-      zh:{brandSub:'工业阀门 · 外贸供应', specs:'参数', details:'详细描述', contact:'联系', back:'返回首页', noid:'缺少产品 id 参数。', notfound:'未找到该产品。', more:'同系列产品'},
-      en:{brandSub:'Industrial Valves · Supply', specs:'Specs', details:'Details', contact:'Contact', back:'Back', noid:'Missing product id.', notfound:'Product not found.', more:'More in this series'},
-es:{
-  home:'Inicio',
-  products:'Productos',
-  contact:'Contacto',
-  back:'Volver',
-  noid:'Falta el parámetro de producto (id).',
-  notfound:'Producto no encontrado.',
-  related:'Modelos relacionados',
-  specs:'Especificaciones',
-  details:'Detalles',
-  cookiesTitle:'Cookies',
-  cookieMsg:'Para EN/ES/DE, solo recopilamos datos de Google Analytics después de tu confirmación. Puedes aceptar o rechazar cookies no esenciales. Consulta nuestra {privacy}.',
-  cookieAccept:'Aceptar',
-  cookieReject:'Rechazar',
-  privacyLink:'Política de Privacidad',
-  zoomHint:'Rueda: Zoom · Arrastrar: Mover · ESC: Cerrar'
-      }      de:{brandSub:'Industrieventile · Supply', specs:'Spezifikationen', details:'Beschreibung', contact:'Kontakt', back:'Zurück', noid:'Produkt-ID fehlt.', notfound:'Produkt nicht gefunden.', more:'Mehr aus der Serie'}
-        cookieMsg:"Für EN/ES/DE erfassen wir Google-Analytics-Daten erst nach deiner Bestätigung. Du kannst nicht notwendige Cookies akzeptieren oder ablehnen. Siehe {privacy}.",
-        cookieAccept:"Akzeptieren",
-        cookieReject:"Ablehnen",
-        privacyLink:"Datenschutzhinweis",
-        zoomHint:"Mausrad: Zoom · Ziehen: Verschieben · ESC: Schließen",
-      };
+const I18N = {
+  zh:{
+    brandSub:'工业阀门 · 外贸供应',
+    specs:'参数',
+    details:'详细描述',
+    contact:'联系',
+    back:'返回首页',
+    noid:'缺少产品 id 参数。',
+    notfound:'未找到该产品。',
+    more:'同系列产品',
+    cookieInfo:'（英文/西语/德语页面：确认后才启用 GA4）'
+  },
+  en:{
+    brandSub:'Industrial Valves · Supply',
+    specs:'Specs',
+    details:'Details',
+    contact:'Contact',
+    back:'Back',
+    noid:'Missing product id.',
+    notfound:'Product not found.',
+    more:'More in this series',
+    cookieMsg:'We use cookies (only Google Analytics) to understand traffic and improve our site. You can accept or reject non-essential cookies. See our {privacy}.',
+    cookieAccept:'Accept',
+    cookieReject:'Reject',
+    privacyLink:'Privacy Notice'
+  },
+  es:{
+    brandSub:'Válvulas industriales · Suministro',
+    specs:'Especificaciones',
+    details:'Detalles',
+    contact:'Contacto',
+    back:'Volver',
+    noid:'Falta el id del producto.',
+    notfound:'Producto no encontrado.',
+    more:'Más de esta serie',
+    cookieMsg:'Usamos cookies (solo Google Analytics) para entender el tráfico y mejorar el sitio. Puedes aceptar o rechazar cookies no esenciales. Consulta nuestra {privacy}.',
+    cookieAccept:'Aceptar',
+    cookieReject:'Rechazar',
+    privacyLink:'Política de Privacidad'
+  },
+  de:{
+    brandSub:'Industrieventile · Supply',
+    specs:'Spezifikationen',
+    details:'Beschreibung',
+    contact:'Kontakt',
+    back:'Zurück',
+    noid:'Produkt-ID fehlt.',
+    notfound:'Produkt nicht gefunden.',
+    more:'Mehr aus der Serie',
+    cookieMsg:'Wir verwenden Cookies (nur Google Analytics), um den Traffic zu verstehen und unsere Website zu verbessern. Du kannst nicht notwendige Cookies akzeptieren oder ablehnen. Siehe {privacy}.',
+    cookieAccept:'Akzeptieren',
+    cookieReject:'Ablehnen',
+    privacyLink:'Datenschutzhinweis'
+  }
+};
 
-    const CONTACT={email:'wengandy128@gmail.com',whatsapp:'+86 15888791812',phone:'+86 15888791812',wechat:'15888791812'};
+const qs = new URLSearchParams(location.search);
+const id = qs.get('id');
+const currentLang = (qs.get('lang') || localStorage.getItem('lang') || 'zh').toLowerCase();
+localStorage.setItem('lang', currentLang);
+const t = I18N[currentLang] || I18N.zh;
 
-    const qs = new URLSearchParams(location.search);
-    const lang = (qs.get('lang') || localStorage.getItem('lang') || 'zh').toLowerCase();
-    localStorage.setItem('lang', lang);
-    const t = I18N[lang] || I18N.zh;
+document.getElementById('brandSub').textContent = t.brandSub;
 
-    document.getElementById('brandSub').textContent = t.brandSub;
-
-    // language switcher
-    [...document.querySelectorAll('#langSwitcher button')].forEach(b=>{
-      if(b.dataset.lang===lang) b.classList.add('active');
-      b.onclick=()=>{
-        const u=new URL(location.href);
-        u.searchParams.set('lang', b.dataset.lang);
-        location.href=u.toString();
-      };
-    });
-
-    // home link keeps lang
-    const home = new URL('index.html', location.href);
-    home.searchParams.set('lang', lang);
-    document.getElementById('homeLink').href = home.toString();
-
-    function pick(v){
-      if(!v) return '';
-      if(typeof v === 'string') return v;
-      return v[lang] || v.en || v.zh || v.de || '';
-    }
-
-    async function fetchJSON(url){
-      try{
-        const r = await fetch(url, {cache:'no-store'});
-        if(r.ok) return await r.json();
-      }catch(e){}
-      return null;
-    }
-
-    async function fetchText(url){
-      try{
-        const r = await fetch(url, {cache:'no-store'});
-        if(r.ok) return (await r.text()).trim();
-      }catch(e){}
-      return '';
-    }
-
-    function imgFallbackURL(){
-      return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(
-        `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600">
-          <rect width="100%" height="100%" fill="#f1f3f5"/>
-          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
-            fill="#9aa0a6" font-family="Arial" font-size="20">Image not found</text>
-        </svg>`
-      );
-    }
-
-    function existsImage(url){
-      return new Promise(resolve=>{
-        const im=new Image();
-        im.onload=()=>resolve(true);
-        im.onerror=()=>resolve(false);
-        im.src=url;
-      });
-    }
-
-    function productFolder(id){ return `assets/products/${id}`; }
-
-    async function loadCarousel(id){
-      const track = document.getElementById('track');
-      const dots = document.getElementById('dots');
-      const carousel = document.getElementById('carousel');
-      const prevBtn = document.getElementById('prev');
-      const nextBtn = document.getElementById('next');
-
-      track.innerHTML=''; dots.innerHTML='';
-
-      const imgs = [];
-      // try jpg then png
-      for(let i=1;i<=20;i++){
-        const jpg = `${productFolder(id)}/${i}.jpg`;
-        const png = `${productFolder(id)}/${i}.png`;
-        if(await existsImage(jpg)) imgs.push(jpg);
-        else if(await existsImage(png)) imgs.push(png);
-        else break;
-      }
-
-      if(!imgs.length){
-        carousel.style.display='none';
-        dots.style.display='none';
-        return;
-      }
-
-      carousel.style.display='block';
-      const many = imgs.length > 1;
-      dots.style.display = many ? 'flex':'none';
-      prevBtn.style.display = nextBtn.style.display = many ? 'block':'none';
-
-      imgs.forEach((src, idx)=>{
-        const s=document.createElement('div');
-        s.className='slide';
-        s.innerHTML=`<img src="${src}" alt="image ${idx+1}">`;
-        const im = s.querySelector('img');
-        im.onerror = ()=>{ im.src = imgFallbackURL(); };
-        track.appendChild(s);
-
-        if(many){
-          const d=document.createElement('button');
-          d.className='dot'+(idx===0?' active':'');
-          d.onclick=()=>go(idx);
-          dots.appendChild(d);
-        }
-      });
-
-      let index = 0;
-      function update(){
-        track.style.transform = `translateX(${-index*100}%)`;
-        if(many){
-          [...dots.children].forEach((d,i)=>d.classList.toggle('active', i===index));
-        }
-      }
-      function go(i){ index=Math.max(0, Math.min(imgs.length-1, i)); update(); }
-      prevBtn.onclick=()=>go(index-1);
-      nextBtn.onclick=()=>go(index+1);
-      update();
-    }
-
-    async function loadSpecsDetails(id){
-      // fallback order: current lang -> en -> zh -> de
-      const order = [lang,'en','zh','de'];
-      let specsText='', detailsText='';
-
-      for(const lg of order){
-        if(!specsText) specsText = await fetchText(`${productFolder(id)}/specs-${lg}.txt`);
-        if(!detailsText) detailsText = await fetchText(`${productFolder(id)}/details-${lg}.txt`);
-      }
-
-      const specBox = document.getElementById('specBox');
-      const detailBox = document.getElementById('detailBox');
-
-      document.getElementById('specTitle').textContent = t.specs;
-      document.getElementById('detailTitle').textContent = t.details;
-
-      if(specsText){
-        const ul = document.getElementById('specList');
-        ul.innerHTML='';
-        specsText.split(/\r?\n/).map(s=>s.trim()).filter(Boolean).forEach(line=>{
-          const li=document.createElement('li');
-          li.textContent=line;
-          ul.appendChild(li);
-        });
-        specBox.style.display='block';
-      }else{
-        specBox.style.display='none';
-      }
-
-      if(detailsText){
-        document.getElementById('detailText').textContent = detailsText;
-        detailBox.style.display='block';
-      }else{
-        detailBox.style.display='none';
-      }
-    }
-
-    function renderContacts(){
-      document.getElementById('contactTitle').textContent = t.contact;
-      const box = document.getElementById('contactBtns');
-      box.innerHTML = `
-        <a class="btn primary" href="mailto:${CONTACT.email}">📧 ${CONTACT.email}</a>
-        <a class="btn" href="https://wa.me/${CONTACT.whatsapp.replace(/[^0-9]/g,'')}" target="_blank" rel="noopener">💬 WhatsApp</a>
-        <a class="btn" href="tel:${CONTACT.phone.replace(/\s/g,'')}">📞 ${CONTACT.phone}</a>
-        <a class="btn" href="javascript:void(0)">🟩 WeChat: ${CONTACT.wechat}</a>
-      `;
-    }
-
-    function updateURL(id){
-      const u = new URL(location.href);
-      u.searchParams.set('id', id);
-      u.searchParams.set('lang', lang);
-      history.replaceState(null, '', u.toString());
-    }
-
-    async function main(){
-      renderContacts();
-
-      const id = (qs.get('id') || '').trim();
-      if(!id){
-        document.getElementById('title').textContent = t.noid;
-        return;
-      }
-
-      const data = await fetchJSON('products.json') || await fetchJSON('/products.json') || await fetchJSON('./products.json');
-      const list = Array.isArray(data?.products) ? data.products : [];
-      const cur = list.find(x=>x.id===id);
-
-      if(!cur){
-        document.getElementById('title').textContent = t.notfound;
-        return;
-      }
-
-      document.getElementById('title').textContent = pick(cur.title) || cur.id;
-      document.getElementById('subtitle').textContent = pick(cur.sub) || '';
-
-      // series cards
-      const seriesItems = list.filter(x=>x.series===cur.series);
-      const box = document.getElementById('modelCards');
-      box.innerHTML='';
-      for(const p of seriesItems){
-        const card = document.createElement('div');
-        card.className = 'model-card' + (p.id===id ? ' active':'');
-        const thumb = p.cover || `${productFolder(p.id)}/cover.jpg`;
-        const title = pick(p.title) || p.id;
-        const sub = pick(p.sub) || '';
-        card.innerHTML = `<img src="${thumb}" alt="${title}"><div class="meta">${title}<small>${sub}</small></div>`;
-        card.onclick=()=>{
-          updateURL(p.id);
-          location.reload(); // simplest and robust (no SPA state bugs)
-        };
-        const img = card.querySelector('img');
-        img.onerror = ()=>{ img.src = imgFallbackURL(); };
-        box.appendChild(card);
-      }
-
-      await loadCarousel(id);
-      await loadSpecsDetails(id);
-    }
-
-    main();
-  /* ---------- image zoom (wheel + drag) ---------- */
-const zoomModal = document.getElementById('zoomModal');
-const zoomClose = document.getElementById('zoomClose');
-const zoomStage = document.getElementById('zoomStage');
-const zoomImg = document.getElementById('zoomImg');
-const zoomHintEl = document.getElementById('zoomHint');
-
-let zoomScale = 1, zoomTx = 0, zoomTy = 0;
-let zoomDragging = false, zoomSx = 0, zoomSy = 0;
-
-function applyZoom(){
-  zoomImg.style.transform = `translate(${zoomTx}px, ${zoomTy}px) scale(${zoomScale})`;
-}
-function openZoom(src){
-  zoomImg.src = src;
-  zoomScale = 1; zoomTx = 0; zoomTy = 0;
-  applyZoom();
-  zoomModal.classList.add('open');
-  zoomModal.setAttribute('aria-hidden','false');
-}
-function closeZoom(){
-  zoomModal.classList.remove('open');
-  zoomModal.setAttribute('aria-hidden','true');
-}
-zoomClose.addEventListener('click', closeZoom);
-zoomModal.addEventListener('click', (e)=>{ if(e.target===zoomModal) closeZoom(); });
-document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && zoomModal.classList.contains('open')) closeZoom(); });
-
-zoomStage.addEventListener('wheel', (e)=>{
-  if(!zoomModal.classList.contains('open')) return;
-  e.preventDefault();
-  const delta = -e.deltaY;
-  const factor = delta>0 ? 1.1 : 0.9;
-  zoomScale = Math.min(6, Math.max(1, zoomScale*factor));
-  applyZoom();
-}, {passive:false});
-
-zoomStage.addEventListener('pointerdown', (e)=>{
-  if(!zoomModal.classList.contains('open')) return;
-  zoomDragging = true;
-  zoomStage.classList.add('dragging');
-  zoomSx = e.clientX - zoomTx;
-  zoomSy = e.clientY - zoomTy;
-  zoomStage.setPointerCapture(e.pointerId);
-});
-zoomStage.addEventListener('pointermove', (e)=>{
-  if(!zoomDragging) return;
-  zoomTx = e.clientX - zoomSx;
-  zoomTy = e.clientY - zoomSy;
-  applyZoom();
-});
-function stopDrag(){
-  zoomDragging = false;
-  zoomStage.classList.remove('dragging');
-}
-zoomStage.addEventListener('pointerup', stopDrag);
-zoomStage.addEventListener('pointercancel', stopDrag);
-
-// Open zoom when clicking on carousel images
-document.getElementById('carousel').addEventListener('click', (e)=>{
-  const img = e.target && e.target.tagName==='IMG' ? e.target : null;
-  if(!img) return;
-  openZoom(img.currentSrc || img.src);
+// language switch
+[...document.querySelectorAll('#langSwitcher button')].forEach(b=>{
+  if(b.dataset.lang===currentLang) b.classList.add('active');
+  b.onclick=()=>{
+    const lang=b.dataset.lang;
+    localStorage.setItem('lang',lang);
+    const url=new URL(location.href);
+    url.searchParams.set('lang',lang);
+    location.href=url.toString();
+  };
 });
 
-// Update hint text by language
-if(zoomHintEl) zoomHintEl.textContent = t.zoomHint || 'Wheel: Zoom · Drag: Pan · ESC: Close';
-  /* ---------- cookie consent + GA (optional) ---------- */
-const GA_ID = 'G-1T6921REMX'; // GA4 id
+/* ---------- cookie consent + GA ---------- */
+const GA_ID = 'G-1T6921REMX'; // your GA4 id
 function loadGA(){
-  if(GA_ID==='G-REPLACE_ME') return;
+  if(!GA_ID || GA_ID==='G-REPLACE_ME') return;
   if(window.__gaLoaded) return;
   window.__gaLoaded = true;
   const s=document.createElement('script');
@@ -471,69 +246,232 @@ function loadGA(){
   gtag('js', new Date());
   gtag('config', GA_ID);
 }
-function disableGA(){ if(GA_ID!=='G-REPLACE_ME') window['ga-disable-'+GA_ID] = true; }
-
-// Localize cookie banner
-const cookieP2 = document.getElementById('cookieText');
-const privacyA2 = `<a href="/privacy.html" target="_blank" rel="noopener">${t.privacyLink}</a>`;
-if(cookieP2) cookieP2.innerHTML = (t.cookieMsg||'').replace('{privacy}', privacyA2);
-const btnA2 = document.getElementById('cookieAccept');
-const btnR2 = document.getElementById('cookieReject');
-if(btnA2) btnA2.textContent = t.cookieAccept || 'Accept';
-if(btnR2) btnR2.textContent = t.cookieReject || 'Reject';
+function disableGA(){ if(GA_ID && GA_ID!=='G-REPLACE_ME') window['ga-disable-'+GA_ID] = true; }
 
 const consentKey='cookieConsent:v1';
 const saved = localStorage.getItem(consentKey);
 
 if(currentLang==='zh'){
   loadGA();
-} else {
+}else{
   const wrap = document.getElementById('cookieWrap');
+  const cookieP = document.getElementById('cookieText');
+  const btnA = document.getElementById('cookieAccept');
+  const btnR = document.getElementById('cookieReject');
+
+  const privacyA = `<a href="/privacy.html" target="_blank" rel="noopener">${(t.privacyLink||'Privacy')}</a>`;
+  if(cookieP){
+    cookieP.innerHTML = (t.cookieMsg || '').replace('{privacy}', privacyA);
+  }
+  if(btnA) btnA.textContent = t.cookieAccept || 'Accept';
+  if(btnR) btnR.textContent = t.cookieReject || 'Reject';
+
   function show(){ wrap.style.display='block'; }
   function hide(){ wrap.style.display='none'; }
 
   if(!saved){
     disableGA(); show();
-  } else {
+  }else{
     try{
       const st = JSON.parse(saved);
-      if(st.stats){
-        loadGA(); hide();
-      } else {
-        disableGA(); hide();
-      }
-    }catch(e){ disableGA(); show(); }
+      if(st.status==='accepted') loadGA(); else disableGA();
+    }catch{ disableGA(); show(); }
+  }
+  btnA.onclick=()=>{
+    localStorage.setItem(consentKey, JSON.stringify({status:'accepted',ts:Date.now()}));
+    hide(); loadGA();
+  };
+  btnR.onclick=()=>{
+    localStorage.setItem(consentKey, JSON.stringify({status:'rejected',ts:Date.now()}));
+    hide(); disableGA();
+  };
+}
+
+function pick(v){
+  if(!v) return '';
+  if(typeof v==='string') return v;
+  return v[currentLang] || v.zh || v.en || v.es || v.de || '';
+}
+
+async function fetchJSON(url){
+  try{
+    const r = await fetch(url, {cache:'no-store'});
+    if(r.ok) return await r.json();
+  }catch(e){}
+  return null;
+}
+function imgFallbackURL(){
+  return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600">
+      <rect width="100%" height="100%" fill="#f1f3f5"/>
+      <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+        fill="#9aa0a6" font-family="Arial" font-size="20">Image not found</text>
+    </svg>`
+  );
+}
+
+function updateURL(newId){
+  const url = new URL(location.href);
+  url.searchParams.set('id', newId);
+  url.searchParams.set('lang', currentLang);
+  history.replaceState({},'',url.toString());
+}
+
+// ---- zoom modal ----
+const zoomModal = document.getElementById('zoomModal');
+const zoomImg = document.getElementById('zoomImg');
+const zoomClose = document.getElementById('zoomClose');
+let zScale=1, zX=0, zY=0, dragging=false, startX=0, startY=0;
+
+function applyZoom(){
+  zoomImg.style.transform = `translate(${zX}px, ${zY}px) scale(${zScale})`;
+}
+function openZoom(src){
+  zoomImg.src = src;
+  zScale=1; zX=0; zY=0;
+  applyZoom();
+  zoomModal.style.display='flex';
+  document.body.style.overflow='hidden';
+}
+function closeZoom(){
+  zoomModal.style.display='none';
+  document.body.style.overflow='';
+}
+zoomClose.onclick = closeZoom;
+zoomModal.addEventListener('click', (e)=>{
+  if(e.target===zoomModal) closeZoom();
+});
+window.addEventListener('keydown', (e)=>{
+  if(e.key==='Escape' && zoomModal.style.display==='flex') closeZoom();
+});
+zoomModal.addEventListener('wheel', (e)=>{
+  e.preventDefault();
+  const delta = -e.deltaY;
+  const step = delta>0 ? 0.12 : -0.12;
+  zScale = Math.min(5, Math.max(1, zScale + step));
+  applyZoom();
+}, {passive:false});
+zoomImg.addEventListener('mousedown', (e)=>{
+  dragging=true;
+  startX=e.clientX - zX;
+  startY=e.clientY - zY;
+  zoomImg.style.cursor='grabbing';
+});
+window.addEventListener('mousemove', (e)=>{
+  if(!dragging) return;
+  zX=e.clientX - startX;
+  zY=e.clientY - startY;
+  applyZoom();
+});
+window.addEventListener('mouseup', ()=>{
+  dragging=false;
+  zoomImg.style.cursor='grab';
+});
+
+async function loadAll(){
+  const data = await fetchJSON('products.json') || await fetchJSON('/products.json') || await fetchJSON('./products.json');
+  const ALL = Array.isArray(data?.products) ? data.products : [];
+  return ALL;
+}
+
+async function loadCarousel(p){
+  const images = Array.isArray(p.images) && p.images.length ? p.images : [p.cover].filter(Boolean);
+  const track = document.getElementById('track');
+  const dots = document.getElementById('dots');
+  track.innerHTML=''; dots.innerHTML='';
+  let idx=0;
+
+  images.forEach((src,i)=>{
+    const slide=document.createElement('div');
+    slide.className='slide';
+    slide.innerHTML=`<img src="${src}" alt="">`;
+    const img=slide.querySelector('img');
+    img.onerror=()=>{ img.src=imgFallbackURL(); };
+    img.style.cursor='zoom-in';
+    img.addEventListener('click', ()=> openZoom(img.src));
+    track.appendChild(slide);
+
+    const d=document.createElement('button');
+    d.className='dot'+(i===0?' active':'');
+    d.onclick=()=>{ idx=i; render(); };
+    dots.appendChild(d);
+  });
+
+  function render(){
+    track.style.transform=`translateX(${-idx*100}%)`;
+    [...dots.children].forEach((d,i)=>d.classList.toggle('active', i===idx));
+  }
+  render();
+
+  document.getElementById('prev').onclick=()=>{ idx=(idx-1+images.length)%images.length; render(); };
+  document.getElementById('next').onclick=()=>{ idx=(idx+1)%images.length; render(); };
+}
+
+async function main(){
+  const titleEl=document.getElementById('title');
+  const subEl=document.getElementById('sub');
+  const seriesBox=document.getElementById('seriesBox');
+  const specsTitle=document.getElementById('specsTitle');
+  const detailsTitle=document.getElementById('detailsTitle');
+  const backBtn=document.getElementById('backBtn');
+
+  specsTitle.textContent=t.specs;
+  detailsTitle.textContent=t.details;
+  backBtn.textContent=t.back;
+
+  if(!id){
+    titleEl.textContent=t.noid;
+    return;
   }
 
-  document.getElementById('cookieAccept')?.addEventListener('click', ()=>{
-    localStorage.setItem(consentKey, JSON.stringify({stats:true, ts:Date.now()}));
-    loadGA(); hide();
-  });
-  document.getElementById('cookieReject')?.addEventListener('click', ()=>{
-    localStorage.setItem(consentKey, JSON.stringify({stats:false, ts:Date.now()}));
-    disableGA(); hide();
-  });
+  const ALL = await loadAll();
+  const p = ALL.find(x=>x.id===id);
+  if(!p){
+    titleEl.textContent=t.notfound;
+    return;
+  }
+
+  titleEl.textContent = pick(p.title) || p.id;
+  subEl.textContent = pick(p.sub) || '';
+
+  // Contact buttons
+  const contactRow=document.getElementById('btnRow');
+  const email='wengandy128@gmail.com';
+  const phone='+86 15888791812';
+  const whatsapp='+8615888791812';
+  contactRow.innerHTML = `
+    <a class="btn primary" href="mailto:${email}">📧 ${t.contact}</a>
+    <a class="btn" href="https://wa.me/${whatsapp}" target="_blank" rel="noopener">💬 WhatsApp</a>
+    <a class="btn" href="tel:${phone.replace(/\s/g,'')}">📞 ${phone}</a>
+  `;
+
+  // Specs & Details (if you have p.specs/p.details objects, show them)
+  const specsP=document.getElementById('specsP');
+  const detailsP=document.getElementById('detailsP');
+  specsP.textContent = pick(p.specs) || '';
+  detailsP.textContent = pick(p.details) || '';
+
+  // Series cards
+  seriesBox.innerHTML='';
+  const sameSeries = ALL.filter(x=>x.series && p.series && x.series===p.series && x.id!==p.id);
+  document.getElementById('moreTitle').textContent = t.more;
+  for(const it of sameSeries.slice(0,6)){
+    const card=document.createElement('div');
+    card.className='model-card';
+    card.innerHTML=`<img src="${it.cover||''}" alt=""><div class="meta">${pick(it.title)||it.id}<small>${pick(it.sub)||''}</small></div>`;
+    card.onclick=()=>{ updateURL(it.id); location.reload(); };
+    const img=card.querySelector('img');
+    img.onerror=()=>{ img.src=imgFallbackURL(); };
+    seriesBox.appendChild(card);
+  }
+  if(!sameSeries.length){
+    document.getElementById('moreWrap').style.display='none';
+  }
+
+  await loadCarousel(p);
 }
+
+main();
   </script>
-
-<div id="zoomModal" class="zoomModal" aria-hidden="true">
-  <div class="zoomBox">
-    <div class="zoomHint" id="zoomHint">Wheel: Zoom · Drag: Pan · ESC: Close</div>
-    <button id="zoomClose" class="zoomClose" aria-label="Close">✕</button>
-    <div id="zoomStage" class="zoomStage">
-      <img id="zoomImg" class="zoomImg" alt="zoom">
-    </div>
-  </div>
-</div>
-
-<div class="cookie-wrap" id="cookieWrap" aria-live="polite">
-  <div class="cookie-bar">
-    <p id="cookieText"></p>
-    <div class="cookie-actions">
-      <button class="cookie-reject" id="cookieReject">Reject</button>
-      <button class="cookie-accept" id="cookieAccept">Accept</button>
-    </div>
-  </div>
-</div>
 </body>
 </html>

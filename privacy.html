@@ -1,101 +1,188 @@
-<!-- =========================
-     Google Analytics Notice (EN)
-     ========================= -->
-<section aria-labelledby="ga-en">
-  <h2 id="ga-en">Google Analytics</h2>
-  <p>
-    This website uses Google Analytics 4 (“GA4”), a web analytics service provided by Google Ireland Limited,
-    Gordon House, Barrow Street, Dublin 4, Ireland (“Google”), to understand how visitors use the site and to improve
-    our content and user experience.
-  </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wuxing Valve · Privacy</title>
+  <style>
+    :root{--bg:#f7f8fa;--text:#222;--muted:#555;--primary:#2b7de9;--card:#fff;--border:#ddd;--ring:rgba(43,125,233,.18)}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:var(--bg);color:var(--text)}
+    header{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:#fff;border-bottom:1px solid var(--border)}
+    .brand{display:flex;gap:10px;align-items:center}
+    .logoLink{display:flex;align-items:center;text-decoration:none}
+    .logoImg{height:34px;width:auto;display:block}
+    .brand small{color:var(--muted);font-weight:700}
+    .lang{display:inline-flex;gap:6px;align-items:center;background:#fff;border:1px solid var(--border);border-radius:999px;padding:6px}
+    .lang button{appearance:none;border:none;cursor:pointer;padding:6px 10px;border-radius:999px;color:var(--muted);background:transparent;font-weight:800}
+    .lang button.active{color:#fff;background:var(--primary);box-shadow:0 0 0 6px var(--ring) inset}
+    .wrap{max-width:960px;margin:0 auto;padding:18px 16px 56px}
+    h1{margin:10px 0 14px;font-size:28px}
+    section{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin:12px 0}
+    h2{margin:0 0 8px;font-size:20px}
+    h3{margin:12px 0 6px;font-size:16px}
+    p,li{color:var(--muted);line-height:1.65}
+    a{color:var(--primary)}
+    .note{color:var(--muted);font-size:13px;margin-top:8px}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <a href="./" class="logoLink" aria-label="Home">
+        <img src="assets/logo.png" alt="Wuxing Valve" class="logoImg">
+      </a>
+      <small id="brandSub">Privacy</small>
+    </div>
+    <div class="lang" id="langSwitcher" aria-label="language">
+      <button data-lang="zh">ZH</button>
+      <button data-lang="en">EN</button>
+      <button data-lang="es">ES</button>
+      <button data-lang="de">DE</button>
+    </div>
+  </header>
 
-  <h3>What data is processed</h3>
-  <p>
-    GA4 may process information such as pages viewed, referrer, click/scroll interactions, approximate location,
-    device and browser details, and technical identifiers (e.g., cookies or similar storage technologies).
-    Google may process your IP address to derive approximate location; we do not receive your full IP address.
-  </p>
+  <main class="wrap">
+    <h1 id="h1">Privacy</h1>
 
-  <h3>Legal basis</h3>
-  <p>
-    We use GA4 only with your consent (where required). You can withdraw your consent at any time by adjusting your
-    cookie/consent settings or deleting analytics cookies in your browser.
-  </p>
+    <!-- ZH: keep minimal, no GA4 notice -->
+    <section data-lang="zh">
+      <h2>隐私声明</h2>
+      <p>如需了解我们的网站数据处理方式或索取相关材料，请通过邮箱联系：<a href="mailto:wengandy128@gmail.com">wengandy128@gmail.com</a>。</p>
+      <p class="note">中文页面默认启用 GA4（不单独提示）。</p>
+    </section>
 
-  <h3>Recipients & international transfers</h3>
-  <p>
-    Data may be processed on Google servers and may be transferred to countries outside your jurisdiction (including
-    the United States). Where applicable, Google relies on recognized safeguards (e.g., Standard Contractual Clauses)
-    for such transfers.
-  </p>
+    <section data-lang="en">
+      <h2>Google Analytics</h2>
+      <p>
+        This website uses Google Analytics 4 (“GA4”), a web analytics service provided by Google Ireland Limited,
+        Gordon House, Barrow Street, Dublin 4, Ireland (“Google”), to understand how visitors use the site and to improve
+        our content and user experience.
+      </p>
 
-  <h3>More information & opt-out</h3>
-  <ul>
-    <li>
-      Google Privacy Policy:
-      <a href="https://policies.google.com/privacy" rel="noopener noreferrer" target="_blank">policies.google.com/privacy</a>
-    </li>
-    <li>
-      Google Analytics Opt-out Browser Add-on:
-      <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener noreferrer" target="_blank">tools.google.com/dlpage/gaoptout</a>
-    </li>
-  </ul>
+      <h3>What data is processed</h3>
+      <p>
+        GA4 may process information such as pages viewed, referrer, click/scroll interactions, approximate location,
+        device and browser details, and technical identifiers (e.g., cookies or similar storage technologies).
+        Google may process your IP address to derive approximate location; we do not receive your full IP address.
+      </p>
 
-  <p>
-    If you have questions about our use of analytics, please contact us at
-    <a href="mailto:wengandy128@gmail.com">wengandy128@gmail.com</a>.
-  </p>
-</section>
+      <h3>Legal basis</h3>
+      <p>
+        We use GA4 only with your consent (where required). You can withdraw your consent at any time by adjusting your
+        cookie/consent settings or deleting analytics cookies in your browser.
+      </p>
 
-<hr />
+      <h3>Recipients & international transfers</h3>
+      <p>
+        Data may be processed on Google servers and may be transferred to countries outside your jurisdiction (including
+        the United States). Where applicable, Google relies on recognized safeguards (e.g., Standard Contractual Clauses)
+        for such transfers.
+      </p>
 
-<!-- =========================
-     Google Analytics Hinweis (DE)
-     ========================= -->
-<section aria-labelledby="ga-de">
-  <h2 id="ga-de">Google Analytics</h2>
-  <p>
-    Diese Website nutzt Google Analytics 4 („GA4“), einen Webanalysedienst der Google Ireland Limited,
-    Gordon House, Barrow Street, Dublin 4, Irland („Google“), um zu verstehen, wie Besucher die Website nutzen,
-    und um Inhalte sowie Nutzererlebnis zu verbessern.
-  </p>
+      <h3>More information & opt-out</h3>
+      <ul>
+        <li>Google Privacy Policy: <a href="https://policies.google.com/privacy" rel="noopener noreferrer" target="_blank">policies.google.com/privacy</a></li>
+        <li>Google Analytics Opt-out Browser Add-on: <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener noreferrer" target="_blank">tools.google.com/dlpage/gaoptout</a></li>
+      </ul>
+      <p>If you have questions, contact <a href="mailto:wengandy128@gmail.com">wengandy128@gmail.com</a>.</p>
+    </section>
 
-  <h3>Welche Daten verarbeitet werden</h3>
-  <p>
-    GA4 kann Informationen wie aufgerufene Seiten, Referrer, Interaktionen (z.&nbsp;B. Klick/Scroll),
-    ungefähre Standortdaten, Geräte- und Browserinformationen sowie technische Kennungen (z.&nbsp;B. Cookies oder ähnliche
-    Speichertechnologien) verarbeiten. Google kann Ihre IP-Adresse zur Ableitung eines ungefähren Standorts verarbeiten;
-    wir erhalten Ihre vollständige IP-Adresse nicht.
-  </p>
+    <section data-lang="es">
+      <h2>Google Analytics</h2>
+      <p>
+        Este sitio web utiliza Google Analytics 4 (“GA4”), un servicio de analítica web prestado por Google Ireland Limited,
+        Gordon House, Barrow Street, Dublín 4, Irlanda (“Google”), para comprender cómo se usa el sitio y mejorar
+        el contenido y la experiencia de usuario.
+      </p>
 
-  <h3>Rechtsgrundlage</h3>
-  <p>
-    Wir verwenden GA4 – soweit erforderlich – nur mit Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO).
-    Sie können Ihre Einwilligung jederzeit widerrufen, indem Sie Ihre Cookie/Consent-Einstellungen anpassen oder
-    Analytics-Cookies in Ihrem Browser löschen.
-  </p>
+      <h3>Qué datos se procesan</h3>
+      <p>
+        GA4 puede procesar información como páginas visitadas, referente, interacciones (clic/desplazamiento),
+        ubicación aproximada, detalles del dispositivo y del navegador, e identificadores técnicos (p. ej., cookies o tecnologías similares).
+        Google puede procesar su dirección IP para derivar una ubicación aproximada; no recibimos su IP completa.
+      </p>
 
-  <h3>Empfänger & internationale Datenübermittlungen</h3>
-  <p>
-    Daten können auf Servern von Google verarbeitet und in Länder außerhalb Ihres Rechtsraums (einschließlich der USA)
-    übermittelt werden. Soweit anwendbar, stützt sich Google für solche Übermittlungen auf anerkannte Garantien
-    (z.&nbsp;B. Standardvertragsklauseln).
-  </p>
+      <h3>Base legal</h3>
+      <p>
+        Usamos GA4 solo con su consentimiento (cuando sea necesario). Puede retirar su consentimiento en cualquier momento
+        ajustando la configuración de cookies/consentimiento o eliminando las cookies de analítica en su navegador.
+      </p>
 
-  <h3>Weitere Informationen & Widerspruch</h3>
-  <ul>
-    <li>
-      Datenschutzerklärung von Google:
-      <a href="https://policies.google.com/privacy" rel="noopener noreferrer" target="_blank">policies.google.com/privacy</a>
-    </li>
-    <li>
-      Browser-Add-on zur Deaktivierung von Google Analytics:
-      <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener noreferrer" target="_blank">tools.google.com/dlpage/gaoptout</a>
-    </li>
-  </ul>
+      <h3>Destinatarios y transferencias internacionales</h3>
+      <p>
+        Los datos pueden procesarse en servidores de Google y transferirse a países fuera de su jurisdicción (incluidos Estados Unidos).
+        Cuando corresponda, Google utiliza salvaguardas reconocidas (p. ej., Cláusulas Contractuales Tipo) para dichas transferencias.
+      </p>
 
-  <p>
-    Bei Fragen zur Nutzung von Analytics kontaktieren Sie uns bitte unter
-    <a href="mailto:wengandy128@gmail.com">wengandy128@gmail.com</a>.
-  </p>
-</section>
+      <h3>Más información y opción de exclusión</h3>
+      <ul>
+        <li>Política de privacidad de Google: <a href="https://policies.google.com/privacy" rel="noopener noreferrer" target="_blank">policies.google.com/privacy</a></li>
+        <li>Complemento de inhabilitación de Google Analytics: <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener noreferrer" target="_blank">tools.google.com/dlpage/gaoptout</a></li>
+      </ul>
+      <p>Si tiene preguntas, contáctenos en <a href="mailto:wengandy128@gmail.com">wengandy128@gmail.com</a>.</p>
+    </section>
+
+    <section data-lang="de">
+      <h2>Google Analytics</h2>
+      <p>
+        Diese Website nutzt Google Analytics 4 („GA4“), einen Webanalysedienst der Google Ireland Limited,
+        Gordon House, Barrow Street, Dublin 4, Irland („Google“), um zu verstehen, wie Besucher die Website nutzen,
+        und um Inhalte sowie Nutzererlebnis zu verbessern.
+      </p>
+
+      <h3>Welche Daten verarbeitet werden</h3>
+      <p>
+        GA4 kann Informationen wie aufgerufene Seiten, Referrer, Interaktionen (z.&nbsp;B. Klick/Scroll),
+        ungefähre Standortdaten, Geräte- und Browserinformationen sowie technische Kennungen (z.&nbsp;B. Cookies oder ähnliche
+        Speichertechnologien) verarbeiten. Google kann Ihre IP-Adresse zur Ableitung eines ungefähren Standorts verarbeiten;
+        wir erhalten Ihre vollständige IP-Adresse nicht.
+      </p>
+
+      <h3>Rechtsgrundlage</h3>
+      <p>
+        Wir verwenden GA4 – soweit erforderlich – nur mit Ihrer Einwilligung. Sie können Ihre Einwilligung jederzeit widerrufen,
+        indem Sie Ihre Cookie/Consent-Einstellungen anpassen oder Analytics-Cookies in Ihrem Browser löschen.
+      </p>
+
+      <h3>Empfänger & internationale Datenübermittlungen</h3>
+      <p>
+        Daten können auf Servern von Google verarbeitet und in Länder außerhalb Ihres Rechtsraums (einschließlich der USA)
+        übermittelt werden. Soweit anwendbar, stützt sich Google für solche Übermittlungen auf anerkannte Garantien
+        (z.&nbsp;B. Standardvertragsklauseln).
+      </p>
+
+      <h3>Weitere Informationen & Widerspruch</h3>
+      <ul>
+        <li>Datenschutzerklärung von Google: <a href="https://policies.google.com/privacy" rel="noopener noreferrer" target="_blank">policies.google.com/privacy</a></li>
+        <li>Browser-Add-on zur Deaktivierung von Google Analytics: <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener noreferrer" target="_blank">tools.google.com/dlpage/gaoptout</a></li>
+      </ul>
+      <p>Bei Fragen kontaktieren Sie uns bitte unter <a href="mailto:wengandy128@gmail.com">wengandy128@gmail.com</a>.</p>
+    </section>
+
+  </main>
+
+  <script>
+    const qs = new URLSearchParams(location.search);
+    const lang = (qs.get('lang') || localStorage.getItem('lang') || 'en').toLowerCase();
+    localStorage.setItem('lang', lang);
+    document.documentElement.lang = lang;
+    [...document.querySelectorAll('#langSwitcher button')].forEach(b=>{
+      if(b.dataset.lang===lang) b.classList.add('active');
+      b.onclick=()=>{
+        const n=b.dataset.lang; localStorage.setItem('lang',n);
+        const url=new URL(location.href); url.searchParams.set('lang',n); location.href=url.toString();
+      };
+    });
+
+    // show only current language section
+    document.querySelectorAll('section[data-lang]').forEach(s=>{
+      s.style.display = (s.dataset.lang===lang) ? 'block' : 'none';
+    });
+
+    const titleMap={zh:'隐私声明',en:'Privacy',es:'Privacidad',de:'Datenschutz'};
+    document.getElementById('h1').textContent = titleMap[lang] || 'Privacy';
+    document.getElementById('brandSub').textContent = titleMap[lang] || 'Privacy';
+  </script>
+</body>
+</html>

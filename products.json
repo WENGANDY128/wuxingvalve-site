@@ -493,6 +493,47 @@
         "es": "Servicio para fertilizantes / resistente a la corrosión",
         "de": "Düngerbetrieb / korrosionsbeständig"
       }
+    },
+    {
+      "id": "qual-001",
+      "series": "certificates",
+      "series_title": {
+        "zh": "资质证书",
+        "en": "Qualifications",
+        "es": "Certificados",
+        "de": "Zertifikate"
+      },
+      "tags": [
+        "certificates"
+      ],
+      "cover": "assets/products/qual-001/cover.jpg",
+      "title": {
+        "zh": "公司资质与证书",
+        "en": "Company Qualifications & Certificates",
+        "es": "Certificados y Cualificaciones",
+        "de": "Unternehmenszertifikate"
+      },
+      "sub": {
+        "zh": "税务登记证、特种设备许可、型式试验证书等",
+        "en": "Tax registration, special equipment licenses, type test certificates, etc.",
+        "es": "Registro fiscal, licencias de equipos especiales, certificados de prueba de tipo, etc.",
+        "de": "Steuerregistrierung, Genehmigungen, Typprüfzeugnisse usw."
+      },
+      "images": [
+        "assets/products/qual-001/1.jpg",
+        "assets/products/qual-001/2.jpg",
+        "assets/products/qual-001/3.jpg",
+        "assets/products/qual-001/4.jpg",
+        "assets/products/qual-001/5.jpg",
+        "assets/products/qual-001/6.jpg",
+        "assets/products/qual-001/7.jpg"
+      ],
+      "details": {
+        "zh": "本页面展示公司部分资质证书扫描件。如需原件或更完整的资料，请联系邮箱/WhatsApp。",
+        "en": "This page shows scans of selected certificates. Contact us for originals or a complete documentation set.",
+        "es": "Esta página muestra escaneos de algunos certificados. Contáctenos para originales o documentación completa.",
+        "de": "Diese Seite zeigt Scans ausgewählter Zertifikate. Kontaktieren Sie uns für Originale oder ein vollständiges Dokumentationspaket."
+      }
     }
   ]
 }

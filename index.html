@@ -25,6 +25,8 @@
     .brand{display:flex;gap:10px;align-items:center}
     .brand a{color:var(--text);text-decoration:none;font-weight:900;letter-spacing:.3px}
     .brand small{color:var(--muted);font-weight:700}
+    .logoLink{display:flex;align-items:center;text-decoration:none}
+    .logoImg{height:34px;width:auto;display:block}
 
     .lang{display:inline-flex;gap:6px;align-items:center;background:#fff;border:1px solid var(--border);border-radius:999px;padding:6px}
     .lang button{appearance:none;border:none;cursor:pointer;padding:6px 10px;border-radius:999px;color:var(--muted);background:transparent;font-weight:700}
@@ -75,7 +77,9 @@
 <body>
   <header>
     <div class="brand">
-      <a href="./" id="brandName">Wuxing Valve</a>
+      <a href="./" class="logoLink" aria-label="Home">
+        <img src="assets/logo.png" alt="Wuxing Valve" class="logoImg">
+      </a>
       <small id="brandSub">Industrial Valves</small>
     </div>
 
@@ -83,7 +87,7 @@
       <button data-lang="zh">ZH</button>
       <button data-lang="en">EN</button>
       <button data-lang="es">ES</button>
-        <button data-lang="de">DE</button>
+      <button data-lang="de">DE</button>
     </div>
   </header>
 
@@ -104,7 +108,10 @@
 
   <div class="cookie-wrap" id="cookieWrap" aria-live="polite">
     <div class="cookie-bar">
-      <p id="cookieText"></p>
+      <p id="cookieText">
+        We use cookies (only Google Analytics) to understand traffic and improve our site. You can accept or reject non-essential cookies.
+        See our <a href="/privacy.html" target="_blank" rel="noopener">Privacy Notice</a>.
+      </p>
       <div class="cookie-actions">
         <button class="cookie-reject" id="cookieReject">Reject</button>
         <button class="cookie-accept" id="cookieAccept">Accept</button>
@@ -113,315 +120,324 @@
   </div>
 
   <script>
-    /* ---------- i18n ---------- */
-    const I18N = {
-      zh:{
-        brandSub:'工业阀门 · 外贸供应',
-        title:'阀门产品展示',
-        sub:'Wuxing Valve 提供工业阀门产品与定制服务，支持 OEM/ODM、现货与项目配套。欢迎询盘获取参数表、材质/标准、测试报告与交期。',
-        email:'邮件',whats:'WhatsApp',phone:'电话',wechat:'微信',
-        all:'全部',
-        hintNoJson:'未找到 products.json。请把 products.json 上传到仓库根目录（与 index.html 同级）。',
-        hintEmpty:'products.json 读取成功，但没有产品数据。',
-        hintImg:'部分图片加载失败。请确认图片路径是 assets/products/<id>/cover.jpg，并且文件名大小写一致。'
-        fertilizer:"化肥用",
-        cookieMsg:"我们使用 Cookie（仅 Google Analytics）来了解访问情况并改进网站。你可以接受或拒绝非必要 Cookie。查看我们的{privacy}。",
-        cookieAccept:"接受",
-        cookieReject:"拒绝",
-        privacyLink:"隐私声明"
-      }
-      en:{
-        brandSub:'Industrial Valves · Supply',
-        title:'Valve Products',
-        sub:'Wuxing Valve supplies industrial valves with OEM/ODM, RTS and project support. Contact us for specs, materials/standards, test reports and lead time.',
-        email:'Email',whats:'WhatsApp',phone:'Phone',wechat:'WeChat',
-        all:'All',
-        hintNoJson:'products.json not found. Upload it to the repo root (same level as index.html).',
-        hintEmpty:'products.json loaded, but no products found.',
-        hintImg:'Some images failed to load. Ensure cover paths are like assets/products/<id>/cover.jpg and filenames match case.'
-        fertilizer:"Fertilizer Service",
-        cookieMsg:"We use cookies (only Google Analytics) to understand traffic and improve our site. You can accept or reject non-essential cookies. See our {privacy}.",
-        cookieAccept:"Accept",
-        cookieReject:"Reject",
-        privacyLink:"Privacy Notice"
-      }
-es:{
-  brandSub:'Válvulas industriales · Suministro',
-  title:'Productos de Válvulas',
-  sub:'Wuxing Valve suministra válvulas industriales con OEM/ODM, RTS y soporte para proyectos. Contáctenos para fichas técnicas, materiales/estándares, informes de prueba y plazo de entrega.',
-  email:'Correo',whats:'WhatsApp',phone:'Teléfono',wechat:'WeChat',
-  all:'Todo',
-  fertilizer:'Servicio para Fertilizantes',
-  hintNoJson:'No se encontró products.json. Cárguelo en la raíz del repositorio (al mismo nivel que index.html).',
-  hintEmpty:'products.json se cargó, pero no hay productos.',
-  hintImg:'Algunas imágenes no se pudieron cargar. Verifique rutas como assets/products/<id>/cover.jpg y que el nombre coincida (mayúsculas/minúsculas).',
-  cookieMsg:'Usamos cookies (solo Google Analytics) para entender el tráfico y mejorar el sitio. Puedes aceptar o rechazar cookies no esenciales. Consulta nuestra {privacy}.',
-  cookieAccept:'Aceptar',
-  cookieReject:'Rechazar',
-  privacyLink:'Política de Privacidad'
-},      de:{
-        brandSub:'Industrieventile · Supply',
-        title:'Ventil-Produkte',
-        sub:'Wuxing Valve liefert Industrieventile mit OEM/ODM, Lagerware und Projekt-Support. Kontaktieren Sie uns für Spezifikationen, Materialien/Normen, Prüfberichte und Lieferzeit.',
-        email:'E-Mail',whats:'WhatsApp',phone:'Telefon',wechat:'WeChat',
-        all:'Alle',
-        hintNoJson:'products.json nicht gefunden. Bitte im Repo-Root hochladen (gleiche Ebene wie index.html).',
-        hintEmpty:'products.json geladen, aber keine Produkte gefunden.',
-        hintImg:'Einige Bilder konnten nicht geladen werden. Pfade wie assets/products/<id>/cover.jpg verwenden und Groß-/Kleinschreibung beachten.'
-        fertilizer:"Düngerindustrie",
-        cookieMsg:"Wir verwenden Cookies (nur Google Analytics), um den Traffic zu verstehen und unsere Website zu verbessern. Du kannst nicht notwendige Cookies akzeptieren oder ablehnen. Siehe {privacy}.",
-        cookieAccept:"Akzeptieren",
-        cookieReject:"Ablehnen",
-        privacyLink:"Datenschutzhinweis"
-      }
-    };
+/* ---------- i18n ---------- */
+const I18N = {
+  zh:{
+    brandSub:'工业阀门 · 外贸供应',
+    title:'产品展示',
+    sub:'Wuxing Valve 提供工业阀门产品与定制服务，支持 OEM/ODM、现货与项目配套。欢迎询盘获取参数表、材质/标准、测试报告与交期。',
+    email:'邮件',whats:'WhatsApp',phone:'电话',wechat:'微信',
+    all:'全部',
+    fertilizer:'化肥用',
+    certificates:'资质证书',
+    hintNoJson:'未找到 products.json。请把 products.json 上传到仓库根目录（与 index.html 同级）。',
+    hintEmpty:'products.json 读取成功，但没有产品数据。',
+    hintImg:'部分图片加载失败。请确认图片路径是 assets/products/<id>/cover.jpg，并且文件名大小写一致。',
+    cookieMsg:'我们使用 Google Analytics 来了解访问情况并改进网站。英文/西语/德语页面将征得同意后再收集。'
+  },
+  en:{
+    brandSub:'Industrial Valves · Supply',
+    title:'Products',
+    sub:'Wuxing Valve supplies industrial valves with OEM/ODM, RTS and project support. Contact us for specs, materials/standards, test reports and lead time.',
+    email:'Email',whats:'WhatsApp',phone:'Phone',wechat:'WeChat',
+    all:'All',
+    fertilizer:'Fertilizer Service',
+    certificates:'Qualifications',
+    hintNoJson:'products.json not found. Upload it to the repo root (same level as index.html).',
+    hintEmpty:'products.json loaded, but no products found.',
+    hintImg:'Some images failed to load. Ensure cover paths are like assets/products/<id>/cover.jpg and filenames match case.',
+    cookieMsg:'We use cookies (only Google Analytics) to understand traffic and improve our site. You can accept or reject non-essential cookies. See our {privacy}.',
+    cookieAccept:'Accept',
+    cookieReject:'Reject',
+    privacyLink:'Privacy Notice'
+  },
+  es:{
+    brandSub:'Válvulas industriales · Suministro',
+    title:'Productos',
+    sub:'Wuxing Valve suministra válvulas industriales con OEM/ODM, RTS y soporte para proyectos. Contáctenos para fichas técnicas, materiales/estándares, informes de prueba y plazo de entrega.',
+    email:'Correo',whats:'WhatsApp',phone:'Teléfono',wechat:'WeChat',
+    all:'Todo',
+    fertilizer:'Servicio para Fertilizantes',
+    certificates:'Certificados',
+    hintNoJson:'No se encontró products.json. Cárguelo en la raíz del repositorio (al mismo nivel que index.html).',
+    hintEmpty:'products.json se cargó, pero no hay productos.',
+    hintImg:'Algunas imágenes no se pudieron cargar. Verifique rutas como assets/products/<id>/cover.jpg y que el nombre coincida (mayúsculas/minúsculas).',
+    cookieMsg:'Usamos cookies (solo Google Analytics) para entender el tráfico y mejorar el sitio. Puedes aceptar o rechazar cookies no esenciales. Consulta nuestra {privacy}.',
+    cookieAccept:'Aceptar',
+    cookieReject:'Rechazar',
+    privacyLink:'Política de Privacidad'
+  },
+  de:{
+    brandSub:'Industrieventile · Supply',
+    title:'Produkte',
+    sub:'Wuxing Valve liefert Industrieventile mit OEM/ODM, Lagerware und Projekt-Support. Kontaktieren Sie uns für Spezifikationen, Materialien/Normen, Prüfberichte und Lieferzeit.',
+    email:'E-Mail',whats:'WhatsApp',phone:'Telefon',wechat:'WeChat',
+    all:'Alle',
+    fertilizer:'Düngerindustrie',
+    certificates:'Zertifikate',
+    hintNoJson:'products.json nicht gefunden. Bitte im Repo-Root hochladen (gleiche Ebene wie index.html).',
+    hintEmpty:'products.json geladen, aber keine Produkte gefunden.',
+    hintImg:'Einige Bilder konnten nicht geladen werden. Pfade wie assets/products/<id>/cover.jpg verwenden und Groß-/Kleinschreibung beachten.',
+    cookieMsg:'Wir verwenden Cookies (nur Google Analytics), um den Traffic zu verstehen und unsere Website zu verbessern. Du kannst nicht notwendige Cookies akzeptieren oder ablehnen. Siehe {privacy}.',
+    cookieAccept:'Akzeptieren',
+    cookieReject:'Ablehnen',
+    privacyLink:'Datenschutzhinweis'
+  }
+};
 
-    const qs = new URLSearchParams(location.search);
-    const currentLang = (qs.get('lang') || localStorage.getItem('lang') || 'zh').toLowerCase();
-    localStorage.setItem('lang', currentLang);
-    const t = I18N[currentLang] || I18N.zh;
+const qs = new URLSearchParams(location.search);
+const currentLang = (qs.get('lang') || localStorage.getItem('lang') || 'zh').toLowerCase();
+localStorage.setItem('lang', currentLang);
+const t = I18N[currentLang] || I18N.zh;
 
-    document.getElementById('brandSub').textContent = t.brandSub;
-    document.getElementById('heading').textContent = t.title;
-    document.getElementById('sub').textContent = t.sub;
+// Tag filter: ?tag=fertilizer
+const currentTag = (qs.get('tag') || '').toLowerCase();
+let filterMode = currentTag ? 'tag' : 'series';
 
-    [...document.querySelectorAll('#langSwitcher button')].forEach(b=>{
-      if(b.dataset.lang===currentLang) b.classList.add('active');
-      b.onclick=()=>{
-        const lang=b.dataset.lang;localStorage.setItem('lang',lang);
-        const url=new URL(location.href);url.searchParams.set('lang',lang);location.href=url.toString();
-      };
-    });
+document.getElementById('brandSub').textContent = t.brandSub;
+document.getElementById('heading').textContent = t.title;
+document.getElementById('sub').textContent = t.sub;
 
-    /* ---------- contacts (edit here) ---------- */
-    const CONTACT={email:'wengandy128@gmail.com',whatsapp:'+86 15888791812',phone:'+86 15888791812',wechat:'15888791812'};
-    document.getElementById('contactBar').innerHTML=`
-      <a href="mailto:${CONTACT.email}">📧 ${t.email}: ${CONTACT.email}</a>
-      <a href="https://wa.me/${CONTACT.whatsapp.replace(/[^0-9]/g,'')}" target="_blank" rel="noopener">💬 ${t.whats}</a>
-      <a href="tel:${CONTACT.phone.replace(/\s/g,'')}">📞 ${t.phone}: ${CONTACT.phone}</a>
-      <span>🟩 ${t.wechat}: ${CONTACT.wechat}</span>
-    `;
+[...document.querySelectorAll('#langSwitcher button')].forEach(b=>{
+  if(b.dataset.lang===currentLang) b.classList.add('active');
+  b.onclick=()=>{
+    const lang=b.dataset.lang;localStorage.setItem('lang',lang);
+    const url=new URL(location.href);
+    url.searchParams.set('lang',lang);
+    location.href=url.toString();
+  };
+});
 
-    /* ---------- cookie consent + GA (optional) ---------- */
-    const GA_ID = 'G-1T6921REMX'; // TODO: replace with your GA4 id
-    function loadGA(){
-      if(GA_ID==='G-REPLACE_ME') return; // do nothing until set
-      if(window.__gaLoaded) return;
-      window.__gaLoaded = true;
-      const s=document.createElement('script');
-      s.async=true; s.src=`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
-      document.head.appendChild(s);
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){ dataLayer.push(arguments); }
-      window.gtag = gtag;
-      gtag('js', new Date());
-      gtag('config', GA_ID);
-    }
-    function disableGA(){ if(GA_ID!=='G-REPLACE_ME') window['ga-disable-'+GA_ID] = true; }
+/* ---------- contacts (edit here) ---------- */
+const CONTACT={email:'wengandy128@gmail.com',whatsapp:'+86 15888791812',phone:'+86 15888791812',wechat:'15888791812'};
+document.getElementById('contactBar').innerHTML=`
+  <a href="mailto:${CONTACT.email}">📧 ${t.email}: ${CONTACT.email}</a>
+  <a href="https://wa.me/${CONTACT.whatsapp.replace(/[^0-9]/g,'')}" target="_blank" rel="noopener">💬 ${t.whats}</a>
+  <a href="tel:${CONTACT.phone.replace(/\s/g,'')}">📞 ${t.phone}: ${CONTACT.phone}</a>
+  <span>🟩 ${t.wechat}: ${CONTACT.wechat}</span>
+`;
 
-    // Localize cookie banner text/buttons
-const cookieP = document.getElementById('cookieText');
-const privacyA = `<a href="/privacy.html" target="_blank" rel="noopener">${t.privacyLink}</a>`;
-if(cookieP){
-  cookieP.innerHTML = (t.cookieMsg || '').replace('{privacy}', privacyA);
+/* ---------- cookie consent + GA (optional) ---------- */
+const GA_ID = 'G-1T6921REMX'; // your GA4 id
+function loadGA(){
+  if(!GA_ID || GA_ID==='G-REPLACE_ME') return;
+  if(window.__gaLoaded) return;
+  window.__gaLoaded = true;
+  const s=document.createElement('script');
+  s.async=true; s.src=`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  window.gtag = gtag;
+  gtag('js', new Date());
+  gtag('config', GA_ID);
 }
-const btnA = document.getElementById('cookieAccept');
-const btnR = document.getElementById('cookieReject');
-if(btnA) btnA.textContent = t.cookieAccept || 'Accept';
-if(btnR) btnR.textContent = t.cookieReject || 'Reject';
+function disableGA(){ if(GA_ID && GA_ID!=='G-REPLACE_ME') window['ga-disable-'+GA_ID] = true; }
 
-    const consentKey='cookieConsent:v1';
-    const saved = localStorage.getItem(consentKey);
-    if(currentLang==='zh'){
-      loadGA();
-    }else{
-      const wrap = document.getElementById('cookieWrap');
-      function show(){ wrap.style.display='block'; }
-      function hide(){ wrap.style.display='none'; }
+// Localize cookie banner only for EN/ES/DE
+const consentKey='cookieConsent:v1';
+const saved = localStorage.getItem(consentKey);
 
-      if(!saved){
-        disableGA(); show();
-      }else{
-        try{
-          const st = JSON.parse(saved);
-          if(st.status==='accepted') loadGA(); else disableGA();
-        }catch{ disableGA(); }
-      }
-      document.getElementById('cookieAccept').onclick=()=>{
-        localStorage.setItem(consentKey, JSON.stringify({status:'accepted',ts:Date.now()}));
-        hide(); loadGA();
-      };
-      document.getElementById('cookieReject').onclick=()=>{
-        localStorage.setItem(consentKey, JSON.stringify({status:'rejected',ts:Date.now()}));
-        hide(); disableGA();
-      };
-    }
+if(currentLang==='zh'){
+  // Chinese: load GA without notice
+  loadGA();
+}else{
+  const wrap = document.getElementById('cookieWrap');
+  const cookieP = document.getElementById('cookieText');
+  const btnA = document.getElementById('cookieAccept');
+  const btnR = document.getElementById('cookieReject');
 
-    /* ---------- helpers ---------- */
-    function pickLangText(v){
-      if(!v) return '';
-      if(typeof v === 'string') return v;
-      return v[currentLang] || v.zh || v.en || v.es || v.de || '';
-    }
+  // Set localized strings
+  const privacyA = `<a href="/privacy.html" target="_blank" rel="noopener">${(t.privacyLink||'Privacy')}</a>`;
+  if(cookieP){
+    cookieP.innerHTML = (t.cookieMsg || '').replace('{privacy}', privacyA);
+  }
+  if(btnA) btnA.textContent = t.cookieAccept || 'Accept';
+  if(btnR) btnR.textContent = t.cookieReject || 'Reject';
 
-    async function fetchJSON(url){
-      try{
-        const r = await fetch(url, {cache:'no-store'});
-        if(r.ok) return await r.json();
-      }catch(e){}
-      return null;
-    }
+  function show(){ wrap.style.display='block'; }
+  function hide(){ wrap.style.display='none'; }
 
-    function imgFallback(el){
-      el.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(
-        `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600">
-          <rect width="100%" height="100%" fill="#f1f3f5"/>
-          <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
-            fill="#9aa0a6" font-family="Arial" font-size="20">Image not found</text>
-        </svg>`
-      );
-    }
+  if(!saved){
+    disableGA(); show();
+  }else{
+    try{
+      const st = JSON.parse(saved);
+      if(st.status==='accepted') loadGA(); else disableGA();
+    }catch{ disableGA(); show(); }
+  }
+  btnA.onclick=()=>{
+    localStorage.setItem(consentKey, JSON.stringify({status:'accepted',ts:Date.now()}));
+    hide(); loadGA();
+  };
+  btnR.onclick=()=>{
+    localStorage.setItem(consentKey, JSON.stringify({status:'rejected',ts:Date.now()}));
+    hide(); disableGA();
+  };
+}
 
-    let ALL = [];
-    let currentSeries = 'all';
+/* ---------- helpers ---------- */
+function pickLangText(v){
+  if(!v) return '';
+  if(typeof v === 'string') return v;
+  return v[currentLang] || v.zh || v.en || v.es || v.de || '';
+}
 
-    function renderFilters(seriesList){
+async function fetchJSON(url){
+  try{
+    const r = await fetch(url, {cache:'no-store'});
+    if(r.ok) return await r.json();
+  }catch(e){}
+  return null;
+}
+
+function imgFallback(el){
+  el.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600">
+      <rect width="100%" height="100%" fill="#f1f3f5"/>
+      <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+        fill="#9aa0a6" font-family="Arial" font-size="20">Image not found</text>
+    </svg>`
+  );
+}
+
+let ALL = [];
+let currentSeries = 'all';
+
+function setURL(params){
+  const url = new URL(location.href);
+  for(const [k,v] of Object.entries(params)){
+    if(v===null) url.searchParams.delete(k);
+    else url.searchParams.set(k,v);
+  }
+  url.searchParams.set('lang', currentLang);
+  location.href = url.toString();
+}
+
+function renderFilters(seriesList){
   const box = document.getElementById('filters');
   box.innerHTML = '';
 
-  const setUrl = ()=>{
-    const url = new URL(location.href);
-    url.searchParams.set('lang', currentLang);
-    if(filterMode==='tag' && currentTag){
-      url.searchParams.set('tag', currentTag);
-    }else{
-      url.searchParams.delete('tag');
-    }
-    history.replaceState(null,'',url.toString());
-  };
-
-  const mkSeries = (key, label)=>{
+  const mk = (label, isActive, onclick)=>{
     const b = document.createElement('button');
-    const active = (filterMode==='series' && key===currentSeries);
-    b.className = 'pill' + (active ? ' active':'');
+    b.className = 'pill' + (isActive ? ' active':'');
     b.textContent = label;
-    b.onclick = ()=>{
-      filterMode='series';
-      currentSeries = key;
-      setUrl();
-      renderFilters(seriesList);
-      renderGrid();
-    };
+    b.onclick = onclick;
     box.appendChild(b);
   };
 
-  const mkTag = (tagKey, label)=>{
-    const b = document.createElement('button');
-    const active = (filterMode==='tag' && currentTag===tagKey);
-    b.className = 'pill' + (active ? ' active':'');
-    b.textContent = label;
-    b.onclick = ()=>{
-      filterMode='tag';
-      currentTag = tagKey;
-      setUrl();
-      renderFilters(seriesList);
-      renderGrid();
-    };
-    box.appendChild(b);
-  };
+  // All
+  mk(t.all, filterMode==='series' && currentSeries==='all', ()=>{
+    filterMode='series'; currentSeries='all';
+    setURL({tag:null});
+  });
 
-  mkSeries('all', t.all);
-  mkTag('fertilizer', t.fertilizer);
+  // Fertilizer column (tag)
+  mk(t.fertilizer, filterMode==='tag' && currentTag==='fertilizer', ()=>{
+    filterMode='tag';
+    setURL({tag:'fertilizer'});
+  });
 
+  // Series pills
   seriesList.forEach(s=>{
-        const label = pickLangText(s.series_title) || s.series;
-        mk(s.series, label);
-      });
-    }
+    const label = pickLangText(s.series_title) || s.series;
+    mk(label, filterMode==='series' && s.series===currentSeries, ()=>{
+      filterMode='series';
+      currentSeries = s.series;
+      setURL({tag:null});
+    });
+  });
+}
 
-    function renderGrid(){
-      const grid = document.getElementById('grid');
-      const hint = document.getElementById('hintBox');
-      hint.style.display='none'; hint.textContent='';
-      grid.innerHTML = '';
+function filterItems(){
+  if(filterMode==='tag' && currentTag){
+    return ALL.filter(p => (p.tags||[]).map(x=>String(x).toLowerCase()).includes(currentTag));
+  }
+  return currentSeries==='all' ? ALL : ALL.filter(p=>p.series===currentSeries);
+}
 
-      let items = ALL;
-      if(filterMode==='tag' && currentTag){
-        items = ALL.filter(p => (p.tags||[]).includes(currentTag));
-      }else{
-        items = (currentSeries==='all') ? ALL : ALL.filter(p=>p.series===currentSeries);
-      }
-      if(!items.length){
-        hint.style.display='block';
-        hint.textContent = t.hintEmpty;
-        return;
-      }
+function renderGrid(){
+  const grid = document.getElementById('grid');
+  const hint = document.getElementById('hintBox');
+  hint.style.display='none'; hint.textContent='';
+  grid.innerHTML = '';
 
-      let imgError = 0;
-      for(const p of items){
-        const title = pickLangText(p.title) || p.id;
-        const desc  = pickLangText(p.sub) || '';
-        const cover = p.cover || '';
-        const badge = (pickLangText(p.series_title) || p.series || '').slice(0,12) || currentLang.toUpperCase();
+  const items = filterItems();
+  if(!items.length){
+    hint.style.display='block';
+    hint.textContent = t.hintEmpty;
+    return;
+  }
 
-        const a = document.createElement('a');
-        a.className = 'cardlink';
-        const u = new URL('product.html', location.href);
-        u.searchParams.set('id', p.id);
-        u.searchParams.set('lang', currentLang);
-        a.href = u.toString();
+  let imgError = 0;
+  for(const p of items){
+    const title = pickLangText(p.title) || p.id;
+    const desc  = pickLangText(p.sub) || '';
+    const cover = p.cover || '';
+    const badge = (pickLangText(p.series_title) || p.series || '').slice(0,12) || currentLang.toUpperCase();
 
-        a.innerHTML = `<article class="card">
-          <img class="thumb" src="${cover}" alt="${title}">
-          <div class="body">
-            <div class="title">${title}</div>
-            <p class="desc">${desc}</p>
-          </div>
-          <span class="badge">${badge}</span>
-        </article>`;
+    const a = document.createElement('a');
+    a.className = 'cardlink';
+    const u = new URL('product.html', location.href);
+    u.searchParams.set('id', p.id);
+    u.searchParams.set('lang', currentLang);
+    a.href = u.toString();
 
-        const img = a.querySelector('img.thumb');
-        img.onerror = ()=>{ imgError++; imgFallback(img); };
-        if(!cover) img.onerror();
+    a.innerHTML = `<article class="card">
+      <img class="thumb" src="${cover}" alt="${title}">
+      <div class="body">
+        <div class="title">${title}</div>
+        <p class="desc">${desc}</p>
+      </div>
+      <span class="badge">${badge}</span>
+    </article>`;
 
-        grid.appendChild(a);
-      }
+    const img = a.querySelector('img.thumb');
+    img.onerror = ()=>{ imgError++; imgFallback(img); };
+    if(!cover) img.onerror();
 
-      if(imgError >= 2){
-        hint.style.display='block';
-        hint.textContent = t.hintImg;
-      }
-    }
+    grid.appendChild(a);
+  }
 
-    async function init(){
-      const data = await fetchJSON('products.json') || await fetchJSON('/products.json') || await fetchJSON('./products.json');
-      if(!data){
-        const hint = document.getElementById('hintBox');
-        hint.style.display='block';
-        hint.textContent = t.hintNoJson;
-        return;
-      }
-      ALL = Array.isArray(data.products) ? data.products : (Array.isArray(data) ? data : []);
-      if(!ALL.length){
-        const hint = document.getElementById('hintBox');
-        hint.style.display='block';
-        hint.textContent = t.hintEmpty;
-        return;
-      }
+  if(imgError >= 2){
+    hint.style.display='block';
+    hint.textContent = t.hintImg;
+  }
+}
 
-      // unique series list (preserve first title)
-      const map = new Map();
-      for(const p of ALL){
-        if(!p.series) continue;
-        if(!map.has(p.series)) map.set(p.series, {series:p.series, series_title:p.series_title});
-      }
-      const seriesList = [...map.values()];
-      renderFilters(seriesList);
-      renderGrid();
-    }
+async function init(){
+  const data = await fetchJSON('products.json') || await fetchJSON('/products.json') || await fetchJSON('./products.json');
+  if(!data){
+    const hint = document.getElementById('hintBox');
+    hint.style.display='block';
+    hint.textContent = t.hintNoJson;
+    return;
+  }
+  ALL = Array.isArray(data.products) ? data.products : (Array.isArray(data) ? data : []);
+  if(!ALL.length){
+    const hint = document.getElementById('hintBox');
+    hint.style.display='block';
+    hint.textContent = t.hintEmpty;
+    return;
+  }
 
-    init();
-    document.getElementById('y').textContent=new Date().getFullYear();
+  // unique series list (preserve first title)
+  const map = new Map();
+  for(const p of ALL){
+    if(!p.series) continue;
+    if(!map.has(p.series)) map.set(p.series, {series:p.series, series_title:p.series_title});
+  }
+  const seriesList = [...map.values()];
+  renderFilters(seriesList);
+
+  // if URL came with ?tag=..., ensure mode is tag
+  if(currentTag){ filterMode='tag'; }
+
+  renderGrid();
+}
+
+init();
+document.getElementById('y').textContent=new Date().getFullYear();
   </script>
 </body>
 </html>
