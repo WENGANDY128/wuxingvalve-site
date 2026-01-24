@@ -58,6 +58,23 @@
     .paramTable td,.paramTable th{border:1px solid var(--line);padding:8px 10px;font-size:14px;vertical-align:middle}
     .paramTable .firstRow td{font-weight:800;background:#f9fafb}
 
+  
+    /* Contact panel: sticky + compact on scroll */
+    .panel{position:sticky; top:16px; align-self:flex-start; transition:transform .2s ease, padding .2s ease;}
+    .panel.compact .panelPad{padding:12px;}
+    .panel.compact #contactTitle{margin-bottom:6px; font-size:14px;}
+    .panel.compact .chip{padding:8px 10px; border-radius:12px;}
+    .panel.compact .chip small{display:none;}
+    .panel.compact .chip span:last-child{opacity:.8;}
+
+    /* Params tables */
+    .paramsBlock{margin-top:16px;}
+    .paramsBlock h2,.paramsBlock h3{margin:16px 0 10px;font-size:16px;}
+    .paramsBlock .tableWrap{overflow:auto;border:1px solid var(--line);border-radius:16px;background:#fff;}
+    .paramsBlock table{width:100% !important; max-width:100% !important; border-collapse:collapse !important;}
+    .paramsBlock td,.paramsBlock th{border:1px solid var(--line) !important; padding:10px 12px; vertical-align:top; font-size:13px; line-height:1.35;}
+    .paramsBlock .paramTable td{white-space:normal;}
+
   </style>
 </head>
 <body>
@@ -103,15 +120,15 @@
         </div>
       </div>
 
-      <aside class="panel">
+      <aside class="panel" id="contactPanel">
         <div class="panelPad">
           <div style="font-weight:900;margin-bottom:10px" id="contactTitle">Contact</div>
           <div class="contactRow">
-            <a class="chip" href="mailto:wengandy128@gmail.com"><span><small>Email</small> wengandy128@gmail.com</span><span>↗</span></a>
-            <div class="chip"><span><small>WhatsApp</small></span><span>—</span></div>
-            <a class="chip" href="tel:+8615888791812"><span><small>Tel</small> +86 15888791812</span><span>↗</span></a>
-            <div class="chip"><span><small>WeChat</small> 15888791812</span><span>—</span></div>
-            <a class="chip" href="privacy.html"><span><small>Privacy</small></span><span>↗</span></a>
+            <a class="chip" href="mailto:wengandy128@gmail.com"><span><small data-i18n="email">Email</small> wengandy128@gmail.com</span><span>↗</span></a>
+            <div class="chip"><span><small data-i18n="whatsapp">WhatsApp</small></span><span>—</span></div>
+            <a class="chip" href="tel:+8615888791812"><span><small data-i18n="tel">Tel</small> +86 15888791812</span><span>↗</span></a>
+            <div class="chip"><span><small data-i18n="wechat">WeChat</small> 15888791812</span><span>—</span></div>
+            <a class="chip" href="privacy.html"><span><small data-i18n="privacy">Privacy</small></span><span>↗</span></a>
           </div>
         </div>
       </aside>
@@ -126,12 +143,93 @@
   const SUPPORTED = ["zh","en","es","de"];
 
   const I18N = {
-    back: { zh:"返回产品页", en:"Back to products", es:"Volver a productos", de:"Zurück zu Produkten" },
+back: { zh:"返回产品页", en:"Back to products", es:"Volver a productos", de:"Zurück zu Produkten" },
     contact: { zh:"联系", en:"Contact", es:"Contacto", de:"Kontakt" },
     notfound: { zh:"未找到该产品", en:"Product not found", es:"Producto no encontrado", de:"Produkt nicht gefunden" },
+    email: { zh:"邮箱", en:"Email", es:"Correo", de:"E‑Mail" },
+    whatsapp: { zh:"WhatsApp", en:"WhatsApp", es:"WhatsApp", de:"WhatsApp" },
+    tel: { zh:"电话", en:"Tel", es:"Tel", de:"Tel" },
+    wechat: { zh:"微信", en:"WeChat", es:"WeChat", de:"WeChat" },
+    privacy: { zh:"隐私", en:"Privacy", es:"Privacidad", de:"Datenschutz" },
+
   };
 
-  function getLang() {
+  const TERM_MAP = {
+    en: {
+      "性能规范":"Performance Specifications",
+      "主要零件材料":"Main Parts & Materials",
+      "主要结构尺寸、连接尺寸和重量":"Main Dimensions, Connections & Weight",
+      "型号":"Model",
+      "公称压力":"Nominal pressure",
+      "试验压力":"Test pressure",
+      "强度":"Shell",
+      "密封":"Seat",
+      "工作压力":"Working pressure",
+      "工作温度":"Working temperature",
+      "工作介质":"Service medium",
+      "零件名称":"Part name",
+      "材料":"Material",
+      "公称通径":"DN",
+      "尺 寸":"Dimensions",
+      "重量":"Weight",
+      "≤150摄氏度":"≤150°C",
+      "≤150℃":"≤150°C"
+    },
+    es: {
+      "性能规范":"Especificaciones de rendimiento",
+      "主要零件材料":"Materiales de piezas principales",
+      "主要结构尺寸、连接尺寸和重量":"Dimensiones, conexiones y peso",
+      "型号":"Modelo",
+      "公称压力":"Presión nominal",
+      "试验压力":"Presión de prueba",
+      "强度":"Cuerpo",
+      "密封":"Asiento",
+      "工作压力":"Presión de trabajo",
+      "工作温度":"Temperatura de trabajo",
+      "工作介质":"Medio",
+      "零件名称":"Pieza",
+      "材料":"Material",
+      "公称通径":"DN",
+      "尺 寸":"Dimensiones",
+      "重量":"Peso",
+      "≤150摄氏度":"≤150°C",
+      "≤150℃":"≤150°C"
+    },
+    de: {
+      "性能规范":"Leistungsdaten",
+      "主要零件材料":"Hauptteile & Werkstoffe",
+      "主要结构尺寸、连接尺寸和重量":"Hauptabmessungen, Anschlüsse & Gewicht",
+      "型号":"Typ",
+      "公称压力":"Nenndruck",
+      "试验压力":"Prüfdruck",
+      "强度":"Gehäuse",
+      "密封":"Dichtheit",
+      "工作压力":"Betriebsdruck",
+      "工作温度":"Betriebstemperatur",
+      "工作介质":"Medium",
+      "零件名称":"Bauteil",
+      "材料":"Werkstoff",
+      "公称通径":"DN",
+      "尺 寸":"Abmessungen",
+      "重量":"Gewicht",
+      "≤150摄氏度":"≤150°C",
+      "≤150℃":"≤150°C"
+    }
+  };
+
+  function translateHtmlByLang(htmlStr, lang){
+    if(!htmlStr || lang === "zh") return htmlStr;
+    const map = TERM_MAP[lang];
+    if(!map) return htmlStr;
+    // Replace longer tokens first
+    const keys = Object.keys(map).sort((a,b)=>b.length-a.length);
+    let out = htmlStr;
+    keys.forEach(k => { out = out.split(k).join(map[k]); });
+    return out;
+  }
+
+
+  functiontion getLang() {
     const u = new URL(location.href);
     const q = (u.searchParams.get("lang") || "").toLowerCase();
     const stored = (localStorage.getItem("lang") || "").toLowerCase();
@@ -164,6 +262,12 @@
     document.documentElement.lang = lang;
     document.getElementById("backText").textContent = I18N.back[lang] || I18N.back.en;
     document.getElementById("contactTitle").textContent = I18N.contact[lang] || I18N.contact.en;
+
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+      const key = el.getAttribute("data-i18n");
+      if (I18N[key]) el.textContent = I18N[key][lang] || I18N[key].en || el.textContent;
+    });
+
     const back = document.getElementById("backLink");
     back.href = `index.html?lang=${encodeURIComponent(lang)}`;
   }
@@ -203,9 +307,10 @@
   function renderParams(p, lang){
     const box = document.getElementById("params");
     if(!box) return;
-    // prefer HTML snippet (fast), fallback to empty
     const ph = p && p.params_html;
-    const html = (ph && (ph[lang] || ph.zh || ph.en)) || "";
+    // Use exact language if provided; otherwise fall back to zh and auto-translate key labels.
+    const raw = (ph && (ph[lang] || ph.zh || ph.en)) || "";
+    const html = translateHtmlByLang(raw, lang);
     box.innerHTML = html ? html : "";
   }
 
@@ -276,7 +381,17 @@ function enableLightbox(images, getActive) {
     b.addEventListener('click', () => setLang(b.dataset.lang));
   });
 
-  // init
+  
+  // contact panel compact on scroll
+  const contactPanel = document.getElementById("contactPanel");
+  function updateContactPanel(){
+    if(!contactPanel) return;
+    contactPanel.classList.toggle("compact", window.scrollY > 120);
+  }
+  window.addEventListener("scroll", updateContactPanel, { passive: true });
+  updateContactPanel();
+
+// init
   const lang = getLang();
   document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('active', b.dataset.lang===lang));
   render();
