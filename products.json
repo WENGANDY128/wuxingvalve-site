@@ -2,538 +2,1326 @@
   "products": [
     {
       "id": "fert-001",
-      "series": "fertilizer",
-      "series_title": {
-        "zh": "化肥用",
-        "en": "Fertilizer Service",
-        "es": "Servicio para Fertilizantes",
-        "de": "Düngerindustrie"
+      "family": "control",
+      "family_title": {
+        "zh": "控制/切断阀类",
+        "en": "Control & Isolation Valves",
+        "es": "Válvulas de control y aislamiento",
+        "de": "Regel- & Absperrarmaturen"
       },
-      "tags": [
-        "fertilizer"
-      ],
-      "cover": "assets/products/fert-001/cover.jpg",
       "title": {
-        "zh": "J L 47Y-160C 320C型角式平衡截止阀、节流阀（法兰式）",
-        "en": "J L 47 Y-160 C 320 C Angle Balanced Globe Valve / Throttling Valve(Flanged)",
-        "es": "J L 47 Y-160 C 320 C En ángulo Equilibrada Válvula de globo / Válvula de estrangulación(Con bridas)",
-        "de": "J L 47 Y-160 C 320 C Eck- ausgeglichenes Absperrventil / Drosselventil(Flansch)"
+        "zh": "JL47Y 角式平衡截止/节流阀（法兰式）",
+        "en": "JL47Y Angle Balanced Globe/Throttle Valve (Flanged)",
+        "es": "JL47Y Válvula de globo/estrangulación balanceada en ángulo (Bridas)",
+        "de": "JL47Y Winkel-Ausgleichs-Globe/Drosselventil (Flansch)"
       },
       "sub": {
-        "zh": "化肥工况 / 耐腐蚀",
-        "en": "Fertilizer service / Corrosion resistant",
-        "es": "Servicio para fertilizantes / resistente a la corrosión",
-        "de": "Düngerbetrieb / korrosionsbeständig"
-      }
+        "zh": "化肥工况 / 平衡结构 / 稳定调节",
+        "en": "Fertilizer duty / balanced design / stable throttling",
+        "es": "Servicio fertilizantes / diseño balanceado / estrangulación estable",
+        "de": "Düngemittelbetrieb / Ausgleichsdesign / stabile Drosselung"
+      },
+      "tags": [
+        "fertilizer",
+        "high_pressure",
+        "corrosive"
+      ],
+      "cover": "assets/products/fert-001/cover.jpg",
+      "images": [
+        "assets/products/fert-001/cover.jpg"
+      ],
+      "details": {
+        "zh": "可根据工况提供材质/连接/压力等级定制，支持出厂检验与测试报告。",
+        "en": "Customization available for material, ends and pressure rating. Factory inspection & test reports supported.",
+        "es": "Disponible personalización de material, extremos y clase de presión. Soportamos inspección en fábrica e informes de prueba.",
+        "de": "Anpassung von Werkstoff, Anschlüssen und Druckstufe möglich. Werksprüfung und Prüfberichte verfügbar."
+      },
+      "specs": [
+        {
+          "k": {
+            "zh": "连接",
+            "en": "Connection",
+            "es": "Conexión",
+            "de": "Anschluss"
+          },
+          "v": {
+            "zh": "法兰/对焊/螺纹（可选）",
+            "en": "Flanged / BW / Threaded (optional)",
+            "es": "Bridas / BW / Rosca (opcional)",
+            "de": "Flansch / BW / Gewinde (optional)"
+          }
+        },
+        {
+          "k": {
+            "zh": "材质",
+            "en": "Material",
+            "es": "Material",
+            "de": "Werkstoff"
+          },
+          "v": {
+            "zh": "不锈钢/合金钢/碳钢（可选）",
+            "en": "Stainless / alloy / carbon steel (optional)",
+            "es": "Inoxidable / aleado / acero al carbono (opcional)",
+            "de": "Edelstahl / legiert / Kohlenstoffstahl (optional)"
+          }
+        }
+      ]
     },
     {
       "id": "fert-002",
-      "series": "fertilizer",
-      "series_title": {
-        "zh": "化肥用",
-        "en": "Fertilizer Service",
-        "es": "Servicio para Fertilizantes",
-        "de": "Düngerindustrie"
+      "family": "control",
+      "family_title": {
+        "zh": "控制/切断阀类",
+        "en": "Control & Isolation Valves",
+        "es": "Válvulas de control y aislamiento",
+        "de": "Regel- & Absperrarmaturen"
       },
-      "tags": [
-        "fertilizer"
-      ],
-      "cover": "assets/products/fert-002/cover.jpg",
       "title": {
-        "zh": "（冲击手轮）角式截止阀、节流阀",
-        "en": "(Impact Handwheel) Angle Globe Valve / Throttling Valve",
-        "es": "(Impact Handwheel) En ángulo Válvula de globo / Válvula de estrangulación",
-        "de": "(Schlaghandrad) Eck- Absperrventil / Drosselventil"
+        "zh": "角式截止/节流阀（冲击手轮）",
+        "en": "Angle Globe/Throttle Valve (Impact Handwheel)",
+        "es": "Válvula de globo/estrangulación en ángulo (volante de impacto)",
+        "de": "Winkel-Globe/Drosselventil (Schlaghandrad)"
       },
       "sub": {
-        "zh": "化肥工况 / 耐腐蚀",
-        "en": "Fertilizer service / Corrosion resistant",
-        "es": "Servicio para fertilizantes / resistente a la corrosión",
-        "de": "Düngerbetrieb / korrosionsbeständig"
-      }
+        "zh": "化肥工况 / 便于快速启闭",
+        "en": "Fertilizer duty / quick operation",
+        "es": "Servicio fertilizantes / operación rápida",
+        "de": "Düngemittelbetrieb / schnelle Bedienung"
+      },
+      "tags": [
+        "fertilizer",
+        "high_pressure"
+      ],
+      "cover": "assets/products/fert-002/cover.jpg",
+      "images": [
+        "assets/products/fert-002/cover.jpg"
+      ],
+      "details": {
+        "zh": "可根据工况提供材质/连接/压力等级定制，支持出厂检验与测试报告。",
+        "en": "Customization available for material, ends and pressure rating. Factory inspection & test reports supported.",
+        "es": "Disponible personalización de material, extremos y clase de presión. Soportamos inspección en fábrica e informes de prueba.",
+        "de": "Anpassung von Werkstoff, Anschlüssen und Druckstufe möglich. Werksprüfung und Prüfberichte verfügbar."
+      },
+      "specs": [
+        {
+          "k": {
+            "zh": "连接",
+            "en": "Connection",
+            "es": "Conexión",
+            "de": "Anschluss"
+          },
+          "v": {
+            "zh": "法兰/对焊/螺纹（可选）",
+            "en": "Flanged / BW / Threaded (optional)",
+            "es": "Bridas / BW / Rosca (opcional)",
+            "de": "Flansch / BW / Gewinde (optional)"
+          }
+        },
+        {
+          "k": {
+            "zh": "材质",
+            "en": "Material",
+            "es": "Material",
+            "de": "Werkstoff"
+          },
+          "v": {
+            "zh": "不锈钢/合金钢/碳钢（可选）",
+            "en": "Stainless / alloy / carbon steel (optional)",
+            "es": "Inoxidable / aleado / acero al carbono (opcional)",
+            "de": "Edelstahl / legiert / Kohlenstoffstahl (optional)"
+          }
+        }
+      ]
     },
     {
       "id": "fert-003",
-      "series": "fertilizer",
-      "series_title": {
-        "zh": "化肥用",
-        "en": "Fertilizer Service",
-        "es": "Servicio para Fertilizantes",
-        "de": "Düngerindustrie"
+      "family": "ball",
+      "family_title": {
+        "zh": "球阀类",
+        "en": "Ball Valves",
+        "es": "Válvulas de bola",
+        "de": "Kugelhähne"
       },
-      "tags": [
-        "fertilizer"
-      ],
-      "cover": "assets/products/fert-003/cover.jpg",
       "title": {
         "zh": "BQ41F 夹套保温球阀",
-        "en": "BQ 41 F Jacketed Insulated Ball Valve",
-        "es": "BQ 41 F Con camisa térmica Válvula de bola",
-        "de": "BQ 41 F Mantel-/Isolier- Kugelhahn"
+        "en": "BQ41F Jacketed Insulated Ball Valve",
+        "es": "BQ41F Válvula de bola con camisa calefactora (jacket)",
+        "de": "BQ41F Kugelhahn mit Heizmantel (Jacket)"
       },
       "sub": {
-        "zh": "化肥工况 / 耐腐蚀",
-        "en": "Fertilizer service / Corrosion resistant",
-        "es": "Servicio para fertilizantes / resistente a la corrosión",
-        "de": "Düngerbetrieb / korrosionsbeständig"
-      }
+        "zh": "保温/夹套 / 防结晶堵塞",
+        "en": "Insulated/jacketed / anti-crystallization",
+        "es": "Aislada con camisa / anti-cristalización",
+        "de": "Isoliert/Heizmantel / gegen Kristallisation"
+      },
+      "tags": [
+        "fertilizer",
+        "insulated",
+        "corrosive"
+      ],
+      "cover": "assets/products/fert-003/cover.jpg",
+      "images": [
+        "assets/products/fert-003/cover.jpg"
+      ],
+      "details": {
+        "zh": "可根据工况提供材质/连接/压力等级定制，支持出厂检验与测试报告。",
+        "en": "Customization available for material, ends and pressure rating. Factory inspection & test reports supported.",
+        "es": "Disponible personalización de material, extremos y clase de presión. Soportamos inspección en fábrica e informes de prueba.",
+        "de": "Anpassung von Werkstoff, Anschlüssen und Druckstufe möglich. Werksprüfung und Prüfberichte verfügbar."
+      },
+      "specs": [
+        {
+          "k": {
+            "zh": "连接",
+            "en": "Connection",
+            "es": "Conexión",
+            "de": "Anschluss"
+          },
+          "v": {
+            "zh": "法兰/对焊/螺纹（可选）",
+            "en": "Flanged / BW / Threaded (optional)",
+            "es": "Bridas / BW / Rosca (opcional)",
+            "de": "Flansch / BW / Gewinde (optional)"
+          }
+        },
+        {
+          "k": {
+            "zh": "材质",
+            "en": "Material",
+            "es": "Material",
+            "de": "Werkstoff"
+          },
+          "v": {
+            "zh": "不锈钢/合金钢/碳钢（可选）",
+            "en": "Stainless / alloy / carbon steel (optional)",
+            "es": "Inoxidable / aleado / acero al carbono (opcional)",
+            "de": "Edelstahl / legiert / Kohlenstoffstahl (optional)"
+          }
+        }
+      ]
     },
     {
       "id": "fert-004",
-      "series": "fertilizer",
-      "series_title": {
-        "zh": "化肥用",
-        "en": "Fertilizer Service",
-        "es": "Servicio para Fertilizantes",
-        "de": "Düngerindustrie"
+      "family": "control",
+      "family_title": {
+        "zh": "控制/切断阀类",
+        "en": "Control & Isolation Valves",
+        "es": "Válvulas de control y aislamiento",
+        "de": "Regel- & Absperrarmaturen"
       },
-      "tags": [
-        "fertilizer"
-      ],
-      "cover": "assets/products/fert-004/cover.jpg",
       "title": {
-        "zh": "F J L 47 H Y 角式平衡截止阀、节流阀（方型）",
-        "en": "F J L 47 H Y Angle Balanced Globe Valve / Throttling Valve(Square-body)",
-        "es": "F J L 47 H Y En ángulo Equilibrada Válvula de globo / Válvula de estrangulación(Cuerpo cuadrado)",
-        "de": "F J L 47 H Y Eck- ausgeglichenes Absperrventil / Drosselventil(Quadratgehäuse)"
+        "zh": "FJL47HY 角式平衡截止/节流阀（方型）",
+        "en": "FJL47HY Angle Balanced Globe/Throttle Valve (Square Body)",
+        "es": "FJL47HY Válvula balanceada en ángulo (cuerpo cuadrado)",
+        "de": "FJL47HY Winkel-Ausgleichsventil (quadratisches Gehäuse)"
       },
       "sub": {
-        "zh": "化肥工况 / 耐腐蚀",
-        "en": "Fertilizer service / Corrosion resistant",
-        "es": "Servicio para fertilizantes / resistente a la corrosión",
-        "de": "Düngerbetrieb / korrosionsbeständig"
-      }
+        "zh": "化肥工况 / 方型阀体 / 易安装",
+        "en": "Fertilizer duty / square body / easy installation",
+        "es": "Servicio fertilizantes / cuerpo cuadrado / fácil instalación",
+        "de": "Düngemittelbetrieb / quadratisches Gehäuse / einfache Montage"
+      },
+      "tags": [
+        "fertilizer",
+        "high_pressure"
+      ],
+      "cover": "assets/products/fert-004/cover.jpg",
+      "images": [
+        "assets/products/fert-004/cover.jpg"
+      ],
+      "details": {
+        "zh": "可根据工况提供材质/连接/压力等级定制，支持出厂检验与测试报告。",
+        "en": "Customization available for material, ends and pressure rating. Factory inspection & test reports supported.",
+        "es": "Disponible personalización de material, extremos y clase de presión. Soportamos inspección en fábrica e informes de prueba.",
+        "de": "Anpassung von Werkstoff, Anschlüssen und Druckstufe möglich. Werksprüfung und Prüfberichte verfügbar."
+      },
+      "specs": [
+        {
+          "k": {
+            "zh": "连接",
+            "en": "Connection",
+            "es": "Conexión",
+            "de": "Anschluss"
+          },
+          "v": {
+            "zh": "法兰/对焊/螺纹（可选）",
+            "en": "Flanged / BW / Threaded (optional)",
+            "es": "Bridas / BW / Rosca (opcional)",
+            "de": "Flansch / BW / Gewinde (optional)"
+          }
+        },
+        {
+          "k": {
+            "zh": "材质",
+            "en": "Material",
+            "es": "Material",
+            "de": "Werkstoff"
+          },
+          "v": {
+            "zh": "不锈钢/合金钢/碳钢（可选）",
+            "en": "Stainless / alloy / carbon steel (optional)",
+            "es": "Inoxidable / aleado / acero al carbono (opcional)",
+            "de": "Edelstahl / legiert / Kohlenstoffstahl (optional)"
+          }
+        }
+      ]
     },
     {
       "id": "fert-005",
-      "series": "fertilizer",
-      "series_title": {
-        "zh": "化肥用",
-        "en": "Fertilizer Service",
-        "es": "Servicio para Fertilizantes",
-        "de": "Düngerindustrie"
+      "family": "control",
+      "family_title": {
+        "zh": "控制/切断阀类",
+        "en": "Control & Isolation Valves",
+        "es": "Válvulas de control y aislamiento",
+        "de": "Regel- & Absperrarmaturen"
       },
-      "tags": [
-        "fertilizer"
-      ],
-      "cover": "assets/products/fert-005/cover.jpg",
       "title": {
-        "zh": "F J L 947 H Y 型角式平衡截止阀、节流阀（方型）",
-        "en": "F J L 947 H Y Angle Balanced Globe Valve / Throttling Valve(Square-body)",
-        "es": "F J L 947 H Y En ángulo Equilibrada Válvula de globo / Válvula de estrangulación(Cuerpo cuadrado)",
-        "de": "F J L 947 H Y Eck- ausgeglichenes Absperrventil / Drosselventil(Quadratgehäuse)"
+        "zh": "FJL947HY 型角式平衡截止/节流阀（方型）",
+        "en": "FJL947HY Y-type Angle Balanced Globe/Throttle Valve (Square Body)",
+        "es": "FJL947HY Válvula balanceada en ángulo tipo Y (cuerpo cuadrado)",
+        "de": "FJL947HY Y-Typ Winkel-Ausgleichsventil (quadratisches Gehäuse)"
       },
       "sub": {
-        "zh": "化肥工况 / 耐腐蚀",
-        "en": "Fertilizer service / Corrosion resistant",
-        "es": "Servicio para fertilizantes / resistente a la corrosión",
-        "de": "Düngerbetrieb / korrosionsbeständig"
-      }
+        "zh": "化肥工况 / Y型流道 / 更低压降",
+        "en": "Fertilizer duty / Y-pattern / lower pressure drop",
+        "es": "Servicio fertilizantes / patrón Y / menor pérdida de carga",
+        "de": "Düngemittelbetrieb / Y-Bauform / geringerer Druckverlust"
+      },
+      "tags": [
+        "fertilizer",
+        "high_pressure"
+      ],
+      "cover": "assets/products/fert-005/cover.jpg",
+      "images": [
+        "assets/products/fert-005/cover.jpg"
+      ],
+      "details": {
+        "zh": "可根据工况提供材质/连接/压力等级定制，支持出厂检验与测试报告。",
+        "en": "Customization available for material, ends and pressure rating. Factory inspection & test reports supported.",
+        "es": "Disponible personalización de material, extremos y clase de presión. Soportamos inspección en fábrica e informes de prueba.",
+        "de": "Anpassung von Werkstoff, Anschlüssen und Druckstufe möglich. Werksprüfung und Prüfberichte verfügbar."
+      },
+      "specs": [
+        {
+          "k": {
+            "zh": "连接",
+            "en": "Connection",
+            "es": "Conexión",
+            "de": "Anschluss"
+          },
+          "v": {
+            "zh": "法兰/对焊/螺纹（可选）",
+            "en": "Flanged / BW / Threaded (optional)",
+            "es": "Bridas / BW / Rosca (opcional)",
+            "de": "Flansch / BW / Gewinde (optional)"
+          }
+        },
+        {
+          "k": {
+            "zh": "材质",
+            "en": "Material",
+            "es": "Material",
+            "de": "Werkstoff"
+          },
+          "v": {
+            "zh": "不锈钢/合金钢/碳钢（可选）",
+            "en": "Stainless / alloy / carbon steel (optional)",
+            "es": "Inoxidable / aleado / acero al carbono (opcional)",
+            "de": "Edelstahl / legiert / Kohlenstoffstahl (optional)"
+          }
+        }
+      ]
     },
     {
       "id": "fert-006",
-      "series": "fertilizer",
-      "series_title": {
-        "zh": "化肥用",
-        "en": "Fertilizer Service",
-        "es": "Servicio para Fertilizantes",
-        "de": "Düngerindustrie"
+      "family": "control",
+      "family_title": {
+        "zh": "控制/切断阀类",
+        "en": "Control & Isolation Valves",
+        "es": "Válvulas de control y aislamiento",
+        "de": "Regel- & Absperrarmaturen"
       },
-      "tags": [
-        "fertilizer"
-      ],
-      "cover": "assets/products/fert-006/cover.jpg",
       "title": {
-        "zh": "G J L 344 H Y 型蜗轮传动角式截止阀、节流阀",
-        "en": "G J L 344 H Y Worm-gear Operated Angle Globe Valve / Throttling Valve",
-        "es": "G J L 344 H Y Accionamiento por tornillo sinfín En ángulo Válvula de globo / Válvula de estrangulación",
-        "de": "G J L 344 H Y Schneckengetriebe Eck- Absperrventil / Drosselventil"
+        "zh": "GJL344HY 蜗轮传动角式截止/节流阀",
+        "en": "GJL344HY Worm-Gear Angle Globe/Throttle Valve",
+        "es": "GJL344HY Válvula en ángulo con reductor sinfín (globo/estrangulación)",
+        "de": "GJL344HY Winkel-Globe/Drosselventil mit Schneckengetriebe"
       },
       "sub": {
-        "zh": "化肥工况 / 耐腐蚀",
-        "en": "Fertilizer service / Corrosion resistant",
-        "es": "Servicio para fertilizantes / resistente a la corrosión",
-        "de": "Düngerbetrieb / korrosionsbeständig"
-      }
+        "zh": "蜗轮传动 / 大口径省力操作",
+        "en": "Worm gear / easy operation for large sizes",
+        "es": "Reductor sinfín / operación fácil en grandes diámetros",
+        "de": "Schneckengetriebe / leichte Bedienung bei großen Nennweiten"
+      },
+      "tags": [
+        "fertilizer",
+        "high_pressure"
+      ],
+      "cover": "assets/products/fert-006/cover.jpg",
+      "images": [
+        "assets/products/fert-006/cover.jpg"
+      ],
+      "details": {
+        "zh": "可根据工况提供材质/连接/压力等级定制，支持出厂检验与测试报告。",
+        "en": "Customization available for material, ends and pressure rating. Factory inspection & test reports supported.",
+        "es": "Disponible personalización de material, extremos y clase de presión. Soportamos inspección en fábrica e informes de prueba.",
+        "de": "Anpassung von Werkstoff, Anschlüssen und Druckstufe möglich. Werksprüfung und Prüfberichte verfügbar."
+      },
+      "specs": [
+        {
+          "k": {
+            "zh": "连接",
+            "en": "Connection",
+            "es": "Conexión",
+            "de": "Anschluss"
+          },
+          "v": {
+            "zh": "法兰/对焊/螺纹（可选）",
+            "en": "Flanged / BW / Threaded (optional)",
+            "es": "Bridas / BW / Rosca (opcional)",
+            "de": "Flansch / BW / Gewinde (optional)"
+          }
+        },
+        {
+          "k": {
+            "zh": "材质",
+            "en": "Material",
+            "es": "Material",
+            "de": "Werkstoff"
+          },
+          "v": {
+            "zh": "不锈钢/合金钢/碳钢（可选）",
+            "en": "Stainless / alloy / carbon steel (optional)",
+            "es": "Inoxidable / aleado / acero al carbono (opcional)",
+            "de": "Edelstahl / legiert / Kohlenstoffstahl (optional)"
+          }
+        }
+      ]
     },
     {
       "id": "fert-007",
-      "series": "fertilizer",
-      "series_title": {
-        "zh": "化肥用",
-        "en": "Fertilizer Service",
-        "es": "Servicio para Fertilizantes",
-        "de": "Düngerindustrie"
+      "family": "control",
+      "family_title": {
+        "zh": "控制/切断阀类",
+        "en": "Control & Isolation Valves",
+        "es": "Válvulas de control y aislamiento",
+        "de": "Regel- & Absperrarmaturen"
+      },
+      "title": {
+        "zh": "GJL44HY 截止阀",
+        "en": "GJL44HY Globe Valve",
+        "es": "Válvula de globo GJL44HY",
+        "de": "GJL44HY Durchgangs-Globeventil"
+      },
+      "sub": {
+        "zh": "通用截止 / 稳定密封",
+        "en": "General globe / reliable sealing",
+        "es": "Globo general / sellado fiable",
+        "de": "Allgemeines Globeventil / zuverlässige Dichtung"
       },
       "tags": [
         "fertilizer"
       ],
       "cover": "assets/products/fert-007/cover.jpg",
-      "title": {
-        "zh": "GJ L44H Y截止阀",
-        "en": "GJ L 44 H YGlobe Valve",
-        "es": "GJ L 44 H YVálvula de globo",
-        "de": "GJ L 44 H YAbsperrventil"
+      "images": [
+        "assets/products/fert-007/cover.jpg"
+      ],
+      "details": {
+        "zh": "可根据工况提供材质/连接/压力等级定制，支持出厂检验与测试报告。",
+        "en": "Customization available for material, ends and pressure rating. Factory inspection & test reports supported.",
+        "es": "Disponible personalización de material, extremos y clase de presión. Soportamos inspección en fábrica e informes de prueba.",
+        "de": "Anpassung von Werkstoff, Anschlüssen und Druckstufe möglich. Werksprüfung und Prüfberichte verfügbar."
       },
-      "sub": {
-        "zh": "化肥工况 / 耐腐蚀",
-        "en": "Fertilizer service / Corrosion resistant",
-        "es": "Servicio para fertilizantes / resistente a la corrosión",
-        "de": "Düngerbetrieb / korrosionsbeständig"
-      }
+      "specs": [
+        {
+          "k": {
+            "zh": "连接",
+            "en": "Connection",
+            "es": "Conexión",
+            "de": "Anschluss"
+          },
+          "v": {
+            "zh": "法兰/对焊/螺纹（可选）",
+            "en": "Flanged / BW / Threaded (optional)",
+            "es": "Bridas / BW / Rosca (opcional)",
+            "de": "Flansch / BW / Gewinde (optional)"
+          }
+        },
+        {
+          "k": {
+            "zh": "材质",
+            "en": "Material",
+            "es": "Material",
+            "de": "Werkstoff"
+          },
+          "v": {
+            "zh": "不锈钢/合金钢/碳钢（可选）",
+            "en": "Stainless / alloy / carbon steel (optional)",
+            "es": "Inoxidable / aleado / acero al carbono (opcional)",
+            "de": "Edelstahl / legiert / Kohlenstoffstahl (optional)"
+          }
+        }
+      ]
     },
     {
       "id": "fert-008",
-      "series": "fertilizer",
-      "series_title": {
-        "zh": "化肥用",
-        "en": "Fertilizer Service",
-        "es": "Servicio para Fertilizantes",
-        "de": "Düngerindustrie"
+      "family": "check",
+      "family_title": {
+        "zh": "止回阀类",
+        "en": "Check Valves",
+        "es": "Válvulas de retención",
+        "de": "Rückschlagventile"
       },
-      "tags": [
-        "fertilizer"
-      ],
-      "cover": "assets/products/fert-008/cover.jpg",
       "title": {
         "zh": "H42H 蝶式直通止回阀",
-        "en": "H 42 H Wafer-type Straight-through Check Valve",
-        "es": "H 42 H Tipo wafer Paso recto Válvula de retención",
-        "de": "H 42 H Wafer-Typ Durchgangs- Rückschlagventil"
+        "en": "H42H Wafer Swing (Butterfly) Check Valve",
+        "es": "Válvula de retención tipo wafer (mariposa) H42H",
+        "de": "H42H Wafer-Rückschlagventil (Klappen)"
       },
       "sub": {
-        "zh": "化肥工况 / 耐腐蚀",
-        "en": "Fertilizer service / Corrosion resistant",
-        "es": "Servicio para fertilizantes / resistente a la corrosión",
-        "de": "Düngerbetrieb / korrosionsbeständig"
-      }
+        "zh": "直通止回 / 降低回流风险",
+        "en": "Check function / reduces backflow risk",
+        "es": "Retención / reduce el riesgo de retorno",
+        "de": "Rückschlag / vermindert Rückfluss"
+      },
+      "tags": [
+        "fertilizer",
+        "high_pressure"
+      ],
+      "cover": "assets/products/fert-008/cover.jpg",
+      "images": [
+        "assets/products/fert-008/cover.jpg"
+      ],
+      "details": {
+        "zh": "可根据工况提供材质/连接/压力等级定制，支持出厂检验与测试报告。",
+        "en": "Customization available for material, ends and pressure rating. Factory inspection & test reports supported.",
+        "es": "Disponible personalización de material, extremos y clase de presión. Soportamos inspección en fábrica e informes de prueba.",
+        "de": "Anpassung von Werkstoff, Anschlüssen und Druckstufe möglich. Werksprüfung und Prüfberichte verfügbar."
+      },
+      "specs": [
+        {
+          "k": {
+            "zh": "连接",
+            "en": "Connection",
+            "es": "Conexión",
+            "de": "Anschluss"
+          },
+          "v": {
+            "zh": "法兰/对焊/螺纹（可选）",
+            "en": "Flanged / BW / Threaded (optional)",
+            "es": "Bridas / BW / Rosca (opcional)",
+            "de": "Flansch / BW / Gewinde (optional)"
+          }
+        },
+        {
+          "k": {
+            "zh": "材质",
+            "en": "Material",
+            "es": "Material",
+            "de": "Werkstoff"
+          },
+          "v": {
+            "zh": "不锈钢/合金钢/碳钢（可选）",
+            "en": "Stainless / alloy / carbon steel (optional)",
+            "es": "Inoxidable / aleado / acero al carbono (opcional)",
+            "de": "Edelstahl / legiert / Kohlenstoffstahl (optional)"
+          }
+        }
+      ]
     },
     {
       "id": "fert-009",
-      "series": "fertilizer",
-      "series_title": {
-        "zh": "化肥用",
-        "en": "Fertilizer Service",
-        "es": "Servicio para Fertilizantes",
-        "de": "Düngerindustrie"
+      "family": "check",
+      "family_title": {
+        "zh": "止回阀类",
+        "en": "Check Valves",
+        "es": "Válvulas de retención",
+        "de": "Rückschlagventile"
+      },
+      "title": {
+        "zh": "H43W 直通式止回阀",
+        "en": "H43W Lift Check Valve (Straight-through)",
+        "es": "Válvula de retención H43W (paso recto)",
+        "de": "H43W Hub-Rückschlagventil (Durchgang)"
+      },
+      "sub": {
+        "zh": "直通结构 / 维护方便",
+        "en": "Straight-through / easy maintenance",
+        "es": "Paso recto / mantenimiento fácil",
+        "de": "Durchgang / einfache Wartung"
       },
       "tags": [
         "fertilizer"
       ],
       "cover": "assets/products/fert-009/cover.jpg",
-      "title": {
-        "zh": "H43W 直通式止回阀",
-        "en": "H 43 W Straight-through Check Valve",
-        "es": "H 43 W Paso recto Válvula de retención",
-        "de": "H 43 W Durchgangs- Rückschlagventil"
+      "images": [
+        "assets/products/fert-009/cover.jpg"
+      ],
+      "details": {
+        "zh": "可根据工况提供材质/连接/压力等级定制，支持出厂检验与测试报告。",
+        "en": "Customization available for material, ends and pressure rating. Factory inspection & test reports supported.",
+        "es": "Disponible personalización de material, extremos y clase de presión. Soportamos inspección en fábrica e informes de prueba.",
+        "de": "Anpassung von Werkstoff, Anschlüssen und Druckstufe möglich. Werksprüfung und Prüfberichte verfügbar."
       },
-      "sub": {
-        "zh": "化肥工况 / 耐腐蚀",
-        "en": "Fertilizer service / Corrosion resistant",
-        "es": "Servicio para fertilizantes / resistente a la corrosión",
-        "de": "Düngerbetrieb / korrosionsbeständig"
-      }
+      "specs": [
+        {
+          "k": {
+            "zh": "连接",
+            "en": "Connection",
+            "es": "Conexión",
+            "de": "Anschluss"
+          },
+          "v": {
+            "zh": "法兰/对焊/螺纹（可选）",
+            "en": "Flanged / BW / Threaded (optional)",
+            "es": "Bridas / BW / Rosca (opcional)",
+            "de": "Flansch / BW / Gewinde (optional)"
+          }
+        },
+        {
+          "k": {
+            "zh": "材质",
+            "en": "Material",
+            "es": "Material",
+            "de": "Werkstoff"
+          },
+          "v": {
+            "zh": "不锈钢/合金钢/碳钢（可选）",
+            "en": "Stainless / alloy / carbon steel (optional)",
+            "es": "Inoxidable / aleado / acero al carbono (opcional)",
+            "de": "Edelstahl / legiert / Kohlenstoffstahl (optional)"
+          }
+        }
+      ]
     },
     {
       "id": "fert-010",
-      "series": "fertilizer",
-      "series_title": {
-        "zh": "化肥用",
-        "en": "Fertilizer Service",
-        "es": "Servicio para Fertilizantes",
-        "de": "Düngerindustrie"
+      "family": "check",
+      "family_title": {
+        "zh": "止回阀类",
+        "en": "Check Valves",
+        "es": "Válvulas de retención",
+        "de": "Rückschlagventile"
+      },
+      "title": {
+        "zh": "H72W 对夹立式止回阀（DN10-200）",
+        "en": "H72W Wafer Vertical Check Valve (DN10-200)",
+        "es": "Válvula de retención vertical tipo wafer H72W (DN10-200)",
+        "de": "H72W Wafer-Vertikal-Rückschlagventil (DN10-200)"
+      },
+      "sub": {
+        "zh": "对夹结构 / 节省安装空间",
+        "en": "Wafer type / compact installation",
+        "es": "Tipo wafer / instalación compacta",
+        "de": "Wafer-Bauform / kompakte Montage"
       },
       "tags": [
         "fertilizer"
       ],
       "cover": "assets/products/fert-010/cover.jpg",
-      "title": {
-        "zh": "H72W 对夹立式止回阀（DN10-200）",
-        "en": "H 72 W Wafer Vertical Check Valve(DN 10–200)",
-        "es": "H 72 W Wafer Vertical Válvula de retención(DN 10–200)",
-        "de": "H 72 W Wafer Vertikal Rückschlagventil(DN 10–200)"
+      "images": [
+        "assets/products/fert-010/cover.jpg"
+      ],
+      "details": {
+        "zh": "可根据工况提供材质/连接/压力等级定制，支持出厂检验与测试报告。",
+        "en": "Customization available for material, ends and pressure rating. Factory inspection & test reports supported.",
+        "es": "Disponible personalización de material, extremos y clase de presión. Soportamos inspección en fábrica e informes de prueba.",
+        "de": "Anpassung von Werkstoff, Anschlüssen und Druckstufe möglich. Werksprüfung und Prüfberichte verfügbar."
       },
-      "sub": {
-        "zh": "化肥工况 / 耐腐蚀",
-        "en": "Fertilizer service / Corrosion resistant",
-        "es": "Servicio para fertilizantes / resistente a la corrosión",
-        "de": "Düngerbetrieb / korrosionsbeständig"
-      }
+      "specs": [
+        {
+          "k": {
+            "zh": "连接",
+            "en": "Connection",
+            "es": "Conexión",
+            "de": "Anschluss"
+          },
+          "v": {
+            "zh": "法兰/对焊/螺纹（可选）",
+            "en": "Flanged / BW / Threaded (optional)",
+            "es": "Bridas / BW / Rosca (opcional)",
+            "de": "Flansch / BW / Gewinde (optional)"
+          }
+        },
+        {
+          "k": {
+            "zh": "材质",
+            "en": "Material",
+            "es": "Material",
+            "de": "Werkstoff"
+          },
+          "v": {
+            "zh": "不锈钢/合金钢/碳钢（可选）",
+            "en": "Stainless / alloy / carbon steel (optional)",
+            "es": "Inoxidable / aleado / acero al carbono (opcional)",
+            "de": "Edelstahl / legiert / Kohlenstoffstahl (optional)"
+          }
+        }
+      ]
     },
     {
       "id": "fert-011",
-      "series": "fertilizer",
-      "series_title": {
-        "zh": "化肥用",
-        "en": "Fertilizer Service",
-        "es": "Servicio para Fertilizantes",
-        "de": "Düngerindustrie"
+      "family": "control",
+      "family_title": {
+        "zh": "控制/切断阀类",
+        "en": "Control & Isolation Valves",
+        "es": "Válvulas de control y aislamiento",
+        "de": "Regel- & Absperrarmaturen"
       },
-      "tags": [
-        "fertilizer"
-      ],
-      "cover": "assets/products/fert-011/cover.jpg",
       "title": {
-        "zh": "异径管",
-        "en": "Reducer",
-        "es": "Reducción",
-        "de": "Reduzierstück"
+        "zh": "英标（BS）VH56-250MOD 角式对焊截止阀",
+        "en": "BS Standard VH56-250MOD Angle Butt-Weld Globe Valve",
+        "es": "Norma BS VH56-250MOD Válvula de globo en ángulo BW",
+        "de": "BS-Norm VH56-250MOD Winkel-Globeventil BW"
       },
       "sub": {
-        "zh": "化肥工况 / 耐腐蚀",
-        "en": "Fertilizer service / Corrosion resistant",
-        "es": "Servicio para fertilizantes / resistente a la corrosión",
-        "de": "Düngerbetrieb / korrosionsbeständig"
-      }
+        "zh": "英标系列 / 对焊连接",
+        "en": "BS series / butt-weld ends",
+        "es": "Serie BS / extremos BW",
+        "de": "BS-Serie / Schweißenden (BW)"
+      },
+      "tags": [
+        "fertilizer",
+        "high_pressure"
+      ],
+      "cover": "assets/products/fert-011/cover.jpg",
+      "images": [
+        "assets/products/fert-011/cover.jpg"
+      ],
+      "details": {
+        "zh": "可根据工况提供材质/连接/压力等级定制，支持出厂检验与测试报告。",
+        "en": "Customization available for material, ends and pressure rating. Factory inspection & test reports supported.",
+        "es": "Disponible personalización de material, extremos y clase de presión. Soportamos inspección en fábrica e informes de prueba.",
+        "de": "Anpassung von Werkstoff, Anschlüssen und Druckstufe möglich. Werksprüfung und Prüfberichte verfügbar."
+      },
+      "specs": [
+        {
+          "k": {
+            "zh": "连接",
+            "en": "Connection",
+            "es": "Conexión",
+            "de": "Anschluss"
+          },
+          "v": {
+            "zh": "法兰/对焊/螺纹（可选）",
+            "en": "Flanged / BW / Threaded (optional)",
+            "es": "Bridas / BW / Rosca (opcional)",
+            "de": "Flansch / BW / Gewinde (optional)"
+          }
+        },
+        {
+          "k": {
+            "zh": "材质",
+            "en": "Material",
+            "es": "Material",
+            "de": "Werkstoff"
+          },
+          "v": {
+            "zh": "不锈钢/合金钢/碳钢（可选）",
+            "en": "Stainless / alloy / carbon steel (optional)",
+            "es": "Inoxidable / aleado / acero al carbono (opcional)",
+            "de": "Edelstahl / legiert / Kohlenstoffstahl (optional)"
+          }
+        }
+      ]
     },
     {
       "id": "fert-012",
-      "series": "fertilizer",
-      "series_title": {
-        "zh": "化肥用",
-        "en": "Fertilizer Service",
-        "es": "Servicio para Fertilizantes",
-        "de": "Düngerindustrie"
+      "family": "control",
+      "family_title": {
+        "zh": "控制/切断阀类",
+        "en": "Control & Isolation Valves",
+        "es": "Válvulas de control y aislamiento",
+        "de": "Regel- & Absperrarmaturen"
       },
-      "tags": [
-        "fertilizer"
-      ],
-      "cover": "assets/products/fert-012/cover.jpg",
       "title": {
-        "zh": "英标（BS）VH56-250MOD角式对焊截止阀",
-        "en": "BS VH 56-250 MOD Angle Butt-weld Globe Valve",
-        "es": "BS VH 56-250 MOD En ángulo Soldadura a tope Válvula de globo",
-        "de": "BS VH 56-250 MOD Eck- Stumpfschweiß Absperrventil"
+        "zh": "美标（ANSI）150Lb-2500Lb 角式截止/节流阀",
+        "en": "ANSI 150Lb–2500Lb Angle Globe/Throttle Valve",
+        "es": "ANSI 150Lb–2500Lb Válvula de globo/estrangulación en ángulo",
+        "de": "ANSI 150Lb–2500Lb Winkel-Globe/Drosselventil"
       },
       "sub": {
-        "zh": "化肥工况 / 耐腐蚀",
-        "en": "Fertilizer service / Corrosion resistant",
-        "es": "Servicio para fertilizantes / resistente a la corrosión",
-        "de": "Düngerbetrieb / korrosionsbeständig"
-      }
+        "zh": "美标压力等级 / 适用于高压工况",
+        "en": "ANSI pressure class / for high-pressure duty",
+        "es": "Clase ANSI / para servicio de alta presión",
+        "de": "ANSI-Druckklasse / für Hochdruckbetrieb"
+      },
+      "tags": [
+        "fertilizer",
+        "high_pressure",
+        "corrosive"
+      ],
+      "cover": "assets/products/fert-012/cover.jpg",
+      "images": [
+        "assets/products/fert-012/cover.jpg"
+      ],
+      "details": {
+        "zh": "可根据工况提供材质/连接/压力等级定制，支持出厂检验与测试报告。",
+        "en": "Customization available for material, ends and pressure rating. Factory inspection & test reports supported.",
+        "es": "Disponible personalización de material, extremos y clase de presión. Soportamos inspección en fábrica e informes de prueba.",
+        "de": "Anpassung von Werkstoff, Anschlüssen und Druckstufe möglich. Werksprüfung und Prüfberichte verfügbar."
+      },
+      "specs": [
+        {
+          "k": {
+            "zh": "连接",
+            "en": "Connection",
+            "es": "Conexión",
+            "de": "Anschluss"
+          },
+          "v": {
+            "zh": "法兰/对焊/螺纹（可选）",
+            "en": "Flanged / BW / Threaded (optional)",
+            "es": "Bridas / BW / Rosca (opcional)",
+            "de": "Flansch / BW / Gewinde (optional)"
+          }
+        },
+        {
+          "k": {
+            "zh": "材质",
+            "en": "Material",
+            "es": "Material",
+            "de": "Werkstoff"
+          },
+          "v": {
+            "zh": "不锈钢/合金钢/碳钢（可选）",
+            "en": "Stainless / alloy / carbon steel (optional)",
+            "es": "Inoxidable / aleado / acero al carbono (opcional)",
+            "de": "Edelstahl / legiert / Kohlenstoffstahl (optional)"
+          }
+        }
+      ]
     },
     {
       "id": "fert-013",
-      "series": "fertilizer",
-      "series_title": {
-        "zh": "化肥用",
-        "en": "Fertilizer Service",
-        "es": "Servicio para Fertilizantes",
-        "de": "Düngerindustrie"
+      "family": "control",
+      "family_title": {
+        "zh": "控制/切断阀类",
+        "en": "Control & Isolation Valves",
+        "es": "Válvulas de control y aislamiento",
+        "de": "Regel- & Absperrarmaturen"
       },
-      "tags": [
-        "fertilizer"
-      ],
-      "cover": "assets/products/fert-013/cover.jpg",
       "title": {
-        "zh": "J946Y直通平衡截止、节流阀",
-        "en": "J 946 YStraight-through Balanced / Throttling Valve",
-        "es": "J 946 YPaso recto Equilibrada / Válvula de estrangulación",
-        "de": "J 946 YDurchgangs- ausgeglichenes / Drosselventil"
+        "zh": "日标（JIS）K9-250MOD 角式对焊疏水阀",
+        "en": "JIS K9-250MOD Angle Butt-Weld Steam Trap Valve",
+        "es": "JIS K9-250MOD Trampa de vapor en ángulo BW",
+        "de": "JIS K9-250MOD Winkel-Kondensatableiter BW"
       },
       "sub": {
-        "zh": "化肥工况 / 耐腐蚀",
-        "en": "Fertilizer service / Corrosion resistant",
-        "es": "Servicio para fertilizantes / resistente a la corrosión",
-        "de": "Düngerbetrieb / korrosionsbeständig"
-      }
+        "zh": "日标系列 / 疏水排凝",
+        "en": "JIS series / condensate discharge",
+        "es": "Serie JIS / descarga de condensado",
+        "de": "JIS-Serie / Kondensatableitung"
+      },
+      "tags": [
+        "fertilizer",
+        "high_pressure"
+      ],
+      "cover": "assets/products/fert-013/cover.jpg",
+      "images": [
+        "assets/products/fert-013/cover.jpg"
+      ],
+      "details": {
+        "zh": "可根据工况提供材质/连接/压力等级定制，支持出厂检验与测试报告。",
+        "en": "Customization available for material, ends and pressure rating. Factory inspection & test reports supported.",
+        "es": "Disponible personalización de material, extremos y clase de presión. Soportamos inspección en fábrica e informes de prueba.",
+        "de": "Anpassung von Werkstoff, Anschlüssen und Druckstufe möglich. Werksprüfung und Prüfberichte verfügbar."
+      },
+      "specs": [
+        {
+          "k": {
+            "zh": "连接",
+            "en": "Connection",
+            "es": "Conexión",
+            "de": "Anschluss"
+          },
+          "v": {
+            "zh": "法兰/对焊/螺纹（可选）",
+            "en": "Flanged / BW / Threaded (optional)",
+            "es": "Bridas / BW / Rosca (opcional)",
+            "de": "Flansch / BW / Gewinde (optional)"
+          }
+        },
+        {
+          "k": {
+            "zh": "材质",
+            "en": "Material",
+            "es": "Material",
+            "de": "Werkstoff"
+          },
+          "v": {
+            "zh": "不锈钢/合金钢/碳钢（可选）",
+            "en": "Stainless / alloy / carbon steel (optional)",
+            "es": "Inoxidable / aleado / acero al carbono (opcional)",
+            "de": "Edelstahl / legiert / Kohlenstoffstahl (optional)"
+          }
+        }
+      ]
     },
     {
       "id": "fert-014",
-      "series": "fertilizer",
-      "series_title": {
-        "zh": "化肥用",
-        "en": "Fertilizer Service",
-        "es": "Servicio para Fertilizantes",
-        "de": "Düngerindustrie"
+      "family": "control",
+      "family_title": {
+        "zh": "控制/切断阀类",
+        "en": "Control & Isolation Valves",
+        "es": "Válvulas de control y aislamiento",
+        "de": "Regel- & Absperrarmaturen"
       },
-      "tags": [
-        "fertilizer"
-      ],
-      "cover": "assets/products/fert-014/cover.jpg",
       "title": {
-        "zh": "Q71高压球阀",
-        "en": "Q 71 High Pressure Ball Valve",
-        "es": "Q 71 Alta presión Válvula de bola",
-        "de": "Q 71 Hochdruck Kugelhahn"
+        "zh": "J946Y 直通平衡截止/节流阀",
+        "en": "J946Y Straight-through Balanced Globe/Throttle Valve",
+        "es": "J946Y Válvula balanceada de paso recto (globo/estrangulación)",
+        "de": "J946Y Durchgangs-Ausgleichs-Globe/Drosselventil"
       },
       "sub": {
-        "zh": "化肥工况 / 耐腐蚀",
-        "en": "Fertilizer service / Corrosion resistant",
-        "es": "Servicio para fertilizantes / resistente a la corrosión",
-        "de": "Düngerbetrieb / korrosionsbeständig"
-      }
+        "zh": "平衡结构 / 适合稳定调节",
+        "en": "Balanced design / stable control",
+        "es": "Diseño balanceado / control estable",
+        "de": "Ausgleichsdesign / stabile Regelung"
+      },
+      "tags": [
+        "fertilizer",
+        "high_pressure"
+      ],
+      "cover": "assets/products/fert-014/cover.jpg",
+      "images": [
+        "assets/products/fert-014/cover.jpg"
+      ],
+      "details": {
+        "zh": "可根据工况提供材质/连接/压力等级定制，支持出厂检验与测试报告。",
+        "en": "Customization available for material, ends and pressure rating. Factory inspection & test reports supported.",
+        "es": "Disponible personalización de material, extremos y clase de presión. Soportamos inspección en fábrica e informes de prueba.",
+        "de": "Anpassung von Werkstoff, Anschlüssen und Druckstufe möglich. Werksprüfung und Prüfberichte verfügbar."
+      },
+      "specs": [
+        {
+          "k": {
+            "zh": "连接",
+            "en": "Connection",
+            "es": "Conexión",
+            "de": "Anschluss"
+          },
+          "v": {
+            "zh": "法兰/对焊/螺纹（可选）",
+            "en": "Flanged / BW / Threaded (optional)",
+            "es": "Bridas / BW / Rosca (opcional)",
+            "de": "Flansch / BW / Gewinde (optional)"
+          }
+        },
+        {
+          "k": {
+            "zh": "材质",
+            "en": "Material",
+            "es": "Material",
+            "de": "Werkstoff"
+          },
+          "v": {
+            "zh": "不锈钢/合金钢/碳钢（可选）",
+            "en": "Stainless / alloy / carbon steel (optional)",
+            "es": "Inoxidable / aleado / acero al carbono (opcional)",
+            "de": "Edelstahl / legiert / Kohlenstoffstahl (optional)"
+          }
+        }
+      ]
     },
     {
       "id": "fert-015",
-      "series": "fertilizer",
-      "series_title": {
-        "zh": "化肥用",
-        "en": "Fertilizer Service",
-        "es": "Servicio para Fertilizantes",
-        "de": "Düngerindustrie"
+      "family": "ball",
+      "family_title": {
+        "zh": "球阀类",
+        "en": "Ball Valves",
+        "es": "Válvulas de bola",
+        "de": "Kugelhähne"
       },
-      "tags": [
-        "fertilizer"
-      ],
-      "cover": "assets/products/fert-015/cover.jpg",
       "title": {
-        "zh": "法兰（Flange）",
-        "en": "Flange(Flange)",
-        "es": "Brida(Brida)",
-        "de": "Flansch(Flansch)"
+        "zh": "Q71 高压球阀",
+        "en": "Q71 High-Pressure Ball Valve",
+        "es": "Q71 Válvula de bola de alta presión",
+        "de": "Q71 Hochdruck-Kugelhahn"
       },
       "sub": {
-        "zh": "化肥工况 / 耐腐蚀",
-        "en": "Fertilizer service / Corrosion resistant",
-        "es": "Servicio para fertilizantes / resistente a la corrosión",
-        "de": "Düngerbetrieb / korrosionsbeständig"
-      }
+        "zh": "高压工况 / 密封可靠",
+        "en": "High pressure / reliable sealing",
+        "es": "Alta presión / sellado fiable",
+        "de": "Hochdruck / zuverlässige Dichtung"
+      },
+      "tags": [
+        "fertilizer",
+        "high_pressure"
+      ],
+      "cover": "assets/products/fert-015/cover.jpg",
+      "images": [
+        "assets/products/fert-015/cover.jpg"
+      ],
+      "details": {
+        "zh": "可根据工况提供材质/连接/压力等级定制，支持出厂检验与测试报告。",
+        "en": "Customization available for material, ends and pressure rating. Factory inspection & test reports supported.",
+        "es": "Disponible personalización de material, extremos y clase de presión. Soportamos inspección en fábrica e informes de prueba.",
+        "de": "Anpassung von Werkstoff, Anschlüssen und Druckstufe möglich. Werksprüfung und Prüfberichte verfügbar."
+      },
+      "specs": [
+        {
+          "k": {
+            "zh": "连接",
+            "en": "Connection",
+            "es": "Conexión",
+            "de": "Anschluss"
+          },
+          "v": {
+            "zh": "法兰/对焊/螺纹（可选）",
+            "en": "Flanged / BW / Threaded (optional)",
+            "es": "Bridas / BW / Rosca (opcional)",
+            "de": "Flansch / BW / Gewinde (optional)"
+          }
+        },
+        {
+          "k": {
+            "zh": "材质",
+            "en": "Material",
+            "es": "Material",
+            "de": "Werkstoff"
+          },
+          "v": {
+            "zh": "不锈钢/合金钢/碳钢（可选）",
+            "en": "Stainless / alloy / carbon steel (optional)",
+            "es": "Inoxidable / aleado / acero al carbono (opcional)",
+            "de": "Edelstahl / legiert / Kohlenstoffstahl (optional)"
+          }
+        }
+      ]
     },
     {
       "id": "fert-016",
-      "series": "fertilizer",
-      "series_title": {
-        "zh": "化肥用",
-        "en": "Fertilizer Service",
-        "es": "Servicio para Fertilizantes",
-        "de": "Düngerindustrie"
+      "family": "check",
+      "family_title": {
+        "zh": "止回阀类",
+        "en": "Check Valves",
+        "es": "Válvulas de retención",
+        "de": "Rückschlagventile"
       },
-      "tags": [
-        "fertilizer"
-      ],
-      "cover": "assets/products/fert-016/cover.jpg",
       "title": {
         "zh": "高压角式止回阀",
-        "en": "High Pressure Angle Check Valve",
-        "es": "Alta presión En ángulo Válvula de retención",
-        "de": "Hochdruck Eck- Rückschlagventil"
+        "en": "High-Pressure Angle Check Valve",
+        "es": "Válvula de retención en ángulo de alta presión",
+        "de": "Hochdruck-Winkel-Rückschlagventil"
       },
       "sub": {
-        "zh": "化肥工况 / 耐腐蚀",
-        "en": "Fertilizer service / Corrosion resistant",
-        "es": "Servicio para fertilizantes / resistente a la corrosión",
-        "de": "Düngerbetrieb / korrosionsbeständig"
-      }
+        "zh": "角式结构 / 适合高压管路",
+        "en": "Angle pattern / for high-pressure lines",
+        "es": "Patrón en ángulo / para líneas de alta presión",
+        "de": "Winkelbauform / für Hochdruckleitungen"
+      },
+      "tags": [
+        "fertilizer",
+        "high_pressure"
+      ],
+      "cover": "assets/products/fert-016/cover.jpg",
+      "images": [
+        "assets/products/fert-016/cover.jpg"
+      ],
+      "details": {
+        "zh": "可根据工况提供材质/连接/压力等级定制，支持出厂检验与测试报告。",
+        "en": "Customization available for material, ends and pressure rating. Factory inspection & test reports supported.",
+        "es": "Disponible personalización de material, extremos y clase de presión. Soportamos inspección en fábrica e informes de prueba.",
+        "de": "Anpassung von Werkstoff, Anschlüssen und Druckstufe möglich. Werksprüfung und Prüfberichte verfügbar."
+      },
+      "specs": [
+        {
+          "k": {
+            "zh": "连接",
+            "en": "Connection",
+            "es": "Conexión",
+            "de": "Anschluss"
+          },
+          "v": {
+            "zh": "法兰/对焊/螺纹（可选）",
+            "en": "Flanged / BW / Threaded (optional)",
+            "es": "Bridas / BW / Rosca (opcional)",
+            "de": "Flansch / BW / Gewinde (optional)"
+          }
+        },
+        {
+          "k": {
+            "zh": "材质",
+            "en": "Material",
+            "es": "Material",
+            "de": "Werkstoff"
+          },
+          "v": {
+            "zh": "不锈钢/合金钢/碳钢（可选）",
+            "en": "Stainless / alloy / carbon steel (optional)",
+            "es": "Inoxidable / aleado / acero al carbono (opcional)",
+            "de": "Edelstahl / legiert / Kohlenstoffstahl (optional)"
+          }
+        }
+      ]
     },
     {
       "id": "fert-017",
-      "series": "fertilizer",
-      "series_title": {
-        "zh": "化肥用",
-        "en": "Fertilizer Service",
-        "es": "Servicio para Fertilizantes",
-        "de": "Düngerindustrie"
+      "family": "fittings",
+      "family_title": {
+        "zh": "管件与密封件",
+        "en": "Pipe Fittings & Sealing",
+        "es": "Accesorios de tubería y sellado",
+        "de": "Rohrformteile & Dichtungen"
+      },
+      "title": {
+        "zh": "法兰（Flange）",
+        "en": "Flange",
+        "es": "Brida",
+        "de": "Flansch"
+      },
+      "sub": {
+        "zh": "标准法兰 / 多标准可选",
+        "en": "Standard flanges / multiple standards",
+        "es": "Bridas estándar / múltiples normas",
+        "de": "Standardflansche / mehrere Normen"
       },
       "tags": [
         "fertilizer"
       ],
       "cover": "assets/products/fert-017/cover.jpg",
-      "title": {
-        "zh": "美标（ANSI）150Lb-2500Lb 角式截止阀、节流阀",
-        "en": "ANSI 150 Lb-2500 Lb Angle Globe Valve / Throttling Valve",
-        "es": "ANSI 150 Lb-2500 Lb En ángulo Válvula de globo / Válvula de estrangulación",
-        "de": "ANSI 150 Lb-2500 Lb Eck- Absperrventil / Drosselventil"
+      "images": [
+        "assets/products/fert-017/cover.jpg"
+      ],
+      "details": {
+        "zh": "可根据工况提供材质/连接/压力等级定制，支持出厂检验与测试报告。",
+        "en": "Customization available for material, ends and pressure rating. Factory inspection & test reports supported.",
+        "es": "Disponible personalización de material, extremos y clase de presión. Soportamos inspección en fábrica e informes de prueba.",
+        "de": "Anpassung von Werkstoff, Anschlüssen und Druckstufe möglich. Werksprüfung und Prüfberichte verfügbar."
       },
-      "sub": {
-        "zh": "化肥工况 / 耐腐蚀",
-        "en": "Fertilizer service / Corrosion resistant",
-        "es": "Servicio para fertilizantes / resistente a la corrosión",
-        "de": "Düngerbetrieb / korrosionsbeständig"
-      }
+      "specs": [
+        {
+          "k": {
+            "zh": "连接",
+            "en": "Connection",
+            "es": "Conexión",
+            "de": "Anschluss"
+          },
+          "v": {
+            "zh": "法兰/对焊/螺纹（可选）",
+            "en": "Flanged / BW / Threaded (optional)",
+            "es": "Bridas / BW / Rosca (opcional)",
+            "de": "Flansch / BW / Gewinde (optional)"
+          }
+        },
+        {
+          "k": {
+            "zh": "材质",
+            "en": "Material",
+            "es": "Material",
+            "de": "Werkstoff"
+          },
+          "v": {
+            "zh": "不锈钢/合金钢/碳钢（可选）",
+            "en": "Stainless / alloy / carbon steel (optional)",
+            "es": "Inoxidable / aleado / acero al carbono (opcional)",
+            "de": "Edelstahl / legiert / Kohlenstoffstahl (optional)"
+          }
+        }
+      ]
     },
     {
       "id": "fert-018",
-      "series": "fertilizer",
-      "series_title": {
-        "zh": "化肥用",
-        "en": "Fertilizer Service",
-        "es": "Servicio para Fertilizantes",
-        "de": "Düngerindustrie"
+      "family": "fittings",
+      "family_title": {
+        "zh": "管件与密封件",
+        "en": "Pipe Fittings & Sealing",
+        "es": "Accesorios de tubería y sellado",
+        "de": "Rohrformteile & Dichtungen"
+      },
+      "title": {
+        "zh": "异径管（Reducer）",
+        "en": "Reducer",
+        "es": "Reducción (Reducer)",
+        "de": "Reduzierstück"
+      },
+      "sub": {
+        "zh": "管路变径 / 多规格可选",
+        "en": "Pipe reducer / multiple sizes",
+        "es": "Reducción de tubería / múltiples tamaños",
+        "de": "Rohrreduzierung / viele Größen"
       },
       "tags": [
         "fertilizer"
       ],
       "cover": "assets/products/fert-018/cover.jpg",
-      "title": {
-        "zh": "日标（JIS）K9-250MOD角式对焊疏水阀",
-        "en": "JIS K 9-250 MOD Angle Butt-weld Steam Trap",
-        "es": "JIS K 9-250 MOD En ángulo Soldadura a tope Trampa de vapor",
-        "de": "JIS K 9-250 MOD Eck- Stumpfschweiß Dampfabscheider"
+      "images": [
+        "assets/products/fert-018/cover.jpg"
+      ],
+      "details": {
+        "zh": "可根据工况提供材质/连接/压力等级定制，支持出厂检验与测试报告。",
+        "en": "Customization available for material, ends and pressure rating. Factory inspection & test reports supported.",
+        "es": "Disponible personalización de material, extremos y clase de presión. Soportamos inspección en fábrica e informes de prueba.",
+        "de": "Anpassung von Werkstoff, Anschlüssen und Druckstufe möglich. Werksprüfung und Prüfberichte verfügbar."
       },
-      "sub": {
-        "zh": "化肥工况 / 耐腐蚀",
-        "en": "Fertilizer service / Corrosion resistant",
-        "es": "Servicio para fertilizantes / resistente a la corrosión",
-        "de": "Düngerbetrieb / korrosionsbeständig"
-      }
+      "specs": [
+        {
+          "k": {
+            "zh": "连接",
+            "en": "Connection",
+            "es": "Conexión",
+            "de": "Anschluss"
+          },
+          "v": {
+            "zh": "法兰/对焊/螺纹（可选）",
+            "en": "Flanged / BW / Threaded (optional)",
+            "es": "Bridas / BW / Rosca (opcional)",
+            "de": "Flansch / BW / Gewinde (optional)"
+          }
+        },
+        {
+          "k": {
+            "zh": "材质",
+            "en": "Material",
+            "es": "Material",
+            "de": "Werkstoff"
+          },
+          "v": {
+            "zh": "不锈钢/合金钢/碳钢（可选）",
+            "en": "Stainless / alloy / carbon steel (optional)",
+            "es": "Inoxidable / aleado / acero al carbono (opcional)",
+            "de": "Edelstahl / legiert / Kohlenstoffstahl (optional)"
+          }
+        }
+      ]
     },
     {
       "id": "fert-019",
-      "series": "fertilizer",
-      "series_title": {
-        "zh": "化肥用",
-        "en": "Fertilizer Service",
-        "es": "Servicio para Fertilizantes",
-        "de": "Düngerindustrie"
+      "family": "fittings",
+      "family_title": {
+        "zh": "管件与密封件",
+        "en": "Pipe Fittings & Sealing",
+        "es": "Accesorios de tubería y sellado",
+        "de": "Rohrformteile & Dichtungen"
       },
-      "tags": [
-        "fertilizer"
-      ],
-      "cover": "assets/products/fert-019/cover.jpg",
       "title": {
-        "zh": "透镜垫",
+        "zh": "透镜垫（Lens Gasket）",
         "en": "Lens Gasket",
-        "es": "Junta tipo lente",
+        "es": "Junta tipo lente (Lens gasket)",
         "de": "Linsendichtung"
       },
       "sub": {
-        "zh": "化肥工况 / 耐腐蚀",
-        "en": "Fertilizer service / Corrosion resistant",
-        "es": "Servicio para fertilizantes / resistente a la corrosión",
-        "de": "Düngerbetrieb / korrosionsbeständig"
-      }
+        "zh": "高压密封 / 金属密封件",
+        "en": "High-pressure sealing / metal gasket",
+        "es": "Sellado de alta presión / junta metálica",
+        "de": "Hochdruckabdichtung / Metalldichtung"
+      },
+      "tags": [
+        "fertilizer",
+        "high_pressure"
+      ],
+      "cover": "assets/products/fert-019/cover.jpg",
+      "images": [
+        "assets/products/fert-019/cover.jpg"
+      ],
+      "details": {
+        "zh": "可根据工况提供材质/连接/压力等级定制，支持出厂检验与测试报告。",
+        "en": "Customization available for material, ends and pressure rating. Factory inspection & test reports supported.",
+        "es": "Disponible personalización de material, extremos y clase de presión. Soportamos inspección en fábrica e informes de prueba.",
+        "de": "Anpassung von Werkstoff, Anschlüssen und Druckstufe möglich. Werksprüfung und Prüfberichte verfügbar."
+      },
+      "specs": [
+        {
+          "k": {
+            "zh": "连接",
+            "en": "Connection",
+            "es": "Conexión",
+            "de": "Anschluss"
+          },
+          "v": {
+            "zh": "法兰/对焊/螺纹（可选）",
+            "en": "Flanged / BW / Threaded (optional)",
+            "es": "Bridas / BW / Rosca (opcional)",
+            "de": "Flansch / BW / Gewinde (optional)"
+          }
+        },
+        {
+          "k": {
+            "zh": "材质",
+            "en": "Material",
+            "es": "Material",
+            "de": "Werkstoff"
+          },
+          "v": {
+            "zh": "不锈钢/合金钢/碳钢（可选）",
+            "en": "Stainless / alloy / carbon steel (optional)",
+            "es": "Inoxidable / aleado / acero al carbono (opcional)",
+            "de": "Edelstahl / legiert / Kohlenstoffstahl (optional)"
+          }
+        }
+      ]
     },
     {
-      "id": "qual-001",
-      "series": "certificates",
-      "series_title": {
+      "id": "cert-001",
+      "family": "certificates",
+      "family_title": {
         "zh": "资质证书",
-        "en": "Qualifications",
+        "en": "Certificates",
         "es": "Certificados",
         "de": "Zertifikate"
+      },
+      "title": {
+        "zh": "资质证书与认证",
+        "en": "Certificates & Approvals",
+        "es": "Certificados y aprobaciones",
+        "de": "Zertifikate & Zulassungen"
+      },
+      "sub": {
+        "zh": "ISO/特种设备许可/型式试验等（点击查看）",
+        "en": "ISO / special equipment license / type test (click to view)",
+        "es": "ISO / licencia de equipos especiales / ensayos de tipo (clic para ver)",
+        "de": "ISO / Sonderausrüstungslizenz / Typprüfung (klicken zum Ansehen)"
       },
       "tags": [
         "certificates"
       ],
-      "cover": "assets/products/qual-001/cover.jpg",
-      "title": {
-        "zh": "公司资质与证书",
-        "en": "Company Qualifications & Certificates",
-        "es": "Certificados y Cualificaciones",
-        "de": "Unternehmenszertifikate"
-      },
-      "sub": {
-        "zh": "税务登记证、特种设备许可、型式试验证书等",
-        "en": "Tax registration, special equipment licenses, type test certificates, etc.",
-        "es": "Registro fiscal, licencias de equipos especiales, certificados de prueba de tipo, etc.",
-        "de": "Steuerregistrierung, Genehmigungen, Typprüfzeugnisse usw."
-      },
+      "cover": "assets/cert/1.jpg",
       "images": [
-        "assets/products/qual-001/1.jpg",
-        "assets/products/qual-001/2.jpg",
-        "assets/products/qual-001/3.jpg",
-        "assets/products/qual-001/4.jpg",
-        "assets/products/qual-001/5.jpg",
-        "assets/products/qual-001/6.jpg",
-        "assets/products/qual-001/7.jpg"
+        "assets/cert/1.jpg",
+        "assets/cert/2.jpg",
+        "assets/cert/3.jpg",
+        "assets/cert/4.jpg",
+        "assets/cert/5.jpg",
+        "assets/cert/6.jpg",
+        "assets/cert/7.jpg"
       ],
       "details": {
-        "zh": "本页面展示公司部分资质证书扫描件。如需原件或更完整的资料，请联系邮箱/WhatsApp。",
-        "en": "This page shows scans of selected certificates. Contact us for originals or a complete documentation set.",
-        "es": "Esta página muestra escaneos de algunos certificados. Contáctenos para originales o documentación completa.",
-        "de": "Diese Seite zeigt Scans ausgewählter Zertifikate. Kontaktieren Sie uns für Originale oder ein vollständiges Dokumentationspaket."
-      }
+        "zh": "我们通过 ISO9001 等质量体系认证，并具备国家特种设备相关许可及型式试验能力。点击图片可查看大图。",
+        "en": "We are certified to ISO9001 and hold relevant special equipment approvals. Click any image to view full size.",
+        "es": "Contamos con certificación ISO9001 y aprobaciones de equipos especiales. Haga clic en una imagen para verla en grande.",
+        "de": "Wir sind nach ISO9001 zertifiziert und verfügen über relevante Zulassungen. Klicken Sie auf ein Bild, um es zu vergrößern."
+      },
+      "specs": [
+        {
+          "k": {
+            "zh": "覆盖范围",
+            "en": "Scope",
+            "es": "Alcance",
+            "de": "Geltungsbereich"
+          },
+          "v": {
+            "zh": "压力管道阀门/金属阀门等",
+            "en": "Pressure piping valves / metal valves, etc.",
+            "es": "Válvulas para tuberías a presión / válvulas metálicas, etc.",
+            "de": "Armaturen für Druckleitungen / Metallventile, usw."
+          }
+        },
+        {
+          "k": {
+            "zh": "有效期",
+            "en": "Validity",
+            "es": "Vigencia",
+            "de": "Gültigkeit"
+          },
+          "v": {
+            "zh": "以证书扫描件为准",
+            "en": "As per certificate scans",
+            "es": "Según los escaneos de certificados",
+            "de": "Gemäß Zertifikats-Scans"
+          }
+        }
+      ]
     }
   ]
 }

@@ -4,474 +4,259 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Wuxing Valve · Product</title>
-  <meta name="description" content="Wuxing Valve product detail page (multi-language)." />
+  <meta name="robots" content="index,follow" />
+  <link rel="manifest" href="manifest.json" />
   <style>
-    :root{
-      --bg:#f7f8fa; --text:#222; --muted:#555; --primary:#2b7de9;
-      --card:#fff; --border:#ddd; --ring:rgba(43,125,233,.18);
+    :root {
+      --bg:#f7f7f8; --card:#ffffff; --text:#111827; --muted:#6b7280; --line:#e5e7eb;
+      --brand:#2563eb; --radius:18px;
     }
     *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;background:var(--bg);color:var(--text)}
-    header{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:#fff;border-bottom:1px solid var(--border)}
-    .brand{display:flex;gap:10px;align-items:center}
-    .brand a{color:var(--text);text-decoration:none;font-weight:900;letter-spacing:.3px}
-    .brand small{color:var(--muted);font-weight:700}
-    .logoLink{display:flex;align-items:center;text-decoration:none}
-    .logoImg{height:34px;width:auto;display:block}
-
-    .lang{display:inline-flex;gap:6px;align-items:center;background:#fff;border:1px solid var(--border);border-radius:999px;padding:6px}
-    .lang button{appearance:none;border:none;cursor:pointer;padding:6px 10px;border-radius:999px;color:var(--muted);background:transparent;font-weight:700}
-    .lang button.active{color:#fff;background:var(--primary);box-shadow:0 0 0 6px var(--ring) inset}
-
-    .wrap{max-width:1100px;margin:0 auto;padding:18px 16px 56px}
-    h1{font-size:30px;margin:12px 0 8px;text-align:center}
-    .sub{color:var(--muted);line-height:1.6;margin:0 auto 10px;max-width:980px;text-align:center;white-space:pre-wrap}
-
-    .model-cards{display:grid;gap:14px;margin:18px auto 10px;grid-template-columns:repeat(3,minmax(220px,1fr));max-width:900px}
-    .model-card{border:2px solid var(--border);border-radius:12px;background:var(--card);cursor:pointer;overflow:hidden;transition:.2s}
-    .model-card:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,.05)}
-    .model-card.active{border-color:var(--primary)}
-    .model-card img{width:100%;height:140px;object-fit:cover;display:block;background:#f2f3f5}
-    .meta{padding:10px 12px;font-weight:800}
-    .meta small{display:block;color:var(--muted);font-weight:700;margin-top:2px}
-
-    .grid{display:grid;grid-template-columns:58% 42%;grid-gap:16px;align-items:start;margin-top:10px}
-    .box{padding:12px;background:var(--card);border:1px solid var(--border);border-radius:12px}
-    .box h2{margin:0 0 8px;font-size:18px;font-weight:900;color:#111}
-    .box p{margin:0;color:var(--muted);line-height:1.6;white-space:pre-wrap}
-    .box ul{margin:8px 0 0;padding-left:18px;line-height:1.6}
-    .box li{margin:2px 0}
-
-    .carousel{position:relative;overflow:hidden;border-radius:14px;border:1px solid var(--border);background:var(--card);aspect-ratio:16/9}
-    .track{display:flex;transition:transform .45s ease;height:100%}
-    .slide{min-width:100%;height:100%}
-    .slide img{width:100%;height:100%;display:block;object-fit:contain;object-position:center;background:#f2f3f5}
-    .navBtn{position:absolute;top:50%;transform:translateY(-50%);background:#fff;border:1px solid var(--border);
-      border-radius:10px;padding:8px;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.06)}
-    .prev{left:8px}.next{right:8px}
-    .dots{display:flex;justify-content:center;gap:6px;margin-top:8px}
-    .dot{width:8px;height:8px;border-radius:50%;background:#cfd3da;border:none;cursor:pointer}
-    .dot.active{background:var(--primary)}
-    .btnrow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
-    .btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:900;border-radius:12px;padding:10px 12px;border:1px solid var(--border);background:#fff;color:#111}
-    .btn.primary{background:var(--primary);border-color:var(--primary);color:#fff}
-    .btn:hover{filter:brightness(.98)}
-
-    @media (max-width: 900px){
-      .model-cards{grid-template-columns:repeat(3,minmax(160px,1fr));max-width:100%}
-      .model-card img{height:110px}
-      .grid{grid-template-columns:1fr}
-      .carousel{aspect-ratio:4/3}
-    }
-    @media (max-width: 560px){
-      .model-cards{grid-template-columns:repeat(3,minmax(120px,1fr))}
-      .model-card img{height:90px}
-    }
-  
-    /* Cookie banner */
-    .cookie-wrap{position:fixed;left:0;right:0;bottom:0;z-index:50;display:none}
-    .cookie-bar{max-width:1100px;margin:10px auto;background:#111;color:#fff;border-radius:12px;padding:14px;border:1px solid #000a;display:flex;flex-wrap:wrap;gap:10px;align-items:center;box-shadow:0 6px 24px rgba(0,0,0,.25)}
-    .cookie-bar p{margin:0;line-height:1.5;flex:1 1 320px;color:#e6e6e6}
-    .cookie-bar a{color:#9ec5ff}
-    .cookie-actions{display:flex;gap:8px}
-    .cookie-actions button{cursor:pointer;border:none;border-radius:10px;padding:8px 12px;font-weight:800}
-    .cookie-accept{background:#2b7de9;color:#fff}
-    .cookie-reject{background:#fff;color:#111;border:1px solid #ccc}
-
-    /* Zoom modal */
-    .zoom-modal{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;z-index:80}
-    .zoom-inner{position:relative;width:min(1200px,94vw);height:min(86vh,900px);background:#111;border:1px solid rgba(255,255,255,.12);border-radius:14px;overflow:hidden}
-    .zoom-close{position:absolute;top:10px;right:10px;z-index:2;background:rgba(255,255,255,.92);border:none;border-radius:10px;padding:8px 10px;font-weight:900;cursor:pointer}
-    .zoom-stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
-    .zoom-stage img{max-width:none;max-height:none;user-select:none;cursor:grab;transform-origin:center center}
-
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,"Noto Sans",sans-serif;background:var(--bg);color:var(--text)}
+    a{color:inherit;text-decoration:none}
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
+    .wrap{max-width:1150px;margin:0 auto;padding:14px 18px}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{height:34px;width:auto;display:block}
+    .brandTitle{font-weight:800;letter-spacing:.2px}
+    .brandSub{font-size:12px;color:var(--muted);margin-top:2px}
+    .lang{display:inline-flex;gap:6px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px}
+    .lang button{border:0;background:transparent;padding:7px 10px;border-radius:999px;cursor:pointer;font-weight:700;color:#374151}
+    .lang button.active{background:var(--brand);color:#fff}
+    main .wrap{padding-top:22px;padding-bottom:44px}
+    .crumbs{color:var(--muted);font-weight:700;font-size:14px;margin-bottom:12px}
+    .layout{display:grid;grid-template-columns: 1.2fr .8fr;gap:18px}
+    @media (max-width: 980px){.layout{grid-template-columns:1fr}}
+    .panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 25px rgba(0,0,0,.05)}
+    .panelPad{padding:16px 18px}
+    h1{margin:0 0 6px;font-size:32px;line-height:1.2}
+    .sub{color:var(--muted);line-height:1.6}
+    .hero{padding:14px 18px 18px}
+    .viewer{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:360px}
+    .viewer img{max-width:100%;max-height:520px;object-fit:contain;cursor:zoom-in}
+    .thumbs{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .thumbs img{width:74px;height:74px;object-fit:cover;border-radius:12px;border:1px solid var(--line);cursor:pointer;opacity:.9}
+    .thumbs img.active{outline:3px solid var(--brand);opacity:1}
+    .specTable{width:100%;border-collapse:collapse;margin-top:10px}
+    .specTable td{border-top:1px solid var(--line);padding:10px 0;vertical-align:top}
+    .specTable td:first-child{color:var(--muted);width:34%}
+    .contactRow{display:flex;flex-direction:column;gap:10px}
+    .chip{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fff;border:1px solid var(--line);padding:10px 12px;border-radius:999px}
+    .chip small{color:var(--muted)}
+    .btnBack{display:inline-flex;align-items:center;gap:8px;font-weight:900;color:#111827}
+    .btnBack:hover{color:var(--brand)}
+    /* Lightbox */
+    .lb{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;z-index:80;padding:18px}
+    .lb img{max-width:min(1100px, 96vw);max-height:92vh;border-radius:18px;background:#fff}
   </style>
 </head>
 <body>
-  <header>
-    <div class="brand">
-      <a href="./" id="homeLink">Wuxing Valve</a>
-      <small id="brandSub">Industrial Valves</small>
-    </div>
-    <div class="lang" id="langSwitcher" aria-label="language">
-      <button data-lang="zh">ZH</button>
-      <button data-lang="en">EN</button>
-      <button data-lang="es">ES</button>
-      <button data-lang="de">DE</button>
-    </div>
-  </header>
-
+<header>
   <div class="wrap">
-    <h1 id="title">Product</h1>
-    <p class="sub" id="subtitle"></p>
-
-    <div class="model-cards" id="modelCards"></div>
-
-    <div class="grid">
-      <div>
-        <div class="carousel" id="carousel" style="display:none">
-          <div class="track" id="track"></div>
-          <button class="navBtn prev" id="prev" aria-label="Previous">◀</button>
-          <button class="navBtn next" id="next" aria-label="Next">▶</button>
+    <div class="topbar">
+      <a class="brand" href="index.html" aria-label="Wuxing Valve Home">
+        <img class="logo" src="assets/logo.png" alt="Wuxing Valve logo" />
+        <div>
+          <div class="brandTitle">Wuxing Valve</div>
+          <div class="brandSub" id="brandSub">工业阀门 · 外贸供应</div>
         </div>
-        <div class="dots" id="dots"></div>
-      </div>
-
-      <div style="display:flex;flex-direction:column;gap:12px">
-        <div class="box" id="specBox" style="display:none">
-          <h2 id="specTitle">Specs</h2>
-          <ul id="specList"></ul>
-        </div>
-        <div class="box" id="detailBox" style="display:none">
-          <h2 id="detailTitle">Details</h2>
-          <p id="detailText"></p>
-        </div>
-
-        <div class="box">
-          <h2 id="contactTitle">Contact</h2>
-          <div class="btnrow" id="contactBtns"></div>
-        </div>
+      </a>
+      <div class="lang">
+        <button data-lang="zh" class="active">ZH</button>
+        <button data-lang="en">EN</button>
+        <button data-lang="es">ES</button>
+        <button data-lang="de">DE</button>
       </div>
     </div>
   </div>
+</header>
 
-  <div class="cookie-wrap" id="cookieWrap" aria-live="polite">
-    <div class="cookie-bar">
-      <p id="cookieText"></p>
-      <div class="cookie-actions">
-        <button class="cookie-reject" id="cookieReject">Reject</button>
-        <button class="cookie-accept" id="cookieAccept">Accept</button>
+<main>
+  <div class="wrap">
+    <div class="crumbs"><a class="btnBack" id="backLink" href="index.html">← <span id="backText">返回产品页</span></a></div>
+
+    <div class="layout">
+      <div class="panel">
+        <div class="hero">
+          <h1 id="title">Product</h1>
+          <div class="sub" id="sub"></div>
+        </div>
+        <div class="panelPad">
+          <div class="viewer"><img id="mainImg" alt="" /></div>
+          <div class="thumbs" id="thumbs"></div>
+
+          <div style="margin-top:16px;color:#374151;line-height:1.7" id="details"></div>
+
+          <table class="specTable" id="specs"></table>
+        </div>
       </div>
+
+      <aside class="panel">
+        <div class="panelPad">
+          <div style="font-weight:900;margin-bottom:10px" id="contactTitle">Contact</div>
+          <div class="contactRow">
+            <a class="chip" href="mailto:wengandy128@gmail.com"><span><small>Email</small> wengandy128@gmail.com</span><span>↗</span></a>
+            <div class="chip"><span><small>WhatsApp</small></span><span>—</span></div>
+            <a class="chip" href="tel:+8615888791812"><span><small>Tel</small> +86 15888791812</span><span>↗</span></a>
+            <div class="chip"><span><small>WeChat</small> 15888791812</span><span>—</span></div>
+            <a class="chip" href="privacy.html"><span><small>Privacy</small></span><span>↗</span></a>
+          </div>
+        </div>
+      </aside>
     </div>
   </div>
+</main>
 
-  <div class="zoom-modal" id="zoomModal" aria-hidden="true">
-    <div class="zoom-inner" role="dialog" aria-label="Image viewer">
-      <button class="zoom-close" id="zoomClose">✕</button>
-      <div class="zoom-stage">
-        <img id="zoomImg" alt="">
-      </div>
-    </div>
-  </div>
+<div class="lb" id="lb"><img id="lbImg" alt=""></div>
 
-  <script>
-const I18N = {
-  zh:{
-    brandSub:'工业阀门 · 外贸供应',
-    specs:'参数',
-    details:'详细描述',
-    contact:'联系',
-    back:'返回首页',
-    noid:'缺少产品 id 参数。',
-    notfound:'未找到该产品。',
-    more:'同系列产品',
-    cookieInfo:'（英文/西语/德语页面：确认后才启用 GA4）'
-  },
-  en:{
-    brandSub:'Industrial Valves · Supply',
-    specs:'Specs',
-    details:'Details',
-    contact:'Contact',
-    back:'Back',
-    noid:'Missing product id.',
-    notfound:'Product not found.',
-    more:'More in this series',
-    cookieMsg:'We use cookies (only Google Analytics) to understand traffic and improve our site. You can accept or reject non-essential cookies. See our {privacy}.',
-    cookieAccept:'Accept',
-    cookieReject:'Reject',
-    privacyLink:'Privacy Notice'
-  },
-  es:{
-    brandSub:'Válvulas industriales · Suministro',
-    specs:'Especificaciones',
-    details:'Detalles',
-    contact:'Contacto',
-    back:'Volver',
-    noid:'Falta el id del producto.',
-    notfound:'Producto no encontrado.',
-    more:'Más de esta serie',
-    cookieMsg:'Usamos cookies (solo Google Analytics) para entender el tráfico y mejorar el sitio. Puedes aceptar o rechazar cookies no esenciales. Consulta nuestra {privacy}.',
-    cookieAccept:'Aceptar',
-    cookieReject:'Rechazar',
-    privacyLink:'Política de Privacidad'
-  },
-  de:{
-    brandSub:'Industrieventile · Supply',
-    specs:'Spezifikationen',
-    details:'Beschreibung',
-    contact:'Kontakt',
-    back:'Zurück',
-    noid:'Produkt-ID fehlt.',
-    notfound:'Produkt nicht gefunden.',
-    more:'Mehr aus der Serie',
-    cookieMsg:'Wir verwenden Cookies (nur Google Analytics), um den Traffic zu verstehen und unsere Website zu verbessern. Du kannst nicht notwendige Cookies akzeptieren oder ablehnen. Siehe {privacy}.',
-    cookieAccept:'Akzeptieren',
-    cookieReject:'Ablehnen',
-    privacyLink:'Datenschutzhinweis'
-  }
-};
+<script>
+  const DATA_URL = "products.json";
+  const SUPPORTED = ["zh","en","es","de"];
 
-const qs = new URLSearchParams(location.search);
-const id = qs.get('id');
-const currentLang = (qs.get('lang') || localStorage.getItem('lang') || 'zh').toLowerCase();
-localStorage.setItem('lang', currentLang);
-const t = I18N[currentLang] || I18N.zh;
-
-document.getElementById('brandSub').textContent = t.brandSub;
-
-// language switch
-[...document.querySelectorAll('#langSwitcher button')].forEach(b=>{
-  if(b.dataset.lang===currentLang) b.classList.add('active');
-  b.onclick=()=>{
-    const lang=b.dataset.lang;
-    localStorage.setItem('lang',lang);
-    const url=new URL(location.href);
-    url.searchParams.set('lang',lang);
-    location.href=url.toString();
+  const I18N = {
+    back: { zh:"返回产品页", en:"Back to products", es:"Volver a productos", de:"Zurück zu Produkten" },
+    contact: { zh:"联系", en:"Contact", es:"Contacto", de:"Kontakt" },
+    notfound: { zh:"未找到该产品", en:"Product not found", es:"Producto no encontrado", de:"Produkt nicht gefunden" },
   };
-});
 
-/* ---------- cookie consent + GA ---------- */
-const GA_ID = 'G-1T6921REMX'; // your GA4 id
-function loadGA(){
-  if(!GA_ID || GA_ID==='G-REPLACE_ME') return;
-  if(window.__gaLoaded) return;
-  window.__gaLoaded = true;
-  const s=document.createElement('script');
-  s.async=true; s.src=`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
-  document.head.appendChild(s);
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-  window.gtag = gtag;
-  gtag('js', new Date());
-  gtag('config', GA_ID);
-}
-function disableGA(){ if(GA_ID && GA_ID!=='G-REPLACE_ME') window['ga-disable-'+GA_ID] = true; }
-
-const consentKey='cookieConsent:v1';
-const saved = localStorage.getItem(consentKey);
-
-if(currentLang==='zh'){
-  loadGA();
-}else{
-  const wrap = document.getElementById('cookieWrap');
-  const cookieP = document.getElementById('cookieText');
-  const btnA = document.getElementById('cookieAccept');
-  const btnR = document.getElementById('cookieReject');
-
-  const privacyA = `<a href="/privacy.html" target="_blank" rel="noopener">${(t.privacyLink||'Privacy')}</a>`;
-  if(cookieP){
-    cookieP.innerHTML = (t.cookieMsg || '').replace('{privacy}', privacyA);
+  function getLang() {
+    const u = new URL(location.href);
+    const q = (u.searchParams.get("lang") || "").toLowerCase();
+    const stored = (localStorage.getItem("lang") || "").toLowerCase();
+    return SUPPORTED.includes(q) ? q : (SUPPORTED.includes(stored) ? stored : "zh");
   }
-  if(btnA) btnA.textContent = t.cookieAccept || 'Accept';
-  if(btnR) btnR.textContent = t.cookieReject || 'Reject';
-
-  function show(){ wrap.style.display='block'; }
-  function hide(){ wrap.style.display='none'; }
-
-  if(!saved){
-    disableGA(); show();
-  }else{
-    try{
-      const st = JSON.parse(saved);
-      if(st.status==='accepted') loadGA(); else disableGA();
-    }catch{ disableGA(); show(); }
+  function setLang(lang) {
+    localStorage.setItem("lang", lang);
+    const u = new URL(location.href);
+    u.searchParams.set("lang", lang);
+    history.replaceState(null, "", u.toString());
+    document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('active', b.dataset.lang===lang));
+    render();
   }
-  btnA.onclick=()=>{
-    localStorage.setItem(consentKey, JSON.stringify({status:'accepted',ts:Date.now()}));
-    hide(); loadGA();
-  };
-  btnR.onclick=()=>{
-    localStorage.setItem(consentKey, JSON.stringify({status:'rejected',ts:Date.now()}));
-    hide(); disableGA();
-  };
-}
 
-function pick(v){
-  if(!v) return '';
-  if(typeof v==='string') return v;
-  return v[currentLang] || v.zh || v.en || v.es || v.de || '';
-}
+  async function fetchJSON(url) {
+    const r = await fetch(url, { cache: "no-store" });
+    if (!r.ok) throw new Error("Failed to load " + url);
+    return await r.json();
+  }
 
-async function fetchJSON(url){
-  try{
-    const r = await fetch(url, {cache:'no-store'});
-    if(r.ok) return await r.json();
-  }catch(e){}
-  return null;
-}
-function imgFallbackURL(){
-  return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(
-    `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600">
-      <rect width="100%" height="100%" fill="#f1f3f5"/>
-      <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
-        fill="#9aa0a6" font-family="Arial" font-size="20">Image not found</text>
-    </svg>`
-  );
-}
+  function q() {
+    const u = new URL(location.href);
+    return {
+      id: u.searchParams.get("id") || "",
+      lang: getLang(),
+    };
+  }
 
-function updateURL(newId){
-  const url = new URL(location.href);
-  url.searchParams.set('id', newId);
-  url.searchParams.set('lang', currentLang);
-  history.replaceState({},'',url.toString());
-}
+  function setText(lang) {
+    document.documentElement.lang = lang;
+    document.getElementById("backText").textContent = I18N.back[lang] || I18N.back.en;
+    document.getElementById("contactTitle").textContent = I18N.contact[lang] || I18N.contact.en;
+    const back = document.getElementById("backLink");
+    back.href = `index.html?lang=${encodeURIComponent(lang)}`;
+  }
 
-// ---- zoom modal ----
-const zoomModal = document.getElementById('zoomModal');
-const zoomImg = document.getElementById('zoomImg');
-const zoomClose = document.getElementById('zoomClose');
-let zScale=1, zX=0, zY=0, dragging=false, startX=0, startY=0;
+  function renderThumbs(images, activeIndex, onPick) {
+    const box = document.getElementById("thumbs");
+    box.innerHTML = "";
+    images.forEach((src, i) => {
+      const im = document.createElement("img");
+      im.src = src;
+      im.alt = "thumb";
+      im.className = (i===activeIndex) ? "active" : "";
+      im.addEventListener("click", () => onPick(i));
+      box.appendChild(im);
+    });
+  }
 
-function applyZoom(){
-  zoomImg.style.transform = `translate(${zX}px, ${zY}px) scale(${zScale})`;
-}
-function openZoom(src){
-  zoomImg.src = src;
-  zScale=1; zX=0; zY=0;
-  applyZoom();
-  zoomModal.style.display='flex';
-  document.body.style.overflow='hidden';
-}
-function closeZoom(){
-  zoomModal.style.display='none';
-  document.body.style.overflow='';
-}
-zoomClose.onclick = closeZoom;
-zoomModal.addEventListener('click', (e)=>{
-  if(e.target===zoomModal) closeZoom();
-});
-window.addEventListener('keydown', (e)=>{
-  if(e.key==='Escape' && zoomModal.style.display==='flex') closeZoom();
-});
-zoomModal.addEventListener('wheel', (e)=>{
-  e.preventDefault();
-  const delta = -e.deltaY;
-  const step = delta>0 ? 0.12 : -0.12;
-  zScale = Math.min(5, Math.max(1, zScale + step));
-  applyZoom();
-}, {passive:false});
-zoomImg.addEventListener('mousedown', (e)=>{
-  dragging=true;
-  startX=e.clientX - zX;
-  startY=e.clientY - zY;
-  zoomImg.style.cursor='grabbing';
-});
-window.addEventListener('mousemove', (e)=>{
-  if(!dragging) return;
-  zX=e.clientX - startX;
-  zY=e.clientY - startY;
-  applyZoom();
-});
-window.addEventListener('mouseup', ()=>{
-  dragging=false;
-  zoomImg.style.cursor='grab';
-});
+  function setMainImage(src, title) {
+    const im = document.getElementById("mainImg");
+    im.src = src;
+    im.alt = title || "";
+  }
 
-async function loadAll(){
-  const data = await fetchJSON('products.json') || await fetchJSON('/products.json') || await fetchJSON('./products.json');
-  const ALL = Array.isArray(data?.products) ? data.products : [];
-  return ALL;
-}
+  function renderSpecs(specs, lang) {
+    const table = document.getElementById("specs");
+    table.innerHTML = "";
+    (specs || []).forEach(row => {
+      const tr = document.createElement("tr");
+      const k = (row.k && (row.k[lang] || row.k.en)) || "";
+      const v = (row.v && (row.v[lang] || row.v.en)) || "";
+      tr.innerHTML = `<td>${k}</td><td>${v}</td>`;
+      table.appendChild(tr);
+    });
+  }
 
-async function loadCarousel(p){
-  const images = Array.isArray(p.images) && p.images.length ? p.images : [p.cover].filter(Boolean);
-  const track = document.getElementById('track');
-  const dots = document.getElementById('dots');
-  track.innerHTML=''; dots.innerHTML='';
-  let idx=0;
+  function enableLightbox(images, getActive) {
+    const lb = document.getElementById("lb");
+    const lbImg = document.getElementById("lbImg");
+    document.getElementById("mainImg").onclick = () => {
+      const src = images[getActive()] || "";
+      if (!src) return;
+      lbImg.src = src;
+      lb.style.display = "flex";
+    };
+    lb.onclick = () => {
+      lb.style.display = "none";
+      lbImg.src = "";
+    };
+  }
 
-  images.forEach((src,i)=>{
-    const slide=document.createElement('div');
-    slide.className='slide';
-    slide.innerHTML=`<img src="${src}" alt="">`;
-    const img=slide.querySelector('img');
-    img.onerror=()=>{ img.src=imgFallbackURL(); };
-    img.style.cursor='zoom-in';
-    img.addEventListener('click', ()=> openZoom(img.src));
-    track.appendChild(slide);
+  async function render() {
+    const { id, lang } = q();
+    setText(lang);
 
-    const d=document.createElement('button');
-    d.className='dot'+(i===0?' active':'');
-    d.onclick=()=>{ idx=i; render(); };
-    dots.appendChild(d);
+    try {
+      const data = await fetchJSON(DATA_URL);
+      const list = Array.isArray(data.products) ? data.products : [];
+      const p = list.find(x => x.id === id);
+
+      if (!p) {
+        document.getElementById("title").textContent = I18N.notfound[lang] || I18N.notfound.en;
+        document.getElementById("sub").textContent = "";
+        document.getElementById("details").textContent = "";
+        document.getElementById("thumbs").innerHTML = "";
+        document.getElementById("specs").innerHTML = "";
+        return;
+      }
+
+      const title = (p.title && (p.title[lang] || p.title.en)) || p.id;
+      const sub = (p.sub && (p.sub[lang] || p.sub.en)) || "";
+      const details = (p.details && (p.details[lang] || p.details.en)) || "";
+
+      document.title = `Wuxing Valve · ${title}`;
+      document.getElementById("title").textContent = title;
+      document.getElementById("sub").textContent = sub;
+      document.getElementById("details").textContent = details;
+
+      const images = Array.isArray(p.images) && p.images.length ? p.images : (p.cover ? [p.cover] : []);
+      let active = 0;
+      setMainImage(images[0] || "", title);
+      renderThumbs(images, active, (i) => {
+        active = i;
+        setMainImage(images[active], title);
+        renderThumbs(images, active, arguments.callee);
+      });
+
+      renderSpecs(p.specs, lang);
+      enableLightbox(images, () => active);
+
+    } catch (e) {
+      console.error(e);
+      document.getElementById("title").textContent = "Failed to load data";
+      document.getElementById("sub").textContent = "";
+    }
+  }
+
+  document.querySelectorAll('.lang button').forEach(b => {
+    b.addEventListener('click', () => setLang(b.dataset.lang));
   });
 
-  function render(){
-    track.style.transform=`translateX(${-idx*100}%)`;
-    [...dots.children].forEach((d,i)=>d.classList.toggle('active', i===idx));
-  }
+  // init
+  const lang = getLang();
+  document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('active', b.dataset.lang===lang));
   render();
-
-  document.getElementById('prev').onclick=()=>{ idx=(idx-1+images.length)%images.length; render(); };
-  document.getElementById('next').onclick=()=>{ idx=(idx+1)%images.length; render(); };
-}
-
-async function main(){
-  const titleEl=document.getElementById('title');
-  const subEl=document.getElementById('sub');
-  const seriesBox=document.getElementById('seriesBox');
-  const specsTitle=document.getElementById('specsTitle');
-  const detailsTitle=document.getElementById('detailsTitle');
-  const backBtn=document.getElementById('backBtn');
-
-  specsTitle.textContent=t.specs;
-  detailsTitle.textContent=t.details;
-  backBtn.textContent=t.back;
-
-  if(!id){
-    titleEl.textContent=t.noid;
-    return;
-  }
-
-  const ALL = await loadAll();
-  const p = ALL.find(x=>x.id===id);
-  if(!p){
-    titleEl.textContent=t.notfound;
-    return;
-  }
-
-  titleEl.textContent = pick(p.title) || p.id;
-  subEl.textContent = pick(p.sub) || '';
-
-  // Contact buttons
-  const contactRow=document.getElementById('btnRow');
-  const email='wengandy128@gmail.com';
-  const phone='+86 15888791812';
-  const whatsapp='+8615888791812';
-  contactRow.innerHTML = `
-    <a class="btn primary" href="mailto:${email}">📧 ${t.contact}</a>
-    <a class="btn" href="https://wa.me/${whatsapp}" target="_blank" rel="noopener">💬 WhatsApp</a>
-    <a class="btn" href="tel:${phone.replace(/\s/g,'')}">📞 ${phone}</a>
-  `;
-
-  // Specs & Details (if you have p.specs/p.details objects, show them)
-  const specsP=document.getElementById('specsP');
-  const detailsP=document.getElementById('detailsP');
-  specsP.textContent = pick(p.specs) || '';
-  detailsP.textContent = pick(p.details) || '';
-
-  // Series cards
-  seriesBox.innerHTML='';
-  const sameSeries = ALL.filter(x=>x.series && p.series && x.series===p.series && x.id!==p.id);
-  document.getElementById('moreTitle').textContent = t.more;
-  for(const it of sameSeries.slice(0,6)){
-    const card=document.createElement('div');
-    card.className='model-card';
-    card.innerHTML=`<img src="${it.cover||''}" alt=""><div class="meta">${pick(it.title)||it.id}<small>${pick(it.sub)||''}</small></div>`;
-    card.onclick=()=>{ updateURL(it.id); location.reload(); };
-    const img=card.querySelector('img');
-    img.onerror=()=>{ img.src=imgFallbackURL(); };
-    seriesBox.appendChild(card);
-  }
-  if(!sameSeries.length){
-    document.getElementById('moreWrap').style.display='none';
-  }
-
-  await loadCarousel(p);
-}
-
-main();
-  </script>
+</script>
 </body>
 </html>
