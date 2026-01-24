@@ -49,6 +49,15 @@
     /* Lightbox */
     .lb{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;z-index:80;padding:18px}
     .lb img{max-width:min(1100px, 96vw);max-height:92vh;border-radius:18px;background:#fff}
+
+    /* Params tables (from datasheets) */
+    .paramsBlock{margin-top:18px}
+    .paramsBlock h2{margin:18px 0 10px;font-size:18px}
+    .tableWrap{overflow:auto;border:1px solid var(--line);border-radius:14px}
+    .paramTable{border-collapse:collapse;min-width:680px;width:100%}
+    .paramTable td,.paramTable th{border:1px solid var(--line);padding:8px 10px;font-size:14px;vertical-align:middle}
+    .paramTable .firstRow td{font-weight:800;background:#f9fafb}
+
   </style>
 </head>
 <body>
@@ -89,6 +98,8 @@
           <div style="margin-top:16px;color:#374151;line-height:1.7" id="details"></div>
 
           <table class="specTable" id="specs"></table>
+
+          <div id="params" class="paramsBlock"></div>
         </div>
       </div>
 
@@ -188,7 +199,17 @@
     });
   }
 
-  function enableLightbox(images, getActive) {
+  
+  function renderParams(p, lang){
+    const box = document.getElementById("params");
+    if(!box) return;
+    // prefer HTML snippet (fast), fallback to empty
+    const ph = p && p.params_html;
+    const html = (ph && (ph[lang] || ph.zh || ph.en)) || "";
+    box.innerHTML = html ? html : "";
+  }
+
+function enableLightbox(images, getActive) {
     const lb = document.getElementById("lb");
     const lbImg = document.getElementById("lbImg");
     document.getElementById("mainImg").onclick = () => {
@@ -218,6 +239,7 @@
         document.getElementById("details").textContent = "";
         document.getElementById("thumbs").innerHTML = "";
         document.getElementById("specs").innerHTML = "";
+        const pb = document.getElementById("params"); if (pb) pb.innerHTML = "";
         return;
       }
 
@@ -240,6 +262,7 @@
       });
 
       renderSpecs(p.specs, lang);
+      renderParams(p, lang);
       enableLightbox(images, () => active);
 
     } catch (e) {
