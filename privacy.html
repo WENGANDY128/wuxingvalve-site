@@ -29,6 +29,8 @@
     .panelPad{padding:16px 18px}
     h1{margin:0 0 8px}
     p{margin:0;color:#374151;line-height:1.75}
+    /* allow \n line breaks in the privacy text */
+    #content p{white-space:pre-line}
     .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
     .btn{border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 14px;font-weight:900;cursor:pointer}
     .btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
@@ -64,8 +66,8 @@
         <div id="content"></div>
 
         <div class="row" id="consentRow" style="display:none">
-          <button class="btn primary" id="btnGrant">Allow analytics</button>
-          <button class="btn" id="btnDeny">Disable analytics</button>
+          <button class="btn primary" id="btnGrant">Allow GA4</button>
+          <button class="btn" id="btnDeny">Disable GA4</button>
           <a class="btn" id="btnBack" href="index.html">Back</a>
         </div>
 
@@ -79,19 +81,84 @@
   const SUPPORTED = ["zh","en","es","de"];
 
   const I18N = {
-    title: { zh:"隐私与统计", en:"Privacy & Analytics", es:"Privacidad y analítica", de:"Datenschutz & Analyse" },
-    content: {
-      zh: "本页面用于管理站点的统计设置。\n",
-      en: "For EN/ES/DE pages, we use Google Analytics 4 (GA4) only with your consent. You can change your preference here.\n",
-      es: "Para las páginas EN/ES/DE, usamos Google Analytics 4 (GA4) solo con su consentimiento. Puede cambiar su preferencia aquí.\n",
-      de: "Für EN/ES/DE-Seiten verwenden wir Google Analytics 4 (GA4) nur mit Ihrer Zustimmung. Sie können Ihre Einstellung hier ändern.\n"
+    title: {
+      zh:"隐私与统计",
+      en:"Privacy & Analytics",
+      es:"Privacidad y analítica",
+      de:"Datenschutz & Analyse"
     },
-    grant: { en:"Allow analytics", es:"Permitir analítica", de:"Analyse erlauben" },
-    deny: { en:"Disable analytics", es:"Desactivar analítica", de:"Analyse deaktivieren" },
-    back: { zh:"返回", en:"Back", es:"Volver", de:"Zurück" },
-    statusGranted: { en:"Status: allowed", es:"Estado: permitido", de:"Status: erlaubt" },
-    statusDenied: { en:"Status: disabled", es:"Estado: desactivado", de:"Status: deaktiviert" },
-    statusNA: { zh:"中文页面默认启用站点统计。", en:"Status: not set", es:"Estado: no establecido", de:"Status: nicht gesetzt" },
+
+    // Official / conservative wording. ZH: GA4 enabled by default. Others: consent required.
+    content: {
+      zh:
+        "本页面用于管理站点的统计设置。\n\n中文（ZH）页面默认启用 Google Analytics 4（GA4）。",
+      en:
+        "Privacy & Analytics Notice\n\n" +
+        "We take privacy seriously. This page explains how analytics are used on this website.\n\n" +
+        "Google Analytics 4 (GA4)\n" +
+        "For the EN/DE/ES versions of this website, GA4 is enabled only after you give consent on this page. " +
+        "If you do not consent, GA4 is not enabled for those language versions. You can change or withdraw your choice at any time on this page.\n\n" +
+        "What GA4 may process\n" +
+        "When enabled, GA4 may process usage and technical information such as pages viewed, referrer, interactions (e.g., clicks/scroll), " +
+        "approximate location, device/browser information, and identifiers stored in cookies or similar technologies. " +
+        "This information is used to understand site performance and improve content.\n\n" +
+        "Recipients and international transfers\n" +
+        "GA4 is provided by Google. Data may be processed by Google and may be transferred to countries outside your jurisdiction (including the United States). " +
+        "Where applicable, such transfers may rely on recognized safeguards (e.g., Standard Contractual Clauses).\n\n" +
+        "Your choice\n" +
+        "Your preference is stored in your browser (local storage) and can be changed at any time on this page.\n\n" +
+        "Contact\n" +
+        "wengandy128@gmail.com",
+      es:
+        "Aviso de privacidad y analítica\n\n" +
+        "Nos tomamos la privacidad en serio. Esta página explica cómo se utiliza la analítica en este sitio web.\n\n" +
+        "Google Analytics 4 (GA4)\n" +
+        "Para las versiones EN/DE/ES de este sitio web, GA4 se activa solo después de que usted otorgue su consentimiento en esta página. " +
+        "Si no da su consentimiento, GA4 no se habilita para esas versiones de idioma. Puede cambiar o retirar su elección en cualquier momento en esta página.\n\n" +
+        "Qué datos puede tratar GA4\n" +
+        "Cuando está habilitado, GA4 puede tratar información de uso y técnica, como páginas visitadas, referencia (referrer), interacciones (p. ej., clic/scroll), " +
+        "ubicación aproximada, información del dispositivo/navegador e identificadores almacenados en cookies o tecnologías similares. " +
+        "Esta información se utiliza para comprender el rendimiento del sitio y mejorar el contenido.\n\n" +
+        "Destinatarios y transferencias internacionales\n" +
+        "GA4 es proporcionado por Google. Los datos pueden ser tratados por Google y transferidos a países fuera de su jurisdicción (incluidos Estados Unidos). " +
+        "Cuando corresponda, dichas transferencias pueden basarse en salvaguardas reconocidas (p. ej., Cláusulas Contractuales Tipo).\n\n" +
+        "Su elección\n" +
+        "Su preferencia se guarda en su navegador (local storage) y puede modificarse en cualquier momento en esta página.\n\n" +
+        "Contacto\n" +
+        "wengandy128@gmail.com",
+      de:
+        "Hinweis zu Datenschutz & Analyse\n\n" +
+        "Wir nehmen Datenschutz ernst. Auf dieser Seite erklären wir, wie Webanalyse auf dieser Website eingesetzt wird.\n\n" +
+        "Google Analytics 4 (GA4)\n" +
+        "Für die Sprachversionen EN/DE/ES wird GA4 erst aktiviert, nachdem Sie auf dieser Seite eingewilligt haben. " +
+        "Ohne Einwilligung wird GA4 für diese Sprachversionen nicht aktiviert. Sie können Ihre Auswahl jederzeit auf dieser Seite ändern oder widerrufen.\n\n" +
+        "Welche Daten GA4 verarbeiten kann\n" +
+        "Wenn GA4 aktiviert ist, kann es Nutzungs- und technische Informationen verarbeiten, z. B. aufgerufene Seiten, Referrer, Interaktionen (z. B. Klick/Scroll), " +
+        "ungefähre Standortdaten, Geräte-/Browserinformationen sowie Kennungen, die in Cookies oder ähnlichen Technologien gespeichert sind. " +
+        "Diese Informationen dienen dazu, die Leistung der Website zu verstehen und Inhalte zu verbessern.\n\n" +
+        "Empfänger und internationale Datenübermittlungen\n" +
+        "GA4 wird von Google bereitgestellt. Daten können durch Google verarbeitet und in Länder außerhalb Ihres Rechtsraums (einschließlich der USA) übermittelt werden. " +
+        "Soweit anwendbar, können solche Übermittlungen auf anerkannten Garantien beruhen (z. B. Standardvertragsklauseln).\n\n" +
+        "Ihre Auswahl\n" +
+        "Ihre Einstellung wird in Ihrem Browser (Local Storage) gespeichert und kann jederzeit auf dieser Seite geändert werden.\n\n" +
+        "Kontakt\n" +
+        "wengandy128@gmail.com"
+    },
+
+    grant: { en:"Allow GA4", es:"Permitir GA4", de:"GA4 erlauben" },
+    deny:  { en:"Disable GA4", es:"Desactivar GA4", de:"GA4 deaktivieren" },
+    back:  { zh:"返回", en:"Back", es:"Volver", de:"Zurück" },
+
+    statusGranted: { en:"Status: GA4 allowed", es:"Estado: GA4 permitido", de:"Status: GA4 erlaubt" },
+    statusDenied:  { en:"Status: GA4 disabled", es:"Estado: GA4 desactivado", de:"Status: GA4 deaktiviert" },
+
+    // For ZH we show the default-on message; for others, show “not set” until user chooses
+    statusNA: {
+      zh:"中文（ZH）页面默认启用 GA4。",
+      en:"Status: not set",
+      es:"Estado: no establecido",
+      de:"Status: nicht gesetzt"
+    }
   };
 
   function getLang() {
@@ -100,6 +167,7 @@
     const stored = (localStorage.getItem("lang") || "").toLowerCase();
     return SUPPORTED.includes(q) ? q : (SUPPORTED.includes(stored) ? stored : "zh");
   }
+
   function setLang(lang) {
     localStorage.setItem("lang", lang);
     const u = new URL(location.href);
@@ -108,14 +176,18 @@
     document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('active', b.dataset.lang===lang));
     render();
   }
+
   function consentKey(lang) { return `ga4_consent_${lang}`; }
 
   function render() {
     const lang = getLang();
     document.documentElement.lang = lang;
+
     document.getElementById("title").textContent = I18N.title[lang] || I18N.title.en;
-    document.getElementById("btnBack").textContent = I18N.back[lang] || I18N.back.en;
-    document.getElementById("btnBack").href = `index.html?lang=${encodeURIComponent(lang)}`;
+
+    const back = document.getElementById("btnBack");
+    back.textContent = I18N.back[lang] || I18N.back.en;
+    back.href = `index.html?lang=${encodeURIComponent(lang)}`;
 
     const content = document.getElementById("content");
     content.innerHTML = "";
@@ -134,10 +206,11 @@
 
     row.style.display = "flex";
     document.getElementById("btnGrant").textContent = I18N.grant[lang] || I18N.grant.en;
-    document.getElementById("btnDeny").textContent = I18N.deny[lang] || I18N.deny.en;
+    document.getElementById("btnDeny").textContent  = I18N.deny[lang]  || I18N.deny.en;
 
     const key = consentKey(lang);
     const state = localStorage.getItem(key);
+
     if (state === "granted") status.textContent = I18N.statusGranted[lang] || I18N.statusGranted.en;
     else if (state === "denied") status.textContent = I18N.statusDenied[lang] || I18N.statusDenied.en;
     else status.textContent = I18N.statusNA[lang] || I18N.statusNA.en;
