@@ -86,6 +86,12 @@ header.compact{box-shadow:0 6px 20px rgba(0,0,0,.06)}
       h1{font-size:28px}
     }
 
+
+    /* Hero banner (homepage showcase image) */
+    .hero{margin:10px 0 18px;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:#0b0f19;box-shadow:0 10px 25px rgba(0,0,0,.06)}
+    .hero img{width:100%;height:auto;display:block;object-fit:cover;aspect-ratio:16/6;max-height:420px}
+    @media (max-width: 620px){.hero img{aspect-ratio:16/9;max-height:360px}}
+
     /* Consent bar */
     .consent{position:fixed;left:14px;right:14px;bottom:14px;z-index:60;display:none}
     .consentBox{max-width:1150px;margin:0 auto;background:#111827;color:#fff;border-radius:16px;padding:14px 14px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;box-shadow:0 12px 30px rgba(0,0,0,.25)}
@@ -130,6 +136,11 @@ header.compact{box-shadow:0 6px 20px rgba(0,0,0,.06)}
 
 <main>
   <div class="wrap">
+
+    <section class="hero" aria-label="Homepage banner">
+      <!-- Put your banner image here. Make sure the file exists at assets/banner1.jpg (or change the path). -->
+      <img src="assets/banner1.jpg" alt="Wuxing Valve – specialized fertilizer valve banner" loading="eager" />
+    </section>
     <h1 id="pageTitle">产品展示</h1>
     <div class="intro" id="pageIntro"></div>
 
