@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wuxing Valve | Industrial Valves Manufacturer | wuxingvalve.com</title>
+  <meta name="description" content="Wuxing Valve manufactures industrial valves and fittings: angle globe valves, check valves, gate valves, hard-seated ball valves, jacketed valves, high-pressure fittings and titanium alloy valves. OEM/ODM available." />
+  <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://wuxingvalve.com/" />
+<link rel="icon" href="assets/favicon.ico" sizes="any" />
+  <link rel="icon" href="assets/favicon.png" type="image/png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="manifest" href="manifest.json" />
+  <style>
+    :root {
+      --bg:#f7f7f8; --card:#ffffff; --text:#111827; --muted:#6b7280; --line:#e5e7eb;
+      --brand:#2563eb; --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,"Noto Sans",sans-serif;background:var(--bg);color:var(--text)}
+    a{color:inherit;text-decoration:none}
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
+    .wrap{max-width:1150px;margin:0 auto;padding:14px 18px}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{height:34px;width:auto;display:block}
+    .brandTitle{font-weight:800;letter-spacing:.2px}
+    .brandSub{font-size:12px;color:var(--muted);margin-top:2px}
+    .lang{display:inline-flex;gap:6px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px}
+    .lang button{border:0;background:transparent;padding:7px 10px;border-radius:999px;cursor:pointer;font-weight:700;color:#374151}
+    .lang button.active{background:var(--brand);color:#fff}
+    .contactRow{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+
+
+/* Shrink header on scroll (all devices) */
+header{transition:box-shadow .2s ease}
+.wrap{transition:padding .25s ease}
+.contactRow{max-height:160px;overflow:hidden;transition:opacity .18s ease, transform .22s ease}
+header.compact .wrap{padding-top:8px;padding-bottom:8px}
+header.compact .logo{height:28px}
+header.compact .brandSub{display:none}
+header.compact .contactRow{max-height:0;opacity:0;margin-top:0;transform:translateY(-18px);pointer-events:none}
+header.compact{box-shadow:0 6px 20px rgba(0,0,0,.06)}
+    .chip{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);padding:8px 12px;border-radius:999px;color:#111827}
+    .chip small{color:var(--muted)}
+    main .wrap{padding-top:22px;padding-bottom:44px}
+    h1{font-size:34px;margin:4px 0 8px}
+    .intro{color:#374151;line-height:1.6;max-width:900px}
+    .filters{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 18px}
+    .filters button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 14px;cursor:pointer;font-weight:700;color:#111827}
+    .filters button.active{background:var(--brand);border-color:var(--brand);color:#fff}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    @media (max-width: 980px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media (max-width: 620px){.grid{grid-template-columns:1fr}}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,.05);display:flex;flex-direction:column;min-height:340px}
+    .cardTop{padding:12px 14px 0;display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+    .badge{font-size:12px;font-weight:800;background:#111827;color:#fff;border-radius:999px;padding:4px 10px}
+    .tag{font-size:12px;color:#374151;background:#eef2ff;border-radius:999px;padding:4px 10px;font-weight:700}
+    .imgWrap{padding:10px 14px 0;flex:1;display:flex;align-items:center;justify-content:center}
+    .imgWrap img{max-width:100%;max-height:220px;object-fit:contain;border-radius:14px;background:#fff}
+    .cardBody{padding:12px 14px 16px}
+    .cardTitle{font-weight:900;line-height:1.25;margin:0 0 6px}
+    .cardSub{color:var(--muted);font-size:14px;line-height:1.4;margin:0}
+    .about{margin-top:26px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:0 10px 25px rgba(0,0,0,.05)}
+    .about h2{margin:0 0 8px}
+    .about p{margin:0;color:#374151;line-height:1.7}
+    .about .addr{margin-top:10px;color:#111827;font-weight:800}
+    footer{border-top:1px solid var(--line);padding:18px 0;text-align:center;color:var(--muted)}
+
+    /* Mobile: keep contact info from blocking the view */
+    @media (max-width: 620px){
+      .contactRow{
+        flex-wrap:nowrap;
+        overflow-x:auto;
+        -webkit-overflow-scrolling:touch;
+        gap:8px;
+        margin-top:10px;
+        padding-bottom:6px;
+        scrollbar-width:none;
+      }
+      .contactRow::-webkit-scrollbar{display:none}
+      .chip{
+        flex:0 0 auto;
+        padding:6px 10px;
+        font-size:13px;
+        white-space:nowrap;
+      }
+      .chip small{display:none}
+      .logo{height:30px}
+      h1{font-size:28px}
+    }
+
+    /* Consent bar */
+    .consent{position:fixed;left:14px;right:14px;bottom:14px;z-index:60;display:none}
+    .consentBox{max-width:1150px;margin:0 auto;background:#111827;color:#fff;border-radius:16px;padding:14px 14px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;box-shadow:0 12px 30px rgba(0,0,0,.25)}
+    .consentBox .msg{font-size:14px;line-height:1.4;opacity:.95}
+    .consentBox .actions{display:flex;gap:10px;flex-wrap:wrap}
+    .consentBox button,.consentBox a{border:0;border-radius:999px;padding:9px 14px;font-weight:900;cursor:pointer}
+    .consentBox button.accept{background:#22c55e;color:#052e16}
+    .consentBox button.decline{background:#374151;color:#fff}
+    .consentBox a{background:#fff;color:#111827;display:inline-flex;align-items:center}
+  
+    /* ===== Primary navigation (single-page anchors) ===== */
+    .navRow{display:flex;gap:14px;align-items:center;justify-content:flex-end;flex-wrap:wrap;margin-top:12px;padding-top:10px;border-top:1px solid var(--line)}
+    .navLink{font-weight:700;color:#374151;padding:8px 10px;border-radius:999px;line-height:1}
+    .navLink:hover{background:rgba(37,99,235,.10);color:#1f2937}
+    .navCta{background:var(--brand);color:#fff}
+    .navCta:hover{background:#1d4ed8;color:#fff}
+    @media (max-width: 720px){
+      .navRow{gap:10px}
+      .navLink{padding:8px 9px;font-size:14px}
+    }
+
+    /* ===== Hero slider (banners) ===== */
+    .hero{width:100%;background:#0b1220}
+    .hero-slider{position:relative;width:100%;height:min(520px, 40vw);min-height:320px;overflow:hidden}
+    .hero-track{display:flex;height:100%;transition:transform .45s ease}
+    .hero-slide{min-width:100%;height:100%;position:relative}
+    .hero-slide img{width:100%;height:100%;display:block;object-fit:cover;object-position:center center}
+    .hero-nav{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:999px;border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.25);color:#fff;font-size:30px;line-height:42px;text-align:center;cursor:pointer;user-select:none}
+    .hero-prev{left:18px}
+    .hero-next{right:18px}
+    .hero-nav:hover{background:rgba(0,0,0,.40)}
+    .hero-dots{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);display:flex;gap:8px;align-items:center}
+    .hero-dot{width:10px;height:10px;border-radius:999px;border:1px solid rgba(255,255,255,.65);background:transparent;cursor:pointer}
+    .hero-dot.is-active{background:#fff}
+
+    /* Mobile: keep desktop unchanged, only adjust crop focus (方案B) */
+    @media (max-width: 640px){
+      .hero-slider{height:min(420px, 70vw);min-height:220px}
+      .hero-slide img{object-position:left center;} /* prioritize left-side title area */
+      .hero-prev{left:10px}
+      .hero-next{right:10px}
+      .hero-nav{width:40px;height:40px;font-size:26px;line-height:38px}
+    }
+
+    /* ===== Contact section ===== */
+    .contactSection{padding:34px 0;background:#fff;border-top:1px solid var(--line)}
+    .contactSection h2{margin:0 0 10px 0;font-size:28px}
+    .contactDesc{margin:0 0 16px 0;color:var(--muted);line-height:1.6}
+    .contactGrid{display:grid;grid-template-columns:repeat(5, minmax(0, 1fr));gap:12px}
+    .contactItem{display:block;text-align:left;background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:14px 14px;cursor:pointer}
+    .contactItem .k{font-size:12px;color:var(--muted);font-weight:800;letter-spacing:.02em}
+    .contactItem .v{margin-top:6px;font-weight:800;color:#111827}
+    .contactItem:hover{border-color:rgba(37,99,235,.35);background:#f3f6ff}
+    .wechatBtn{border:1px solid var(--line);font-family:inherit}
+    @media (max-width: 980px){
+      .contactGrid{grid-template-columns:repeat(2, minmax(0, 1fr))}
+    }
+
+    /* ===== WeChat modal ===== */
+    .modal[aria-hidden="true"]{display:none}
+    .modal{position:fixed;inset:0;z-index:200}
+    .modalBackdrop{position:absolute;inset:0;background:rgba(0,0,0,.55)}
+    .modalPanel{position:relative;max-width:520px;margin:8vh auto 0 auto;background:#fff;border-radius:18px;padding:18px 18px 16px 18px;box-shadow:0 20px 80px rgba(0,0,0,.35)}
+    .modalClose{position:absolute;right:12px;top:10px;border:0;background:transparent;font-size:18px;cursor:pointer;color:#111827}
+    .modalSub{margin:6px 0 12px 0;color:var(--muted)}
+    .qrBox{background:#f3f4f6;border-radius:16px;padding:12px;display:flex;justify-content:center;align-items:center}
+    .qrBox img{max-width:100%;height:auto;border-radius:12px}
+    .wechatRow{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-top:12px;flex-wrap:wrap}
+    .copyBtn{border:0;background:var(--brand);color:#fff;border-radius:999px;padding:10px 14px;font-weight:800;cursor:pointer}
+    .copyBtn:hover{background:#1d4ed8}
+    .copyTip{margin-top:10px;color:#065f46;font-weight:700;min-height:18px}
+    .wechatId{font-weight:700;color:#111827}
+    .wechatId span{color:var(--muted);font-weight:800}
+
+  </style>
+</head>
+<body>
+<div id="top"></div>
+<header id="siteHeader">
+  <div class="wrap">
+    <div class="topbar">
+      <a class="brand" href="index.html" aria-label="Wuxing Valve Home">
+        <img class="logo" src="assets/logo.png" alt="Wuxing Valve logo" />
+        <div>
+          <div class="brandTitle">Wuxing Valve</div>
+          <div class="brandSub" id="brandSub">工业阀门 · 外贸供应</div>
+        </div>
+      </a>
+      <div class="lang" role="tablist" aria-label="Language switch">
+        <button data-lang="zh" class="active">ZH</button>
+        <button data-lang="en">EN</button>
+        <button data-lang="es">ES</button>
+        <button data-lang="de">DE</button>
+      </div>
+    </div>
+
+    
+<div class="contactRow">
+    <a class="chip" href="mailto:wengandy128@gmail.com">📧 <small data-i18n-contact="email">邮箱:</small> wengandy128@gmail.com</a>
+    <a class="chip" href="mailto:andy@wuxingvalve.com">📧 <small data-i18n-contact="email">邮箱:</small> andy@wuxingvalve.com</a>
+    <a class="chip" href="https://wa.me/8615888791812" target="_blank" rel="noopener">💬 <small data-i18n-contact="whatsapp">WhatsApp</small> +86 15888791812</a>
+    <a class="chip" href="tel:+8615888791812">📞 <small data-i18n-contact="phone">电话:</small> +86 15888791812</a>
+    <a class="chip wechatChip" href="#wechat" id="wechatBtnTop" role="button" aria-haspopup="dialog" aria-controls="wechatModal">🟩 <small data-i18n-contact="wechat">微信:</small> 15888791812</a>
+  </div>
+
+    <nav class="navRow" aria-label="Primary">
+      <a class="navLink" href="#top" data-nav="home">Home</a>
+      <a class="navLink" href="#products" data-nav="products">Products</a>
+      <a class="navLink" href="#filters" data-nav="applications" data-filter="fert">Applications</a>
+      <a class="navLink" href="#filters" data-nav="certificates" data-filter="certificates">Certificates</a>
+      <a class="navLink" href="#aboutBox" data-nav="about">About</a>
+      <a class="navLink navCta" href="#contact" data-nav="contact">Contact</a>
+    </nav>
+    </div>
+  </div>
+</header>
+
+<section class="hero" aria-label="Featured banners">
+  <div class="hero-slider" id="heroSlider">
+    <div class="hero-track" id="heroTrack">
+      <div class="hero-slide"><img src="assets/banner1.jpg" alt="Wuxing Valve banner 1" loading="eager" /></div>
+      <div class="hero-slide"><img src="assets/banner2.jpg" alt="Wuxing Valve banner 2" loading="lazy" /></div>
+    </div>
+    <button class="hero-nav hero-prev" type="button" aria-label="Previous banner">‹</button>
+    <button class="hero-nav hero-next" type="button" aria-label="Next banner">›</button>
+    <div class="hero-dots" id="heroDots" aria-label="Banner indicators"></div>
+  </div>
+</section>
+
+<main>
+  <div class="wrap">
+    <div id="products"></div>
+      <h1 id="pageTitle">产品展示</h1>
+    <p class="intro">
+  Wuxing Valve manufactures and supplies industrial valves: angle globe valves, check valves, gate valves, hard-seated ball valves,
+  jacketed valves, high-pressure fittings and titanium alloy valves. OEM/ODM available.
+</p>
+
+<noscript>
+  <div style="background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:14px;margin:14px 0;">
+    <strong>Products</strong>
+    <p>This site uses JavaScript to render product cards. Please enable JavaScript to view all products.</p>
+    <p>Contact: andy@wuxingvalve.com · WhatsApp +86 15888791812</p>
+  </div>
+</noscript>
+
+<div class="intro" id="pageIntro"></div>
+
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="grid"></div>
+
+    <section class="about" id="aboutBox">
+      <h2 id="aboutTitle">关于我们</h2>
+      <p id="aboutText"></p>
+      <div class="addr"><span id="addrLabel">地址</span>：<span id="addrText"></span></div>
+    </section>
+  </div>
+</main>
+
+
+<section class="contactSection" id="contact">
+  <div class="wrap">
+    <h2 id="contactTitle">联系我们</h2>
+    <p class="contactDesc" id="contactDesc">欢迎通过邮件、WhatsApp、电话或微信联系我们获取报价、参数表、材质/标准、测试报告与交期。</p>
+    <div class="contactGrid">
+      <a class="contactItem" href="mailto:wengandy128@gmail.com">
+        <div class="k">Email</div>
+        <div class="v">wengandy128@gmail.com</div>
+      </a>
+      <a class="contactItem" href="mailto:andy@wuxingvalve.com">
+        <div class="k">Email</div>
+        <div class="v">andy@wuxingvalve.com</div>
+      </a>
+      <a class="contactItem" href="https://wa.me/8615888791812" target="_blank" rel="noopener">
+        <div class="k">WhatsApp</div>
+        <div class="v">+86 15888791812</div>
+      </a>
+      <a class="contactItem" href="tel:+8615888791812">
+        <div class="k">Phone</div>
+        <div class="v">+86 15888791812</div>
+      </a>
+      <button class="contactItem wechatBtn" type="button" id="wechatBtnContact" aria-haspopup="dialog" aria-controls="wechatModal">
+        <div class="k">WeChat</div>
+        <div class="v">15888791812 · 点击显示二维码</div>
+      </button>
+    </div>
+  </div>
+</section>
+
+<footer>© Wuxing Valve</footer>
+
+<div class="modal" id="wechatModal" role="dialog" aria-modal="true" aria-labelledby="wechatTitle" aria-hidden="true">
+  <div class="modalBackdrop" data-close="1"></div>
+  <div class="modalPanel" role="document">
+    <button class="modalClose" type="button" aria-label="Close" data-close="1">✕</button>
+    <h3 id="wechatTitle">微信添加</h3>
+    <p class="modalSub">扫码添加我，或复制微信号。</p>
+    <div class="qrBox">
+      <img src="assets/wechat-qr.jpg" alt="WeChat QR code" loading="lazy" />
+    </div>
+    <div class="wechatRow">
+      <div class="wechatId"><span>WeChat ID:</span> <strong id="wechatIdText">15888791812</strong></div>
+      <button class="copyBtn" type="button" id="btnCopyWechat">复制微信号</button>
+    </div>
+    <div class="copyTip" id="copyTip" aria-live="polite"></div>
+  </div>
+</div>
+
+<div class="consent" id="consent">
+  <div class="consentBox">
+    <div class="msg" id="consentMsg"></div>
+    <div class="actions">
+      <button class="accept" id="btnAccept">Accept</button>
+      <button class="decline" id="btnDecline">Decline</button>
+      <a href="privacy.html" id="btnPrivacy">Privacy</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const GA4_ID = "G-1T6921REMX";
+  const DATA_URL = "products.json";
+  const SUPPORTED = ["zh","en","es","de"];
+
+  const I18N = {"all": {"zh": "全部", "en": "All", "es": "Todo", "de": "Alle"}, "fert": {"zh": "化肥应用", "en": "Fertilizer", "es": "Fertilizantes", "de": "Düngemittel"}, "control": {"zh": "控制/切断阀", "en": "Control & Isolation", "es": "Control y aislamiento", "de": "Regel/Absperr"}, "check": {"zh": "止回阀", "en": "Check valves", "es": "Retención", "de": "Rückschlag"}, "ball": {"zh": "球阀", "en": "Ball valves", "es": "Bola", "de": "Kugel"}, "fittings": {"zh": "管件/密封", "en": "Fittings & sealing", "es": "Accesorios y sellado", "de": "Formteile/Dichtung"}, "certificates": {"zh": "资质证书", "en": "Certificates", "es": "Certificados", "de": "Zertifikate"}, "title": {"zh": "产品展示", "en": "Products", "es": "Productos", "de": "Produkte"}, "intro": {"zh": "Wuxing Valve 提供工业阀门产品与定制服务，支持 OEM/ODM、现货与项目配套。欢迎询盘获取参数表、材质/标准、测试报告与交期。", "en": "Wuxing Valve provides industrial valves and customization services (OEM/ODM), in‑stock supply and project support. Contact us for datasheets, materials/standards, test reports and lead time.", "es": "Wuxing Valve ofrece válvulas industriales y servicios de personalización (OEM/ODM), suministro en stock y soporte para proyectos. Contáctenos para fichas técnicas, materiales/normas, informes de prueba y plazo de entrega.", "de": "Wuxing Valve bietet Industriearmaturen und kundenspezifische Lösungen (OEM/ODM), Lagerware sowie Projektunterstützung. Kontaktieren Sie uns für Datenblätter, Werkstoffe/Normen, Prüfberichte und Lieferzeit."}, "about": {"zh": "关于我们", "en": "About us", "es": "Sobre nosotros", "de": "Über uns"}, "addr": {"zh": "地址", "en": "Address", "es": "Dirección", "de": "Adresse"}, "analytics_msg": {"en": "We use Google Analytics 4 (GA4) only with your consent.", "es": "Usamos Google Analytics 4 (GA4) solo con su consentimiento.", "de": "Wir verwenden Google Analytics 4 (GA4) nur mit Ihrer Zustimmung."}, "accept": {"en": "Accept", "es": "Aceptar", "de": "Akzeptieren"}, "decline": {"en": "Decline", "es": "Rechazar", "de": "Ablehnen"}, "learn": {"en": "Privacy", "es": "Privacidad", "de": "Datenschutz"}};
+
+  const CONTACT_I18N = {
+    email:   { zh: "邮箱:",   en: "Email:",    es: "Correo:",    de: "E‑Mail:" },
+    phone:   { zh: "电话:",   en: "Phone:",    es: "Teléfono:",  de: "Telefon:" },
+    wechat:  { zh: "微信:",   en: "WeChat:",   es: "WeChat:",    de: "WeChat:" },
+    whatsapp:{ zh: "WhatsApp",en: "WhatsApp",  es: "WhatsApp",   de: "WhatsApp" }
+  };
+
+const NAV_I18N = {
+    home:        { zh: "首页",     en: "Home",        es: "Inicio",      de: "Start" },
+    products:    { zh: "产品",     en: "Products",    es: "Productos",   de: "Produkte" },
+    applications:{ zh: "应用",     en: "Applications",es: "Aplicaciones",de: "Anwendungen" },
+    certificates:{ zh: "证书",     en: "Certificates",es: "Certificados",de: "Zertifikate" },
+    about:       { zh: "关于我们", en: "About",       es: "Sobre nosotros",de:"Über uns" },
+    contact:     { zh: "联系我们", en: "Contact",     es: "Contacto",    de: "Kontakt" },
+  };
+
+  const TEXT_I18N = {
+    contactTitle:{ zh:"联系我们", en:"Contact Us", es:"Contacto", de:"Kontakt" },
+    contactDesc: { zh:"欢迎通过邮件、WhatsApp、电话或微信联系我们获取报价、参数表、材质/标准、测试报告与交期。",
+                  en:"Contact us via email, WhatsApp, phone or WeChat for quotes, datasheets, materials/standards, test reports and lead time.",
+                  es:"Contáctanos por correo, WhatsApp, teléfono o WeChat para cotizaciones, fichas técnicas, materiales/estándares, informes y plazo.",
+                  de:"Kontaktieren Sie uns per E‑Mail, WhatsApp, Telefon oder WeChat für Angebot, Datenblatt, Werkstoffe/Normen, Prüfberichte und Lieferzeit." },
+    wechatModalTitle:{ zh:"微信添加", en:"Add on WeChat", es:"Añadir en WeChat", de:"WeChat hinzufügen" },
+    wechatModalSub:  { zh:"扫码添加我，或复制微信号。", en:"Scan to add, or copy the WeChat ID.", es:"Escanee para añadir o copie el ID.", de:"Scannen oder WeChat‑ID kopieren." },
+    wechatIdLabel:   { zh:"微信号", en:"WeChat ID", es:"ID de WeChat", de:"WeChat‑ID" },
+    copyWechat:      { zh:"复制微信号", en:"Copy WeChat ID", es:"Copiar ID", de:"ID kopieren" },
+    copied:          { zh:"已复制：", en:"Copied: ", es:"Copiado: ", de:"Kopiert: " },
+  };
+
+  function applyNavLabels(lang){
+    document.querySelectorAll('[data-nav]').forEach(a=>{
+      const key = a.getAttribute('data-nav');
+      const map = NAV_I18N[key];
+      if(map) a.textContent = map[lang] || map.en || a.textContent;
+    });
+
+    const ct = document.getElementById('contactTitle');
+    const cd = document.getElementById('contactDesc');
+    if(ct) ct.textContent = (TEXT_I18N.contactTitle[lang] || TEXT_I18N.contactTitle.en);
+    if(cd) cd.textContent = (TEXT_I18N.contactDesc[lang] || TEXT_I18N.contactDesc.en);
+
+    const mt = document.getElementById('wechatTitle');
+    const ms = document.querySelector('#wechatModal .modalSub');
+    const wl = document.querySelector('#wechatModal .wechatId span');
+    const cb = document.getElementById('btnCopyWechat');
+    if(mt) mt.textContent = (TEXT_I18N.wechatModalTitle[lang] || TEXT_I18N.wechatModalTitle.en);
+    if(ms) ms.textContent = (TEXT_I18N.wechatModalSub[lang] || TEXT_I18N.wechatModalSub.en);
+    if(wl) wl.textContent = (TEXT_I18N.wechatIdLabel[lang] || TEXT_I18N.wechatIdLabel.en) + ":";
+    if(cb) cb.textContent = (TEXT_I18N.copyWechat[lang] || TEXT_I18N.copyWechat.en);
+  }
+
+
+
+
+  function applyContactLabels(lang){
+    document.querySelectorAll('[data-i18n-contact]').forEach(el=>{
+      const key = el.getAttribute('data-i18n-contact');
+      const map = CONTACT_I18N[key];
+      if(!map) return;
+      el.textContent = map[lang] || map.en || "";
+    });
+  }
+
+  const ABOUT = {"zh": "浙江五星阀门有限公司原系永嘉五星阀门总厂，始建于上世纪80年代，位于“泵阀之乡”温州瓯北。公司占地约15000㎡，配备数控机床及理化/计量/无损检测能力，通过 ISO9001 及国家特种设备（压力管道）相关认证。主营高压角式截止阀、止回阀、平衡阀、闸阀、保温阀、硬密封球阀、高压管件及钛合金阀门，广泛应用于化工、化肥、制药、供热、石化等行业。", "en": "Zhejiang Wuxing Valve Co., Ltd. (formerly Yongjia Wuxing Valve Factory) was founded in the 1980s in Oubei, Wenzhou—China’s well‑known pump & valve hub. Our industrial park covers about 15,000 m² with CNC machining, physical/chemical testing, metrology and NDT capabilities. We are certified to ISO 9001 and hold relevant special‑equipment approvals for pressure piping. We manufacture high‑pressure angle globe/throttle valves, check valves, balanced valves, gate valves, jacketed valves, hard‑seated ball valves, high‑pressure fittings and titanium‑alloy valves for chemical, fertilizer, pharma, heating and petrochemical industries.", "es": "Zhejiang Wuxing Valve Co., Ltd. (antes Yongjia Wuxing Valve Factory) fue fundada en la década de 1980 en Oubei, Wenzhou, reconocida zona industrial de bombas y válvulas. Contamos con un parque industrial de ~15.000 m², con mecanizado CNC, laboratorio físico‑químico, metrología y capacidad de END (NDT). Estamos certificados ISO 9001 y disponemos de aprobaciones relacionadas con equipos especiales para tuberías a presión. Fabricamos válvulas de globo/estrangulación en ángulo de alta presión, válvulas de retención, válvulas balanceadas, válvulas de compuerta, válvulas con camisa calefactora, válvulas de bola de asiento duro, accesorios de alta presión y válvulas de aleación de titanio para los sectores químico, fertilizantes, фарма, calefacción y petroquímico.", "de": "Zhejiang Wuxing Valve Co., Ltd. (ehemals Yongjia Wuxing Valve Factory) wurde in den 1980er‑Jahren in Oubei, Wenzhou – einem bekannten Pumpen‑ und Ventilcluster – gegründet. Unser Industriegelände umfasst ca. 15.000 m² mit CNC‑Fertigung sowie physikalisch/chemischer Prüfung, Messtechnik und ZfP/NDT. Wir sind nach ISO 9001 zertifiziert und verfügen über relevante Zulassungen für Druckleitungen. Wir fertigen Hochdruck‑Winkel‑Globe/Drosselventile, Rückschlagventile, Ausgleichsventile, Schieber, Heizmantel‑Ventile, hartdichtende Kugelhähne, Hochdruck‑Rohrformteile sowie Titanlegierungs‑Ventile für Chemie, Düngemittel, Pharma, Wärmeversorgung und Petrochemie."};
+  const ADDRESS = {"zh": "浙江省永嘉县瓯北五星工业区", "en": "Wuxing Industrial Zone, Oubei, Yongjia County, Zhejiang, China", "es": "Zona Industrial Wuxing, Oubei, Condado de Yongjia, Zhejiang, China", "de": "Wuxing Industriegebiet, Oubei, Landkreis Yongjia, Zhejiang, China"};
+
+  function getLang() {
+    const u = new URL(location.href);
+    const q = (u.searchParams.get("lang") || "").toLowerCase();
+    const stored = (localStorage.getItem("lang") || "").toLowerCase();
+    return SUPPORTED.includes(q) ? q : (SUPPORTED.includes(stored) ? stored : "zh");
+  }
+  function setLang(lang) {
+    localStorage.setItem("lang", lang);
+    const u = new URL(location.href);
+    u.searchParams.set("lang", lang);
+    history.replaceState(null, "", u.toString());
+    document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('active', b.dataset.lang===lang));
+    applyText(lang);
+    render();
+    maybeInitGA4(lang);
+  }
+
+  function t(key, lang) {
+    return (I18N[key] && I18N[key][lang]) || (I18N[key] && I18N[key]["en"]) || "";
+  }
+
+  function applyText(lang) {
+    document.documentElement.lang = lang;
+    document.getElementById("pageTitle").textContent = t("title", lang);
+    document.getElementById("pageIntro").textContent = t("intro", lang);
+    document.getElementById("aboutTitle").textContent = t("about", lang);
+    document.getElementById("aboutText").textContent = ABOUT[lang] || ABOUT.en;
+    document.getElementById("addrLabel").textContent = t("addr", lang);
+    document.getElementById("addrText").textContent = ADDRESS[lang] || ADDRESS.en;
+    applyContactLabels(lang);
+    applyNavLabels(lang);
+  }
+
+  async function fetchJSON(url) {
+    const r = await fetch(url, { cache: "no-store" });
+    if (!r.ok) throw new Error("Failed to load " + url);
+    return await r.json();
+  }
+
+  let ALL = [];
+  let activeFilter = "all";
+
+  function buildFilters(lang) {
+    const filters = [
+      { key:"all", type:"all" },
+      { key:"fert", type:"tag", tag:"fertilizer" },
+      { key:"control", type:"family", family:"control" },
+      { key:"check", type:"family", family:"check" },
+      { key:"ball", type:"family", family:"ball" },
+      { key:"fittings", type:"family", family:"fittings" },
+      { key:"certificates", type:"family", family:"certificates" },
+    ];
+    const box = document.getElementById("filters");
+    box.innerHTML = "";
+    filters.forEach(f => {
+      const btn = document.createElement("button");
+      btn.textContent = t(f.key, lang);
+      btn.className = (activeFilter === f.key) ? "active" : "";
+      btn.addEventListener("click", () => {
+        activeFilter = f.key;
+        buildFilters(lang);
+        renderCards(lang);
+      });
+      box.appendChild(btn);
+    });
+  }
+
+  function matchFilter(p) {
+    if (activeFilter === "all") return true;
+    if (activeFilter === "fert") return (p.tags || []).includes("fertilizer") && p.family !== "certificates";
+    if (activeFilter === "control") return p.family === "control";
+    if (activeFilter === "check") return p.family === "check";
+    if (activeFilter === "ball") return p.family === "ball";
+    if (activeFilter === "fittings") return p.family === "fittings";
+    if (activeFilter === "certificates") return p.family === "certificates";
+    return true;
+  }
+
+  function renderCards(lang) {
+    const grid = document.getElementById("grid");
+    grid.innerHTML = "";
+    const list = ALL.filter(matchFilter);
+    list.forEach(p => {
+      const a = document.createElement("a");
+      a.className = "card";
+      a.href = `product.html?id=${encodeURIComponent(p.id)}&lang=${encodeURIComponent(lang)}`;
+      a.innerHTML = `
+        <div class="cardTop">
+          <span class="badge">${(p.family_title?.[lang] || p.family_title?.en || p.family || "").toString()}</span>
+          <span class="tag">${(p.tags || []).includes("fertilizer") ? t("fert", lang) : ""}</span>
+        </div>
+        <div class="imgWrap">
+          <img src="${p.cover}" alt="${p.title?.[lang] || p.title?.en || ""}" loading="lazy" />
+        </div>
+        <div class="cardBody">
+          <div class="cardTitle">${p.title?.[lang] || p.title?.en || ""}</div>
+          <p class="cardSub">${p.sub?.[lang] || p.sub?.en || ""}</p>
+        </div>
+      `;
+      grid.appendChild(a);
+    });
+  }
+
+  async function render() {
+    const lang = getLang();
+    buildFilters(lang);
+    if (ALL.length === 0) {
+      try {
+        const data = await fetchJSON(DATA_URL);
+        ALL = Array.isArray(data.products) ? data.products : [];
+      } catch (e) {
+        console.error(e);
+        document.getElementById("grid").innerHTML = `<div style="color:#b91c1c;font-weight:800">Failed to load products.json</div>`;
+      }
+    }
+    renderCards(lang);
+  }
+
+  function loadGA4() {
+    if (window.__ga4_loaded) return;
+    window.__ga4_loaded = true;
+    const s = document.createElement("script");
+    s.async = true;
+    s.src = `https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', GA4_ID);
+  }
+
+  function consentKey(lang) { return `ga4_consent_${lang}`; }
+
+  function maybeInitGA4(lang) {
+    const consent = document.getElementById("consent");
+    if (lang === "zh") {
+      consent.style.display = "none";
+      loadGA4();
+      return;
+    }
+    const key = consentKey(lang);
+    const state = localStorage.getItem(key);
+    if (state === "granted") {
+      consent.style.display = "none";
+      loadGA4();
+      return;
+    }
+    if (state === "denied") {
+      consent.style.display = "none";
+      return;
+    }
+    // ask
+    const msg = document.getElementById("consentMsg");
+    msg.textContent = I18N.analytics_msg[lang] || I18N.analytics_msg.en;
+    document.getElementById("btnAccept").textContent = I18N.accept[lang] || "Accept";
+    document.getElementById("btnDecline").textContent = I18N.decline[lang] || "Decline";
+    document.getElementById("btnPrivacy").textContent = I18N.learn[lang] || "Privacy";
+    consent.style.display = "block";
+    document.getElementById("btnAccept").onclick = () => {
+      localStorage.setItem(key, "granted");
+      consent.style.display = "none";
+      loadGA4();
+    };
+    document.getElementById("btnDecline").onclick = () => {
+      localStorage.setItem(key, "denied");
+      consent.style.display = "none";
+    };
+  }
+
+  document.querySelectorAll('.lang button').forEach(b => {
+    b.addEventListener('click', () => setLang(b.dataset.lang));
+  });
+
+  // init
+  const lang = getLang();
+  document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('active', b.dataset.lang===lang));
+  applyText(lang);
+  render();
+  maybeInitGA4(lang);
+</script>
+
+  <script>
+(function(){
+  const header = document.getElementById('siteHeader');
+  if(!header) return;
+
+  let compact = false;
+  let ticking = false;
+
+  const update = () => {
+    const y = window.scrollY || document.documentElement.scrollTop || 0;
+
+    // Big hysteresis to prevent jitter from sticky header height/layout changes.
+    // Down-scroll -> compact; near top -> expand.
+    if(!compact && y > 160){
+      header.classList.add('compact');
+      compact = true;
+    }else if(compact && y < 40){
+      header.classList.remove('compact');
+      compact = false;
+    }
+    ticking = false;
+  };
+
+  const onScroll = () => {
+    if(ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(update);
+  };
+
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll, {passive:true});
+  update();
+})();
+</script>
+
+<script>
+(function(){
+  // Smooth anchor scroll offset for sticky header
+  const header = document.getElementById('siteHeader');
+  const headerH = () => header ? header.getBoundingClientRect().height : 0;
+
+  // Nav: optional filter shortcuts (Applications / Certificates)
+  document.querySelectorAll('.navLink[data-filter]').forEach(a=>{
+    a.addEventListener('click', (e)=>{
+      const key = a.getAttribute('data-filter');
+      if(!key) return;
+      // Defer until after anchor scroll + render
+      window.setTimeout(()=>{
+        try{
+          if(typeof activeFilter !== 'undefined'){
+            activeFilter = key;
+            const lang = (typeof getLang === 'function') ? getLang() : (document.documentElement.lang || 'en');
+            if(typeof buildFilters === 'function') buildFilters(lang);
+            if(typeof renderCards === 'function') renderCards(lang);
+          }
+        }catch(err){ console.warn(err); }
+      }, 120);
+    });
+  });
+
+  // WeChat modal
+  const modal = document.getElementById('wechatModal');
+  const btnTop = document.getElementById('wechatBtnTop');
+  const btnContact = document.getElementById('wechatBtnContact');
+  const copyBtn = document.getElementById('btnCopyWechat');
+  const copyTip = document.getElementById('copyTip');
+  const wechatId = document.getElementById('wechatIdText') ? document.getElementById('wechatIdText').textContent.trim() : '15888791812';
+
+  function openModal(){
+    if(!modal) return;
+    modal.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+    // focus close button for accessibility
+    const close = modal.querySelector('[data-close="1"]');
+    if(close) close.focus({preventScroll:true});
+  }
+  function closeModal(){
+    if(!modal) return;
+    modal.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  }
+  [btnTop, btnContact].forEach(btn=>{
+    if(!btn) return;
+    btn.addEventListener('click', (e)=>{ e.preventDefault(); openModal(); });
+  });
+  if(modal){
+    modal.addEventListener('click', (e)=>{
+      const t = e.target;
+      if(t && t.getAttribute && t.getAttribute('data-close') === '1') closeModal();
+    });
+  }
+  window.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape' && modal && modal.getAttribute('aria-hidden') === 'false') closeModal();
+  });
+
+  if(copyBtn){
+    copyBtn.addEventListener('click', async ()=>{
+      try{
+        await navigator.clipboard.writeText(wechatId);
+        const lang = (typeof getLang === 'function') ? getLang() : (document.documentElement.lang || 'en');
+        const prefix = (typeof TEXT_I18N !== 'undefined' && TEXT_I18N.copied) ? (TEXT_I18N.copied[lang] || TEXT_I18N.copied.en) : 'Copied: ';
+        if(copyTip) copyTip.textContent = prefix + wechatId;
+      }catch(err){
+        if(copyTip) copyTip.textContent = 'Copy failed. Please copy manually: ' + wechatId;
+      }
+    });
+  }
+
+  // Hero slider
+  const slider = document.getElementById('heroSlider');
+  const track  = document.getElementById('heroTrack');
+  const dotsBox= document.getElementById('heroDots');
+  if(!slider || !track || !dotsBox) return;
+
+  const slides = Array.from(track.children);
+  let index = 0;
+  let timer = null;
+  const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function setIndex(i){
+    index = (i + slides.length) % slides.length;
+    track.style.transform = `translateX(${-index*100}%)`;
+    dotsBox.querySelectorAll('.hero-dot').forEach((d, di)=>d.classList.toggle('is-active', di===index));
+  }
+
+  // Build dots
+  dotsBox.innerHTML = '';
+  slides.forEach((_, i)=>{
+    const b = document.createElement('button');
+    b.className = 'hero-dot' + (i===0 ? ' is-active' : '');
+    b.type = 'button';
+    b.setAttribute('aria-label', 'Go to banner ' + (i+1));
+    b.addEventListener('click', ()=>{ stop(); setIndex(i); start(); });
+    dotsBox.appendChild(b);
+  });
+
+  const prev = slider.querySelector('.hero-prev');
+  const next = slider.querySelector('.hero-next');
+  if(prev) prev.addEventListener('click', ()=>{ stop(); setIndex(index-1); start(); });
+  if(next) next.addEventListener('click', ()=>{ stop(); setIndex(index+1); start(); });
+
+  function start(){
+    if(prefersReduced) return;
+    stop();
+    timer = window.setInterval(()=> setIndex(index+1), 5000);
+  }
+  function stop(){
+    if(timer){ window.clearInterval(timer); timer = null; }
+  }
+
+  slider.addEventListener('mouseenter', stop);
+  slider.addEventListener('mouseleave', start);
+
+  // Touch swipe (basic)
+  let x0 = null;
+  slider.addEventListener('touchstart', (e)=>{ x0 = e.touches && e.touches[0] ? e.touches[0].clientX : null; }, {passive:true});
+  slider.addEventListener('touchend', (e)=>{
+    if(x0 == null) return;
+    const x1 = e.changedTouches && e.changedTouches[0] ? e.changedTouches[0].clientX : null;
+    if(x1 == null) return;
+    const dx = x1 - x0;
+    if(Math.abs(dx) > 40){
+      stop();
+      setIndex(dx > 0 ? index-1 : index+1);
+      start();
+    }
+    x0 = null;
+  }, {passive:true});
+
+  // Offset scroll to anchors for sticky header
+  // (apply only on in-page hash navigation)
+  function adjustHash(){
+    if(!location.hash) return;
+    const el = document.querySelector(location.hash);
+    if(!el) return;
+    const y = el.getBoundingClientRect().top + window.pageYOffset - headerH() - 10;
+    window.scrollTo({top:y, behavior:'smooth'});
+  }
+  window.addEventListener('hashchange', ()=> setTimeout(adjustHash, 0));
+  // run once on load
+  if(location.hash) setTimeout(adjustHash, 0);
+
+  start();
+})();
+</script>
+
+</body>
+</html>
