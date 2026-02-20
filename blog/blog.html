@@ -273,6 +273,7 @@
         chips:{all:"全部", selection:"选型", standards:"标准", materials:"材料", applications:"应用"}
       },
       read:"阅读全文",
+      empty:"暂无文章",
       footer:"© 五星阀门 Wuxing Valve · 技术文章与资讯"
     },
     en: {
@@ -280,7 +281,7 @@
       nav: {home:"Home", products:"Products", cert:"Certificates", about:"About", contact:"Contact"},
       hero: {
         kicker:"Insights",
-        title:"Guides, application notes, and valve know‑how",
+        title:"Guides, application notes, and valve know-how",
         sub:"Selection tips, ANSI/API/EN references, materials (WCB/CF8M), and solutions for crystallization, steam/condensate, and high-pressure services.",
         quote:"Get a Quote",
         back:"Back to Home",
@@ -299,6 +300,7 @@
         chips:{all:"All", selection:"Selection", standards:"Standards", materials:"Materials", applications:"Applications"}
       },
       read:"Read more",
+      empty:"No posts yet.",
       footer:"© Wuxing Valve · Technical articles and updates"
     },
     es: {
@@ -325,6 +327,7 @@
         chips:{all:"Todo", selection:"Selección", standards:"Normas", materials:"Materiales", applications:"Aplicaciones"}
       },
       read:"Leer más",
+      empty:"Aún no hay publicaciones.",
       footer:"© Wuxing Valve · Artículos técnicos y novedades"
     },
     de: {
@@ -332,15 +335,15 @@
       nav: {home:"Start", products:"Produkte", cert:"Zertifikate", about:"Über uns", contact:"Kontakt"},
       hero: {
         kicker:"Insights",
-        title:"Leitfäden, Anwendungsnotizen und Armaturen‑Know‑how",
-        sub:"Auswahlhinweise, ANSI/API/EN, Werkstoffe (WCB/CF8M) und Lösungen für Kristallisation sowie Hochdruck‑Anwendungen.",
+        title:"Leitfäden, Anwendungsnotizen und Armaturen-Know-how",
+        sub:"Auswahlhinweise, ANSI/API/EN, Werkstoffe (WCB/CF8M) und Lösungen für Kristallisation sowie Hochdruck-Anwendungen.",
         quote:"Angebot anfragen",
         back:"Zur Startseite",
         meta:["Auswahl","Normen & Werkstoffe","Anwendungslösungen"]
       },
       quick: {
         title:"Schnellzugriff",
-        rfq:"RFQ‑Checkliste",
+        rfq:"RFQ-Checkliste",
         catalog:"Produktkategorien",
         cert:"Zertifikate",
         note:"Datenblatt/Zeichnung? Bitte Druckklasse, Temperatur, Medium und Anschluss angeben."
@@ -351,80 +354,84 @@
         chips:{all:"Alle", selection:"Auswahl", standards:"Normen", materials:"Werkstoffe", applications:"Anwendungen"}
       },
       read:"Weiterlesen",
+      empty:"Noch keine Beiträge.",
       footer:"© Wuxing Valve · Technische Artikel und Updates"
     }
   };
 
-  // -------- Posts data (replace with your real links later) --------
-  // For your preferred structure: /blog/blog1/index.zh.html and /blog/blog1/index.en.html etc.
-  const POSTS = [
-    {
-      id:"blog1",
-      cat:["standards","selection"],
-      date:"2026-02-20",
-      cover:"../assets/img/blog/blog1.jpg", // you can also use blog/blog1/blog1.jpg if you prefer
-      link:{ zh:"blog1/index.zh.html", en:"blog1/index.en.html", es:"blog1/index.en.html", de:"blog1/index.en.html" },
-      tag:{ zh:"标准/选型", en:"Standards", es:"Normas", de:"Normen" },
-      title:{
-        zh:"ANSI Class 1500 / 2500 是什么？如何选压力等级",
-        en:"What do ANSI Class 1500/2500 mean? How to choose pressure class",
-        es:"¿Qué significan ANSI Class 1500/2500? Cómo elegir la clase",
-        de:"Was bedeutet ANSI Class 1500/2500? Druckklasse auswählen"
-      },
-      excerpt:{
-        zh:"用最短路径理解压力等级、温度影响与常见误区，并给出询价时必须提供的参数清单。",
-        en:"A practical explanation of pressure class, temperature derating, and a simple RFQ checklist.",
-        es:"Explicación práctica de la clase de presión, temperatura y checklist para RFQ.",
-        de:"Praxisnahe Erklärung zur Druckklasse, Temperatur und einer RFQ‑Checkliste."
-      }
-    },
-    {
-      id:"blog2",
-      cat:["materials"],
-      date:"2026-02-20",
-      cover:"../assets/img/blog/blog2.jpg",
-      link:{ zh:"blog2/index.zh.html", en:"blog2/index.en.html", es:"blog2/index.en.html", de:"blog2/index.en.html" },
-      tag:{ zh:"材料", en:"Materials", es:"Materiales", de:"Werkstoffe" },
-      title:{
-        zh:"WCB、CF8、CF8M 区别与适用介质（快速对照）",
-        en:"WCB vs CF8 vs CF8M: differences and media compatibility (quick guide)",
-        es:"WCB vs CF8 vs CF8M: diferencias y compatibilidad (guía rápida)",
-        de:"WCB vs CF8 vs CF8M: Unterschiede & Medienverträglichkeit"
-      },
-      excerpt:{
-        zh:"从耐腐蚀、温度范围到典型应用，给你一个采购/工程都能用的速查表思路。",
-        en:"Corrosion, temperature range, and typical applications—an engineer/buyer-friendly cheat sheet.",
-        es:"Corrosión, rango de temperatura y aplicaciones típicas: una guía práctica.",
-        de:"Korrosion, Temperaturbereich und typische Anwendungen – kompakt erklärt."
-      }
-    },
-    {
-      id:"blog3",
-      cat:["applications","selection"],
-      date:"2026-02-20",
-      cover:"../assets/img/blog/blog3.jpg",
-      link:{ zh:"blog3/index.zh.html", en:"blog3/index.en.html", es:"blog3/index.en.html", de:"blog3/index.en.html" },
-      tag:{ zh:"应用", en:"Applications", es:"Aplicaciones", de:"Anwendungen" },
-      title:{
-        zh:"结晶工况如何选阀？保温夹套/角式截止阀要点",
-        en:"Selecting valves for crystallization: jacketed designs & angle globe tips",
-        es:"Selección para cristalización: válvulas encamisadas y tips",
-        de:"Armaturen für Kristallisation: Mantel‑Designs & Tipps"
-      },
-      excerpt:{
-        zh:"聚焦化工/化肥常见结晶问题：堵塞、卡涩、保温与冲刷，给出可执行的选型逻辑。",
-        en:"Practical selection logic for plugging/sticking, heat tracing, and flushing in crystallizing services.",
-        es:"Lógica práctica para evitar tapones/atascos y mejorar el mantenimiento en cristalización.",
-        de:"Praktische Auswahl‑Logik gegen Verstopfen/Klemmen sowie für Beheizung/Spülung."
-      }
+  // -------- Auto fetch posts --------
+  const POSTS_JSON = "./posts.json"; // blog/posts.json
+  const EXCERPT_LEN = 60; // change to 20 if you want
+
+  function normalizeText(s){
+    return (s || "").replace(/\s+/g, " ").trim();
+  }
+
+  function guessCategory(title){
+    const t = (title || "").toLowerCase();
+    if (/[w][c][b]|cf8m|cf8|材质|材料|stainless|carbon\s*steel|material/.test(t)) return "materials";
+    if (/ansi|api|asme|din|en\s*1092|标准|norm|class\s*\d+|pressure\s*class/.test(t)) return "standards";
+    if (/结晶|crystall|jacket|保温|夹套|steam|condens|应用|service/.test(t)) return "applications";
+    if (/选型|how\s*to\s*choose|selection|choose/.test(t)) return "selection";
+    return "selection";
+  }
+
+  function resolveCoverSrc(postId, cover){
+    if (!cover) return "";
+    const c = cover.trim();
+    if (/^https?:\/\//i.test(c) || c.startsWith("/") || c.startsWith("../") || c.startsWith("./")) return c;
+    return `./${postId}/${c}`;
+  }
+
+  async function fetchPostMeta(postId, lang){
+    const langFile = (lang === "zh") ? "index.zh.html" : "index.en.html";
+    const url = `./${postId}/${langFile}`;
+    const res = await fetch(url, {cache:"no-store"});
+    if (!res.ok) throw new Error(`Fetch failed: ${url}`);
+    const html = await res.text();
+    const doc = new DOMParser().parseFromString(html, "text/html");
+
+    const h1 = doc.querySelector("h1");
+    const title = normalizeText(h1?.textContent) || normalizeText(doc.title) || postId;
+
+    const ogImg = doc.querySelector('meta[property="og:image"]')?.getAttribute("content") ||
+                  doc.querySelector('meta[name="og:image"]')?.getAttribute("content");
+    const firstImg = doc.querySelector("img")?.getAttribute("src");
+    const cover = resolveCoverSrc(postId, ogImg || firstImg || "");
+
+    const contentEl = doc.querySelector("#post-content") || doc.querySelector("article") || doc.body;
+    let text = normalizeText(contentEl?.textContent || "");
+    if (text.toLowerCase().startsWith(title.toLowerCase())) text = text.slice(title.length).trim();
+    const excerpt = text.slice(0, EXCERPT_LEN) + (text.length > EXCERPT_LEN ? "…" : "");
+
+    const metaDate = doc.querySelector('meta[property="article:published_time"]')?.getAttribute("content") ||
+                     doc.querySelector('meta[name="date"]')?.getAttribute("content") ||
+                     doc.querySelector('meta[name="publish_date"]')?.getAttribute("content");
+    const timeEl = doc.querySelector("time")?.getAttribute("datetime") || normalizeText(doc.querySelector("time")?.textContent || "");
+    const date = (metaDate || timeEl || "").slice(0,10);
+
+    const cat = guessCategory(title);
+    const href = `${url}?lang=${lang}`;
+    return { id: postId, title, cover, excerpt, date, cat, href };
+  }
+
+  async function loadPostIds(){
+    try{
+      const res = await fetch(POSTS_JSON, {cache:"no-store"});
+      if (!res.ok) throw new Error("posts.json not found");
+      const data = await res.json();
+      const list = Array.isArray(data.posts) ? data.posts : [];
+      return list.filter(Boolean);
+    }catch(e){
+      return ["blog1","blog2","blog3"];
     }
-  ];
+  }
 
   function applyText(lang){
     const t = I18N[lang] || I18N.zh;
 
     document.documentElement.lang = lang === "zh" ? "zh-CN" : lang;
-    // brand + nav
+
     document.getElementById("brandSub").textContent = t.brandSub;
     document.getElementById("navHome").textContent = t.nav.home;
     document.getElementById("navProducts").textContent = t.nav.products;
@@ -432,7 +439,6 @@
     document.getElementById("navAbout").textContent = t.nav.about;
     document.getElementById("navContact").textContent = t.nav.contact;
 
-    // hero
     document.getElementById("heroKicker").textContent = t.hero.kicker;
     document.getElementById("heroTitle").textContent = t.hero.title;
     document.getElementById("heroSub").textContent = t.hero.sub;
@@ -442,14 +448,12 @@
     document.getElementById("meta2").textContent = t.hero.meta[1];
     document.getElementById("meta3").textContent = t.hero.meta[2];
 
-    // quick
     document.getElementById("quickTitle").textContent = t.quick.title;
     document.getElementById("quickRFQ").textContent = t.quick.rfq;
     document.getElementById("quickCatalog").textContent = t.quick.catalog;
     document.getElementById("quickCert").textContent = t.quick.cert;
     document.getElementById("quickNote").textContent = t.quick.note;
 
-    // list
     document.getElementById("listTitle").textContent = t.list.title;
     document.getElementById("listSub").textContent = t.list.sub;
     document.getElementById("chipAll").textContent = t.list.chips.all;
@@ -460,7 +464,6 @@
 
     document.getElementById("footerText").textContent = t.footer;
 
-    // update nav links to keep lang
     const base = "../index.html";
     document.getElementById("brandHome").href = base + "?lang=" + lang;
     document.getElementById("navHome").href = base + "?lang=" + lang;
@@ -475,42 +478,6 @@
     document.getElementById("quickCert").href = base + "?lang=" + lang + "#certificates";
   }
 
-  function renderPosts(lang, cat){
-    const t = I18N[lang] || I18N.zh;
-    const grid = document.getElementById("postsGrid");
-    grid.innerHTML = "";
-
-    const filtered = POSTS.filter(p => cat === "all" ? true : (p.cat || []).includes(cat));
-    filtered.forEach(p => {
-      const href = (p.link && (p.link[lang] || p.link.en)) ? (p.link[lang] || p.link.en) : "#";
-      const card = document.createElement("a");
-      card.className = "card";
-      card.href = href + (href.includes("?") ? "&" : "?") + "lang=" + lang;
-      card.innerHTML = `
-        <div class="thumb">
-          <span class="tag">${(p.tag && (p.tag[lang] || p.tag.en)) || ""}</span>
-          ${p.cover ? `<img src="${p.cover}" alt="${(p.title && (p.title[lang] || p.title.en)) || ""}" onerror="this.style.display='none'">` : ""}
-        </div>
-        <div class="card-body">
-          <p class="title">${(p.title && (p.title[lang] || p.title.en)) || ""}</p>
-          <p class="excerpt">${(p.excerpt && (p.excerpt[lang] || p.excerpt.en)) || ""}</p>
-          <div class="card-foot">
-            <span class="date">${p.date || ""}</span>
-            <span class="read">${t.read} →</span>
-          </div>
-        </div>
-      `;
-      grid.appendChild(card);
-    });
-
-    if (filtered.length === 0){
-      const empty = document.createElement("div");
-      empty.className = "hero-card";
-      empty.innerHTML = `<p class="sub" style="margin:0;">No posts yet.</p>`;
-      grid.appendChild(empty);
-    }
-  }
-
   function setActiveLang(lang){
     document.querySelectorAll(".lang button").forEach(btn=>{
       btn.classList.toggle("active", btn.dataset.lang === lang);
@@ -523,43 +490,103 @@
     });
   }
 
+  function renderCards(lang, posts, cat){
+    const t = I18N[lang] || I18N.zh;
+    const grid = document.getElementById("postsGrid");
+    grid.innerHTML = "";
+
+    const filtered = posts.filter(p => cat === "all" ? true : p.cat === cat);
+    if (filtered.length === 0){
+      const empty = document.createElement("div");
+      empty.className = "hero-card";
+      empty.innerHTML = `<p class="sub" style="margin:0;">${t.empty}</p>`;
+      grid.appendChild(empty);
+      return;
+    }
+
+    const catLabel = (c)=>{
+      if (c === "standards") return (lang==="zh"?"标准":lang==="en"?"Standards":lang==="es"?"Normas":"Normen");
+      if (c === "materials") return (lang==="zh"?"材料":lang==="en"?"Materials":lang==="es"?"Materiales":"Werkstoffe");
+      if (c === "applications") return (lang==="zh"?"应用":lang==="en"?"Applications":lang==="es"?"Aplicaciones":"Anwendungen");
+      return (lang==="zh"?"选型":lang==="en"?"Selection":lang==="es"?"Selección":"Auswahl");
+    };
+
+    filtered.forEach(p=>{
+      const a = document.createElement("a");
+      a.className = "card";
+      a.href = p.href;
+      a.innerHTML = `
+        <div class="thumb">
+          <span class="tag">${catLabel(p.cat)}</span>
+          ${p.cover ? `<img src="${p.cover}" alt="${p.title}" onerror="this.style.display='none'">` : ""}
+        </div>
+        <div class="card-body">
+          <p class="title">${p.title}</p>
+          <p class="excerpt">${p.excerpt || ""}</p>
+          <div class="card-foot">
+            <span class="date">${p.date || ""}</span>
+            <span class="read">${t.read} →</span>
+          </div>
+        </div>
+      `;
+      grid.appendChild(a);
+    });
+  }
+
   (function init(){
     const lang = getLang();
     setActiveLang(lang);
     applyText(lang);
 
     let currentCat = "all";
-    renderPosts(lang, currentCat);
+    setActiveChip(currentCat);
 
     document.querySelectorAll(".lang button").forEach(btn=>{
       btn.addEventListener("click", ()=> setLang(btn.dataset.lang));
     });
 
-    document.querySelectorAll(".chip").forEach(btn=>{
-      btn.addEventListener("click", ()=>{
-        currentCat = btn.dataset.cat;
-        setActiveChip(currentCat);
-        renderPosts(lang, currentCat);
-      });
-    });
+    (async ()=>{
+      const ids = await loadPostIds();
+      const metas = [];
+      for (const id of ids){
+        try{
+          const m = await fetchPostMeta(id, lang);
+          metas.push(m);
+        }catch(e){
+          // console.warn(e);
+        }
+      }
 
-    // Lightweight BlogPosting schema for list page
-    const schema = {
-      "@context":"https://schema.org",
-      "@type":"Blog",
-      "name":"Wuxing Valve Insights",
-      "url": window.location.href,
-      "blogPost": POSTS.map(p => ({
-        "@type":"BlogPosting",
-        "headline": (p.title && (p.title[lang] || p.title.en)) || "",
-        "datePublished": p.date || "",
-        "url": (new URL(p.link && (p.link[lang] || p.link.en) || "#", window.location.href)).toString()
-      }))
-    };
-    const script = document.createElement("script");
-    script.type = "application/ld+json";
-    script.text = JSON.stringify(schema);
-    document.head.appendChild(script);
+      metas.sort((a,b)=> (b.date || "").localeCompare(a.date || ""));
+      renderCards(lang, metas, currentCat);
+
+      document.querySelectorAll(".chip").forEach(btn=>{
+        btn.addEventListener("click", ()=>{
+          currentCat = btn.dataset.cat;
+          setActiveChip(currentCat);
+          renderCards(lang, metas, currentCat);
+        });
+      });
+
+      try{
+        const schema = {
+          "@context":"https://schema.org",
+          "@type":"Blog",
+          "name":"Wuxing Valve Insights",
+          "url": window.location.href,
+          "blogPost": metas.map(p => ({
+            "@type":"BlogPosting",
+            "headline": p.title || "",
+            "datePublished": p.date || "",
+            "url": (new URL(p.href, window.location.href)).toString()
+          }))
+        };
+        const script = document.createElement("script");
+        script.type = "application/ld+json";
+        script.text = JSON.stringify(schema);
+        document.head.appendChild(script);
+      }catch(_){}
+    })();
   })();
 </script>
 </body>
