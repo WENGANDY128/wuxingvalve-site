@@ -137,6 +137,27 @@
       background:rgba(255,255,255,.7);
     }
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* ---- v2 tweaks: header logo + hero balance ---- */
+.top .row{align-items:center;}
+.brand{display:flex;align-items:center;gap:10px;line-height:1; padding:6px 0;}
+.brand-logo{height:34px;width:auto;display:block;object-fit:contain;}
+/* prevent any accidental cropping */
+.top{overflow:visible;}
+/* quick links smaller + tighter */
+.quick-card{padding:14px !important;}
+.quick-card h3{font-size:18px !important; margin:0 0 10px !important;}
+.quick-card .btnline{padding:10px 12px !important; font-size:14px !important;}
+.quick-card .note{font-size:13px !important; line-height:1.55 !important;}
+/* hero left card a bit tighter so title sits nicely at top */
+.hero-card{padding:18px !important;}
+.hero-card h1{font-size:30px !important; line-height:1.15 !important; margin:10px 0 10px !important;}
+.hero-card .sub{font-size:15px !important; line-height:1.7 !important;}
+/* make top section more balanced on large screens */
+@media (min-width: 980px){
+  .top-grid{grid-template-columns: 1.25fr .75fr !important;}
+}
+
 </style>
 
   <link rel="canonical" href="../blog/blog.html" />
