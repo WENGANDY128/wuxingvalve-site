@@ -38,6 +38,10 @@
     }
     .topbar-inner{display:flex; align-items:center; gap:14px; padding:12px 0;}
     .brand{display:flex; align-items:center; gap:12px; min-width:220px;}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-logo{height:28px;width:auto;display:block}
+.brand-text{font-weight:850}
+@media (max-width:520px){.brand-text{display:none}.brand-logo{height:30px}}
     .brand img{width:34px; height:34px; border-radius:10px}
     .brand-title{display:flex; flex-direction:column; line-height:1.1}
     .brand-title b{font-size:16px}
@@ -141,12 +145,9 @@
   <header class="topbar">
     <div class="container">
       <div class="topbar-inner">
-        <a class="brand" id="brandHome" href="../index.html">
-          <img src="../assets/img/logo.png" alt="Wuxing Valve" onerror="this.style.display='none'">
-          <div class="brand-title">
-            <b>Wuxing Valve</b>
-            <span id="brandSub">Industrial valves • OEM/ODM</span>
-          </div>
+        <a class="brand" id="brandHome" href="../index.html?lang=zh" aria-label="Wuxing Valve">
+          <img src="../assets/logo.png" alt="Wuxing Valve" class="brand-logo">
+          <span class="brand-text">Wuxing Valve</span>
         </a>
 
         <nav class="nav" aria-label="primary">
