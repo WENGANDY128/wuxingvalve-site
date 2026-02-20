@@ -158,7 +158,27 @@
   .top-grid{grid-template-columns: 1.25fr .75fr !important;}
 }
 
-</style>
+
+    /* Mobile header fix: prevent nav text wrapping vertically */
+    @media (max-width: 720px){
+      .topbar-inner{flex-wrap:wrap; gap:10px;}
+      .brand{min-width:0; flex:1 1 auto;}
+      .brand-title b{font-size:15px;}
+      .brand-title span{font-size:12px;}
+      .lang{order:2;}
+      .nav{
+        order:3;
+        flex:1 1 100%;
+        justify-content:flex-start;
+        flex-wrap:nowrap;
+        overflow-x:auto;
+        -webkit-overflow-scrolling:touch;
+        padding-bottom:4px;
+      }
+      .nav a{white-space:nowrap; flex:0 0 auto;}
+    }
+
+  </style>
 
   <link rel="canonical" href="../blog/blog.html" />
 </head>
