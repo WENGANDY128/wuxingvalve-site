@@ -1,1 +1,566 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Wuxing Valve - Insights</title>
+  <meta name="description" content="Technical insights, guides, and news from Wuxing Valve. Valve selection, standards (ANSI/API/EN), materials (WCB/CF8M), and application notes." />
+  <link rel="icon" href="../assets/favicon.ico" />
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#0f172a;
+      --muted:#64748b;
+      --line:#e5e7eb;
+      --card:#ffffff;
+      --shadow: 0 10px 30px rgba(2,6,23,.08);
+      --shadow2: 0 6px 18px rgba(2,6,23,.06);
+      --primary:#2563eb;
+      --primary-weak:rgba(37,99,235,.10);
+      --radius:18px;
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:linear-gradient(180deg, #f8fafc 0%, #ffffff 40%);
+    }
+    a{color:inherit; text-decoration:none}
+    .container{max-width:var(--max); margin:0 auto; padding:0 18px;}
+    /* Top bar */
+    .topbar{
+      position:sticky; top:0; z-index:30;
+      background:rgba(255,255,255,.86);
+      backdrop-filter:saturate(160%) blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .topbar-inner{display:flex; align-items:center; gap:14px; padding:12px 0;}
+    .brand{display:flex; align-items:center; gap:12px; min-width:220px;}
+    .brand img{width:34px; height:34px; border-radius:10px}
+    .brand-title{display:flex; flex-direction:column; line-height:1.1}
+    .brand-title b{font-size:16px}
+    .brand-title span{font-size:12px; color:var(--muted)}
+    .spacer{flex:1}
+    .lang{display:flex; gap:8px; padding:6px; border:1px solid var(--line); border-radius:999px; background:#fff;}
+    .lang button{
+      border:0; background:transparent; cursor:pointer;
+      padding:7px 10px; border-radius:999px; font-weight:700; font-size:12px;
+      color:var(--muted);
+    }
+    .lang button.active{background:var(--primary); color:#fff;}
+    .nav{display:flex; gap:14px; align-items:center; flex-wrap:wrap}
+    .nav a{padding:8px 10px; border-radius:999px; color:var(--muted); font-weight:650; font-size:14px;}
+    .nav a:hover{background:#f1f5f9; color:var(--text)}
+    .nav a.primary{background:var(--primary); color:#fff;}
+    /* Hero */
+    .hero{padding:26px 0 10px;}
+    .hero-grid{display:grid; grid-template-columns: 1.2fr .8fr; gap:18px; align-items:stretch;}
+    @media (max-width: 900px){
+      .hero-grid{grid-template-columns:1fr;}
+    }
+    .hero-card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow2);
+      padding:18px;
+    }
+    .kicker{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:6px 10px; border-radius:999px;
+      background:var(--primary-weak); color:var(--primary);
+      font-weight:800; font-size:12px;
+    }
+    h1{margin:10px 0 8px; font-size:28px; letter-spacing:-.02em;}
+    .sub{margin:0; color:var(--muted); line-height:1.6}
+    .cta-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:10px 14px; border-radius:999px;
+      border:1px solid var(--line);
+      background:#fff; font-weight:750; font-size:14px;
+    }
+    .btn.primary{background:var(--primary); color:#fff; border-color:transparent;}
+    .btn:hover{box-shadow:var(--shadow2)}
+    .meta{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; color:var(--muted); font-size:13px;}
+    .meta span{display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border:1px dashed var(--line); border-radius:999px; background:#fff;}
+    /* List */
+    .section{padding:10px 0 40px;}
+    .section-head{display:flex; align-items:end; gap:12px; margin:16px 0 12px;}
+    .section-head h2{margin:0; font-size:20px;}
+    .section-head p{margin:0; color:var(--muted);}
+    .section-head .right{margin-left:auto; display:flex; gap:10px; flex-wrap:wrap;}
+    .chip{
+      padding:8px 10px; border-radius:999px; border:1px solid var(--line);
+      background:#fff; color:var(--muted); font-weight:700; font-size:13px; cursor:pointer;
+    }
+    .chip.active{border-color:transparent; background:var(--primary-weak); color:var(--primary);}
+    .grid{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px;}
+    @media (max-width: 980px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width: 640px){.grid{grid-template-columns:1fr}}
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:var(--shadow2);
+      display:flex;
+      flex-direction:column;
+      min-height: 280px;
+    }
+    .thumb{height:150px; background:#eef2ff; position:relative;}
+    .thumb img{width:100%; height:100%; object-fit:cover; display:block;}
+    .tag{
+      position:absolute; left:12px; top:12px;
+      padding:6px 10px; border-radius:999px;
+      background:rgba(255,255,255,.92);
+      border:1px solid var(--line);
+      font-size:12px; font-weight:800; color:var(--text);
+    }
+    .card-body{padding:14px 14px 12px; display:flex; flex-direction:column; gap:8px; flex:1;}
+    .title{font-size:16px; font-weight:850; line-height:1.3; margin:0;}
+    .excerpt{margin:0; color:var(--muted); line-height:1.55; font-size:13.5px;}
+    .card-foot{margin-top:auto; display:flex; align-items:center; justify-content:space-between; gap:10px; padding-top:6px;}
+    .date{font-size:12px; color:var(--muted)}
+    .read{display:inline-flex; align-items:center; gap:6px; font-weight:800; color:var(--primary); font-size:13px;}
+    .footer{
+      border-top:1px solid var(--line);
+      padding:18px 0 26px;
+      color:var(--muted);
+      font-size:13px;
+      background:rgba(255,255,255,.7);
+    }
+  </style>
 
+  <link rel="canonical" href="../blog/blog.html" />
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <a class="brand" id="brandHome" href="../index.html">
+          <img src="../assets/img/logo.png" alt="Wuxing Valve" onerror="this.style.display='none'">
+          <div class="brand-title">
+            <b>Wuxing Valve</b>
+            <span id="brandSub">Industrial valves • OEM/ODM</span>
+          </div>
+        </a>
+
+        <nav class="nav" aria-label="primary">
+          <a id="navHome" href="../index.html">Home</a>
+          <a id="navProducts" href="../index.html#filters">Products</a>
+          <a id="navCert" href="../index.html#certificates">Certificates</a>
+          <a id="navAbout" href="../index.html#aboutBox">About</a>
+          <a id="navContact" class="primary" href="../index.html#contact">Contact</a>
+        </nav>
+
+        <div class="spacer"></div>
+
+        <div class="lang" role="tablist" aria-label="Language">
+          <button type="button" data-lang="zh">ZH</button>
+          <button type="button" data-lang="en">EN</button>
+          <button type="button" data-lang="es">ES</button>
+          <button type="button" data-lang="de">DE</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-card">
+            <span class="kicker" id="heroKicker">Insights</span>
+            <h1 id="heroTitle">Guides, application notes, and valve know‑how</h1>
+            <p class="sub" id="heroSub">
+              Learn selection tips, standards (ANSI/API/EN), materials (WCB/CF8M), and solutions for challenging services like crystallization and high pressure.
+            </p>
+            <div class="cta-row">
+              <a class="btn primary" id="ctaQuote" href="../index.html#contact">Get a Quote</a>
+              <a class="btn" id="ctaBack" href="../index.html">Back to Home</a>
+            </div>
+            <div class="meta">
+              <span id="meta1">Valve selection</span>
+              <span id="meta2">Standards & materials</span>
+              <span id="meta3">Application solutions</span>
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <div class="section-head" style="margin:0 0 10px;">
+              <h2 id="quickTitle">Quick links</h2>
+              <p id="quickSub"></p>
+            </div>
+            <div style="display:grid; grid-template-columns:1fr; gap:10px;">
+              <a class="btn" id="quickRFQ" href="../index.html#contact">RFQ checklist</a>
+              <a class="btn" id="quickCatalog" href="../index.html#filters">Product categories</a>
+              <a class="btn" id="quickCert" href="../index.html#certificates">Certificates</a>
+            </div>
+            <p class="sub" id="quickNote" style="margin-top:12px;">
+              Want a datasheet/drawing? Message us with pressure class, temperature, media, and end connection.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2 id="listTitle">Latest posts</h2>
+            <p id="listSub">Browse practical notes for buyers, engineers, and project teams.</p>
+          </div>
+          <div class="right" aria-label="filters">
+            <button class="chip active" data-cat="all" id="chipAll">All</button>
+            <button class="chip" data-cat="selection" id="chipSel">Selection</button>
+            <button class="chip" data-cat="standards" id="chipStd">Standards</button>
+            <button class="chip" data-cat="materials" id="chipMat">Materials</button>
+            <button class="chip" data-cat="applications" id="chipApp">Applications</button>
+          </div>
+        </div>
+
+        <div class="grid" id="postsGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div id="footerText">© Wuxing Valve. This page lists technical articles and updates.</div>
+    </div>
+  </footer>
+
+<script>
+  // -------- Language + Routing --------
+  function getLang(){
+    const u = new URL(window.location.href);
+    const lang = (u.searchParams.get("lang") || "zh").toLowerCase();
+    return ["zh","en","es","de"].includes(lang) ? lang : "zh";
+  }
+  function setLang(lang){
+    const u = new URL(window.location.href);
+    u.searchParams.set("lang", lang);
+    window.location.href = u.toString();
+  }
+
+  const I18N = {
+    zh: {
+      brandSub: "工业阀门 · 外贸供应",
+      nav: {home:"首页", products:"产品", cert:"证书", about:"关于我们", contact:"联系我们"},
+      hero: {
+        kicker:"资讯",
+        title:"技术文章 · 应用笔记 · 行业资讯",
+        sub:"覆盖选型要点、ANSI/API/EN 等标准、WCB/CF8M 等材料，以及结晶/高压等复杂工况的解决方案。",
+        quote:"获取报价",
+        back:"返回首页",
+        meta:["阀门选型","标准与材料","应用解决方案"]
+      },
+      quick: {
+        title:"快速入口",
+        rfq:"询价参数清单",
+        catalog:"产品分类",
+        cert:"资质证书",
+        note:"需要参数表/图纸？请告知压力等级、温度、介质、连接方式等信息。"
+      },
+      list: {
+        title:"最新文章",
+        sub:"为采购、工程与项目团队提供可落地的技术参考。",
+        chips:{all:"全部", selection:"选型", standards:"标准", materials:"材料", applications:"应用"}
+      },
+      read:"阅读全文",
+      footer:"© 五星阀门 Wuxing Valve · 技术文章与资讯"
+    },
+    en: {
+      brandSub: "Industrial valves • OEM/ODM",
+      nav: {home:"Home", products:"Products", cert:"Certificates", about:"About", contact:"Contact"},
+      hero: {
+        kicker:"Insights",
+        title:"Guides, application notes, and valve know‑how",
+        sub:"Selection tips, ANSI/API/EN references, materials (WCB/CF8M), and solutions for crystallization, steam/condensate, and high-pressure services.",
+        quote:"Get a Quote",
+        back:"Back to Home",
+        meta:["Valve selection","Standards & materials","Application solutions"]
+      },
+      quick: {
+        title:"Quick links",
+        rfq:"RFQ checklist",
+        catalog:"Product categories",
+        cert:"Certificates",
+        note:"Need a datasheet/drawing? Message us with class, temperature, media, and end connection."
+      },
+      list: {
+        title:"Latest posts",
+        sub:"Practical notes for buyers, engineers, and project teams.",
+        chips:{all:"All", selection:"Selection", standards:"Standards", materials:"Materials", applications:"Applications"}
+      },
+      read:"Read more",
+      footer:"© Wuxing Valve · Technical articles and updates"
+    },
+    es: {
+      brandSub: "Válvulas industriales • OEM/ODM",
+      nav: {home:"Inicio", products:"Productos", cert:"Certificados", about:"Nosotros", contact:"Contacto"},
+      hero: {
+        kicker:"Recursos",
+        title:"Guías, notas de aplicación y conocimiento de válvulas",
+        sub:"Consejos de selección, referencias ANSI/API/EN, materiales (WCB/CF8M) y soluciones para cristalización y alta presión.",
+        quote:"Solicitar cotización",
+        back:"Volver al inicio",
+        meta:["Selección","Normas y materiales","Soluciones de aplicación"]
+      },
+      quick: {
+        title:"Accesos rápidos",
+        rfq:"Checklist de RFQ",
+        catalog:"Categorías de productos",
+        cert:"Certificados",
+        note:"¿Necesitas ficha técnica/dibujo? Envíanos clase, temperatura, medio y conexión."
+      },
+      list: {
+        title:"Publicaciones recientes",
+        sub:"Notas prácticas para compras, ingeniería y proyectos.",
+        chips:{all:"Todo", selection:"Selección", standards:"Normas", materials:"Materiales", applications:"Aplicaciones"}
+      },
+      read:"Leer más",
+      footer:"© Wuxing Valve · Artículos técnicos y novedades"
+    },
+    de: {
+      brandSub: "Industriearmaturen • OEM/ODM",
+      nav: {home:"Start", products:"Produkte", cert:"Zertifikate", about:"Über uns", contact:"Kontakt"},
+      hero: {
+        kicker:"Insights",
+        title:"Leitfäden, Anwendungsnotizen und Armaturen‑Know‑how",
+        sub:"Auswahlhinweise, ANSI/API/EN, Werkstoffe (WCB/CF8M) und Lösungen für Kristallisation sowie Hochdruck‑Anwendungen.",
+        quote:"Angebot anfragen",
+        back:"Zur Startseite",
+        meta:["Auswahl","Normen & Werkstoffe","Anwendungslösungen"]
+      },
+      quick: {
+        title:"Schnellzugriff",
+        rfq:"RFQ‑Checkliste",
+        catalog:"Produktkategorien",
+        cert:"Zertifikate",
+        note:"Datenblatt/Zeichnung? Bitte Druckklasse, Temperatur, Medium und Anschluss angeben."
+      },
+      list: {
+        title:"Neueste Beiträge",
+        sub:"Praxisnahe Notizen für Einkauf, Engineering und Projekte.",
+        chips:{all:"Alle", selection:"Auswahl", standards:"Normen", materials:"Werkstoffe", applications:"Anwendungen"}
+      },
+      read:"Weiterlesen",
+      footer:"© Wuxing Valve · Technische Artikel und Updates"
+    }
+  };
+
+  // -------- Posts data (replace with your real links later) --------
+  // For your preferred structure: /blog/blog1/index.zh.html and /blog/blog1/index.en.html etc.
+  const POSTS = [
+    {
+      id:"blog1",
+      cat:["standards","selection"],
+      date:"2026-02-20",
+      cover:"../assets/img/blog/blog1.jpg", // you can also use blog/blog1/blog1.jpg if you prefer
+      link:{ zh:"blog1/index.zh.html", en:"blog1/index.en.html", es:"blog1/index.en.html", de:"blog1/index.en.html" },
+      tag:{ zh:"标准/选型", en:"Standards", es:"Normas", de:"Normen" },
+      title:{
+        zh:"ANSI Class 1500 / 2500 是什么？如何选压力等级",
+        en:"What do ANSI Class 1500/2500 mean? How to choose pressure class",
+        es:"¿Qué significan ANSI Class 1500/2500? Cómo elegir la clase",
+        de:"Was bedeutet ANSI Class 1500/2500? Druckklasse auswählen"
+      },
+      excerpt:{
+        zh:"用最短路径理解压力等级、温度影响与常见误区，并给出询价时必须提供的参数清单。",
+        en:"A practical explanation of pressure class, temperature derating, and a simple RFQ checklist.",
+        es:"Explicación práctica de la clase de presión, temperatura y checklist para RFQ.",
+        de:"Praxisnahe Erklärung zur Druckklasse, Temperatur und einer RFQ‑Checkliste."
+      }
+    },
+    {
+      id:"blog2",
+      cat:["materials"],
+      date:"2026-02-20",
+      cover:"../assets/img/blog/blog2.jpg",
+      link:{ zh:"blog2/index.zh.html", en:"blog2/index.en.html", es:"blog2/index.en.html", de:"blog2/index.en.html" },
+      tag:{ zh:"材料", en:"Materials", es:"Materiales", de:"Werkstoffe" },
+      title:{
+        zh:"WCB、CF8、CF8M 区别与适用介质（快速对照）",
+        en:"WCB vs CF8 vs CF8M: differences and media compatibility (quick guide)",
+        es:"WCB vs CF8 vs CF8M: diferencias y compatibilidad (guía rápida)",
+        de:"WCB vs CF8 vs CF8M: Unterschiede & Medienverträglichkeit"
+      },
+      excerpt:{
+        zh:"从耐腐蚀、温度范围到典型应用，给你一个采购/工程都能用的速查表思路。",
+        en:"Corrosion, temperature range, and typical applications—an engineer/buyer-friendly cheat sheet.",
+        es:"Corrosión, rango de temperatura y aplicaciones típicas: una guía práctica.",
+        de:"Korrosion, Temperaturbereich und typische Anwendungen – kompakt erklärt."
+      }
+    },
+    {
+      id:"blog3",
+      cat:["applications","selection"],
+      date:"2026-02-20",
+      cover:"../assets/img/blog/blog3.jpg",
+      link:{ zh:"blog3/index.zh.html", en:"blog3/index.en.html", es:"blog3/index.en.html", de:"blog3/index.en.html" },
+      tag:{ zh:"应用", en:"Applications", es:"Aplicaciones", de:"Anwendungen" },
+      title:{
+        zh:"结晶工况如何选阀？保温夹套/角式截止阀要点",
+        en:"Selecting valves for crystallization: jacketed designs & angle globe tips",
+        es:"Selección para cristalización: válvulas encamisadas y tips",
+        de:"Armaturen für Kristallisation: Mantel‑Designs & Tipps"
+      },
+      excerpt:{
+        zh:"聚焦化工/化肥常见结晶问题：堵塞、卡涩、保温与冲刷，给出可执行的选型逻辑。",
+        en:"Practical selection logic for plugging/sticking, heat tracing, and flushing in crystallizing services.",
+        es:"Lógica práctica para evitar tapones/atascos y mejorar el mantenimiento en cristalización.",
+        de:"Praktische Auswahl‑Logik gegen Verstopfen/Klemmen sowie für Beheizung/Spülung."
+      }
+    }
+  ];
+
+  function applyText(lang){
+    const t = I18N[lang] || I18N.zh;
+
+    document.documentElement.lang = lang === "zh" ? "zh-CN" : lang;
+    // brand + nav
+    document.getElementById("brandSub").textContent = t.brandSub;
+    document.getElementById("navHome").textContent = t.nav.home;
+    document.getElementById("navProducts").textContent = t.nav.products;
+    document.getElementById("navCert").textContent = t.nav.cert;
+    document.getElementById("navAbout").textContent = t.nav.about;
+    document.getElementById("navContact").textContent = t.nav.contact;
+
+    // hero
+    document.getElementById("heroKicker").textContent = t.hero.kicker;
+    document.getElementById("heroTitle").textContent = t.hero.title;
+    document.getElementById("heroSub").textContent = t.hero.sub;
+    document.getElementById("ctaQuote").textContent = t.hero.quote;
+    document.getElementById("ctaBack").textContent = t.hero.back;
+    document.getElementById("meta1").textContent = t.hero.meta[0];
+    document.getElementById("meta2").textContent = t.hero.meta[1];
+    document.getElementById("meta3").textContent = t.hero.meta[2];
+
+    // quick
+    document.getElementById("quickTitle").textContent = t.quick.title;
+    document.getElementById("quickRFQ").textContent = t.quick.rfq;
+    document.getElementById("quickCatalog").textContent = t.quick.catalog;
+    document.getElementById("quickCert").textContent = t.quick.cert;
+    document.getElementById("quickNote").textContent = t.quick.note;
+
+    // list
+    document.getElementById("listTitle").textContent = t.list.title;
+    document.getElementById("listSub").textContent = t.list.sub;
+    document.getElementById("chipAll").textContent = t.list.chips.all;
+    document.getElementById("chipSel").textContent = t.list.chips.selection;
+    document.getElementById("chipStd").textContent = t.list.chips.standards;
+    document.getElementById("chipMat").textContent = t.list.chips.materials;
+    document.getElementById("chipApp").textContent = t.list.chips.applications;
+
+    document.getElementById("footerText").textContent = t.footer;
+
+    // update nav links to keep lang
+    const base = "../index.html";
+    document.getElementById("brandHome").href = base + "?lang=" + lang;
+    document.getElementById("navHome").href = base + "?lang=" + lang;
+    document.getElementById("navProducts").href = base + "?lang=" + lang + "#filters";
+    document.getElementById("navCert").href = base + "?lang=" + lang + "#certificates";
+    document.getElementById("navAbout").href = base + "?lang=" + lang + "#aboutBox";
+    document.getElementById("navContact").href = base + "?lang=" + lang + "#contact";
+    document.getElementById("ctaQuote").href = base + "?lang=" + lang + "#contact";
+    document.getElementById("ctaBack").href = base + "?lang=" + lang;
+    document.getElementById("quickRFQ").href = base + "?lang=" + lang + "#contact";
+    document.getElementById("quickCatalog").href = base + "?lang=" + lang + "#filters";
+    document.getElementById("quickCert").href = base + "?lang=" + lang + "#certificates";
+  }
+
+  function renderPosts(lang, cat){
+    const t = I18N[lang] || I18N.zh;
+    const grid = document.getElementById("postsGrid");
+    grid.innerHTML = "";
+
+    const filtered = POSTS.filter(p => cat === "all" ? true : (p.cat || []).includes(cat));
+    filtered.forEach(p => {
+      const href = (p.link && (p.link[lang] || p.link.en)) ? (p.link[lang] || p.link.en) : "#";
+      const card = document.createElement("a");
+      card.className = "card";
+      card.href = href + (href.includes("?") ? "&" : "?") + "lang=" + lang;
+      card.innerHTML = `
+        <div class="thumb">
+          <span class="tag">${(p.tag && (p.tag[lang] || p.tag.en)) || ""}</span>
+          ${p.cover ? `<img src="${p.cover}" alt="${(p.title && (p.title[lang] || p.title.en)) || ""}" onerror="this.style.display='none'">` : ""}
+        </div>
+        <div class="card-body">
+          <p class="title">${(p.title && (p.title[lang] || p.title.en)) || ""}</p>
+          <p class="excerpt">${(p.excerpt && (p.excerpt[lang] || p.excerpt.en)) || ""}</p>
+          <div class="card-foot">
+            <span class="date">${p.date || ""}</span>
+            <span class="read">${t.read} →</span>
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+
+    if (filtered.length === 0){
+      const empty = document.createElement("div");
+      empty.className = "hero-card";
+      empty.innerHTML = `<p class="sub" style="margin:0;">No posts yet.</p>`;
+      grid.appendChild(empty);
+    }
+  }
+
+  function setActiveLang(lang){
+    document.querySelectorAll(".lang button").forEach(btn=>{
+      btn.classList.toggle("active", btn.dataset.lang === lang);
+    });
+  }
+
+  function setActiveChip(cat){
+    document.querySelectorAll(".chip").forEach(btn=>{
+      btn.classList.toggle("active", btn.dataset.cat === cat);
+    });
+  }
+
+  (function init(){
+    const lang = getLang();
+    setActiveLang(lang);
+    applyText(lang);
+
+    let currentCat = "all";
+    renderPosts(lang, currentCat);
+
+    document.querySelectorAll(".lang button").forEach(btn=>{
+      btn.addEventListener("click", ()=> setLang(btn.dataset.lang));
+    });
+
+    document.querySelectorAll(".chip").forEach(btn=>{
+      btn.addEventListener("click", ()=>{
+        currentCat = btn.dataset.cat;
+        setActiveChip(currentCat);
+        renderPosts(lang, currentCat);
+      });
+    });
+
+    // Lightweight BlogPosting schema for list page
+    const schema = {
+      "@context":"https://schema.org",
+      "@type":"Blog",
+      "name":"Wuxing Valve Insights",
+      "url": window.location.href,
+      "blogPost": POSTS.map(p => ({
+        "@type":"BlogPosting",
+        "headline": (p.title && (p.title[lang] || p.title.en)) || "",
+        "datePublished": p.date || "",
+        "url": (new URL(p.link && (p.link[lang] || p.link.en) || "#", window.location.href)).toString()
+      }))
+    };
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.text = JSON.stringify(schema);
+    document.head.appendChild(script);
+  })();
+</script>
+</body>
+</html>
