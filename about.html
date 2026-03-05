@@ -1,290 +1,122 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Wuxing Valve · About</title>
+  <title>关于我们 · Wuxing Valve</title>
+  <meta name="description" content="浙江五星阀门有限公司（原永嘉五星阀门总厂）关于我们：公司介绍、厂区与设备、资质与管理体系、产品与应用领域。" />
   <meta name="robots" content="index,follow" />
+  <link rel="icon" href="assets/favicon.png" />
   <style>
     :root{
       --bg:#f7f7f8; --card:#ffffff; --text:#111827; --muted:#6b7280; --line:#e5e7eb;
-      --brand:#2563eb; --radius:18px; --shadow:0 10px 25px rgba(0,0,0,.06);
+      --brand:#2563eb; --radius:18px; --shadow:0 10px 30px rgba(0,0,0,.08);
+      --max:1100px;
     }
     *{box-sizing:border-box}
     body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,"Noto Sans",sans-serif;background:var(--bg);color:var(--text)}
     a{color:inherit;text-decoration:none}
-    .wrap{max-width:1120px;margin:0 auto;padding:0 16px}
-    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
-    .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
-    .brand{display:flex;flex-direction:column;line-height:1.1}
-    .brand b{font-size:15px}
-    .brand span{font-size:12px;color:var(--muted)}
-    .langs{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-    .langBtn{font-size:12px;padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:#fff;cursor:pointer}
-    .langBtn.active{border-color:var(--brand);color:var(--brand)}
-    nav{display:flex;gap:14px;align-items:center;flex-wrap:wrap;padding:0 0 12px}
-    .navLink{font-size:13px;color:var(--muted)}
-    .navLink:hover{color:var(--text)}
-    .navCta{color:#fff;background:var(--brand);padding:8px 12px;border-radius:999px}
-    .hero{padding:28px 0}
-    .heroCard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px}
-    h1{margin:0 0 8px;font-size:26px}
-    .sub{margin:0;color:var(--muted);line-height:1.6}
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin:16px 0 36px}
-    .card{grid-column:span 12;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px}
-    @media (min-width: 920px){
-      .card.half{grid-column:span 6}
-      .card.third{grid-column:span 4}
+    header{
+      position:sticky;top:0;z-index:50;
+      background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(10px);
+      border-bottom:1px solid var(--line)
     }
-    .card h2{margin:0 0 10px;font-size:16px}
-    .card p, .card li{color:var(--muted);line-height:1.75;font-size:14px}
-    ul{margin:8px 0 0 18px}
-    .cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:12px}
-    .btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 14px;font-size:13px}
-    .btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
-    footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted);font-size:13px}
-    /* language blocks */
-    [data-lang]{display:none}
-    [data-lang].show{display:block}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 16px}
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      padding:12px 0;
+    }
+    .brand{display:flex;align-items:center;gap:10px}
+    .logo{
+      width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#1d4ed8,#60a5fa);
+      box-shadow:0 8px 20px rgba(37,99,235,.25);
+    }
+    .brand b{letter-spacing:.2px}
+    .links{display:flex;gap:14px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:10px 12px;border-radius:12px;border:1px solid var(--line);
+      background:#fff;
+    }
+    .btn.primary{border-color:rgba(37,99,235,.35);background:rgba(37,99,235,.06)}
+    main{padding:28px 0 56px}
+    .hero{
+      background:linear-gradient(135deg, rgba(37,99,235,.10), rgba(96,165,250,.08));
+      border:1px solid rgba(37,99,235,.15);
+      border-radius:24px;
+      padding:22px 18px;
+      box-shadow:var(--shadow);
+    }
+    .hero h1{margin:0 0 8px;font-size:28px}
+    .hero p{margin:0;color:var(--muted);line-height:1.65}
+    .card{
+      margin-top:18px;
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+    .card h2{margin:0 0 10px;font-size:18px}
+    .card p{margin:0 0 12px;line-height:1.85}
+    .card p:last-child{margin-bottom:0}
+    .note{
+      margin-top:14px;
+      font-size:13px;color:var(--muted);
+    }
+    footer{border-top:1px solid var(--line);padding:18px 0;color:var(--muted);font-size:13px}
   </style>
 </head>
 <body>
-<header>
-  <div class="wrap">
-    <div class="topbar">
-      <div class="brand">
-        <b>Wuxing Valve</b>
-        <span data-lang="zh">工业阀门 · 外贸供应</span>
-        <span data-lang="en">Industrial Valves · Export Supply</span>
-        <span data-lang="es">Válvulas industriales · Exportación</span>
-        <span data-lang="de">Industriearmaturen · Export</span>
-      </div>
-
-      <div class="langs" aria-label="Language">
-        <button class="langBtn" data-setlang="zh">ZH</button>
-        <button class="langBtn" data-setlang="en">EN</button>
-        <button class="langBtn" data-setlang="es">ES</button>
-        <button class="langBtn" data-setlang="de">DE</button>
+  <header>
+    <div class="wrap">
+      <div class="nav">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div>
+            <b>Wuxing Valve</b><div style="font-size:12px;color:var(--muted)">Zhejiang Wuxing Valve Co., Ltd.</div>
+          </div>
+        </div>
+        <nav class="links" aria-label="主导航">
+          <a class="btn" href="index.html">← 返回首页</a>
+          <a class="btn primary" href="product.html">产品中心</a>
+        </nav>
       </div>
     </div>
+  </header>
 
-    <nav aria-label="Main navigation">
-      <a class="navLink" href="index.html" data-nav="home">Home</a>
-      <a class="navLink" href="index.html#products" data-nav="products">Products</a>
-      <a class="navLink" href="index.html#applications" data-nav="applications">Applications</a>
-      <a class="navLink" href="index.html#certificates" data-nav="certificates">Certificates</a>
-      <a class="navLink" href="blog/blog.html" data-nav="blog">Insights</a>
-      <a class="navLink" href="about.html" data-nav="about" aria-current="page">About</a>
-      <a class="navLink navCta" href="index.html#contact" data-nav="contact">Contact</a>
-    </nav>
-  </div>
-</header>
+  <main>
+    <div class="wrap">
+      <section class="hero">
+        <h1>关于我们</h1>
+        <p>浙江五星阀门有限公司原系永嘉五星阀门总厂。始建于上个世纪80年代，地处“泵阀之乡”的温州瓯北。</p>
+      </section>
 
-<main class="wrap">
-  <section class="hero">
-    <div class="heroCard">
-      <h1 data-lang="zh">关于我们</h1>
-      <h1 data-lang="en">About Us</h1>
-      <h1 data-lang="es">Sobre nosotros</h1>
-      <h1 data-lang="de">Über uns</h1>
+      <section class="card" aria-label="公司介绍">
+        <h2>公司简介</h2>
+        <p>浙江五星阀门有限公司原系永嘉五星阀门总厂。始建于上个世纪80年代，地处“泵阀之乡”的温州瓯北。位于风景迷人的瓯江东畔，这里是温福铁路与杭温高速公路的交叉口，门前的水运码头可载货直达世界各地。航空、铁路、公路、码头等多种交通交汇，形成了立体的交通枢纽，保证物流的快速集散。</p>
 
-      <p class="sub" data-lang="zh">
-        我们专注于工业阀门与配套产品的制造与出口服务，面向工程项目、贸易商与终端用户提供选型支持、定制与交付。
-        你可以把这页当作「公司简介模板」：内容写得偏稳妥，后续你可以按真实信息随时替换（厂房面积、设备清单、认证编号、地址等）。
-      </p>
-      <p class="sub" data-lang="en">
-        We manufacture and supply industrial valves and related products for projects, distributors, and end users.
-        This page is written as a safe “company profile template” — feel free to replace details (facility size, equipment list, certificate numbers, address, etc.) with your latest verified info.
-      </p>
-      <p class="sub" data-lang="es">
-        Fabricamos y suministramos válvulas industriales y productos relacionados para proyectos, distribuidores y usuarios finales.
-        Esta página es una plantilla “segura” de perfil corporativo — puedes sustituir los datos (tamaño de planta, equipos, números de certificados, dirección, etc.) cuando lo desees.
-      </p>
-      <p class="sub" data-lang="de">
-        Wir fertigen und liefern Industriearmaturen und passende Produkte für Projekte, Händler und Endkunden.
-        Diese Seite ist als “sichere” Unternehmensprofil‑Vorlage geschrieben – Details (Fläche, Maschinenliste, Zertifikatsnummern, Adresse etc.) kannst du jederzeit mit geprüften Angaben ersetzen.
-      </p>
+        <p>公司整体工业园区占地15000平方米，建筑面积18000平方米；拥有数控机床，精密磨床、镗床、大型立体车床、包装流水线等各种设备，其中金属切割机床占85%以上。设有理化室、计量室、物理实验室，可对产品内在质量分析和实施无损探伤检验。企业管理已与世界阀门行业接轨，通过了ISO9001及国家特种设备（压力管道）TS安全注册认证。</p>
 
-      <div class="cta">
-        <a class="btn primary" href="index.html#contact" data-lang="zh">获取报价 / 参数表</a>
-        <a class="btn primary" href="index.html#contact" data-lang="en">Get a Quote / Datasheet</a>
-        <a class="btn primary" href="index.html#contact" data-lang="es">Solicitar cotización / ficha</a>
-        <a class="btn primary" href="index.html#contact" data-lang="de">Angebot / Datenblatt</a>
+        <p>明亮的厂房，精良的设备，精密的检测手段，现代化的管理系统，对产品形成了可靠的质量保证。我们可以生产国标、美标、日标、德标等各种高科技的阀门产品，造就了一批科技素养高的五星人精粹，现我公司已成为集产品研发、生产、销售为一体的经济实体，高新技术企业。</p>
 
-        <a class="btn" href="index.html#products" data-lang="zh">查看产品</a>
-        <a class="btn" href="index.html#products" data-lang="en">View Products</a>
-        <a class="btn" href="index.html#products" data-lang="es">Ver productos</a>
-        <a class="btn" href="index.html#products" data-lang="de">Produkte ansehen</a>
-      </div>
+        <p>我们主要生产各种高压角式截止阀、止回阀、平衡阀、闸阀、保温阀、硬密封球阀、高压管件及各类钛合金材质阀门，约数百种规格的高中压阀门产品；广泛用于化工、化肥、制药、供热、石化、炼油、冶金、矿山、化纤、造纸、发电等国民经济领域。</p>
+
+        <p>公司始终坚持“以质量求生存，以改革求发展”和以“科技强司，聚贤兴企”的思想理念，不断研发用户急需的高新产品。与您合作，互惠共赢，我们在全国各大中城市都设有销售中心和服务部门，随时为您提供超值服务。</p>
+
+        <div class="note">如需把上述内容做“中英双语 / 结构化分段 / 纠错润色”，我也可以给你出一版更适合海外客户阅读的版本。</div>
+      </section>
     </div>
-  </section>
+  </main>
 
-  <section class="grid" aria-label="About content">
-    <div class="card half">
-      <h2 data-lang="zh">公司概况</h2>
-      <h2 data-lang="en">Company Overview</h2>
-      <h2 data-lang="es">Perfil de la empresa</h2>
-      <h2 data-lang="de">Unternehmensprofil</h2>
-
-      <p data-lang="zh">
-        我们位于中国浙江温州（“泵阀之乡”区域），长期服务于化工、能源、水处理、管线与一般工业工况。
-        产品覆盖闸阀、截止阀、止回阀、球阀、夹套阀、高压接头/配件等，可按 ANSI / API / EN / DIN 等标准供货。
-      </p>
-      <p data-lang="en">
-        Based in Wenzhou, Zhejiang (China’s valve manufacturing hub), we support chemical, energy, water treatment,
-        pipelines, and general industrial services. Our range includes gate valves, globe valves, check valves,
-        ball valves, jacketed valves, and high‑pressure fittings, supplied to ANSI / API / EN / DIN standards.
-      </p>
-      <p data-lang="es">
-        Con sede en Wenzhou, Zhejiang (centro de fabricación de válvulas en China), atendemos aplicaciones químicas,
-        energéticas, tratamiento de agua, tuberías y servicios industriales. Suministramos válvulas de compuerta,
-        globo, retención, bola, válvulas encamisadas y accesorios de alta presión según normas ANSI / API / EN / DIN.
-      </p>
-      <p data-lang="de">
-        Unser Standort ist Wenzhou, Zhejiang (Chinas Armaturen‑Cluster). Wir bedienen Chemie, Energie,
-        Wasseraufbereitung, Rohrleitungen und allgemeine Industrie. Lieferprogramm: Schieber, Ventile,
-        Rückschlagarmaturen, Kugelhähne, Mantelarmaturen sowie Hochdruck‑Fittings nach ANSI / API / EN / DIN.
-      </p>
+  <footer>
+    <div class="wrap">
+      © <span id="y"></span> Zhejiang Wuxing Valve Co., Ltd. All rights reserved.
     </div>
+  </footer>
 
-    <div class="card half">
-      <h2 data-lang="zh">制造与检测能力</h2>
-      <h2 data-lang="en">Manufacturing & Testing</h2>
-      <h2 data-lang="es">Fabricación y pruebas</h2>
-      <h2 data-lang="de">Fertigung & Prüfung</h2>
-
-      <ul data-lang="zh">
-        <li>常规机加工与数控加工（CNC），支持小批量打样与批量交付</li>
-        <li>压力测试、密封测试、材料/尺寸检验（按项目要求提供报告）</li>
-        <li>支持 OEM/ODM：铭牌、涂装、包装与文件可定制</li>
-      </ul>
-      <ul data-lang="en">
-        <li>Machining and CNC manufacturing for prototypes and volume orders</li>
-        <li>Pressure and seat leakage testing, material/dimensional inspection with reports upon request</li>
-        <li>OEM/ODM support: nameplate, coating, packing and documentation customization</li>
-      </ul>
-      <ul data-lang="es">
-        <li>Mecanizado y CNC para prototipos y pedidos en volumen</li>
-        <li>Pruebas de presión y estanqueidad, inspección dimensional/material con reportes según necesidad</li>
-        <li>Soporte OEM/ODM: placa, pintura, embalaje y documentación personalizados</li>
-      </ul>
-      <ul data-lang="de">
-        <li>Zerspanung und CNC für Muster und Serien</li>
-        <li>Druck‑ und Dichtheitsprüfungen, Maß‑/Materialprüfung inkl. Berichte nach Bedarf</li>
-        <li>OEM/ODM: Typenschild, Beschichtung, Verpackung und Dokumente anpassbar</li>
-      </ul>
-    </div>
-
-    <div class="card third">
-      <h2 data-lang="zh">质量与合规</h2>
-      <h2 data-lang="en">Quality & Compliance</h2>
-      <h2 data-lang="es">Calidad y cumplimiento</h2>
-      <h2 data-lang="de">Qualität & Konformität</h2>
-
-      <p data-lang="zh">可配合提供质量体系、型式试验与检验资料（以证书扫描件/最新文件为准）。</p>
-      <p data-lang="en">We can provide quality system documents, type tests and inspection records (subject to latest scanned certificates and files).</p>
-      <p data-lang="es">Podemos proporcionar documentos de sistema de calidad, ensayos de tipo e informes de inspección (según certificados/archivos vigentes).</p>
-      <p data-lang="de">Wir können QM‑Dokumente, Typprüfungen und Prüfberichte bereitstellen (maßgeblich sind aktuelle Scans/Dokumente).</p>
-    </div>
-
-    <div class="card third">
-      <h2 data-lang="zh">交付与服务</h2>
-      <h2 data-lang="en">Delivery & Support</h2>
-      <h2 data-lang="es">Entrega y soporte</h2>
-      <h2 data-lang="de">Lieferung & Support</h2>
-
-      <ul data-lang="zh">
-        <li>快速报价：提供工况/口径/压力等级/连接方式</li>
-        <li>支持提供数据表、图纸、材质与测试报告</li>
-        <li>可协助安排出口包装与物流对接</li>
-      </ul>
-      <ul data-lang="en">
-        <li>Fast quotation with service conditions, size, class, end connection</li>
-        <li>Datasheets, drawings, material and test reports available</li>
-        <li>Export packing and logistics coordination upon request</li>
-      </ul>
-      <ul data-lang="es">
-        <li>Cotización rápida con condiciones, diámetro, clase y conexión</li>
-        <li>Fichas técnicas, planos, material e informes de prueba disponibles</li>
-        <li>Embalaje de exportación y coordinación logística bajo solicitud</li>
-      </ul>
-      <ul data-lang="de">
-        <li>Schnelles Angebot mit Medium/Temperatur, DN, Druckklasse, Anschluss</li>
-        <li>Datenblätter, Zeichnungen, Material‑ und Prüfberichte verfügbar</li>
-        <li>Exportverpackung und Logistik‑Abstimmung auf Wunsch</li>
-      </ul>
-    </div>
-
-    <div class="card third">
-      <h2 data-lang="zh">工厂参观</h2>
-      <h2 data-lang="en">Factory Visit</h2>
-      <h2 data-lang="es">Visita a la fábrica</h2>
-      <h2 data-lang="de">Werksbesuch</h2>
-
-      <p data-lang="zh">欢迎预约视频看厂或现场参观；也可提供生产与检测流程的视频/照片。</p>
-      <p data-lang="en">Factory tour is available on-site or via video call; process photos/videos can be shared.</p>
-      <p data-lang="es">Visita disponible en sitio o por videollamada; se pueden compartir fotos/videos del proceso.</p>
-      <p data-lang="de">Besichtigung vor Ort oder per Video‑Call möglich; Prozessfotos/Videos können bereitgestellt werden.</p>
-    </div>
-
-    <div class="card">
-      <h2 data-lang="zh">联系我们</h2>
-      <h2 data-lang="en">Contact</h2>
-      <h2 data-lang="es">Contacto</h2>
-      <h2 data-lang="de">Kontakt</h2>
-
-      <p data-lang="zh">需要选型建议或快速报价？把你的介质、温度、压力等级、连接方式发给我们，我们会尽快回复。</p>
-      <p data-lang="en">Need selection help or a fast quote? Send us media, temperature, pressure class and end connection — we’ll reply ASAP.</p>
-      <p data-lang="es">¿Necesitas ayuda de selección o una cotización rápida? Envíanos el medio, temperatura, clase de presión y conexión — responderemos pronto.</p>
-      <p data-lang="de">Auswahlhilfe oder schnelles Angebot? Bitte Medium, Temperatur, Druckklasse und Anschluss senden — wir antworten zeitnah.</p>
-
-      <div class="cta">
-        <a class="btn primary" href="mailto:andy@wuxingvalve.com">andy@wuxingvalve.com</a>
-        <a class="btn" href="https://wa.me/8615888791812" target="_blank" rel="noopener">WhatsApp +86 15888791812</a>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="wrap">© Wuxing Valve</div>
-</footer>
-
-<script>
-  // language handling (simple, matches your ZH/EN/ES/DE toggles)
-  (function(){
-    const buttons = Array.from(document.querySelectorAll('.langBtn'));
-    const blocks = Array.from(document.querySelectorAll('[data-lang]'));
-    const supported = new Set(['zh','en','es','de']);
-
-    function apply(lang){
-      if(!supported.has(lang)) lang = 'en';
-      document.documentElement.lang = lang;
-
-      blocks.forEach(el => {
-        const l = el.getAttribute('data-lang');
-        el.classList.toggle('show', l === lang);
-      });
-
-      buttons.forEach(b => b.classList.toggle('active', b.getAttribute('data-setlang') === lang));
-      try{ localStorage.setItem('wv_lang', lang); }catch(e){}
-    }
-
-    buttons.forEach(b => b.addEventListener('click', () => apply(b.getAttribute('data-setlang'))));
-
-    let initial = 'en';
-    try{
-      const saved = localStorage.getItem('wv_lang');
-      if(saved) initial = saved;
-      else {
-        const nav = (navigator.language || 'en').toLowerCase();
-        if(nav.startsWith('zh')) initial = 'zh';
-        else if(nav.startsWith('es')) initial = 'es';
-        else if(nav.startsWith('de')) initial = 'de';
-      }
-    }catch(e){}
-    apply(initial);
-  })();
-</script>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
