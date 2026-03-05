@@ -6,7 +6,8 @@
   <title>关于我们 · Wuxing Valve</title>
   <meta name="description" content="浙江五星阀门有限公司（原永嘉五星阀门总厂）关于我们：公司介绍、厂区与设备、资质与管理体系、产品与应用领域。" />
   <meta name="robots" content="index,follow" />
-  <link rel="icon" href="assets/favicon.png" />
+  <link rel="icon" href="assets/favicon.ico" sizes="any" />
+  <link rel="icon" href="assets/favicon.png" type="image/png" />
   <style>
     :root{
       --bg:#f7f7f8; --card:#ffffff; --text:#111827; --muted:#6b7280; --line:#e5e7eb;
@@ -66,25 +67,65 @@
       font-size:13px;color:var(--muted);
     }
     footer{border-top:1px solid var(--line);padding:18px 0;color:var(--muted);font-size:13px}
+  
+/* ===== Header styles synced with index ===== */
+.wrap{max-width:1150px;margin:0 auto;padding:14px 18px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{height:34px;width:auto;display:block;border-radius:10px;object-fit:contain;box-shadow:0 8px 20px rgba(17,24,39,.12)}
+.brandTitle{font-weight:800;letter-spacing:.2px}
+.brandSub{font-size:12px;color:var(--muted);margin-top:2px}
+.lang{display:inline-flex;gap:6px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px}
+.lang button{border:0;background:transparent;padding:7px 10px;border-radius:999px;cursor:pointer;font-weight:700;color:#374151}
+.lang button.active{background:var(--brand);color:#fff}
+
+/* ===== Primary navigation (same row as index) ===== */
+.navRow{display:flex;gap:14px;align-items:center;justify-content:flex-end;flex-wrap:wrap;margin-top:12px;padding-top:10px;border-top:1px solid var(--line)}
+.navLink{font-weight:700;color:#374151;padding:8px 10px;border-radius:999px;line-height:1}
+.navLink:hover{background:rgba(37,99,235,.10);color:#1f2937}
+.navCta{background:var(--brand);color:#fff}
+.navCta:hover{background:#1d4ed8;color:#fff}
+@media (max-width: 720px){
+  .navRow{gap:10px}
+  .navLink{padding:8px 9px;font-size:14px}
+}
+
   </style>
 </head>
 <body>
-  <header>
-    <div class="wrap">
-      <div class="nav">
-        <div class="brand">
-          <img class="logo" src="assets/favicon.png" alt="Wuxing Valve logo" />
-          <div>
-            <b>Wuxing Valve</b><div style="font-size:12px;color:var(--muted)">Zhejiang Wuxing Valve Co., Ltd.</div>
-          </div>
+<div id="top"></div>
+
+  
+<header id="siteHeader">
+  <div class="wrap">
+    <div class="topbar">
+      <a class="brand" href="index.html" aria-label="Wuxing Valve Home">
+        <img class="logo" src="assets/logo.png" alt="Wuxing Valve logo" />
+        <div>
+          <div class="brandTitle">Wuxing Valve</div>
+          <div class="brandSub" id="brandSub">工业阀门 · 外贸供应</div>
         </div>
-        <nav class="links" aria-label="主导航">
-          <a class="btn" href="index.html">← 返回首页</a>
-          <a class="btn primary" href="product.html">产品中心</a>
-        </nav>
+      </a>
+      <div class="lang" role="tablist" aria-label="Language switch">
+        <button data-lang="zh" class="active">ZH</button>
+        <button data-lang="en">EN</button>
+        <button data-lang="es">ES</button>
+        <button data-lang="de">DE</button>
       </div>
     </div>
-  </header>
+
+    <nav class="navRow" aria-label="Primary">
+      <a class="navLink" href="index.html#top" data-nav="home">Home</a>
+      <a class="navLink" href="index.html#products" data-nav="products">Products</a>
+      <a class="navLink" href="index.html#filters" data-nav="applications" data-filter="fert">Applications</a>
+      <a class="navLink" href="index.html#filters" data-nav="certificates" data-filter="certificates">Certificates</a>
+      <a class="navLink" href="blog/blog.html" data-nav="blog" id="navBlog">Insights</a>
+      <a class="navLink" href="about.html" data-nav="about">About</a>
+      <a class="navLink navCta" href="index.html#contact" data-nav="contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
 
   <main>
     <div class="wrap">
@@ -119,5 +160,72 @@
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
+
+<script>
+  const SUPPORTED = ["zh","en","es","de"];
+  const NAV_I18N = {
+    home:        { zh: "首页",     en: "Home",        es: "Inicio",      de: "Start" },
+    products:    { zh: "产品",     en: "Products",    es: "Productos",   de: "Produkte" },
+    applications:{ zh: "应用",     en: "Applications",es: "Aplicaciones",de: "Anwendungen" },
+    certificates:{ zh: "证书",     en: "Certificates",es: "Certificados",de: "Zertifikate" },
+    blog:        { zh: "资讯",     en: "Insights",    es: "Recursos",    de: "Insights" },
+    about:       { zh: "关于我们", en: "About",       es: "Sobre nosotros",de:"Über uns" },
+    contact:     { zh: "联系我们", en: "Contact",     es: "Contacto",    de: "Kontakt" },
+  };
+
+  function getLang() {
+    const u = new URL(location.href);
+    const q = (u.searchParams.get("lang") || "").toLowerCase();
+    const stored = (localStorage.getItem("lang") || "").toLowerCase();
+    return SUPPORTED.includes(q) ? q : (SUPPORTED.includes(stored) ? stored : "zh");
+  }
+
+  function applyNavLabels(lang){
+    document.querySelectorAll('[data-nav]').forEach(a=>{
+      const key = a.getAttribute('data-nav');
+      const map = NAV_I18N[key];
+      if(map) a.textContent = map[lang] || map.en || a.textContent;
+    });
+    // Keep blog link language in sync (same behavior as index)
+    const blogLink = document.getElementById("navBlog");
+    if(blogLink){
+      blogLink.href = `blog/blog.html?lang=${encodeURIComponent(lang)}`;
+    }
+  }
+
+  function applyNavHrefs(lang){
+    // Ensure links back to index carry lang param, but keep the same destinations as index.
+    document.querySelectorAll('.navRow a').forEach(a=>{
+      const href = a.getAttribute('href') || '';
+      if(href.startsWith('index.html')){
+        const parts = href.split('#');
+        const base = parts[0];
+        const hash = parts[1] ? ('#' + parts[1]) : '';
+        const u = new URL(base, location.href);
+        u.searchParams.set('lang', lang);
+        a.setAttribute('href', u.pathname + u.search + hash);
+      }
+    });
+  }
+
+  function setLang(lang){
+    localStorage.setItem("lang", lang);
+    const u = new URL(location.href);
+    u.searchParams.set("lang", lang);
+    history.replaceState(null, "", u.toString());
+    document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('active', b.dataset.lang===lang));
+    document.documentElement.lang = (lang==='zh') ? 'zh-CN' : lang;
+    applyNavLabels(lang);
+    applyNavHrefs(lang);
+  }
+
+  document.querySelectorAll('.lang button').forEach(b => {
+    b.addEventListener('click', () => setLang(b.dataset.lang));
+  });
+
+  // init
+  setLang(getLang());
+</script>
+
 </body>
 </html>
