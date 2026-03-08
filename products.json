@@ -1336,7 +1336,7 @@
       ]
     },
     {
-      "id": "fert20",
+      "id": "fert-020",
       "family": "control",
       "family_title": {
         "zh": "控制/切断阀类",
@@ -1402,7 +1402,7 @@
       ]
     },
     {
-      "id": "fert21",
+      "id": "fert-021",
       "family": "control",
       "family_title": {
         "zh": "控制/切断阀类",
@@ -1468,7 +1468,7 @@
       ]
     },
     {
-      "id": "fert22",
+      "id": "fert-022",
       "family": "control",
       "family_title": {
         "zh": "控制/切断阀类",
@@ -1534,7 +1534,7 @@
       ]
     },
     {
-      "id": "fert23",
+      "id": "fert-023",
       "family": "gate",
       "family_title": {
         "zh": "闸阀类",
@@ -1600,7 +1600,7 @@
       ]
     },
     {
-      "id": "fert24",
+      "id": "fert-024",
       "family": "special",
       "family_title": {
         "zh": "特材阀门类",
@@ -1666,73 +1666,7 @@
       ]
     },
     {
-      "id": "fert25",
-      "family": "control",
-      "family_title": {
-        "zh": "控制/切断阀类",
-        "en": "Control & Isolation Valves",
-        "es": "Válvulas de control y aislamiento",
-        "de": "Regel- & Absperrarmaturen"
-      },
-      "title": {
-        "zh": "高压角式截止、节流阀",
-        "en": "High-Pressure Angle Globe & Throttle Valve",
-        "es": "Válvula angular de globo y estrangulación de alta presión",
-        "de": "Hochdruck-Winkel-Absperr- und Drosselventil"
-      },
-      "sub": {
-        "zh": "角式结构 / 截止与节流",
-        "en": "Angle pattern / shut-off and throttling",
-        "es": "Diseño angular / cierre y estrangulación",
-        "de": "Winkelausführung / Absperren und Drosseln"
-      },
-      "tags": [
-        "fertilizer",
-        "high_pressure"
-      ],
-      "cover": "assets/products/fert25/cover.jpg",
-      "images": [
-        "assets/products/fert25/cover.jpg"
-      ],
-      "details": {
-        "zh": "按图片原始文件名新增的产品条目，支持材质、连接形式与压力等级定制，可提供出厂检验与测试报告。",
-        "en": "New product entry added according to the original image filename. Material, end connection and pressure rating can be customized, with factory inspection and test reports available.",
-        "es": "Nuevo producto añadido según el nombre original del archivo de imagen. Se puede personalizar material, conexión y clase de presión, con inspección de fábrica e informes de prueba disponibles.",
-        "de": "Neuer Produkteintrag basierend auf dem ursprünglichen Bilddateinamen. Werkstoff, Anschluss und Druckstufe sind anpassbar; Werksprüfung und Prüfberichte sind verfügbar."
-      },
-      "specs": [
-        {
-          "k": {
-            "zh": "图片来源",
-            "en": "Image source name",
-            "es": "Nombre original de imagen",
-            "de": "Originaler Bildname"
-          },
-          "v": {
-            "zh": "高压角式截止、节流阀",
-            "en": "高压角式截止、节流阀",
-            "es": "高压角式截止、节流阀",
-            "de": "高压角式截止、节流阀"
-          }
-        },
-        {
-          "k": {
-            "zh": "图片文件",
-            "en": "Image file",
-            "es": "Archivo de imagen",
-            "de": "Bilddatei"
-          },
-          "v": {
-            "zh": "cover.jpg",
-            "en": "cover.jpg",
-            "es": "cover.jpg",
-            "de": "cover.jpg"
-          }
-        }
-      ]
-    },
-    {
-      "id": "fert26",
+      "id": "fert-025",
       "family": "check",
       "family_title": {
         "zh": "止回阀类",
@@ -1798,7 +1732,7 @@
       ]
     },
     {
-      "id": "fert27",
+      "id": "fert-026",
       "family": "gate",
       "family_title": {
         "zh": "闸阀类",
@@ -1864,7 +1798,7 @@
       ]
     },
     {
-      "id": "fert28",
+      "id": "fert-027",
       "family": "control",
       "family_title": {
         "zh": "控制/切断阀类",
