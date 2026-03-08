@@ -1265,6 +1265,540 @@
       ]
     },
     {
+      "id": "fert-020",
+      "family": "globe",
+      "family_title": {
+        "zh": "截止阀类",
+        "en": "Globe Valves",
+        "es": "Válvulas de globo",
+        "de": "Sitzventile"
+      },
+      "title": {
+        "zh": "高压角式截止、节流阀",
+        "en": "High Pressure Angle Globe / Throttling Valve",
+        "es": "Válvula angular de globo / estrangulación de alta presión",
+        "de": "Hochdruck-Eck-Sitz-/Drosselventil"
+      },
+      "sub": {
+        "zh": "角式结构 / 高压工况",
+        "en": "Angle pattern / for high-pressure service",
+        "es": "Diseño angular / para servicio de alta presión",
+        "de": "Eckbauform / für Hochdruckbetrieb"
+      },
+      "tags": [
+        "fertilizer",
+        "high_pressure",
+        "angle"
+      ],
+      "cover": "assets/products/fert-020/cover.jpg",
+      "images": [
+        "assets/products/fert-020/cover.jpg"
+      ],
+      "details": {
+        "zh": "适用于高压介质输送及流量调节工况，采用角式阀体结构，可根据工况提供材质、连接形式和压力等级定制，支持出厂检验与测试报告。",
+        "en": "Suitable for high-pressure media service and flow regulation. The angle-pattern body is available with customized material, end connection and pressure class. Factory inspection and test reports are supported.",
+        "es": "Adecuada para transporte de medios a alta presión y regulación de caudal. El cuerpo angular puede suministrarse con material, conexión y clase de presión personalizados. Se admiten inspección en fábrica e informes de prueba.",
+        "de": "Geeignet für Hochdruckmedien und Durchflussregelung. Das Eckgehäuse kann hinsichtlich Werkstoff, Anschluss und Druckstufe kundenspezifisch ausgeführt werden. Werksprüfung und Prüfberichte sind verfügbar."
+      },
+      "specs": [
+        {
+          "k": {
+            "zh": "结构形式",
+            "en": "Design",
+            "es": "Diseño",
+            "de": "Bauform"
+          },
+          "v": {
+            "zh": "角式 / 截止与节流",
+            "en": "Angle pattern / shut-off and throttling",
+            "es": "Angular / cierre y estrangulación",
+            "de": "Eckbauform / Absperren und Drosseln"
+          }
+        },
+        {
+          "k": {
+            "zh": "连接",
+            "en": "Connection",
+            "es": "Conexión",
+            "de": "Anschluss"
+          },
+          "v": {
+            "zh": "法兰 / 对焊（可选）",
+            "en": "Flanged / butt weld (optional)",
+            "es": "Bridas / soldar a tope (opcional)",
+            "de": "Flansch / Stumpfschweißende (optional)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fert-021",
+      "family": "globe",
+      "family_title": {
+        "zh": "截止阀类",
+        "en": "Globe Valves",
+        "es": "Válvulas de globo",
+        "de": "Sitzventile"
+      },
+      "title": {
+        "zh": "BJ45W 法兰直流保温式截止阀",
+        "en": "BJ45W Flanged DC Jacketed Globe Valve",
+        "es": "BJ45W Válvula de globo recta bridada con camisa térmica",
+        "de": "BJ45W Gerades Flansch-Sitzventil mit Heizmantel"
+      },
+      "sub": {
+        "zh": "保温夹套 / 直流式结构",
+        "en": "Jacketed body / DC pattern design",
+        "es": "Cuerpo con camisa térmica / diseño recto",
+        "de": "Mit Heizmantel / Gleichstrom-Bauform"
+      },
+      "tags": [
+        "fertilizer",
+        "jacketed"
+      ],
+      "cover": "assets/products/fert-021/cover.jpg",
+      "images": [
+        "assets/products/fert-021/cover.jpg"
+      ],
+      "details": {
+        "zh": "适用于需保温或伴热的介质工况，直流式结构有助于流体平稳通过。可根据工况提供材质、连接及压力等级定制，支持出厂检验与测试报告。",
+        "en": "Suitable for media requiring insulation or heat tracing. The DC-pattern body helps provide smoother flow passage. Customization is available for material, ends and pressure class. Factory inspection and test reports are supported.",
+        "es": "Adecuada para medios que requieren aislamiento térmico o trazado de calor. El diseño recto favorece un paso de flujo más estable. Disponible personalización de material, conexiones y clase de presión. Se admiten inspección en fábrica e informes de prueba.",
+        "de": "Geeignet für Medien mit Wärmehaltung oder Begleitheizung. Die Gleichstrom-Bauform ermöglicht einen ruhigeren Durchfluss. Anpassungen bei Werkstoff, Anschluss und Druckstufe sind möglich. Werksprüfung und Prüfberichte sind verfügbar."
+      },
+      "specs": [
+        {
+          "k": {
+            "zh": "结构形式",
+            "en": "Design",
+            "es": "Diseño",
+            "de": "Bauform"
+          },
+          "v": {
+            "zh": "直流式 / 保温夹套",
+            "en": "DC pattern / jacketed",
+            "es": "Recta / con camisa térmica",
+            "de": "Gleichstrom / mit Heizmantel"
+          }
+        },
+        {
+          "k": {
+            "zh": "连接",
+            "en": "Connection",
+            "es": "Conexión",
+            "de": "Anschluss"
+          },
+          "v": {
+            "zh": "法兰",
+            "en": "Flanged",
+            "es": "Bridada",
+            "de": "Flansch"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fert-022",
+      "family": "globe",
+      "family_title": {
+        "zh": "截止阀类",
+        "en": "Globe Valves",
+        "es": "Válvulas de globo",
+        "de": "Sitzventile"
+      },
+      "title": {
+        "zh": "J/L41Y-160/320 截止阀",
+        "en": "J/L41Y-160/320 Globe Valve",
+        "es": "Válvula de globo J/L41Y-160/320",
+        "de": "Sitzventil J/L41Y-160/320"
+      },
+      "sub": {
+        "zh": "高压截止 / 法兰连接",
+        "en": "High-pressure shut-off / flanged ends",
+        "es": "Cierre de alta presión / extremos bridados",
+        "de": "Hochdruck-Absperrung / Flanschanschlüsse"
+      },
+      "tags": [
+        "fertilizer",
+        "high_pressure"
+      ],
+      "cover": "assets/products/fert-022/cover.jpg",
+      "images": [
+        "assets/products/fert-022/cover.jpg"
+      ],
+      "details": {
+        "zh": "适用于高压管路中的启闭控制，阀体结构紧凑，适合化工及化肥装置工况。可根据工况提供材质、连接及压力等级定制，支持出厂检验与测试报告。",
+        "en": "Designed for shut-off service in high-pressure piping systems. The compact body structure is suitable for chemical and fertilizer plant applications. Customization is available for material, ends and pressure class. Factory inspection and test reports are supported.",
+        "es": "Diseñada para servicio de cierre en tuberías de alta presión. La estructura compacta del cuerpo es adecuada para aplicaciones químicas y de fertilizantes. Disponible personalización de material, conexiones y clase de presión. Se admiten inspección en fábrica e informes de prueba.",
+        "de": "Ausgelegt für Absperrservice in Hochdruckleitungen. Die kompakte Gehäusekonstruktion eignet sich für Chemie- und Düngemittelanlagen. Anpassungen bei Werkstoff, Anschluss und Druckstufe sind möglich. Werksprüfung und Prüfberichte sind verfügbar."
+      },
+      "specs": [
+        {
+          "k": {
+            "zh": "压力等级",
+            "en": "Pressure Class",
+            "es": "Clase de presión",
+            "de": "Druckstufe"
+          },
+          "v": {
+            "zh": "160 / 320（型号对应）",
+            "en": "160 / 320 (according to model)",
+            "es": "160 / 320 (según modelo)",
+            "de": "160 / 320 (je nach Modell)"
+          }
+        },
+        {
+          "k": {
+            "zh": "连接",
+            "en": "Connection",
+            "es": "Conexión",
+            "de": "Anschluss"
+          },
+          "v": {
+            "zh": "法兰",
+            "en": "Flanged",
+            "es": "Bridada",
+            "de": "Flansch"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fert-023",
+      "family": "globe",
+      "family_title": {
+        "zh": "截止阀类",
+        "en": "Globe Valves",
+        "es": "Válvulas de globo",
+        "de": "Sitzventile"
+      },
+      "title": {
+        "zh": "J/L41Y-2500Lb 截止阀",
+        "en": "J/L41Y-2500Lb Globe Valve",
+        "es": "Válvula de globo J/L41Y-2500Lb",
+        "de": "Sitzventil J/L41Y-2500Lb"
+      },
+      "sub": {
+        "zh": "超高压工况 / 法兰连接",
+        "en": "Ultra-high pressure service / flanged ends",
+        "es": "Servicio de ultra alta presión / extremos bridados",
+        "de": "Für Ultrahochdruck / Flanschanschlüsse"
+      },
+      "tags": [
+        "fertilizer",
+        "high_pressure",
+        "2500lb"
+      ],
+      "cover": "assets/products/fert-023/cover.jpg",
+      "images": [
+        "assets/products/fert-023/cover.jpg"
+      ],
+      "details": {
+        "zh": "适用于严苛高压工况下的介质启闭控制，广泛用于化工、化肥及高压装置。可根据工况提供材质、连接及压力等级定制，支持出厂检验与测试报告。",
+        "en": "Suitable for shut-off control under severe high-pressure conditions, widely used in chemical, fertilizer and other high-pressure installations. Customization is available for material, ends and pressure class. Factory inspection and test reports are supported.",
+        "es": "Adecuada para control de cierre en condiciones severas de alta presión, ampliamente utilizada en instalaciones químicas, de fertilizantes y otras de alta presión. Disponible personalización de material, conexiones y clase de presión. Se admiten inspección en fábrica e informes de prueba.",
+        "de": "Geeignet für Absperraufgaben unter anspruchsvollen Hochdruckbedingungen, weit verbreitet in Chemie-, Düngemittel- und anderen Hochdruckanlagen. Anpassungen bei Werkstoff, Anschluss und Druckstufe sind möglich. Werksprüfung und Prüfberichte sind verfügbar."
+      },
+      "specs": [
+        {
+          "k": {
+            "zh": "压力等级",
+            "en": "Pressure Class",
+            "es": "Clase de presión",
+            "de": "Druckstufe"
+          },
+          "v": {
+            "zh": "2500Lb",
+            "en": "2500Lb",
+            "es": "2500Lb",
+            "de": "2500Lb"
+          }
+        },
+        {
+          "k": {
+            "zh": "结构",
+            "en": "Design",
+            "es": "Diseño",
+            "de": "Bauform"
+          },
+          "v": {
+            "zh": "截止式",
+            "en": "Globe type",
+            "es": "Tipo globo",
+            "de": "Sitzventil-Ausführung"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fert-024",
+      "family": "gate",
+      "family_title": {
+        "zh": "闸阀类",
+        "en": "Gate Valves",
+        "es": "Válvulas de compuerta",
+        "de": "Schieber"
+      },
+      "title": {
+        "zh": "J/L41Y-2500Lb 闸阀",
+        "en": "J/L41Y-2500Lb Gate Valve",
+        "es": "Válvula de compuerta J/L41Y-2500Lb",
+        "de": "Schieber J/L41Y-2500Lb"
+      },
+      "sub": {
+        "zh": "超高压工况 / 手轮操作",
+        "en": "Ultra-high pressure service / handwheel operated",
+        "es": "Servicio de ultra alta presión / accionamiento manual",
+        "de": "Für Ultrahochdruck / Handradbetätigung"
+      },
+      "tags": [
+        "fertilizer",
+        "high_pressure",
+        "2500lb"
+      ],
+      "cover": "assets/products/fert-024/cover.jpg",
+      "images": [
+        "assets/products/fert-024/cover.jpg"
+      ],
+      "details": {
+        "zh": "适用于高压管路中的启闭工况，适合要求低流阻的输送系统。可根据工况提供材质、连接及压力等级定制，支持出厂检验与测试报告。",
+        "en": "Suitable for on-off service in high-pressure piping systems and ideal for conveying systems requiring low flow resistance. Customization is available for material, ends and pressure class. Factory inspection and test reports are supported.",
+        "es": "Adecuada para servicio de apertura/cierre en tuberías de alta presión e ideal para sistemas que requieren baja resistencia al flujo. Disponible personalización de material, conexiones y clase de presión. Se admiten inspección en fábrica e informes de prueba.",
+        "de": "Geeignet für Auf/Zu-Betrieb in Hochdruckleitungen und ideal für Systeme mit geringem Strömungswiderstand. Anpassungen bei Werkstoff, Anschluss und Druckstufe sind möglich. Werksprüfung und Prüfberichte sind verfügbar."
+      },
+      "specs": [
+        {
+          "k": {
+            "zh": "压力等级",
+            "en": "Pressure Class",
+            "es": "Clase de presión",
+            "de": "Druckstufe"
+          },
+          "v": {
+            "zh": "2500Lb",
+            "en": "2500Lb",
+            "es": "2500Lb",
+            "de": "2500Lb"
+          }
+        },
+        {
+          "k": {
+            "zh": "操作方式",
+            "en": "Operation",
+            "es": "Operación",
+            "de": "Betätigung"
+          },
+          "v": {
+            "zh": "手轮",
+            "en": "Handwheel",
+            "es": "Volante",
+            "de": "Handrad"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fert-025",
+      "family": "special",
+      "family_title": {
+        "zh": "特材阀门",
+        "en": "Special Material Valves",
+        "es": "Válvulas de materiales especiales",
+        "de": "Ventile aus Sonderwerkstoffen"
+      },
+      "title": {
+        "zh": "J44W-220A 钛阀",
+        "en": "J44W-220A Titanium Valve",
+        "es": "Válvula de titanio J44W-220A",
+        "de": "Titanventil J44W-220A"
+      },
+      "sub": {
+        "zh": "钛材阀门 / 耐腐蚀工况",
+        "en": "Titanium construction / for corrosive service",
+        "es": "Construcción en titanio / para servicio corrosivo",
+        "de": "Aus Titan / für korrosive Medien"
+      },
+      "tags": [
+        "fertilizer",
+        "titanium",
+        "corrosion_resistant"
+      ],
+      "cover": "assets/products/fert-025/cover.jpg",
+      "images": [
+        "assets/products/fert-025/cover.jpg"
+      ],
+      "details": {
+        "zh": "适用于强腐蚀性介质工况，钛材具有良好的耐腐蚀性能，可用于化工、化肥等特殊介质系统。可根据工况提供材质、连接及压力等级定制，支持出厂检验与测试报告。",
+        "en": "Suitable for severe corrosive media service. Titanium construction provides excellent corrosion resistance for chemical, fertilizer and other special media systems. Customization is available for material, ends and pressure class. Factory inspection and test reports are supported.",
+        "es": "Adecuada para servicio con medios altamente corrosivos. La construcción en titanio ofrece excelente resistencia a la corrosión para sistemas químicos, de fertilizantes y otros medios especiales. Disponible personalización de material, conexiones y clase de presión. Se admiten inspección en fábrica e informes de prueba.",
+        "de": "Geeignet für stark korrosive Medien. Die Titan-Ausführung bietet eine ausgezeichnete Korrosionsbeständigkeit für Chemie-, Düngemittel- und andere Spezialmedien-Systeme. Anpassungen bei Werkstoff, Anschluss und Druckstufe sind möglich. Werksprüfung und Prüfberichte sind verfügbar."
+      },
+      "specs": [
+        {
+          "k": {
+            "zh": "主体材质",
+            "en": "Body Material",
+            "es": "Material del cuerpo",
+            "de": "Gehäusewerkstoff"
+          },
+          "v": {
+            "zh": "钛 / 钛合金（可选）",
+            "en": "Titanium / titanium alloy (optional)",
+            "es": "Titanio / aleación de titanio (opcional)",
+            "de": "Titan / Titanlegierung (optional)"
+          }
+        },
+        {
+          "k": {
+            "zh": "适用工况",
+            "en": "Service",
+            "es": "Servicio",
+            "de": "Einsatz"
+          },
+          "v": {
+            "zh": "腐蚀性介质",
+            "en": "Corrosive media",
+            "es": "Medios corrosivos",
+            "de": "Korrosive Medien"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fert-026",
+      "family": "gate",
+      "family_title": {
+        "zh": "闸阀类",
+        "en": "Gate Valves",
+        "es": "Válvulas de compuerta",
+        "de": "Schieber"
+      },
+      "title": {
+        "zh": "Z41W-25A 钛闸阀",
+        "en": "Z41W-25A Titanium Gate Valve",
+        "es": "Válvula de compuerta de titanio Z41W-25A",
+        "de": "Titan-Schieber Z41W-25A"
+      },
+      "sub": {
+        "zh": "钛材闸阀 / 耐腐蚀应用",
+        "en": "Titanium gate valve / corrosion-resistant application",
+        "es": "Compuerta de titanio / aplicación anticorrosiva",
+        "de": "Titan-Schieber / korrosionsbeständige Anwendung"
+      },
+      "tags": [
+        "fertilizer",
+        "titanium",
+        "corrosion_resistant"
+      ],
+      "cover": "assets/products/fert-026/cover.jpg",
+      "images": [
+        "assets/products/fert-026/cover.jpg"
+      ],
+      "details": {
+        "zh": "适用于腐蚀性介质输送系统的启闭控制，钛材适合特殊化学工况。可根据工况提供材质、连接及压力等级定制，支持出厂检验与测试报告。",
+        "en": "Suitable for on-off service in corrosive media conveying systems. Titanium construction is ideal for special chemical conditions. Customization is available for material, ends and pressure class. Factory inspection and test reports are supported.",
+        "es": "Adecuada para servicio de apertura/cierre en sistemas de transporte de medios corrosivos. La construcción en titanio es ideal para condiciones químicas especiales. Disponible personalización de material, conexiones y clase de presión. Se admiten inspección en fábrica e informes de prueba.",
+        "de": "Geeignet für Auf/Zu-Betrieb in Förderanlagen für korrosive Medien. Die Titan-Ausführung ist ideal für spezielle chemische Einsatzbedingungen. Anpassungen bei Werkstoff, Anschluss und Druckstufe sind möglich. Werksprüfung und Prüfberichte sind verfügbar."
+      },
+      "specs": [
+        {
+          "k": {
+            "zh": "主体材质",
+            "en": "Body Material",
+            "es": "Material del cuerpo",
+            "de": "Gehäusewerkstoff"
+          },
+          "v": {
+            "zh": "钛 / 钛合金（可选）",
+            "en": "Titanium / titanium alloy (optional)",
+            "es": "Titanio / aleación de titanio (opcional)",
+            "de": "Titan / Titanlegierung (optional)"
+          }
+        },
+        {
+          "k": {
+            "zh": "连接",
+            "en": "Connection",
+            "es": "Conexión",
+            "de": "Anschluss"
+          },
+          "v": {
+            "zh": "法兰",
+            "en": "Flanged",
+            "es": "Bridada",
+            "de": "Flansch"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fert-027",
+      "family": "check",
+      "family_title": {
+        "zh": "止回阀类",
+        "en": "Check Valves",
+        "es": "Válvulas de retención",
+        "de": "Rückschlagventile"
+      },
+      "title": {
+        "zh": "高压角式止回阀",
+        "en": "High Pressure Angle Check Valve",
+        "es": "Válvula angular de retención de alta presión",
+        "de": "Hochdruck-Eck-Rückschlagventil"
+      },
+      "sub": {
+        "zh": "角式止回 / 防止介质倒流",
+        "en": "Angle check design / prevents reverse flow",
+        "es": "Diseño angular de retención / evita flujo inverso",
+        "de": "Eck-Rückschlagbauform / verhindert Rückfluss"
+      },
+      "tags": [
+        "fertilizer",
+        "high_pressure",
+        "check"
+      ],
+      "cover": "assets/products/fert-027/cover.jpg",
+      "images": [
+        "assets/products/fert-027/cover.jpg"
+      ],
+      "details": {
+        "zh": "适用于高压管路系统中防止介质倒流，角式结构适合特定安装空间及工艺布置。可根据工况提供材质、连接及压力等级定制，支持出厂检验与测试报告。",
+        "en": "Suitable for preventing backflow in high-pressure piping systems. The angle-pattern structure is suitable for specific installation spaces and process layouts. Customization is available for material, ends and pressure class. Factory inspection and test reports are supported.",
+        "es": "Adecuada para evitar el reflujo en sistemas de tuberías de alta presión. La estructura angular se adapta a espacios de instalación y disposiciones de proceso específicas. Disponible personalización de material, conexiones y clase de presión. Se admiten inspección en fábrica e informes de prueba.",
+        "de": "Geeignet zur Verhinderung von Rückströmung in Hochdruck-Rohrleitungssystemen. Die Eckbauform eignet sich für spezielle Einbauräume und Prozessanordnungen. Anpassungen bei Werkstoff, Anschluss und Druckstufe sind möglich. Werksprüfung und Prüfberichte sind verfügbar."
+      },
+      "specs": [
+        {
+          "k": {
+            "zh": "结构形式",
+            "en": "Design",
+            "es": "Diseño",
+            "de": "Bauform"
+          },
+          "v": {
+            "zh": "角式止回",
+            "en": "Angle check valve",
+            "es": "Retención angular",
+            "de": "Eck-Rückschlagventil"
+          }
+        },
+        {
+          "k": {
+            "zh": "功能",
+            "en": "Function",
+            "es": "Función",
+            "de": "Funktion"
+          },
+          "v": {
+            "zh": "防止倒流",
+            "en": "Prevents backflow",
+            "es": "Evita flujo inverso",
+            "de": "Verhindert Rückfluss"
+          }
+        }
+      ]
+    },
+    {
       "id": "cert-001",
       "family": "certificates",
       "family_title": {
