@@ -134,18 +134,19 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
   <div class="top">
     <div class="container">
       <div class="row">
-        <a class="brand" href="#" aria-label="Wuxing Valve">
-          <img src="https://picsum.photos/120/40?text=LOGO" alt="Logo" class="brand-logo">
+        <a class="brand" href="../../index.html?lang=zh" aria-label="Wuxing Valve">
+          <img src="../../assets/logo.png" alt="Wuxing Valve" class="brand-logo">
           <span class="brand-text">Sandbox Test</span>
         </a>
         <div class="nav">
-          <a href="#">导航测试A</a>
-          <a href="#">导航测试B</a>
-          <a href="#">导航测试C</a>
+          <a href="../../index.html?lang=zh">首页</a>
+          <a href="../../index.html?lang=zh#filters">产品</a>
+          <a href="../../index.html?lang=zh#contact">联系</a>
+          <a href="../blog.html?lang=zh">资讯</a>
         </div>
         <div class="lang">
-          <a class="active" href="#">ZH</a>
-          <a class="" href="#">EN</a>
+          <a class="active" href="index.zh.html?lang=zh">ZH</a>
+          <a class="" href="index.en.html?lang=en">EN</a>
         </div>
       </div>
     </div>
@@ -157,9 +158,9 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
         
         <div class="slider-container">
           <div class="slider-wrapper">
-            <div class="slide"><img src="https://picsum.photos/900/400?random=1" alt="测试横幅图 1"></div>
-            <div class="slide"><img src="https://picsum.photos/900/400?random=2" alt="测试横幅图 2"></div>
-            <div class="slide"><img src="https://picsum.photos/900/400?random=3" alt="测试横幅图 3"></div>
+            <div class="slide"><img src="cover.jpg" alt="封面图 (cover.jpg)"></div>
+            <div class="slide"><img src="1.jpg" alt="图 1 (1.jpg)"></div>
+            <div class="slide"><img src="2.jpg" alt="图 2 (2.jpg)"></div>
           </div>
           
           <button class="slider-btn prev" aria-label="上一张">&#10094;</button>
@@ -173,7 +174,7 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
           <h1>Web 排版与交互组件冒烟测试（主标题）</h1>
           <div class="meta">
             <span>2026-06-26</span>
-            <span>环境: Production</span>
+            <span>环境: GitHub Pages</span>
             <span>标签: CSS / JS / HTML</span>
           </div>
         </div>
@@ -183,20 +184,20 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
           <p>这是一段用于测试基础文本外观（Font-Family、Font-Size、Color 和 Line-Height）的普通段落文字。你可以通过检查该段文字在不同视口宽度下的表现，验证响应式布局是否符合预期。</p>
 
           <h2>一、多列流式格栅测试（Heading 2）</h2>
-          <p>以下区域用于测试 CSS Grid 或 Flex 弹性布局在容器内的多栏缩放自适应能力：</p>
+          <p>以下格栅区域用于测试布局的自适应能力。随着浏览器窗口缩放，卡片会自动改变排列列数：</p>
           
           <div class="test-grid">
             <div class="test-grid-item">
-              <strong>卡片 A</strong>
-              <p style="font-size:13px; color:var(--muted); margin:4px 0 0;">宽度自适应测试块 1</p>
+              <strong>图片 1 测试</strong>
+              <p style="font-size:13px; color:var(--muted); margin:4px 0 0;">上方轮播图应展示 1.jpg</p>
             </div>
             <div class="test-grid-item">
-              <strong>卡片 B</strong>
-              <p style="font-size:13px; color:var(--muted); margin:4px 0 0;">宽度自适应测试块 2</p>
+              <strong>图片 2 测试</strong>
+              <p style="font-size:13px; color:var(--muted); margin:4px 0 0;">上方轮播图应展示 2.jpg</p>
             </div>
             <div class="test-grid-item">
-              <strong>卡片 C</strong>
-              <p style="font-size:13px; color:var(--muted); margin:4px 0 0;">宽度自适应测试块 3</p>
+              <strong>封面图测试</strong>
+              <p style="font-size:13px; color:var(--muted); margin:4px 0 0;">上方轮播图应展示 cover.jpg</p>
             </div>
           </div>
 
@@ -211,8 +212,8 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
             <b>功能型高亮提示栏（Callout Block）：</b><br>
             此处为行为召回或重点强调区域。你可以用来测试内嵌按钮在多端设备上的水平/垂直排列切换样式。
             <div class="btnrow">
-              <a class="btn primary" href="#">主要动作按钮</a>
-              <a class="btn" href="#">次要控制按钮</a>
+              <a class="btn primary" href="../../index.html?lang=zh#contact">主要动作按钮</a>
+              <a class="btn" href="../blog.html?lang=zh">返回资讯列表</a>
             </div>
           </div>
 
