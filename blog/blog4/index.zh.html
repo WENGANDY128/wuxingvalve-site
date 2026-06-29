@@ -48,7 +48,6 @@ a{color:inherit;text-decoration:none}
   display: flex;
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
-  width: 100%;
 }
 .slide {
   min-width: 100%;
@@ -60,26 +59,26 @@ a{color:inherit;text-decoration:none}
   display: block;
   pointer-events: none; /* 阻止移动端长按图片弹出系统保存菜单影响滑动 */
 }
-/* 左右切换按钮 */
+/* 左右切换按钮（移动端已永久保留，方便手指点按） */
 .slider-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(4px);
   color: #fff;
-  border: 1px solid rgba(255,255,255,0.2);
-  width: 40px;
-  height: 40px;
+  border: 1px solid rgba(255,255,255,0.3);
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   transition: all 0.2s ease;
-  z-index: 10;
+  z-index: 15;
   user-select: none;
 }
 .slider-btn:hover {
@@ -89,7 +88,8 @@ a{color:inherit;text-decoration:none}
 }
 .slider-btn.prev { left: 16px; }
 .slider-btn.next { right: 16px; }
-/* 底部指示小圆点容器 */
+
+/* 底部指示小圆点容器（完美悬浮在图片内部底端） */
 .slider-dots {
   position: absolute;
   bottom: 14px;
@@ -97,7 +97,7 @@ a{color:inherit;text-decoration:none}
   transform: translateX(-50%);
   display: flex;
   gap: 8px;
-  z-index: 15; /* ★ 确保悬浮在图片内容图层的最上方 */
+  z-index: 15;
 }
 .dot {
   width: 8px;
@@ -111,13 +111,6 @@ a{color:inherit;text-decoration:none}
   background: #fff;
   width: 22px;
   border-radius: 4px;
-}
-
-/* 移动端无障碍微调：在窄屏上隐藏箭头，提供完全无阻碍的手指划动视界 */
-@media (max-width: 640px) {
-  .slider-btn {
-    display: none;
-  }
 }
 
 /* 文章正文基本排版 */
@@ -278,7 +271,6 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
 
   <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const container = document.getElementById('sliderContainer');
     const wrapper = document.getElementById('sliderWrapper');
     const dotsContainer = document.getElementById('sliderDots');
     const prevBtn = document.querySelector('.slider-btn.prev');
@@ -287,7 +279,9 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
     const config = window.SLIDER_CONFIG || [];
     if (config.length === 0) return;
 
-    // 1. 【动态渲染】
+    // ---------------------------------------------------
+    // 1. 【动态渲染与 SEO 性能处理】
+    // ---------------------------------------------------
     wrapper.innerHTML = config.map((img, index) => {
       const priorityAttr = index === 0 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"';
       return `
@@ -317,7 +311,9 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
     let timer = null;
     const duration = 4000; 
 
+    // ---------------------------------------------------
     // 2. 【轮播基础功能】
+    // ---------------------------------------------------
     function updateSlider() {
       wrapper.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
       wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
@@ -348,16 +344,16 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
     nextBtn.addEventListener('click', () => { nextSlide(); startAutoPlay(); });
     prevBtn.addEventListener('click', () => { prevSlide(); startAutoPlay(); });
 
-    // 3. 【精准触控滑动手势优化版】
+    // ---------------------------------------------------
+    // 3. 【极佳的手机触控滑动手势 (Swipe & Drag) 优化版】
+    // ---------------------------------------------------
     let startX = 0;
-    let currentDeltaX = 0; /* ★ 引入全局增量追踪变量，确保连续平滑移动判定 */
     let isDragging = false;
 
     // 触屏滑动开始
     wrapper.addEventListener('touchstart', (e) => {
       stopAutoPlay();
       startX = e.touches[0].clientX;
-      currentDeltaX = 0;
       isDragging = true;
       wrapper.style.transition = 'none'; 
     }, { passive: true });
@@ -366,33 +362,30 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
     wrapper.addEventListener('touchmove', (e) => {
       if (!isDragging) return;
       const currentX = e.touches[0].clientX;
-      currentDeltaX = currentX - startX;
-      
-      const width = container.getBoundingClientRect().width || container.clientWidth;
-      const translation = -currentIndex * width + currentDeltaX;
+      const diffX = currentX - startX;
+      const width = wrapper.clientWidth;
+      const translation = -currentIndex * width + diffX;
       wrapper.style.transform = `translateX(${translation}px)`;
     }, { passive: true });
 
     // 触屏滑动结束
-    wrapper.addEventListener('touchend', () => {
+    wrapper.addEventListener('touchend', (e) => {
       if (!isDragging) return;
       isDragging = false;
-      
-      const width = container.getBoundingClientRect().width || container.clientWidth;
-      const threshold = width * 0.15; // 超过 15% 容器宽度就翻页
+      const endX = e.changedTouches[0].clientX;
+      const diffX = endX - startX;
+      const threshold = wrapper.clientWidth * 0.15; 
 
-      /* ★ 核心修复：直接通过 touchmove 记录下的稳定 currentDeltaX 值进行切页判定，彻底解决局部移动设备判定丢失导致只能划一次的死锁问题 */
-      if (currentDeltaX < -threshold) {
+      if (diffX < -threshold) {
         nextSlide();
-      } else if (currentDeltaX > threshold) {
+      } else if (diffX > threshold) {
         prevSlide();
       } else {
-        updateSlider(); // 回弹当前张
+        updateSlider(); 
       }
       startAutoPlay();
     });
 
-    // 预防系统级页面手势打断导致死锁
     wrapper.addEventListener('touchcancel', () => {
       if (!isDragging) return;
       isDragging = false;
@@ -404,7 +397,6 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
     wrapper.addEventListener('mousedown', (e) => {
       stopAutoPlay();
       startX = e.clientX;
-      currentDeltaX = 0;
       isDragging = true;
       wrapper.style.transition = 'none';
     });
@@ -412,21 +404,22 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
     wrapper.addEventListener('mousemove', (e) => {
       if (!isDragging) return;
       const currentX = e.clientX;
-      currentDeltaX = currentX - startX;
-      const width = container.getBoundingClientRect().width || container.clientWidth;
-      const translation = -currentIndex * width + currentDeltaX;
+      const diffX = currentX - startX;
+      const width = wrapper.clientWidth;
+      const translation = -currentIndex * width + diffX;
       wrapper.style.transform = `translateX(${translation}px)`;
     });
 
-    const handleMouseUp = () => {
+    const handleMouseUp = (e) => {
       if (!isDragging) return;
       isDragging = false;
-      const width = container.getBoundingClientRect().width || container.clientWidth;
-      const threshold = width * 0.15;
+      const endX = (e.clientX !== undefined) ? e.clientX : startX; 
+      const diffX = endX - startX;
+      const threshold = wrapper.clientWidth * 0.15;
 
-      if (currentDeltaX < -threshold) {
+      if (diffX < -threshold) {
         nextSlide();
-      } else if (currentDeltaX > threshold) {
+      } else if (diffX > threshold) {
         prevSlide();
       } else {
         updateSlider();
