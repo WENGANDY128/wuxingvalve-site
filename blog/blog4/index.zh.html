@@ -4,16 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   
-  <!-- SEO 标题与描述优化 -->
   <title>网页排版与交互功能测试页面 | Web Layout Test</title>
   <meta name="description" content="这是一个用于测试网页组件、响应式栅格、原生 JavaScript 轮播图以及基础排版样式的测试页面。" />
   
-  <!-- ====================================================================
-       ★ 咨询展示页抓取核心（OG 标签）
-       注意：当您更改了下方配置中心的第一张封面图（如将 cover.jpg 改为 wuxing-cover.jpg）时，
-       请将下方的 content="cover.jpg" 同样修改为 content="wuxing-cover.jpg"。
-       这样您的咨询列表页（blog.html）就能完美抓取并展示最新的封面！
-       ==================================================================== -->
   <meta property="og:image" content="cover.jpg" />
   <meta property="og:title" content="网页排版与交互功能测试页面" />
   <meta property="og:description" content="这是一个用于测试网页组件、响应式栅格、原生 JavaScript 轮播图以及基础排版样式的测试页面。" />
@@ -149,9 +142,6 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
 
   <link rel="icon" href="../../assets/favicon.ico">
 
-  <!-- ==========================================
-       【Google SEO 结构化数据 (JSON-LD)】
-       ========================================== -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -172,10 +162,6 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
 </head>
 <body>
 
-  <!-- ====================================================================
-       ★【出货图片便捷配置中心】（置于 Body 最前方，极易寻找与维护）
-       若您增加了新的图片，只需直接在数组中复制、添加一个 {} 大括号对象即可。
-       ==================================================================== -->
   <script>
     window.SLIDER_CONFIG = [
       {
@@ -193,17 +179,9 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
         alt: "ASTM standard A105 forged steel gate valves ready for export package",
         title: "符合 ASTM 标准的 A105 锻钢闸阀出口包装细节"
       }
-      /* 💡 以后如果增加第 4 张图，只需直接在下方粘贴格式如下：
-      ,{
-        filename: "your-new-valve-image.jpg",
-        alt: "SEO friendly description in English with target keywords",
-        title: "中文悬停提示词"
-      }
-      */
     ];
   </script>
 
-  <!-- 导航栏 -->
   <div class="top">
     <div class="container">
       <div class="row">
@@ -225,15 +203,12 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
     </div>
   </div>
 
-  <!-- 主体卡片 -->
   <main class="hero">
     <div class="container">
       <div class="card">
         
-        <!-- 轮播图模块 (DOM结构动态根据上方 SLIDER_CONFIG 进行 SEO 友好填充) -->
         <div class="slider-container" id="sliderContainer">
           <div class="slider-wrapper" id="sliderWrapper">
-            <!-- 默认防无JS环境与爬虫解析占位符 -->
             <div class="slide"><img src="cover.jpg" alt="Wuxing Valve factory cover" fetchpriority="high"></div>
           </div>
           
@@ -300,9 +275,6 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
     </div>
   </main>
 
-  <!-- ===================================================
-       交互控制脚本（完美契合手机手势与 SEO 延迟加载）
-       =================================================== -->
   <script>
   document.addEventListener('DOMContentLoaded', () => {
     const wrapper = document.getElementById('sliderWrapper');
@@ -316,7 +288,6 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
     // ---------------------------------------------------
     // 1. 【动态渲染与 SEO 性能处理】
     // ---------------------------------------------------
-    // 根据配置中心渲染 Slide，第一张强制高优先级加载，后续延迟加载
     wrapper.innerHTML = config.map((img, index) => {
       const priorityAttr = index === 0 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"';
       return `
@@ -326,7 +297,6 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
       `;
     }).join('');
 
-    // 动态生成对应数量的小圆点
     dotsContainer.innerHTML = ''; 
     config.forEach((_, index) => {
       const dot = document.createElement('span');
@@ -345,7 +315,7 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
     const dots = document.querySelectorAll('.dot');
     let currentIndex = 0;
     let timer = null;
-    const duration = 4000; // 自动播放间隔 4 秒
+    const duration = 4000; 
 
     // ---------------------------------------------------
     // 2. 【轮播基础功能】
@@ -381,12 +351,12 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
     prevBtn.addEventListener('click', () => { prevSlide(); startAutoPlay(); });
 
     // ---------------------------------------------------
-    // 3. 【极佳的手机触控滑动手势 (Swipe & Drag)】
+    // 3. 【极佳的手机触控滑动手势 (Swipe & Drag) 优化版】
     // ---------------------------------------------------
     let startX = 0;
     let isDragging = false;
 
-    // 触屏滑动事件监听
+    // 触屏滑动开始
     wrapper.addEventListener('touchstart', (e) => {
       stopAutoPlay();
       startX = e.touches[0].clientX;
@@ -394,6 +364,7 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
       wrapper.style.transition = 'none'; // 拖拽时即时跟手
     }, { passive: true });
 
+    // 触屏滑动中
     wrapper.addEventListener('touchmove', (e) => {
       if (!isDragging) return;
       const currentX = e.touches[0].clientX;
@@ -403,6 +374,7 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
       wrapper.style.transform = `translateX(${translation}px)`;
     }, { passive: true });
 
+    // 触屏滑动结束
     wrapper.addEventListener('touchend', (e) => {
       if (!isDragging) return;
       isDragging = false;
@@ -420,7 +392,15 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
       startAutoPlay();
     });
 
-    // 适配 PC 鼠标拖动调试（逻辑相同）
+    /* ★ 核心修复：添加 touchcancel 监听，防止手机端上下页面滚动打断手势后导致轮播卡死或无法回滑 */
+    wrapper.addEventListener('touchcancel', () => {
+      if (!isDragging) return;
+      isDragging = false;
+      updateSlider(); // 触发回弹复位，恢复过渡动画
+      startAutoPlay();
+    });
+
+    // 适配 PC 鼠标拖动调试
     wrapper.addEventListener('mousedown', (e) => {
       stopAutoPlay();
       startX = e.clientX;
@@ -440,7 +420,7 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
     const handleMouseUp = (e) => {
       if (!isDragging) return;
       isDragging = false;
-      const endX = e.clientX || startX;
+      const endX = (e.clientX !== undefined) ? e.clientX : startX; // 规避坐标为 0 时的隐式错误
       const diffX = endX - startX;
       const threshold = wrapper.clientWidth * 0.15;
 
