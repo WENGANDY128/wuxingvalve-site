@@ -43,8 +43,6 @@ a{color:inherit;text-decoration:none}
   background: #0f172a;
   touch-action: pan-y; /* 阻止移动端横向滑动的默认翻页手势，由JS精准接管 */
   user-select: none;
-  display: flex; /* ★ 修复：确保容器高度与内部图片完全同步，杜绝底部黑块 */
-  flex-direction: column;
 }
 .slider-wrapper {
   display: flex;
@@ -99,7 +97,7 @@ a{color:inherit;text-decoration:none}
   transform: translateX(-50%);
   display: flex;
   gap: 8px;
-  z-index: 15; /* ★ 确保层级在最上方 */
+  z-index: 15; /* ★ 确保悬浮在图片内容图层的最上方 */
 }
 .dot {
   width: 8px;
@@ -168,9 +166,9 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
   <script>
     window.SLIDER_CONFIG = [
       {
-        filename: "cover.jpg", // 对应仓库中的图片文件名
-        alt: "Wuxing Valve industrial shipment workshop overview", // SEO 英文关键词描述（极其有利于谷歌图片收录）
-        title: "五星阀门厂大批量阀门出货包装车间全景" // 中文鼠标悬浮提示文本
+        filename: "cover.jpg", 
+        alt: "Wuxing Valve industrial shipment workshop overview", 
+        title: "五星阀门厂大批量阀门出货包装车间全景" 
       },
       {
         filename: "1.jpg",
@@ -289,9 +287,7 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
     const config = window.SLIDER_CONFIG || [];
     if (config.length === 0) return;
 
-    // ---------------------------------------------------
-    // 1. 【动态渲染与 SEO 性能处理】
-    // ---------------------------------------------------
+    // 1. 【动态渲染】
     wrapper.innerHTML = config.map((img, index) => {
       const priorityAttr = index === 0 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"';
       return `
@@ -321,9 +317,7 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
     let timer = null;
     const duration = 4000; 
 
-    // ---------------------------------------------------
     // 2. 【轮播基础功能】
-    // ---------------------------------------------------
     function updateSlider() {
       wrapper.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
       wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
@@ -354,16 +348,16 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
     nextBtn.addEventListener('click', () => { nextSlide(); startAutoPlay(); });
     prevBtn.addEventListener('click', () => { prevSlide(); startAutoPlay(); });
 
-    // ---------------------------------------------------
-    // 3. 【精准触控滑动手势 (Swipe & Drag) 增强版】
-    // ---------------------------------------------------
+    // 3. 【精准触控滑动手势优化版】
     let startX = 0;
+    let currentDeltaX = 0; /* ★ 引入全局增量追踪变量，确保连续平滑移动判定 */
     let isDragging = false;
 
     // 触屏滑动开始
     wrapper.addEventListener('touchstart', (e) => {
       stopAutoPlay();
       startX = e.touches[0].clientX;
+      currentDeltaX = 0;
       isDragging = true;
       wrapper.style.transition = 'none'; 
     }, { passive: true });
@@ -372,27 +366,25 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
     wrapper.addEventListener('touchmove', (e) => {
       if (!isDragging) return;
       const currentX = e.touches[0].clientX;
-      const diffX = currentX - startX;
+      currentDeltaX = currentX - startX;
       
-      /* ★ 核心修复：改用 container.getBoundingClientRect().width 实时精确计算可见视口宽度，防止划动锁死 */
       const width = container.getBoundingClientRect().width || container.clientWidth;
-      const translation = -currentIndex * width + diffX;
+      const translation = -currentIndex * width + currentDeltaX;
       wrapper.style.transform = `translateX(${translation}px)`;
     }, { passive: true });
 
     // 触屏滑动结束
-    wrapper.addEventListener('touchend', (e) => {
+    wrapper.addEventListener('touchend', () => {
       if (!isDragging) return;
       isDragging = false;
-      const endX = e.changedTouches[0].clientX;
-      const diffX = endX - startX;
       
       const width = container.getBoundingClientRect().width || container.clientWidth;
       const threshold = width * 0.15; // 超过 15% 容器宽度就翻页
 
-      if (diffX < -threshold) {
+      /* ★ 核心修复：直接通过 touchmove 记录下的稳定 currentDeltaX 值进行切页判定，彻底解决局部移动设备判定丢失导致只能划一次的死锁问题 */
+      if (currentDeltaX < -threshold) {
         nextSlide();
-      } else if (diffX > threshold) {
+      } else if (currentDeltaX > threshold) {
         prevSlide();
       } else {
         updateSlider(); // 回弹当前张
@@ -412,6 +404,7 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
     wrapper.addEventListener('mousedown', (e) => {
       stopAutoPlay();
       startX = e.clientX;
+      currentDeltaX = 0;
       isDragging = true;
       wrapper.style.transition = 'none';
     });
@@ -419,23 +412,21 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
     wrapper.addEventListener('mousemove', (e) => {
       if (!isDragging) return;
       const currentX = e.clientX;
-      const diffX = currentX - startX;
+      currentDeltaX = currentX - startX;
       const width = container.getBoundingClientRect().width || container.clientWidth;
-      const translation = -currentIndex * width + diffX;
+      const translation = -currentIndex * width + currentDeltaX;
       wrapper.style.transform = `translateX(${translation}px)`;
     });
 
-    const handleMouseUp = (e) => {
+    const handleMouseUp = () => {
       if (!isDragging) return;
       isDragging = false;
-      const endX = (e.clientX !== undefined) ? e.clientX : startX;
-      const diffX = endX - startX;
       const width = container.getBoundingClientRect().width || container.clientWidth;
       const threshold = width * 0.15;
 
-      if (diffX < -threshold) {
+      if (currentDeltaX < -threshold) {
         nextSlide();
-      } else if (diffX > threshold) {
+      } else if (currentDeltaX > threshold) {
         prevSlide();
       } else {
         updateSlider();
