@@ -35,14 +35,13 @@ a{color:inherit;text-decoration:none}
 .hero{padding:22px 0 10px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 30px rgba(2,6,23,.08);overflow:hidden}
 
-/* 轮播图增强样式：防抖动、防拉伸、完美融合圆角 */
+/* 轮播图增强样式 */
 .slider-container {
   position: relative;
   width: 100%;
   aspect-ratio: 2 / 1; /* 锁定 2:1 比例 */
   overflow: hidden;
   background: #0f172a;
-  touch-action: pan-y;
   user-select: none;
   border-radius: var(--radius) var(--radius) 0 0;
 }
@@ -62,7 +61,8 @@ a{color:inherit;text-decoration:none}
   height: 100%;
   object-fit: cover; /* 自动居中裁剪 */
   display: block;
-  pointer-events: none;
+  cursor: zoom-in; /* 鼠标悬停显示放大镜 */
+  -webkit-user-drag: none; /* 彻底禁用系统自带的图片拖动行为 */
 }
 .slider-btn {
   position: absolute;
@@ -131,7 +131,7 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
 .btn.primary{background:var(--primary);color:#fff;border-color:transparent}
 .footer{border-top:1px solid var(--line);padding:18px 0 26px;color:var(--muted);font-size:13px;margin-top:30px}
 
-/* 【新增】点击图片放大后的全屏半透明遮罩层样式 */
+/* 点击图片放大后的全屏半透明遮罩层样式 */
 .img-overlay {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
   background: rgba(15, 23, 42, 0.9); z-index: 9999;
@@ -148,7 +148,6 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
 <body>
 
   <script>
-    // 注入图1-5核心出货文案及正确的文件名映射
     window.SLIDER_CONFIG = [
       {
         filename: "1.jpg", 
@@ -281,7 +280,7 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
     const config = window.SLIDER_CONFIG || [];
     if (config.length === 0) return;
 
-    // 1. 动态渲染五张实拍图片与本地容错机制
+    // 1. 动态渲染五张实拍图片
     wrapper.innerHTML = config.map((img, index) => {
       const priorityAttr = index === 0 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"';
       return `
@@ -291,6 +290,7 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
       `;
     }).join('');
 
+    // 渲染导航圆点
     dotsContainer.innerHTML = ''; 
     config.forEach((_, index) => {
       const dot = document.createElement('span');
@@ -309,11 +309,10 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
     const dots = document.querySelectorAll('.dot');
     let currentIndex = 0;
     let timer = null;
-    const duration = 4000; 
+    const duration = 4000; // 慢速自动播放：4秒切换一次
 
     // 2. 核心轮播控制逻辑
     function updateSlider() {
-      wrapper.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
       wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
       dots.forEach((dot, i) => {
         dot.classList.toggle('active', i === currentIndex);
@@ -339,114 +338,34 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
       if (timer) clearInterval(timer);
     }
 
+    // 按钮交互
     nextBtn.addEventListener('click', () => { nextSlide(); startAutoPlay(); });
     prevBtn.addEventListener('click', () => { prevSlide(); startAutoPlay(); });
 
-    // 3. 触控与 PC 端拖拽事件处理
-    let startX = 0;
-    let isDragging = false;
-
-    wrapper.addEventListener('touchstart', (e) => {
-      stopAutoPlay();
-      startX = e.touches[0].clientX;
-      isDragging = true;
-      wrapper.style.transition = 'none'; 
-    }, { passive: true });
-
-    wrapper.addEventListener('touchmove', (e) => {
-      if (!isDragging) return;
-      const currentX = e.touches[0].clientX;
-      const diffX = currentX - startX;
-      const width = wrapper.clientWidth;
-      const translation = -currentIndex * width + diffX;
-      wrapper.style.transform = `translateX(${translation}px)`;
-    }, { passive: true });
-
-    wrapper.addEventListener('touchend', (e) => {
-      if (!isDragging) return;
-      isDragging = false;
-      const endX = e.changedTouches[0].clientX;
-      const diffX = endX - startX;
-      const threshold = wrapper.clientWidth * 0.15; 
-
-      if (diffX < -threshold) {
-        nextSlide();
-      } else if (diffX > threshold) {
-        prevSlide();
-      } else {
-        updateSlider(); 
-      }
-      startAutoPlay();
-    });
-
-    wrapper.addEventListener('touchcancel', () => {
-      if (!isDragging) return;
-      isDragging = false;
-      updateSlider(); 
-      startAutoPlay();
-    });
-
-    wrapper.addEventListener('mousedown', (e) => {
-      stopAutoPlay();
-      startX = e.clientX;
-      isDragging = true;
-      wrapper.style.transition = 'none';
-    });
-
-    wrapper.addEventListener('mousemove', (e) => {
-      if (!isDragging) return;
-      const currentX = e.clientX;
-      const diffX = currentX - startX;
-      const width = wrapper.clientWidth;
-      const translation = -currentIndex * width + diffX;
-      wrapper.style.transform = `translateX(${translation}px)`;
-    });
-
-    const handleMouseUp = (e) => {
-      if (!isDragging) return;
-      isDragging = false;
-      const endX = (e.clientX !== undefined) ? e.clientX : startX; 
-      const diffX = endX - startX;
-      const threshold = wrapper.clientWidth * 0.15;
-
-      if (diffX < -threshold) {
-        nextSlide();
-      } else if (diffX > threshold) {
-        prevSlide();
-      } else {
-        updateSlider();
-      }
-      startAutoPlay();
-    };
-
-    wrapper.addEventListener('mouseup', handleMouseUp);
-    wrapper.addEventListener('mouseleave', handleMouseUp);
-
+    // 开启自动慢播放
     startAutoPlay();
-  });
-  </script>
 
-  <script>
-  document.getElementById('sliderWrapper').addEventListener('click', (e) => {
-    // 只有当用户点击的是图片元素，并且没有处于激烈拖拽滑动状态时才触发
-    if (e.target.tagName === 'IMG') {
-      let overlay = document.getElementById('globalImgOverlay');
-      if (!overlay) {
-        // 创建全局遮罩层
-        overlay = document.createElement('div');
-        overlay.id = 'globalImgOverlay';
-        overlay.className = 'img-overlay';
-        overlay.innerHTML = '<img src="" alt="Zoomed View">';
-        // 点击遮罩层任何地方直接关闭还原
-        overlay.addEventListener('click', () => {
-          overlay.classList.remove('active');
-        });
-        document.body.appendChild(overlay);
+    // 3. 统一两端：点击图片放大逻辑
+    wrapper.addEventListener('click', (e) => {
+      if (e.target.tagName === 'IMG') {
+        let overlay = document.getElementById('globalImgOverlay');
+        if (!overlay) {
+          overlay = document.createElement('div');
+          overlay.id = 'globalImgOverlay';
+          overlay.className = 'img-overlay';
+          overlay.innerHTML = '<img src="" alt="Zoomed View">';
+          
+          // 点击遮罩层任何地方直接关闭还原
+          overlay.addEventListener('click', () => {
+            overlay.classList.remove('active');
+          });
+          document.body.appendChild(overlay);
+        }
+        // 将当前点击的图片源赋给放大遮罩层
+        overlay.querySelector('img').src = e.target.src;
+        overlay.classList.add('active');
       }
-      // 将当前轮播图片的清晰原图地址赋给大图
-      overlay.querySelector('img').src = e.target.src;
-      overlay.classList.add('active');
-    }
+    });
   });
   </script>
 </body>
