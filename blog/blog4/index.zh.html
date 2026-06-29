@@ -43,11 +43,14 @@ a{color:inherit;text-decoration:none}
   background: #0f172a;
   touch-action: pan-y; /* 阻止移动端横向滑动的默认翻页手势，由JS精准接管 */
   user-select: none;
+  display: flex; /* ★ 修复：确保容器高度与内部图片完全同步，杜绝底部黑块 */
+  flex-direction: column;
 }
 .slider-wrapper {
   display: flex;
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
+  width: 100%;
 }
 .slide {
   min-width: 100%;
@@ -96,7 +99,7 @@ a{color:inherit;text-decoration:none}
   transform: translateX(-50%);
   display: flex;
   gap: 8px;
-  z-index: 10;
+  z-index: 15; /* ★ 确保层级在最上方 */
 }
 .dot {
   width: 8px;
@@ -277,6 +280,7 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
 
   <script>
   document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('sliderContainer');
     const wrapper = document.getElementById('sliderWrapper');
     const dotsContainer = document.getElementById('sliderDots');
     const prevBtn = document.querySelector('.slider-btn.prev');
@@ -351,7 +355,7 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
     prevBtn.addEventListener('click', () => { prevSlide(); startAutoPlay(); });
 
     // ---------------------------------------------------
-    // 3. 【极佳的手机触控滑动手势 (Swipe & Drag) 优化版】
+    // 3. 【精准触控滑动手势 (Swipe & Drag) 增强版】
     // ---------------------------------------------------
     let startX = 0;
     let isDragging = false;
@@ -361,7 +365,7 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
       stopAutoPlay();
       startX = e.touches[0].clientX;
       isDragging = true;
-      wrapper.style.transition = 'none'; // 拖拽时即时跟手
+      wrapper.style.transition = 'none'; 
     }, { passive: true });
 
     // 触屏滑动中
@@ -369,7 +373,9 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
       if (!isDragging) return;
       const currentX = e.touches[0].clientX;
       const diffX = currentX - startX;
-      const width = wrapper.clientWidth;
+      
+      /* ★ 核心修复：改用 container.getBoundingClientRect().width 实时精确计算可见视口宽度，防止划动锁死 */
+      const width = container.getBoundingClientRect().width || container.clientWidth;
       const translation = -currentIndex * width + diffX;
       wrapper.style.transform = `translateX(${translation}px)`;
     }, { passive: true });
@@ -380,7 +386,9 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
       isDragging = false;
       const endX = e.changedTouches[0].clientX;
       const diffX = endX - startX;
-      const threshold = wrapper.clientWidth * 0.15; // 超过 15% 容器宽度就翻页
+      
+      const width = container.getBoundingClientRect().width || container.clientWidth;
+      const threshold = width * 0.15; // 超过 15% 容器宽度就翻页
 
       if (diffX < -threshold) {
         nextSlide();
@@ -392,11 +400,11 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
       startAutoPlay();
     });
 
-    /* ★ 核心修复：添加 touchcancel 监听，防止手机端上下页面滚动打断手势后导致轮播卡死或无法回滑 */
+    // 预防系统级页面手势打断导致死锁
     wrapper.addEventListener('touchcancel', () => {
       if (!isDragging) return;
       isDragging = false;
-      updateSlider(); // 触发回弹复位，恢复过渡动画
+      updateSlider(); 
       startAutoPlay();
     });
 
@@ -412,7 +420,7 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
       if (!isDragging) return;
       const currentX = e.clientX;
       const diffX = currentX - startX;
-      const width = wrapper.clientWidth;
+      const width = container.getBoundingClientRect().width || container.clientWidth;
       const translation = -currentIndex * width + diffX;
       wrapper.style.transform = `translateX(${translation}px)`;
     });
@@ -420,9 +428,10 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
     const handleMouseUp = (e) => {
       if (!isDragging) return;
       isDragging = false;
-      const endX = (e.clientX !== undefined) ? e.clientX : startX; // 规避坐标为 0 时的隐式错误
+      const endX = (e.clientX !== undefined) ? e.clientX : startX;
       const diffX = endX - startX;
-      const threshold = wrapper.clientWidth * 0.15;
+      const width = container.getBoundingClientRect().width || container.clientWidth;
+      const threshold = width * 0.15;
 
       if (diffX < -threshold) {
         nextSlide();
