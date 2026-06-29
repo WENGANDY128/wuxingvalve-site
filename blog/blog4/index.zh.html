@@ -130,6 +130,17 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
 .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:#fff;font-weight:800}
 .btn.primary{background:var(--primary);color:#fff;border-color:transparent}
 .footer{border-top:1px solid var(--line);padding:18px 0 26px;color:var(--muted);font-size:13px;margin-top:30px}
+
+/* 【新增】点击图片放大后的全屏半透明遮罩层样式 */
+.img-overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(15, 23, 42, 0.9); z-index: 9999;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: zoom-out;
+}
+.img-overlay.active { opacity: 1; pointer-events: auto; }
+.img-overlay img { max-width: 92%; max-height: 92%; object-fit: contain; border-radius: 8px; box-shadow: 0 10px 40px rgba(0,0,0,0.6); }
 </style>
 
   <link rel="icon" href="../../assets/favicon.ico">
@@ -215,7 +226,7 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
         </div>
 
         <article class="article" id="post-content">
-          <p>作为深耕工业阀门制造与国际贸易领域的资深供应商，五星阀门始终坚持以严苛的国际标准指导生产。今日，车间迎来本月度核心外贸订单的集中清点与交付。凭借完备的现代化机加工能力、完备的检测手段和柔性定制能力，我们再次向海外客户交出完美答卷。</p>
+          <p>作为深耕工业阀门制造与国际贸易领域的资神供应商，五星阀门始终坚持以严苛的国际标准指导生产。今日，车间迎来本月度核心外贸订单的集中清点与交付。凭借完备的现代化机加工能力、完备的检测手段和柔性定制能力，我们再次向海外客户交出完美答卷。</p>
 
           <h2>一、 自动化控制：全自动气动下展式放料阀（图1）</h2>
           <p>针对反应釜、储罐等底部流体控制及高浓度介质的排放工况，我们交付了配有<b>大红色高效气动执行机构的气动放料阀</b>：</p>
@@ -414,7 +425,29 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
     startAutoPlay();
   });
   </script>
+
+  <script>
+  document.getElementById('sliderWrapper').addEventListener('click', (e) => {
+    // 只有当用户点击的是图片元素，并且没有处于激烈拖拽滑动状态时才触发
+    if (e.target.tagName === 'IMG') {
+      let overlay = document.getElementById('globalImgOverlay');
+      if (!overlay) {
+        // 创建全局遮罩层
+        overlay = document.createElement('div');
+        overlay.id = 'globalImgOverlay';
+        overlay.className = 'img-overlay';
+        overlay.innerHTML = '<img src="" alt="Zoomed View">';
+        // 点击遮罩层任何地方直接关闭还原
+        overlay.addEventListener('click', () => {
+          overlay.classList.remove('active');
+        });
+        document.body.appendChild(overlay);
+      }
+      // 将当前轮播图片的清晰原图地址赋给大图
+      overlay.querySelector('img').src = e.target.src;
+      overlay.classList.add('active');
+    }
+  });
+  </script>
 </body>
 </html>
-
-```
