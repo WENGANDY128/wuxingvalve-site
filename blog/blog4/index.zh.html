@@ -4,12 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   
-  <title>五星阀门厂最新大批量工业阀门出货现场 | 工厂动态</title>
-  <meta name="description" content="五星阀门车间全产能运转中，最新批次气动放料阀、高压锻钢针型阀及不锈钢仪表阀已通过100%严格打压测试，正式安全包装出货发往海外项目现场。" />
+  <title>专业延伸：从相图到工艺——三条“临界线”如何指导阀门生产 | Wuxing Valve</title>
+  <meta name="description" content="铁碳相图的三条临界线（A1、A3、Acm）是阀门热处理工艺的温度坐标系。本文深度解析如何依据碳含量与相变点偏移指导ASTM A105、WCB等阀门钢材的淬火、正火与退火，避免阀杆失效。" />
   
+  <meta property="og:title" content="专业延伸：从相图到工艺——三条“临界线”如何指导阀门生产" />
+  <meta property="og:description" content="铁碳相图的三条临界线（A1、A3、Acm）是阀门热处理工艺的温度坐标系。本文深度解析如何依据碳含量与相变点偏移指导ASTM A105、WCB等阀门钢材的淬火、正火与退火，避免阀杆失效。" />
   <meta property="og:image" content="cover.jpg" />
-  <meta property="og:title" content="五星阀门厂最新大批量工业阀门出货现场" />
-  <meta property="og:description" content="五星阀门车间全产能运转中，最新批次气动放料阀、高压锻钢针型阀及不锈钢仪表阀已通过100%严格打压测试，正式安全包装出货发往海外项目现场。" />
   <meta property="og:type" content="article" />
   
   <style>
@@ -20,9 +20,11 @@ a{color:inherit;text-decoration:none}
 .container{max-width:var(--max);margin:0 auto;padding:0 18px;}
 .top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.86);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line);}
 .top .row{display:flex;align-items:center;gap:12px;padding:12px 0;flex-wrap:wrap}
-.brand{font-weight:850;display:flex;align-items:center;gap:10px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:850}
 .brand-logo{height:28px;width:auto;display:block}
-.brand-text{font-weight:850}
+.brand-text{font-weight:850;display:flex;flex-direction:column;line-height:1.1}
+.brand-text .title-main{font-size:16px;color:var(--text)}
+.brand-text .title-sub{font-size:12px;color:var(--muted);font-weight:500;margin-top:2px}
 @media (max-width:520px){.brand-text{display:none}.brand-logo{height:30px}}
 .nav{display:flex;gap:10px;flex-wrap:wrap;margin-left:auto}
 .nav a{padding:8px 10px;border-radius:999px;color:var(--muted);font-weight:700;font-size:14px;}
@@ -33,15 +35,13 @@ a{color:inherit;text-decoration:none}
 .hero{padding:22px 0 10px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 30px rgba(2,6,23,.08);overflow:hidden}
 
-/* ===================================================
-   高级原生交互轮播图（Slider）样式与移动端适配
-   =================================================== */
+/*高级原生交互轮播图（Slider）样式与移动端适配*/
 .slider-container {
   position: relative;
   width: 100%;
   overflow: hidden;
   background: #0f172a;
-  touch-action: pan-y; /* 阻止移动端横向滑动的默认翻页手势，由JS精准接管 */
+  touch-action: pan-y;
   user-select: none;
 }
 .slider-wrapper {
@@ -57,9 +57,8 @@ a{color:inherit;text-decoration:none}
   width: 100%;
   height: auto;
   display: block;
-  pointer-events: none; /* 阻止移动端长按图片弹出系统保存菜单影响滑动 */
+  pointer-events: none;
 }
-/* 左右切换按钮（移动端已永久保留，方便手指点按） */
 .slider-btn {
   position: absolute;
   top: 50%;
@@ -88,8 +87,6 @@ a{color:inherit;text-decoration:none}
 }
 .slider-btn.prev { left: 16px; }
 .slider-btn.next { right: 16px; }
-
-/* 底部指示小圆点容器（完美悬浮在图片内部底端） */
 .slider-dots {
   position: absolute;
   bottom: 14px;
@@ -128,34 +125,11 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
 .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:#fff;font-weight:800}
 .btn.primary{background:var(--primary);color:#fff;border-color:transparent}
 .footer{border-top:1px solid var(--line);padding:18px 0 26px;color:var(--muted);font-size:13px;margin-top:30px}
-
-/* 测试专用格栅样式 */
-.test-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 20px 0;}
-.test-grid-item {padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: #f8fafc; text-align: center;}
 </style>
 
   <link rel="icon" href="../../assets/favicon.ico">
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "NewsArticle",
-    "headline": "五星阀门厂最新大批量工业阀门出货现场",
-    "image": [
-      "cover.jpg",
-      "1_2.jpg",
-      "2.jpg",
-      "3.jpg",
-      "4.jpg",
-      "5.jpg"
-    ],
-    "datePublished": "2026-06-26T08:00:00+08:00",
-    "author": {
-      "@type": "Organization",
-      "name": "Wuxing Valve Sandbox"
-    }
-  }
-  </script>
+  <link rel="icon" type="image/png" href="../../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
 </head>
 <body>
 
@@ -163,28 +137,28 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
     window.SLIDER_CONFIG = [
       {
         filename: "1_2.jpg", 
-        alt: "Pneumatic tank bottom discharge valves with red cylinders and handwheels", 
-        title: "高端配置：带大红色气动执行机构与手动机构的气动放料阀" 
+        alt: "Pneumatic tank bottom discharge valves with red cylinders", 
+        title: "车间出货：带大红色气动执行机构的气动放料阀" 
       },
       {
         filename: "2.jpg",
-        alt: "Mass production array of forged steel high pressure needle valves",
-        title: "匠心矩阵：整齐排列的精密高压锻钢针型阀/截止阀半成品"
+        alt: "Array of forged steel high pressure needle valves",
+        title: "车间出货：精密高压锻钢针型阀/截止阀阵列"
       },
       {
         filename: "3.jpg",
-        alt: "Large quantities of precision machined forged pipe flanges on pallets",
-        title: "配套实力：车间内整齐堆放的大批量机加工锻造法兰组件"
+        alt: "Precision machined forged pipe flanges on pallets",
+        title: "车间出货：大批量机加工精密锻造法兰组件"
       },
       {
         filename: "4.jpg",
         alt: "Stainless steel high pressure instrumentation valves with blue bolted bonnets",
-        title: "严苛品控：配有标志性蓝色高强螺栓的不锈钢高压仪表阀"
+        title: "车间出货：配有高强防松螺母的不锈钢高压仪表阀"
       },
       {
         filename: "5.jpg",
-        alt: "Heavy duty DN200 PN40 cast steel globe valves with bright blue coating",
-        title: "重型设备：喷涂亮蓝色防锈漆的 DN200 PN40 大口径铸钢截止阀"
+        alt: "Heavy duty DN200 PN40 cast steel globe valves with blue coating",
+        title: "车间出货：喷涂防锈漆的 DN200 PN40 大口径铸钢截止阀"
       }
     ];
   </script>
@@ -194,7 +168,10 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
       <div class="row">
         <a class="brand" href="../../index.html?lang=zh" aria-label="Wuxing Valve">
           <img src="../../assets/logo.png" alt="Wuxing Valve" class="brand-logo">
-          <span class="brand-text">Sandbox Test</span>
+          <div class="brand-text">
+            <span class="title-main">Wuxing Valve</span>
+            <span class="title-sub">工业阀门 · 外贸供应</span>
+          </div>
         </a>
         <div class="nav">
           <a href="../../index.html?lang=zh">首页</a>
@@ -216,61 +193,65 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
         
         <div class="slider-container" id="sliderContainer">
           <div class="slider-wrapper" id="sliderWrapper">
-            <!-- 初始封面由 JS 根据 SLIDER_CONFIG 动态渲染 -->
-            <div class="slide"><img src="1_2.jpg" alt="Wuxing Valve factory cover" fetchpriority="high"></div>
+            <div class="slide"><img src="1_2.jpg" alt="Wuxing Valve Showcase" fetchpriority="high"></div>
           </div>
-          
           <button class="slider-btn prev" aria-label="上一张">&#10094;</button>
           <button class="slider-btn next" aria-label="下一张">&#10095;</button>
-          
           <div class="slider-dots" id="sliderDots"></div>
         </div>
 
         <div class="head">
-          <span class="kicker">车间动态与出货通报</span>
-          <h1>全线拉满！最新批次高压特种阀门及自动化控制阀顺利完工并交付</h1>
+          <span class="kicker">热处理工艺</span>
+          <h1>专业延伸：从相图到工艺——三条“临界线”如何指导阀门生产</h1>
           <div class="meta">
             <span>2026-06-26</span>
-            <span>来源: 五星阀门生产车间</span>
-            <span>标签: 气动放料阀 / 锻钢针阀 / 截止阀 / 独立站配套</span>
+            <span>来源: 冶金工艺部</span>
+            <span>标签: 铁碳相图 / 阀门制造 / 失效分析</span>
           </div>
         </div>
 
         <article class="article" id="post-content">
           
-          <p>高标准源于对细节的极致控管。本周，五星阀门厂（Wuxing Valve）生产车间全产能全速运转，成功完成了多位海外大客户的定制化工业阀门加急订单。此次出货的产品涵盖了自动化化工放料系统、高压仪表管道系统以及大口径重型流体阻断系统，所有阀门均已在出厂前通过了100%严格的外壳及阀座压力打压测试。</p>
+          <p>铁碳相图的核心价值在于标注了三条决定组织转变的临界温度线，而这三条线的工程应用远不止“加热到多少度”这么简单。</p>
 
-          <h2>一、本批次核心交付产品技术要点（Workshop Highlights）</h2>
-          <p>以下流式格栅卡片展示了本次出货及在制品的核心亮点，展现出我们在工业流体控制领域的综合制造实力：</p>
-          
-          <div class="test-grid">
-            <div class="test-grid-item">
-              <strong>自动化放料阀 (1_2.jpg)</strong>
-              <p style="font-size:13px; color:var(--muted); margin:4px 0 0;">Y型斜下出料结构，配备大红色重型气缸、手动应急机构、限位回讯器与过滤减压阀，专为反应釜底部出料设计。</p>
-            </div>
-            <div class="test-grid-item">
-              <strong>高压锻钢矩阵 (2.jpg & 4.jpg)</strong>
-              <p style="font-size:13px; color:var(--muted); margin:4px 0 0;">包含方形阀体的锻钢针型阀，以及配有标志性蓝色防松螺母的不锈钢高压仪表阀，完美适配石化及苛刻高压工况。</p>
-            </div>
-            <div class="test-grid-item">
-              <strong>重型截止阀 (5.jpg & 3.jpg)</strong>
-              <p style="font-size:13px; color:var(--muted); margin:4px 0 0;">刚完成亮蓝色抗腐蚀喷涂的 DN200 PN40 大口径铸钢截止阀，以及托盘上堆放的大批量机加工精密锻造法兰组件。</p>
-            </div>
-          </div>
-
-          <h2>二、严格的工业品控与供应链配套保障</h2>
+          <h2>1. A<sub>1</sub>线（共析线，727°C）：热处理工艺的温度“锚点”</h2>
+          <p>A<sub>1</sub>线是珠光体与奥氏体相互转变的边界，也是所有阀门热处理工艺的温度基准。在实际生产中，由于加热和冷却都存在滞后效应，相变点会发生偏移：</p>
           <ul>
-            <li><b>100% 水压及气密性测试</b>：每一台出厂阀门不论口径大小，均严格执行工业美标/国标的压力寿命测试，确保零泄漏。</li>
-            <li><b>全套管道系统配套能力</b>：除了核心阀门外，车间同时提供大批量优质锻造法兰及管道配件的精密加工，为工程提供一站式解决方案。</li>
-            <li><b>安全国际物流包装标准</b>：阀门法兰密封面均带有防护盖，整体包覆防尘膜，接下来将进入免熏蒸木箱安全打包，正式发往海运港口。</li>
+            <li>加热时，实际相变点记为 <b>Ac<sub>1</sub></b>（Ac 表示加热，A 表示平衡相变点），Ac<sub>1</sub> 总是高于平衡 A<sub>1</sub> 点。</li>
+            <li>冷却时，实际相变点记为 <b>Ar<sub>1</sub></b>，Ar<sub>1</sub> 总是低于平衡 A<sub>1</sub> 点。</li>
+          </ul>
+          <p><b>工程意义：</b>加热速度越快，Ac<sub>1</sub> 偏离平衡点越多。这意味着，对 ASTM A105 等亚共析锻钢阀门进行淬火或完全正火时，跨越 Ac<sub>1</sub> 仅能使珠光体转变为奥氏体，而不能机械套用 727°C 的“理论值”作为最终加热目标，必须进一步加热到 Ac<sub>3</sub> 以上 30~50°C 确定实际保温温度。</p>
+          <p>若加热温度过低（未能有效跨越 Ac<sub>3</sub> 达到完全奥氏体区），原组织中的先共析铁素体将无法完全溶解，淬火后基体中会出现未溶铁素体，造成硬度不均——这在汽轮机调节阀阀杆失效案例中已有明确教训：铁素体含量偏高直接导致材料强度与冲击韧性低于标准要求。</p>
+
+          <h2>2. A<sub>3</sub>线与 A<sub>cm</sub>线：亚共析钢与过共析钢的工艺“分水岭”</h2>
+          <ul>
+            <li><b>A<sub>3</sub>线（GS线）：</b>亚共析钢（碳含量 &lt; 0.77%）在加热时，铁素体完全溶解进入奥氏体的温度边界。</li>
+            <li><b>A<sub>cm</sub>线（ES线）：</b>过共析钢（碳含量 &gt; 0.77%）在加热时，渗碳体完全溶解进入奥氏体的温度边界。</li>
           </ul>
 
+          <p><b>工程意义——为什么不能“一视同仁”？</b></p>
+          <p>对于<b>亚共析钢</b>（如 WCB 铸钢、A105 锻钢），正火或完全退火的加热温度应控制在 <b>Ac<sub>3</sub> 以上 30~50°C</b>。这个窗口确保了铁素体全部转变为奥氏体，随后在空气中冷却（正火）或炉冷（退火）时，奥氏体重新转变为细化的铁素体+珠光体组织，实现晶粒细化和内应力消除。</p>
+          <p>对于<b>过共析钢</b>，规则则完全不同：</p>
+          <ul>
+            <li><b>正火温度</b>必须加热到 <b>Ac<sub>cm</sub> 以上 30~50°C</b>，因为正火的核心目的是消除铸态或锻态条件下析出的网状渗碳体——这种硬脆相会严重降低阀门的冲击韧性。只有将温度抬升到 Ac<sub>cm</sub> 以上，网状渗碳体才能全部溶入奥氏体，再通过空冷“锁住”这一消除效果。</li>
+            <li><b>退火/淬火温度</b>则应控制在 <b>Ac<sub>1</sub> 以上 30~50°C</b>（即两相区），而非 Ac<sub>cm</sub> 以上。若加热到奥氏体单相区，缓冷过程中会再次析出网状渗碳体，反而恶化性能；同时，淬火后残余奥氏体量也会增加，导致硬度下降。</li>
+          </ul>
+
+          <h2>3. 铁素体+珠光体基体的性能定位</h2>
+          <p>阀门选用碳钢（含碳量 &lt; 2.14%）的常温目标组织为铁素体+珠光体。这一组合的工程考量在于：</p>
+          <ul>
+            <li><b>珠光体</b>（铁素体与渗碳体的片层混合物）提供强度支撑，抗拉强度可达 770~870 MPa，远高于纯铁素体的 250~300 MPa。</li>
+            <li><b>铁素体</b>提供塑性与韧性，使阀门在低温工况下抵抗冷脆断裂——但需注意，铁素体-珠光体基体的钢材均存在低温冷脆现象，当温度降至某一临界值以下时，冲击功会急剧下降，因此阀门设计必须明确最低服役温度与材料的脆性转变温度之间的安全裕度。</li>
+          </ul>
+
+          <h2>4. 小结</h2>
+          <p>铁碳相图的三条临界线——A<sub>1</sub>（热处理基准）、A<sub>3</sub>与 A<sub>cm</sub>（正火/退火温度上限的分水岭）——共同构成了阀门热加工工艺的温度坐标系。实际生产中的核心原则是：依据钢的碳含量确定应采用哪条线作为加热基准，同时考虑实际加热/冷却速度导致的相变点偏移，最终在细化晶粒、消除应力、避免脆性相析出之间取得平衡。</p>
+
           <div class="callout">
-            <b>寻找稳定高品质的工业阀门中国制造工厂？</b><br>
-            无论是高压特种阀门的参数定制，还是大批量的标准截止阀、球阀或气动控制阀采购，我们的工程师团队都能为您提供全方位的技术图纸支持与快速极具竞争力的 B2B 报价。
+            <b>技术建议：</b>如果您正在评估 WCB 铸钢或 A105 锻钢阀门的热处理工艺规程，或者在实际工况中遇到了阀杆硬度不均、晶粒粗化或低温冷脆失效等问题，欢迎联系我们的技术团队。凭借在严苛工况阀门制造及冶金工艺控制方面的经验，我们可以协助您优化材料热处理方案，确保阀门在极端环境下的本质安全。
             <div class="btnrow">
-              <a class="btn primary" href="../../index.html?lang=zh#contact">即刻联系阀门技术专家</a>
-              <a class="btn" href="../blog.html?lang=zh">返回查看更多出货案例</a>
+              <a class="btn primary" href="../../index.html?lang=zh#contact">联系获取技术支持</a>
+              <a class="btn" href="../blog.html?lang=zh">返回资讯列表</a>
             </div>
           </div>
 
@@ -278,7 +259,7 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
       </div>
 
       <div class="footer">
-        © 2026 五星阀门沙盒测试页面 · Wuxing Valve Sandbox. All Rights Reserved.
+        © Wuxing Valve · <a href="../blog.html?lang=zh">返回资讯列表</a>
       </div>
     </div>
   </main>
@@ -294,7 +275,7 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
     if (config.length === 0) return;
 
     // ---------------------------------------------------
-    // 1. 【动态渲染与 SEO 性能处理】
+    // 1. 【动态渲染五张实拍图片】
     // ---------------------------------------------------
     wrapper.innerHTML = config.map((img, index) => {
       const priorityAttr = index === 0 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"';
@@ -326,7 +307,7 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
     const duration = 4000; 
 
     // ---------------------------------------------------
-    // 2. 【轮播基础功能】
+    // 2. 【核心轮播控制逻辑】
     // ---------------------------------------------------
     function updateSlider() {
       wrapper.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
@@ -359,12 +340,11 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
     prevBtn.addEventListener('click', () => { prevSlide(); startAutoPlay(); });
 
     // ---------------------------------------------------
-    // 3. 【极佳的手机触控滑动手势 (Swipe & Drag) 优化版】
+    // 3. 【触控与 PC 端拖拽事件优化】
     // ---------------------------------------------------
     let startX = 0;
     let isDragging = false;
 
-    // 触屏滑动开始
     wrapper.addEventListener('touchstart', (e) => {
       stopAutoPlay();
       startX = e.touches[0].clientX;
@@ -372,7 +352,6 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
       wrapper.style.transition = 'none'; 
     }, { passive: true });
 
-    // 触屏滑动中
     wrapper.addEventListener('touchmove', (e) => {
       if (!isDragging) return;
       const currentX = e.touches[0].clientX;
@@ -382,7 +361,6 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
       wrapper.style.transform = `translateX(${translation}px)`;
     }, { passive: true });
 
-    // 触屏滑动结束
     wrapper.addEventListener('touchend', (e) => {
       if (!isDragging) return;
       isDragging = false;
@@ -407,7 +385,6 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
       startAutoPlay();
     });
 
-    // 适配 PC 鼠标拖动调试
     wrapper.addEventListener('mousedown', (e) => {
       stopAutoPlay();
       startX = e.clientX;
@@ -444,7 +421,6 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
     wrapper.addEventListener('mouseup', handleMouseUp);
     wrapper.addEventListener('mouseleave', handleMouseUp);
 
-    // 开启自动轮播
     startAutoPlay();
   });
   </script>
