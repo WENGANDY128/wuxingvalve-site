@@ -3,9 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  
+  <!-- SEO 标题与描述优化 -->
   <title>网页排版与交互功能测试页面 | Web Layout Test</title>
   <meta name="description" content="这是一个用于测试网页组件、响应式栅格、原生 JavaScript 轮播图以及基础排版样式的测试页面。" />
   
+  <!-- ====================================================================
+       ★ 咨询展示页抓取核心（OG 标签）
+       注意：当您更改了下方配置中心的第一张封面图（如将 cover.jpg 改为 wuxing-cover.jpg）时，
+       请将下方的 content="cover.jpg" 同样修改为 content="wuxing-cover.jpg"。
+       这样您的咨询列表页（blog.html）就能完美抓取并展示最新的封面！
+       ==================================================================== -->
   <meta property="og:image" content="cover.jpg" />
   <meta property="og:title" content="网页排版与交互功能测试页面" />
   <meta property="og:description" content="这是一个用于测试网页组件、响应式栅格、原生 JavaScript 轮播图以及基础排版样式的测试页面。" />
@@ -33,17 +41,20 @@ a{color:inherit;text-decoration:none}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 30px rgba(2,6,23,.08);overflow:hidden}
 
 /* ===================================================
-   高级原生交互轮播图（Slider）样式
+   高级原生交互轮播图（Slider）样式与移动端适配
    =================================================== */
 .slider-container {
   position: relative;
   width: 100%;
   overflow: hidden;
   background: #0f172a;
+  touch-action: pan-y; /* 阻止移动端横向滑动的默认翻页手势，由JS精准接管 */
+  user-select: none;
 }
 .slider-wrapper {
   display: flex;
   transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
 }
 .slide {
   min-width: 100%;
@@ -53,6 +64,7 @@ a{color:inherit;text-decoration:none}
   width: 100%;
   height: auto;
   display: block;
+  pointer-events: none; /* 阻止移动端长按图片弹出系统保存菜单影响滑动 */
 }
 /* 左右切换按钮 */
 .slider-btn {
@@ -79,7 +91,7 @@ a{color:inherit;text-decoration:none}
 .slider-btn:hover {
   background: var(--primary);
   border-color: transparent;
-  scale: 1.05;
+  transform: translateY(-50%) scale(1.05);
 }
 .slider-btn.prev { left: 16px; }
 .slider-btn.next { right: 16px; }
@@ -107,6 +119,13 @@ a{color:inherit;text-decoration:none}
   border-radius: 4px;
 }
 
+/* 移动端无障碍微调：在窄屏上隐藏箭头，提供完全无阻碍的手指划动视界 */
+@media (max-width: 640px) {
+  .slider-btn {
+    display: none;
+  }
+}
+
 /* 文章正文基本排版 */
 .head {padding:16px 16px 10px}
 .kicker{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;background:rgba(37,99,235,.10);color:var(--primary);font-weight:900;font-size:12px;}
@@ -129,8 +148,62 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
 </style>
 
   <link rel="icon" href="../../assets/favicon.ico">
+
+  <!-- ==========================================
+       【Google SEO 结构化数据 (JSON-LD)】
+       ========================================== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": "网页排版与交互功能测试页面",
+    "image": [
+      "cover.jpg",
+      "1.jpg",
+      "2.jpg"
+    ],
+    "datePublished": "2026-06-26T08:00:00+08:00",
+    "author": {
+      "@type": "Organization",
+      "name": "Wuxing Valve Sandbox"
+    }
+  }
+  </script>
 </head>
 <body>
+
+  <!-- ====================================================================
+       ★【出货图片便捷配置中心】（置于 Body 最前方，极易寻找与维护）
+       若您增加了新的图片，只需直接在数组中复制、添加一个 {} 大括号对象即可。
+       ==================================================================== -->
+  <script>
+    window.SLIDER_CONFIG = [
+      {
+        filename: "cover.jpg", // 对应仓库中的图片文件名
+        alt: "Wuxing Valve industrial shipment workshop overview", // SEO 英文关键词描述（极其有利于谷歌图片收录）
+        title: "五星阀门厂大批量阀门出货包装车间全景" // 中文鼠标悬浮提示文本
+      },
+      {
+        filename: "1.jpg",
+        alt: "Stainless steel flanged ball valve under professional pressure testing",
+        title: "不锈钢法兰球阀专业打压测试现场"
+      },
+      {
+        filename: "2.jpg",
+        alt: "ASTM standard A105 forged steel gate valves ready for export package",
+        title: "符合 ASTM 标准的 A105 锻钢闸阀出口包装细节"
+      }
+      /* 💡 以后如果增加第 4 张图，只需直接在下方粘贴格式如下：
+      ,{
+        filename: "your-new-valve-image.jpg",
+        alt: "SEO friendly description in English with target keywords",
+        title: "中文悬停提示词"
+      }
+      */
+    ];
+  </script>
+
+  <!-- 导航栏 -->
   <div class="top">
     <div class="container">
       <div class="row">
@@ -152,21 +225,22 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
     </div>
   </div>
 
+  <!-- 主体卡片 -->
   <main class="hero">
     <div class="container">
       <div class="card">
         
-        <div class="slider-container">
-          <div class="slider-wrapper">
-            <div class="slide"><img src="cover.jpg" alt="封面图 (cover.jpg)"></div>
-            <div class="slide"><img src="1.jpg" alt="图 1 (1.jpg)"></div>
-            <div class="slide"><img src="2.jpg" alt="图 2 (2.jpg)"></div>
+        <!-- 轮播图模块 (DOM结构动态根据上方 SLIDER_CONFIG 进行 SEO 友好填充) -->
+        <div class="slider-container" id="sliderContainer">
+          <div class="slider-wrapper" id="sliderWrapper">
+            <!-- 默认防无JS环境与爬虫解析占位符 -->
+            <div class="slide"><img src="cover.jpg" alt="Wuxing Valve factory cover" fetchpriority="high"></div>
           </div>
           
           <button class="slider-btn prev" aria-label="上一张">&#10094;</button>
           <button class="slider-btn next" aria-label="下一张">&#10095;</button>
           
-          <div class="slider-dots"></div>
+          <div class="slider-dots" id="sliderDots"></div>
         </div>
 
         <div class="head">
@@ -226,21 +300,35 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
     </div>
   </main>
 
+  <!-- ===================================================
+       交互控制脚本（完美契合手机手势与 SEO 延迟加载）
+       =================================================== -->
   <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const wrapper = document.querySelector('.slider-wrapper');
-    const slides = document.querySelectorAll('.slide');
+    const wrapper = document.getElementById('sliderWrapper');
+    const dotsContainer = document.getElementById('sliderDots');
     const prevBtn = document.querySelector('.slider-btn.prev');
     const nextBtn = document.querySelector('.slider-btn.next');
-    const dotsContainer = document.querySelector('.slider-dots');
     
-    let currentIndex = 0;
-    let timer = null;
-    const duration = 4000; // 4秒自动跳转
+    const config = window.SLIDER_CONFIG || [];
+    if (config.length === 0) return;
 
-    // 自动生成对应数量的小圆点
+    // ---------------------------------------------------
+    // 1. 【动态渲染与 SEO 性能处理】
+    // ---------------------------------------------------
+    // 根据配置中心渲染 Slide，第一张强制高优先级加载，后续延迟加载
+    wrapper.innerHTML = config.map((img, index) => {
+      const priorityAttr = index === 0 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"';
+      return `
+        <div class="slide">
+          <img src="${img.filename}" alt="${img.alt}" title="${img.title}" ${priorityAttr} onerror="this.src='https://placehold.co/900x450/0f172a/ffffff?text=${encodeURIComponent(img.title)}'">
+        </div>
+      `;
+    }).join('');
+
+    // 动态生成对应数量的小圆点
     dotsContainer.innerHTML = ''; 
-    slides.forEach((_, index) => {
+    config.forEach((_, index) => {
       const dot = document.createElement('span');
       dot.classList.add('dot');
       if (index === 0) dot.classList.add('active');
@@ -253,9 +341,17 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
       dotsContainer.appendChild(dot);
     });
 
+    const slides = document.querySelectorAll('.slide');
     const dots = document.querySelectorAll('.dot');
+    let currentIndex = 0;
+    let timer = null;
+    const duration = 4000; // 自动播放间隔 4 秒
 
+    // ---------------------------------------------------
+    // 2. 【轮播基础功能】
+    // ---------------------------------------------------
     function updateSlider() {
+      wrapper.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
       wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
       dots.forEach((dot, i) => {
         dot.classList.toggle('active', i === currentIndex);
@@ -284,6 +380,84 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
     nextBtn.addEventListener('click', () => { nextSlide(); startAutoPlay(); });
     prevBtn.addEventListener('click', () => { prevSlide(); startAutoPlay(); });
 
+    // ---------------------------------------------------
+    // 3. 【极佳的手机触控滑动手势 (Swipe & Drag)】
+    // ---------------------------------------------------
+    let startX = 0;
+    let isDragging = false;
+
+    // 触屏滑动事件监听
+    wrapper.addEventListener('touchstart', (e) => {
+      stopAutoPlay();
+      startX = e.touches[0].clientX;
+      isDragging = true;
+      wrapper.style.transition = 'none'; // 拖拽时即时跟手
+    }, { passive: true });
+
+    wrapper.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      const currentX = e.touches[0].clientX;
+      const diffX = currentX - startX;
+      const width = wrapper.clientWidth;
+      const translation = -currentIndex * width + diffX;
+      wrapper.style.transform = `translateX(${translation}px)`;
+    }, { passive: true });
+
+    wrapper.addEventListener('touchend', (e) => {
+      if (!isDragging) return;
+      isDragging = false;
+      const endX = e.changedTouches[0].clientX;
+      const diffX = endX - startX;
+      const threshold = wrapper.clientWidth * 0.15; // 超过 15% 容器宽度就翻页
+
+      if (diffX < -threshold) {
+        nextSlide();
+      } else if (diffX > threshold) {
+        prevSlide();
+      } else {
+        updateSlider(); // 回弹当前张
+      }
+      startAutoPlay();
+    });
+
+    // 适配 PC 鼠标拖动调试（逻辑相同）
+    wrapper.addEventListener('mousedown', (e) => {
+      stopAutoPlay();
+      startX = e.clientX;
+      isDragging = true;
+      wrapper.style.transition = 'none';
+    });
+
+    wrapper.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      const currentX = e.clientX;
+      const diffX = currentX - startX;
+      const width = wrapper.clientWidth;
+      const translation = -currentIndex * width + diffX;
+      wrapper.style.transform = `translateX(${translation}px)`;
+    });
+
+    const handleMouseUp = (e) => {
+      if (!isDragging) return;
+      isDragging = false;
+      const endX = e.clientX || startX;
+      const diffX = endX - startX;
+      const threshold = wrapper.clientWidth * 0.15;
+
+      if (diffX < -threshold) {
+        nextSlide();
+      } else if (diffX > threshold) {
+        prevSlide();
+      } else {
+        updateSlider();
+      }
+      startAutoPlay();
+    };
+
+    wrapper.addEventListener('mouseup', handleMouseUp);
+    wrapper.addEventListener('mouseleave', handleMouseUp);
+
+    // 开启自动轮播
     startAutoPlay();
   });
   </script>
