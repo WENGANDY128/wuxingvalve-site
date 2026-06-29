@@ -1,24 +1,15 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  
-  <!-- SEO 标题与描述优化（完全匹配铁碳相图热处理主题） -->
-  <title>专业延伸：从相图到工艺——三条“临界线”如何指导阀门生产 | Wuxing Valve</title>
-  <meta name="description" content="铁碳相图的三条临界线（A1、A3、Acm）是阀门热处理工艺的温度坐标系。本文深度解析如何依据碳含量与相变点偏移指导ASTM A105、WCB等阀门钢材的淬火、正火与退火，避免阀杆失效。" />
-  
-  <!-- ====================================================================
-       ★ 咨询展示页抓取核心（OG 标签）
-       已经默认配置好抓取首图 cover.jpg。
-       您的博客列表页（blog.html）在离线解析时，将完美拉取此图作为文章缩略图。
-       ==================================================================== -->
-  <meta property="og:image" content="cover.jpg" />
-  <meta property="og:title" content="专业延伸：从相图到工艺——三条“临界线”如何指导阀门生产" />
-  <meta property="og:description" content="铁碳相图的三条临界线是阀门热处理工艺的温度坐标系。深度解析如何指导ASTM A105、WCB等阀门钢材的正火与退火。" />
-  <meta property="og:type" content="article" />
-  
-  <style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>专业延伸：从相图到工艺——三条“临界线”如何指导阀门生产 | Wuxing Valve</title>
+  <meta name="description" content="铁碳相图的三条临界线（A1、A3、Acm）是阀门热处理工艺的温度坐标系。本文深度解析如何依据碳含量与相变点偏移指导ASTM A105、WCB等阀门钢材的淬火、正火与退火，避免阀杆失效。" />
+  <meta property="og:title" content="专业延伸：从相图到工艺——三条“临界线”如何指导阀门生产" />
+  <meta property="og:description" content="铁碳相图的三条临界线（A1、A3、Acm）是阀门热处理工艺的温度坐标系。本文深度解析如何依据碳含量与相变点偏移指导ASTM A105、WCB等阀门钢材的淬火、正火与退火，避免阀杆失效。" />
+  <meta property="og:image" content="cover.jpg" />
+  <meta property="og:type" content="article" />
+  <style>
 :root{--bg:#ffffff;--text:#0f172a;--muted:#64748b;--line:#e5e7eb;--card:#ffffff;--primary:#2563eb;--radius:18px;--max:900px;}
 *{box-sizing:border-box}
 body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--text);background:linear-gradient(180deg,#f8fafc 0%,#ffffff 35%);}
@@ -26,18 +17,11 @@ a{color:inherit;text-decoration:none}
 .container{max-width:var(--max);margin:0 auto;padding:0 18px;}
 .top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.86);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line);}
 .top .row{display:flex;align-items:center;gap:12px;padding:12px 0;flex-wrap:wrap}
-
-/* 官方五星阀门 Brand 样式配置 */
-.brand{display:flex;align-items:center;gap:10px;line-height:1.1;text-align:left;}
-.brand-logo{height:34px;width:auto;display:block;object-fit:contain;}
-.brand-text-container{display:flex;flex-direction:column;}
-.brand-text{font-size:16px;font-weight:850;color:var(--text);letter-spacing:-0.01em;}
-.brand-sub{font-size:11px;color:var(--muted);font-weight:500;margin-top:2px;}
-
-@media (max-width:520px){
-  .brand-sub {display:none;} /* 在极小手机屏下隐藏副标题保证导航栏不换行 */
-}
-
+.brand{font-weight:850}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-logo{height:28px;width:auto;display:block}
+.brand-text{font-weight:850}
+@media (max-width:520px){.brand-text{display:none}.brand-logo{height:30px}}
 .nav{display:flex;gap:10px;flex-wrap:wrap;margin-left:auto}
 .nav a{padding:8px 10px;border-radius:999px;color:var(--muted);font-weight:700;font-size:14px;}
 .nav a:hover{background:#f1f5f9;color:var(--text)}
@@ -46,95 +30,8 @@ a{color:inherit;text-decoration:none}
 .lang a.active{background:var(--primary);color:#fff}
 .hero{padding:22px 0 10px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 30px rgba(2,6,23,.08);overflow:hidden}
-
-/* ===================================================
-   高级原生交互轮播图（Slider）样式与移动端适配
-   =================================================== */
-.slider-container {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  background: #0f172a;
-  touch-action: pan-y; /* 阻止移动端横向滑动的默认翻页手势，由JS精准接管 */
-  user-select: none;
-}
-.slider-wrapper {
-  display: flex;
-  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* 优化过渡阻尼感，使滑动回弹更自然 */
-  will-change: transform;
-}
-.slide {
-  min-width: 100%;
-  position: relative;
-}
-.slide img {
-  width: 100%;
-  height: auto;
-  display: block;
-  pointer-events: none; /* 阻止移动端长按图片弹出系统保存菜单影响滑动 */
-}
-/* 左右切换按钮 */
-.slider-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(4px);
-  color: #fff;
-  border: 1px solid rgba(255,255,255,0.2);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: bold;
-  transition: all 0.2s ease;
-  z-index: 10;
-  user-select: none;
-}
-.slider-btn:hover {
-  background: var(--primary);
-  border-color: transparent;
-  transform: translateY(-50%) scale(1.05);
-}
-.slider-btn.prev { left: 16px; }
-.slider-btn.next { right: 16px; }
-/* 底部指示小圆点容器 */
-.slider-dots {
-  position: absolute;
-  bottom: 14px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 8px;
-  z-index: 10;
-}
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.4);
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.dot.active {
-  background: #fff;
-  width: 22px;
-  border-radius: 4px;
-}
-
-/* 移动端无障碍微调：在窄屏上隐藏左右控制箭头，确保无遮挡的手指触控空间 */
-@media (max-width: 640px) {
-  .slider-btn {
-    display: none;
-  }
-}
-
-/* 文章正文基本排版 */
-.head {padding:16px 16px 10px}
+.cover img{width:100%;height:auto;display:block}
+.head{padding:16px 16px 10px}
 .kicker{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;background:rgba(37,99,235,.10);color:var(--primary);font-weight:900;font-size:12px;}
 h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
 .meta{color:var(--muted);font-size:13px;display:flex;gap:10px;flex-wrap:wrap}
@@ -143,7 +40,6 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
 .article h2{margin:22px 0 10px;font-size:18px}
 .article p{margin:10px 0;color:#0f172a;line-height:1.75}
 .article ul{margin:10px 0 10px 18px;line-height:1.75}
-.article li{margin:6px 0;line-height:1.7}
 .callout{margin:18px 0;padding:14px 14px;border-radius:16px;border:1px solid rgba(37,99,235,.22);background:rgba(37,99,235,.06)}
 .btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
 .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:#fff;font-weight:800}
@@ -151,372 +47,101 @@ h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
 .footer{border-top:1px solid var(--line);padding:18px 0 26px;color:var(--muted);font-size:13px;margin-top:30px}
 </style>
 
-  <link rel="icon" href="../../assets/favicon.ico">
-  <link rel="icon" type="image/png" href="../../assets/favicon.png">
-  <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
+  <link rel="icon" href="../../assets/favicon.ico">
+  <link rel="icon" type="image/png" href="../../assets/favicon.png">
+  <link rel="apple-touch-icon" href="../../assets/apple-touch-icon.png">
 
-  <!-- ==========================================
-       【Google SEO 结构化数据 (JSON-LD)】
-       ========================================== -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "NewsArticle",
-    "headline": "专业延伸：从相图到工艺——三条“临界线”如何指导阀门生产",
-    "image": [
-      "cover.jpg",
-      "1.jpg",
-      "2.jpg"
-    ],
-    "datePublished": "2026-06-26T08:00:00+08:00",
-    "author": {
-      "@type": "Organization",
-      "name": "Wuxing Valve"
-    }
-  }
-  </script>
 </head>
 <body>
+  <div class="top">
+    <div class="container">
+      <div class="row">
+        <a class="brand" href="../../index.html?lang=zh" aria-label="Wuxing Valve">
+          <img src="../../assets/logo.png" alt="Wuxing Valve" class="brand-logo">
+          <span class="brand-text">Wuxing Valve</span>
+        </a>
+        <div class="nav">
+          <a href="../../index.html?lang=zh">首页</a>
+          <a href="../../index.html?lang=zh#filters">产品</a>
+          <a href="../../index.html?lang=zh#contact">联系</a>
+          <a href="../blog.html?lang=zh">资讯</a>
+        </div>
+        <div class="lang">
+          <a class="active" href="index.zh.html?lang=zh">ZH</a>
+          <a class="" href="index.en.html?lang=en">EN</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <!-- ====================================================================
-       ★【出货图片便捷配置中心】（置于 Body 最前方，极易寻找与维护）
-       若您增加了新的图片，只需直接在数组中复制、添加一个 {} 大括号对象即可。
-       ==================================================================== -->
-  <script>
-    window.SLIDER_CONFIG = [
-      {
-        filename: "cover.jpg", // 对应相图封面图
-        alt: "Iron carbon phase diagram critical temperature lines for industrial valve heat treatment Wuxing Valve", 
-        title: "指导五星阀门热处理工艺的铁碳合金相图坐标"
-      },
-      {
-        filename: "1.jpg",
-        alt: "ASTM A105 forged steel gate valve quenching and normalizing process testing",
-        title: "ASTM A105 阀门钢材正火淬火微观金相结构细化检验"
-      },
-      {
-        filename: "2.jpg",
-        alt: "ASTM WCB cast steel valve body complete annealing process",
-        title: "WCB 铸钢阀体的高温退火与残余内应力消除现场"
-      }
-    ];
-  </script>
+  <main class="hero">
+    <div class="container">
+      <div class="card">
+        <div class="cover">
+          <img src="cover.jpg" alt="专业延伸：从相图到工艺——三条“临界线”如何指导阀门生产">
+        </div>
+        <div class="head">
+          <span class="kicker">资讯</span>
+          <h1>专业延伸：从相图到工艺——三条“临界线”如何指导阀门生产</h1>
+          <div class="meta">
+            <span>2026-06-26</span>
+            <span>热处理工艺</span>
+            <span>铁碳相图 / 阀门制造 / 失效分析</span>
+          </div>
+        </div>
 
-  <!-- 官方五星阀门导航栏（参考图3设计） -->
-  <div class="top">
-    <div class="container">
-      <div class="row">
-        <a class="brand" href="../../index.html?lang=zh" aria-label="Wuxing Valve">
-          <img src="../assets/logo.png" alt="Wuxing Valve Logo" class="brand-logo" onerror="this.src='../../assets/logo.png'">
-          <div class="brand-text-container">
-            <span class="brand-text">Wuxing Valve</span>
-            <span class="brand-sub">工业阀门 · 外贸供应</span>
-          </div>
-        </a>
-        <div class="nav">
-          <a href="../../index.html?lang=zh">首页</a>
-          <a href="../../index.html?lang=zh#filters">产品</a>
-          <a href="../../index.html?lang=zh#contact">联系</a>
-          <a href="../blog.html?lang=zh">资讯</a>
-        </div>
-        <div class="lang">
-          <a class="active" href="index.zh.html?lang=zh">ZH</a>
-          <a class="" href="index.en.html?lang=en">EN</a>
-        </div>
-      </div>
-    </div>
-  </div>
+        <article class="article" id="post-content">
+          
+<p>铁碳相图的核心价值在于标注了三条决定组织转变的临界温度线，而这三条线的工程应用远不止“加热到多少度”这么简单。</p>
 
-  <!-- 主体卡片 -->
-  <main class="hero">
-    <div class="container">
-      <div class="card">
-        
-        <!-- 轮播图模块 (DOM结构动态根据上方 SLIDER_CONFIG 进行 SEO 友好填充) -->
-        <div class="slider-container" id="sliderContainer">
-          <div class="slider-wrapper" id="sliderWrapper">
-            <!-- 默认占位防无JS环境 -->
-            <div class="slide"><img src="cover.jpg" alt="Wuxing Valve iron carbon diagram guide" fetchpriority="high"></div>
-          </div>
-          
-          <button class="slider-btn prev" aria-label="上一张">&#10094;</button>
-          <button class="slider-btn next" aria-label="下一张">&#10095;</button>
-          
-          <div class="slider-dots" id="sliderDots"></div>
-        </div>
+<h2>1. A<sub>1</sub>线（共析线，727°C）：热处理工艺的温度“锚点”</h2>
+<p>A<sub>1</sub>线是珠光体与奥氏体相互转变的边界，也是所有阀门热处理工艺的温度基准。在实际生产中，由于加热和冷却都存在滞后效应，相变点会发生偏移：</p>
+<ul>
+  <li>加热时，实际相变点记为 <b>Ac<sub>1</sub></b>（Ac 表示加热，A 表示平衡相变点），Ac<sub>1</sub> 总是高于平衡 A<sub>1</sub> 点。</li>
+  <li>冷却时，实际相变点记为 <b>Ar<sub>1</sub></b>，Ar<sub>1</sub> 总是低于平衡 A<sub>1</sub> 点。</li>
+</ul>
+<p><b>工程意义：</b>加热速度越快，Ac<sub>1</sub> 偏离平衡点越多。这意味着，对 ASTM A105 等亚共析锻钢阀门进行淬火或完全正火时，跨越 Ac<sub>1</sub> 仅能使珠光体转变为奥氏体，而不能机械套用 727°C 的“理论值”作为最终加热目标，必须进一步加热到 Ac<sub>3</sub> 以上 30~50°C 确定实际保温温度。</p>
+<p>若加热温度过低（未能有效跨越 Ac<sub>3</sub> 达到完全奥氏体区），原组织中的先共析铁素体将无法完全溶解，淬火后基体中会出现未溶铁素体，造成硬度不均——这在汽轮机调节阀阀杆失效案例中已有明确教训：铁素体含量偏高直接导致材料强度与冲击韧性低于标准要求。</p>
 
-        <div class="head">
-          <span class="kicker">资讯</span>
-          <h1>专业延伸：从相图到工艺——三条“临界线”如何指导阀门生产</h1>
-          <div class="meta">
-            <span>2026-06-26</span>
-            <span>热处理工艺</span>
-            <span>铁碳相图 / 阀门制造 / 失效分析</span>
-          </div>
-        </div>
+<h2>2. A<sub>3</sub>线与 A<sub>cm</sub>线：亚共析钢与过共析钢的工艺“分水岭”</h2>
+<ul>
+  <li><b>A<sub>3</sub>线（GS线）：</b>亚共析钢（碳含量 &lt; 0.77%）在加热时，铁素体完全溶解进入奥氏体的温度边界。</li>
+  <li><b>A<sub>cm</sub>线（ES线）：</b>过共析钢（碳含量 &gt; 0.77%）在加热时，渗碳体完全溶解进入奥氏体的温度边界。</li>
+</ul>
 
-        <!-- 阀门技术正文内容 -->
-        <article class="article" id="post-content">
-          <p>铁碳相图的核心价值在于标注了三条决定组织转变的临界温度线，而这三条线的工程应用远不止“加热到多少度”这么简单。</p>
+<p><b>工程意义——为什么不能“一视同仁”？</b></p>
+<p>对于<b>亚共析钢</b>（如 WCB 铸钢、A105 锻钢），正火或完全退火的加热温度应控制在 <b>Ac<sub>3</sub> 以上 30~50°C</b>。这个窗口确保了铁素体全部转变为奥氏体，随后在空气中冷却（正火）或炉冷（退火）时，奥氏体重新转变为细化的铁素体+珠光体组织，实现晶粒细化和内应力消除。</p>
+<p>对于<b>过共析钢</b>，规则则完全不同：</p>
+<ul>
+  <li><b>正火温度</b>必须加热到 <b>Ac<sub>cm</sub> 以上 30~50°C</b>，因为正火的核心目的是消除铸态或锻态条件下析出的网状渗碳体——这种硬脆相会严重降低阀门的冲击韧性。只有将温度抬升到 Ac<sub>cm</sub> 以上，网状渗碳体才能全部溶入奥氏体，再通过空冷“锁住”这一消除效果。</li>
+  <li><b>退火/淬火温度</b>则应控制在 <b>Ac<sub>1</sub> 以上 30~50°C</b>（即两相区），而非 Ac<sub>cm</sub> 以上。若加热到奥氏体单相区，缓冷过程中会再次析出网状渗碳体，反而恶化性能；同时，淬火后残余奥氏体量也会增加，导致硬度下降。</li>
+</ul>
 
-          <h2>1. A<sub>1</sub>线（共析线，727°C）：热处理工艺的温度“锚点”</h2>
-          <p>A<sub>1</sub>线是珠光体与奥氏体相互转变的边界，也是所有阀门热处理工艺的温度基准。在实际生产中，由于加热和冷却都存在滞后效应，相变点会发生偏移：</p>
-          <ul>
-            <li>加热时，实际相变点记为 <b>Ac<sub>1</sub></b>（Ac 表示加热，A 表示平衡相变点），Ac<sub>1</sub> 总是高于平衡 A<sub>1</sub> 点。</li>
-            <li>冷却时，实际相变点记为 <b>Ar<sub>1</sub></b>，Ar<sub>1</sub> 总是低于平衡 A<sub>1</sub> 点。</li>
-          </ul>
-          <p><b>工程意义：</b>加热速度越快，Ac<sub>1</sub> 偏离平衡点越多。这意味着，对 ASTM A105 等亚共析锻钢阀门进行淬火或完全正火时，跨越 Ac<sub>1</sub> 仅能使珠光体转变为奥氏体，而不能机械套用 727°C 的“理论值”作为最终加热目标，必须进一步加热到 Ac<sub>3</sub> 以上 30~50°C 确定实际保温温度。</p>
-          <p>若加热温度过低（未能有效跨越 Ac<sub>3</sub> 达到完全奥氏体区），原组织中的先共析铁素体将无法完全溶解，淬火后基体中会出现未溶铁素体，造成硬度不均——这在汽轮机调节阀阀杆失效案例中已有明确教训：铁素体含量偏高直接导致材料强度与冲击韧性低于标准要求。</p>
+<h2>3. 铁素体+珠光体基体的性能定位</h2>
+<p>阀门选用碳钢（含碳量 &lt; 2.14%）的常温目标组织为铁素体+珠光体。这一组合的工程考量在于：</p>
+<ul>
+  <li><b>珠光体</b>（铁素体与渗碳体的片层混合物）提供强度支撑，抗拉强度可达 770~870 MPa，远高于纯铁素体的 250~300 MPa。</li>
+  <li><b>铁素体</b>提供塑性与韧性，使阀门在低温工况下抵抗冷脆断裂——但需注意，铁素体-珠光体基体的钢材均存在低温冷脆现象，当温度降至某一临界值以下时，冲击功会急剧下降，因此阀门设计必须明确最低服役温度与材料的脆性转变温度之间的安全裕度。</li>
+</ul>
 
-          <h2>2. A<sub>3</sub>线与 A<sub>cm</sub>线：亚共析钢与过共析钢的工艺“分水岭”</h2>
-          <ul>
-            <li><b>A<sub>3</sub>线（GS线）：</b>亚共析钢（碳含量 &lt; 0.77%）在加热时，铁素体完全溶解进入奥氏体的温度边界。</li>
-            <li><b>A<sub>cm</sub>线（ES线）：</b>过共析钢（碳含量 &gt; 0.77%）在加热时，渗碳体完全溶解进入奥氏体的温度边界。</li>
-          </ul>
+<h2>4. 小结</h2>
+<p>铁碳相图的三条临界线——A<sub>1</sub>（热处理基准）、A<sub>3</sub>与 A<sub>cm</sub>（正火/退火温度上限的分水岭）——共同构成了阀门热加工工艺的温度坐标系。实际生产中的核心原则是：依据钢的碳含量确定应采用哪条线作为加热基准，同时考虑实际加热/冷却速度导致的相变点偏移，最终在细化晶粒、消除应力、避免脆性相析出之间取得平衡。</p>
 
-          <p><b>工程意义——为什么不能“一视同仁”？</b></p>
-          <p>对于<b>亚共析钢</b>（如 WCB 铸钢、A105 锻钢），正火或完全退火的加热温度应控制在 <b>Ac<sub>3</sub> 以上 30~50°C</b>。这个窗口确保了铁素体全部转变为奥氏体，随后在空气中冷却（正火）或炉冷（退火）时，奥氏体重新转变为细化的铁素体+珠光体组织，实现晶粒细化和内应力消除。</p>
-          
-          <p>对于<b>过共析钢</b>，规则则完全不同：</p>
-          <ul>
-            <li><b>正火温度</b>必须加热到 <b>Ac<sub>cm</sub> 以上 30~50°C</b>，因为正火的核心目的是消除铸态或锻态条件下析出的网状渗碳体——这种硬脆相会严重降低阀门的冲击韧性。只有将温度抬升到 Ac<sub>cm</sub> 以上，网状渗碳体才能全部溶入奥氏体，再通过空冷“锁住”这一消除效果。</li>
-            <li><b>退火/淬火温度</b>则应控制在 <b>Ac<sub>1</sub> 以上 30~50°C</b>（即两相区），而非 Ac<sub>cm</sub> 以上。若加热到奥氏体单相区，缓冷过程中会再次析出网状渗碳体，反而恶化性能；同时，淬火后残余奥氏体量也会增加，导致硬度下降。</li>
-          </ul>
+<div class="callout">
+  <b>技术建议：</b>如果您正在评估 WCB 铸钢或 A105 锻钢阀门的热处理工艺规程，或者在实际工况中遇到了阀杆硬度不均、晶粒粗化或低温冷脆失效等问题，欢迎联系我们的技术团队。凭借在严苛工况阀门制造及冶金工艺控制方面的经验，我们可以协助您优化材料热处理方案，确保阀门在极端环境下的本质安全。
+  <div class="btnrow">
+    <a class="btn primary" href="../../index.html?lang=zh#contact">联系获取技术支持</a>
+    <a class="btn" href="../blog.html?lang=zh">返回资讯列表</a>
+  </div>
+</div>
 
-          <h2>3. 铁素体+珠光体基体的性能定位</h2>
-          <p>阀门选用碳钢（含碳量 &lt; 2.14%）的常温目标组织为铁素体+珠光体。这一组合的工程考量在于：</p>
-          <ul>
-            <li><b>珠光体</b>（铁素体与渗碳体的片层混合物）提供强度支撑，抗拉强度可达 770~870 MPa，远高于纯铁素体的 250~300 MPa。</li>
-            <li><b>铁素体</b>提供塑性与韧性，使阀门在低温工况下抵抗冷脆断裂——但需注意，铁素体-珠光体基体的钢材均存在低温冷脆现象，当温度降至某一临界值以下时，冲击功会急剧下降，因此阀门设计必须明确最低服役温度与材料的脆性转变温度之间的安全裕度。</li>
-          </ul>
+        </article>
+      </div>
 
-          <h2>4. 小结</h2>
-          <p>铁碳相图的三条临界线——A<sub>1</sub>（热处理基准）、A<sub>3</sub>与 A<sub>cm</sub>（正火/退火温度上限的分水岭）——共同构成了阀门热加工工艺的温度坐标系。实际生产中的核心原则是：依据钢的碳含量确定应采用哪条线作为加热基准，同时考虑实际加热/冷却速度导致的相变点偏移，最终在细化晶粒、消除应力、避免脆性相析出之间取得平衡。</p>
-
-          <div class="callout">
-            <b>技术建议：</b>如果您正在评估 WCB 铸钢或 A105 锻钢阀门的热处理工艺规程，或者在实际工况中遇到了阀杆硬度不均、晶粒粗化或低温冷脆失效等问题，欢迎联系我们的技术团队。凭借在严苛工况阀门制造及冶金工艺控制方面的经验，我们可以协助您优化材料热处理方案，确保阀门在极端环境下的本质安全。
-            <div class="btnrow">
-              <a class="btn primary" href="../../index.html?lang=zh#contact">联系获取技术支持</a>
-              <a class="btn" href="../blog.html?lang=zh">返回资讯列表</a>
-            </div>
-          </div>
-
-        </article>
-      </div>
-
-      <div class="footer">
-        © Wuxing Valve · <a href="../blog.html?lang=zh">返回资讯列表</a>
-      </div>
-    </div>
-  </main>
-
-  <!-- ===================================================
-       交互控制脚本（已完美修复移动端横向划动、纵向滚动冲突）
-       =================================================== -->
-  <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const wrapper = document.getElementById('sliderWrapper');
-    const dotsContainer = document.getElementById('sliderDots');
-    const prevBtn = document.querySelector('.slider-btn.prev');
-    const nextBtn = document.querySelector('.slider-btn.next');
-    
-    const config = window.SLIDER_CONFIG || [];
-    if (config.length === 0) return;
-
-    // ---------------------------------------------------
-    // 1. 【动态渲染与 SEO 性能渲染】
-    // ---------------------------------------------------
-    wrapper.innerHTML = config.map((img, index) => {
-      const priorityAttr = index === 0 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"';
-      return `
-        <div class="slide">
-          <img src="${img.filename}" alt="${img.alt}" title="${img.title}" ${priorityAttr} onerror="this.src='https://placehold.co/900x450/0f172a/ffffff?text=${encodeURIComponent(img.title)}'">
-        </div>
-      `;
-    }).join('');
-
-    // 动态生成对应数量的小圆点
-    dotsContainer.innerHTML = ''; 
-    config.forEach((_, index) => {
-      const dot = document.createElement('span');
-      dot.classList.add('dot');
-      if (index === 0) dot.classList.add('active');
-      
-      dot.addEventListener('click', () => {
-        currentIndex = index;
-        updateSlider();
-        startAutoPlay();
-      });
-      dotsContainer.appendChild(dot);
-    });
-
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.dot');
-    let currentIndex = 0;
-    let timer = null;
-    const duration = 4000; // 自动播放间隔 4 秒
-
-    // ---------------------------------------------------
-    // 2. 【核心更新逻辑】
-    // ---------------------------------------------------
-    function updateSlider() {
-      wrapper.style.transition = 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)';
-      wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
-      dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === currentIndex);
-      });
-    }
-
-    function nextSlide() {
-      currentIndex = (currentIndex + 1) % slides.length;
-      updateSlider();
-    }
-
-    function prevSlide() {
-      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-      updateSlider();
-    }
-
-    function startAutoPlay() {
-      stopAutoPlay();
-      timer = setInterval(nextSlide, duration);
-    }
-
-    function stopAutoPlay() {
-      if (timer) clearInterval(timer);
-    }
-
-    nextBtn.addEventListener('click', () => { nextSlide(); startAutoPlay(); });
-    prevBtn.addEventListener('click', () => { prevSlide(); startAutoPlay(); });
-
-    // ---------------------------------------------------
-    // 3. 【极佳的手机触控滑动手势系统 - 完美解决滚动锁定】
-    // ---------------------------------------------------
-    let startX = 0;
-    let startY = 0;
-    let isDragging = false;
-    let isScrollDetected = false; // 用于判断用户是想纵向划网页，还是想横向划图片
-    let startTime = 0;
-
-    // 监听触摸开始
-    wrapper.addEventListener('touchstart', (e) => {
-      stopAutoPlay();
-      const touch = e.touches[0];
-      startX = touch.clientX;
-      startY = touch.clientY;
-      startTime = Date.now();
-      isDragging = true;
-      isScrollDetected = false; // 重置滚动状态判断
-      wrapper.style.transition = 'none'; // 触控拖动时即时跟手
-    }, { passive: true });
-
-    // 监听触摸移动
-    wrapper.addEventListener('touchmove', (e) => {
-      if (!isDragging) return;
-      
-      const touch = e.touches[0];
-      const diffX = touch.clientX - startX;
-      const diffY = touch.clientY - startY;
-
-      // 1. 如果还没有判断出意图，通过手指移动的夹角斜率进行判定
-      if (!isScrollDetected) {
-        // 如果纵向位移明显大于横向位移，判定为“用户想滚动网页”，彻底释放控制权给浏览器
-        if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > 5) {
-          isDragging = false;
-          updateSlider(); // 回弹当前图片
-          return;
-        }
-        // 如果横向位移大于5px，判定为“用户想横向划图”，锁定浏览器纵向滚动
-        if (Math.abs(diffX) > 5) {
-          isScrollDetected = true;
-        }
-      }
-
-      // 2. 如果判定为想横向划图，阻止纵向网页滚动，并进行物理阻尼跟手反馈
-      if (isScrollDetected) {
-        if (e.cancelable) e.preventDefault(); // 阻断横向滑动时顺带引起的网页上下晃动
-        const width = wrapper.clientWidth;
-        let translation = -currentIndex * width + diffX;
-        
-        // 如果在第一张往右滑，或者最后一张往左滑，加入橡皮筋边缘阻尼效果
-        if ((currentIndex === 0 && diffX > 0) || (currentIndex === slides.length - 1 && diffX < 0)) {
-          translation = -currentIndex * width + diffX * 0.3; // 30%的阻力系数
-        }
-        
-        wrapper.style.transform = `translateX(${translation}px)`;
-      }
-    }, { passive: false }); // 必须设置为 passive: false，否则 e.preventDefault() 在移动端 Chrome 上会报错失效
-
-    // 监听触摸结束
-    wrapper.addEventListener('touchend', (e) => {
-      if (!isDragging) return;
-      isDragging = false;
-
-      const endX = e.changedTouches[0].clientX;
-      const diffX = endX - startX;
-      const width = wrapper.clientWidth;
-      const timeElapsed = Date.now() - startTime;
-
-      const threshold = width * 0.15; // 基础拖拽距离阈值 (15% 宽度)
-      const isFastSwipe = timeElapsed < 250 && Math.abs(diffX) > 30; // 快速轻扫 (扫动时间小于 250ms，且距离大于 30px)
-
-      if (diffX < -threshold || (isFastSwipe && diffX < 0)) {
-        nextSlide();
-      } else if (diffX > threshold || (isFastSwipe && diffX > 0)) {
-        prevSlide();
-      } else {
-        updateSlider(); // 回弹当前张
-      }
-      startAutoPlay(); // 重新开始平稳自动播放
-    });
-
-    // ---------------------------------------------------
-    // 4. 【完美适配 PC 端鼠标拖动模拟】
-    // ---------------------------------------------------
-    let isMouseDown = false;
-
-    wrapper.addEventListener('mousedown', (e) => {
-      stopAutoPlay();
-      startX = e.clientX;
-      isMouseDown = true;
-      wrapper.style.transition = 'none';
-    });
-
-    wrapper.addEventListener('mousemove', (e) => {
-      if (!isMouseDown) return;
-      const diffX = e.clientX - startX;
-      const width = wrapper.clientWidth;
-      
-      let translation = -currentIndex * width + diffX;
-      if ((currentIndex === 0 && diffX > 0) || (currentIndex === slides.length - 1 && diffX < 0)) {
-        translation = -currentIndex * width + diffX * 0.3;
-      }
-      wrapper.style.transform = `translateX(${translation}px)`;
-    });
-
-    const handleMouseUp = (e) => {
-      if (!isMouseDown) return;
-      isMouseDown = false;
-      const endX = e.clientX || startX;
-      const diffX = endX - startX;
-      const threshold = wrapper.clientWidth * 0.15;
-
-      if (diffX < -threshold) {
-        nextSlide();
-      } else if (diffX > threshold) {
-        prevSlide();
-      } else {
-        updateSlider();
-      }
-      startAutoPlay();
-    };
-
-    wrapper.addEventListener('mouseup', handleMouseUp);
-    wrapper.addEventListener('mouseleave', handleMouseUp);
-
-    // 启动初始轮播
-    startAutoPlay();
-  });
-  </script>
+      <div class="footer">
+        © Wuxing Valve · <a href="../blog.html?lang=zh">返回资讯列表</a>
+      </div>
+    </div>
+  </main>
 </body>
 </html>
