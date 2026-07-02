@@ -90,6 +90,12 @@
   .navLink{padding:8px 9px;font-size:14px}
 }
 
+/* ===== 新增地图样式 ===== */
+.map-section { margin-top:24px; text-align:center; padding-top:16px; border-top:1px dashed var(--line); }
+.map-link { display:inline-block; border-radius:16px; overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--line); transition:transform 0.2s; max-width: 800px; width: 100%; }
+.map-link:hover { transform:translateY(-2px); box-shadow:0 15px 35px rgba(0,0,0,.12); }
+.map-img { width:100%; height:auto; display:block; }
+.map-hint { margin-top:12px; font-size:14px; color:var(--brand); font-weight:600; display:flex; align-items:center; justify-content:center; gap:6px;}
   </style>
 </head>
 <body>
@@ -148,7 +154,18 @@
 
         <p data-i18n="p5">公司始终坚持“以质量求生存，以改革求发展”和以“科技强司，聚贤兴企”的思想理念，不断研发用户急需的高新产品。与您合作，互惠共赢，我们在全国各大中城市都设有销售中心和服务部门，随时为您提供超值服务。</p>
 
-      </section>
+        <div class="map-section">
+          <a class="map-link" href="https://maps.apple.com.cn/place?place-id=H2710I3F83380F991E5&_provider=57879" target="_blank" rel="noopener noreferrer" aria-label="View on Apple Maps">
+            
+            <img class="map-img" src="Map.jpg" alt="Company Location Map" loading="lazy" />
+          </a>
+          
+          <div class="map-hint">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span data-i18n="map_hint">点击图片在 Apple Maps 中查看详细路线</span>
+          </div>
+        </div>
+        </section>
     </div>
   </main>
 
@@ -289,7 +306,13 @@
       es:"Seguimos los principios de “sobrevivir por la calidad y crecer con la innovación”, invirtiendo en tecnología y talento para desarrollar productos que el cliente necesita. Valoramos la cooperación a largo plazo y las relaciones ganar‑ganar, con equipos de ventas y servicio en las principales ciudades de China para ofrecer soporte ágil.",
       de:"Wir folgen dem Grundsatz „Bestand durch Qualität, Wachstum durch Innovation“ und investieren in Technologie und Talente, um praxisnahe Produkte zu entwickeln. Wir setzen auf langfristige Zusammenarbeit und Win‑Win‑Partnerschaften, unterstützt durch Vertriebs‑ und Serviceteams in großen Städten Chinas für schnellen Support."
     },
-    
+    // ====== 已修改为 Apple Maps ======
+    map_hint: {
+      zh: "点击图片在 Apple Maps 中查看详细路线",
+      en: "Click the image to view detailed routes on Apple Maps",
+      es: "Haga clic en la imagen para ver rutas detalladas en Apple Maps",
+      de: "Klicken Sie auf das Bild, um detaillierte Routen auf Apple Maps anzuzeigen"
+    }
   };
 
   function applyAboutContent(lang){
