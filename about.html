@@ -22,27 +22,25 @@
       background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(10px);
       border-bottom:1px solid var(--line)
     }
-    .wrap{max-width:1150px;margin:0 auto;padding:14px 18px}
-    .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{height:34px;width:auto;display:block;border-radius:10px;object-fit:contain;box-shadow:0 8px 20px rgba(17,24,39,.12)}
-    .brandTitle{font-weight:800;letter-spacing:.2px}
-    .brandSub{font-size:12px;color:var(--muted);margin-top:2px}
-    .lang{display:inline-flex;gap:6px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px}
-    .lang button{border:0;background:transparent;padding:7px 10px;border-radius:999px;cursor:pointer;font-weight:700;color:#374151}
-    .lang button.active{background:var(--brand);color:#fff}
-
-    /* ===== Primary navigation ===== */
-    .navRow{display:flex;gap:14px;align-items:center;justify-content:flex-end;flex-wrap:wrap;margin-top:12px;padding-top:10px;border-top:1px solid var(--line)}
-    .navLink{font-weight:700;color:#374151;padding:8px 10px;border-radius:999px;line-height:1}
-    .navLink:hover{background:rgba(37,99,235,.10);color:#1f2937}
-    .navCta{background:var(--brand);color:#fff}
-    .navCta:hover{background:#1d4ed8;color:#fff}
-    @media (max-width: 720px){
-      .navRow{gap:10px}
-      .navLink{padding:8px 9px;font-size:14px}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 16px}
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      padding:12px 0;
     }
-
+    .brand{display:flex;align-items:center;gap:10px}
+    .logo{
+      width:34px;height:34px;border-radius:10px;
+      display:block;object-fit:contain;
+      box-shadow:0 8px 20px rgba(17,24,39,.12);
+    }
+    .brand b{letter-spacing:.2px}
+    .links{display:flex;gap:14px;flex-wrap:wrap}
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:10px 12px;border-radius:12px;border:1px solid var(--line);
+      background:#fff;
+    }
+    .btn.primary{border-color:rgba(37,99,235,.35);background:rgba(37,99,235,.06)}
     main{padding:28px 0 56px}
     .hero{
       background:linear-gradient(135deg, rgba(37,99,235,.10), rgba(96,165,250,.08));
@@ -64,206 +62,18 @@
     .card h2{margin:0 0 10px;font-size:18px}
     .card p{margin:0 0 12px;line-height:1.85}
     .card p:last-child{margin-bottom:0}
-
-    /* ===== 地图容器样式（去除了点击和悬浮位移） ===== */
-    .map-section { margin-top:24px; text-align:center; padding-top:16px; border-top:1px dashed var(--line); }
-    .map-wrapper { display:inline-block; border-radius:16px; overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--line); max-width: 800px; width: 100%; }
-    .map-img { width:100%; height:auto; display:block; }
-  </style>
-</head>
-<body>
-<div id="top"></div>
-
-<header id="siteHeader">
-  <div class="wrap">
-    <div class="topbar">
-      <a class="brand" href="index.html" aria-label="Wuxing Valve Home">
-        <img class="logo" src="assets/logo.png" alt="Wuxing Valve logo" />
-        <div>
-          <div class="brandTitle">Wuxing Valve</div>
-          <div class="brandSub" id="brandSub">工业阀门 · 外贸供应</div>
-        </div>
-      </a>
-      <div class="lang" role="tablist" aria-label="Language switch">
-        <button data-lang="zh" class="active">ZH</button>
-        <button data-lang="en">EN</button>
-        <button data-lang="es">ES</button>
-        <button data-lang="de">DE</button>
-      </div>
-    </div>
-
-    <nav class="navRow" aria-label="Primary">
-      <a class="navLink" href="index.html#top" data-nav="home">Home</a>
-      <a class="navLink" href="index.html#products" data-nav="products">Products</a>
-      <a class="navLink" href="index.html#filters" data-nav="applications" data-filter="fert">Applications</a>
-      <a class="navLink" href="index.html#filters" data-nav="certificates" data-filter="certificates">Certificates</a>
-      <a class="navLink" href="blog/blog.html" data-nav="blog" id="navBlog">Insights</a>
-      <a class="navLink" href="about.html" data-nav="about">About</a>
-      <a class="navLink navCta" href="index.html#contact" data-nav="contact">Contact</a>
-    </nav>
-  </div>
-</header>
-
-<main>
-  <div class="wrap">
-    <section class="hero">
-      <h1 data-i18n="hero_title">关于我们</h1>
-      <p data-i18n="hero_lead">浙江五星阀门有限公司原系永嘉五星阀门总厂。始建于上个世纪80年代，地处“泵阀之乡”的温州瓯北。</p>
-    </section>
-
-    <section class="card" aria-label="公司介绍">
-      <h2 data-i18n="sec_title">公司简介</h2>
-      <p data-i18n="p1">浙江五星阀门有限公司原系永嘉五星阀门总厂。始建于上个世纪80年代，地处“泵阀之乡”的温州瓯北。位于风景迷人的瓯江东畔，这里是温福铁路与杭温高速公路的交叉口，门前的水运码头可载货直达世界各地。航空、铁路、公路、码头等多种交通交汇，形成了立体的交通枢纽，保证物流的快速集散。</p>
-      <p data-i18n="p2">公司整体工业园区占地15000平方米，建筑面积18000平方米；拥有数控机床，精密磨床、镗床、大型立体车床、包装流水线等各种设备，其中金属切割机床占85%以上。设有理化室、计量室、物理实验室，可对产品内在质量分析和实施无损探伤检验。企业管理已与世界阀门行业接轨，通过了ISO9001及国家特种设备（压力管道）TS安全注册认证。</p>
-      <p data-i18n="p3">明亮的厂房，精良的设备，精密的检测手段，现代化的管理系统，对产品形成了可靠的质量保证。我们可以生产国标、美标、日标、德标等各种高科技的阀门产品，造就了一批科技素养高的五星人精粹，现我公司已成为集产品研发、生产、销售为一体的经济实体，高新技术企业。</p>
-      <p data-i18n="p4">我们主要生产各种高压角式截止阀、止回阀、平衡阀、闸阀、保温阀、硬密封球阀、高压管件及各类钛合金材质阀门，约数百种规格的高中压阀门产品；广泛用于化工、化肥、制药、供热、石化、炼油、冶金、矿山、化纤、造纸、发电等国民经济领域。</p>
-      <p data-i18n="p5">公司始终坚持“以质量求生存，以改革求发展”和以“科技强司，聚贤兴企”的思想理念，不断研发用户急需的高新产品。与您合作，互惠共赢，我们在全国各大中城市都设有销售中心和服务部门，随时为您提供超值服务。</p>
-
-      <div class="map-section">
-        <div class="map-wrapper">
-          <img class="map-img" src="Map.jpg" alt="Company Location Map" loading="lazy" />
-        </div>
-      </div>
-    </section>
-  </div>
-</main>
-
-<footer>
-  <div class="wrap">
-    © <span id="y"></span> Zhejiang Wuxing Valve Co., Ltd. All rights reserved.
-  </div>
-</footer>
-
-<script>
-  // 1. 设置年份
-  document.getElementById('y').textContent = new Date().getFullYear();
-
-  // 2. 国际化数据字典
-  const SUPPORTED = ["zh","en","es","de"];
-  const NAV_I18N = {
-    home:       { zh: "首页",     en: "Home",        es: "Inicio",      de: "Start" },
-    products:   { zh: "产品",     en: "Products",    es: "Productos",   de: "Produkte" },
-    applications:{ zh: "应用",     en: "Applications",es: "Aplicaciones",de: "Anwendungen" },
-    certificates:{ zh: "证书",     en: "Certificates",es: "Certificados",de: "Zertifikate" },
-    blog:       { zh: "资讯",     en: "Insights",    es: "Recursos",    de: "Insights" },
-    about:       { zh: "关于我们", en: "About",       es: "Sobre nosotros",de:"Über uns" },
-    contact:     { zh: "联系我们", en: "Contact",     es: "Contacto",    de: "Kontakt" },
-  };
-
-  const I18N_ABOUT = {
-    title: { zh: "关于我们 · Wuxing Valve", en: "About Us · Wuxing Valve", es: "Sobre nosotros · Wuxing Valve", de: "Über uns · Wuxing Valve" },
-    metaDesc: {
-      zh: "浙江五星阀门有限公司（原永嘉五星阀门总厂）关于我们：公司介绍、厂区与设备、资质与管理体系、产品与应用领域。",
-      en: "About Zhejiang Wuxing Valve Co., Ltd.: company profile, facilities & equipment, certifications & quality system, products and applications.",
-      es: "Sobre Zhejiang Wuxing Valve Co., Ltd.: perfil de la empresa, instalaciones y equipos, certificaciones y sistema de calidad, productos y aplicaciones.",
-      de: "Über Zhejiang Wuxing Valve Co., Ltd.: Unternehmensprofil, Anlagen & Ausrüstung, Zertifizierungen & Qualitätsmanagement, Produkte und Anwendungen."
-    },
-    brandSub: { zh: "工业阀门 · 外贸供应", en: "Industrial Valves · Export Supply", es: "Válvulas industriales · Suministro de exportación", de: "Industriearmaturen · Exportlieferant" },
-    hero_title: { zh:"关于我们", en:"About Us", es:"Sobre nosotros", de:"Über uns" },
-    hero_lead: {
-      zh:"浙江五星阀门有限公司原系永嘉五星阀门总厂。始建于上个世纪80年代，地处“泵阀之乡”的温州瓯北。",
-      en:"Zhejiang Wuxing Valve Co., Ltd. (formerly Yongjia Wuxing Valve General Factory) was founded in the 1980s in Oubei, Wenzhou—well known as a hub for pumps and valves.",
-      es:"Zhejiang Wuxing Valve Co., Ltd. (antes Fábrica General de Válvulas Yongjia Wuxing) se fundó en la década de 1980 en Oubei, Wenzhou, conocida como un importante centro de bombas y válvulas.",
-      de:"Zhejiang Wuxing Valve Co., Ltd. (ehemals Yongjia Wuxing Valve General Factory) wurde in den 1980er‑Jahren in Oubei, Wenzhou gegründet – einer bekannten Region für Pumpen und Armaturen."
-    },
-    sec_title: { zh:"公司简介", en:"Company Profile", es:"Perfil de la empresa", de:"Unternehmensprofil" },
-    p1: {
-      zh:"浙江五星阀门有限公司原系永嘉五星阀门总厂。始建于上个世纪80年代，地处“泵阀之乡”的温州瓯北。位于风景迷人的瓯江东畔，这里是温福铁路与杭温高速公路的交叉口，门前的水运码头可载货直达世界各地。航空、铁路、公路、码头等多种交通交汇，形成了立体的交通枢纽，保证物流的快速集散。",
-      en:"Zhejiang Wuxing Valve Co., Ltd., formerly Yongjia Wuxing Valve General Factory, was founded in the 1980s in Oubei, Wenzhou. Located on the east bank of the Oujiang River near key rail and expressway links, and close to a river port, we enjoy convenient access by air, rail, road and shipping—supporting efficient logistics and distribution.",
-      es:"Zhejiang Wuxing Valve Co., Ltd., antes Fábrica General de Válvulas Yongjia Wuxing, se fundó en la década de 1980 en Oubei, Wenzhou. Situada en la ribera oriental del río Oujiang y cerca de importantes conexiones ferroviarias y autopistas, además de un puerto fluvial, contamos con acceso cómodo por aire, ferrocarril, carretera y transporte marítimo para una logística eficiente.",
-      de:"Zhejiang Wuxing Valve Co., Ltd., ehemals Yongjia Wuxing Valve General Factory, wurde in den 1980er‑Jahren in Oubei, Wenzhou gegründet. Am Ostufer des Oujiang‑Flusses gelegen und nahe wichtiger Bahn‑ und Schnellstraßenverbindungen sowie eines Flusshafens, bieten wir bequemen Zugang per Luft, Schiene, Straße und Schiff – für eine effiziente Logistik."
-    },
-    p2: {
-      zh:"公司整体工业园区占地15000平方米，建筑面积18000平方米；拥有数控机床，精密磨床、镗床、大型立体车床、包装流水线等各种设备，其中金属切割机床占 85% 以上。设有理化室、计量室、物理实验室，可对产品内在质量分析和实施无损探伤检验。企业管理已与世界阀门行业接轨，通过了ISO9001及国家特种设备（压力管道）TS安全注册认证。",
-      en:"Our industrial park covers about 15,000 m² with 18,000 m² of built-up area. We operate CNC machines, precision grinders, boring machines, large vertical lathes and packaging lines, with metal cutting equipment accounting for over 85%. In-house labs and metrology capability support material/quality analysis and NDT inspection. Our management system is aligned with global practices and certified to ISO 9001 and relevant national TS registrations for special equipment (pressure piping).",
-      es:"Nuestro parque industrial ocupa aproximadamente 15.000 m², con 18.000 m² de área construida. Contamos con CNC, rectificadoras de precisión, mandrinadoras, tornos verticales de gran tamaño y líneas de empaquetado; los equipos de corte de metal superan el 85%. Disponemos de laboratorios y metrología para análisis de materiales/calidad e inspección END. Nuestro sistema de gestión está alineado con prácticas internacionales y cuenta con certificación ISO 9001 y registros TS aplicables para equipos especiales (tuberías a presón).",
-      de:"Unser Industriepark umfasst ca. 15.000 m², die bebaute Fläche ca. 18.000 m². Wir verfügen über CNC‑Maschinen, Präzisionsschleifmaschinen, Bohrwerke, große Vertikaldrehmaschinen sowie Verpackungslinien; über 85% sind Metallbearbeitungsmaschinen. Eigene Labore und Messtechnik ermöglichen Material‑/Qualitätsanalysen sowie ZfP‑Prüfungen. Unser Managementsystem ist an internationale Standards angelehnt und nach ISO 9001 sowie den relevanten TS‑Registrierungen für Sonderanlagen (Druckrohrleitungen) zertifiziert."
-    },
-    p3: {
-      zh:"明亮的厂房，精良的设备，精密的检测手段，现代化的管理系统，对产品形成了可靠的质量保证。我们可以生产国标、美标、日标、德标等各种高科技的阀门产品，造就了一批科技素养高的五星人精粹，现我公司已成为集产品研发、生产、销售为一体的经济实体，高新技术企业。",
-      en:"Bright workshops, advanced equipment, precise inspection and modern management provide reliable quality assurance. We manufacture valves to GB, ANSI, JIS, DIN and other standards. With a skilled technical team, we have developed into an integrated enterprise covering R&D, manufacturing and sales, recognized as a high-tech company.",
-      es:"Talleres luminosos, equipos avanzados, inspección precisa y una gestión moderna garantizan una calidad fiable. Fabricamos válvulas según normas GB, ANSI, JIS, DIN y otras. Con un equipo técnico cualificado, nos hemos convertido en una empresa integrada que abarca I+D, fabricación y ventas, reconocida como empresa de alta tecnología.",
-      de:"Helle Werkstätten, moderne Ausrüstung, präzise Prüfmittel und zeitgemäßes Management sichern eine zuverlässige Qualität. Wir fertigen Armaturen nach GB, ANSI, JIS, DIN und weiteren Standards. Mit einem starken Team haben wir uns zu einem integrierten Unternehmen für Entwicklung, Produktion und Vertrieb entwickelt und gelten als High‑Tech‑Unternehmen."
-    },
-    p4: {
-      zh:"我们主要生产各种高压角式截止阀、止回阀、平衡阀、闸阀、保温阀、硬密封球阀、高压管件及各类钛合金材质阀门，约数百种规格的高中压阀门产品；广泛用于化工、化肥、制药、供热、石化、炼油、冶金、矿山、化纤、造纸、发电等国民经济领域。",
-      en:"Our main products include high-pressure angle globe valves, check valves, balancing valves, gate valves, insulated valves, metal-seated ball valves, high-pressure fittings, and titanium-alloy valves—hundreds of medium-to-high pressure specifications. They are widely used in chemical, fertilizer, pharmaceutical, district heating, petrochemical, refining, metallurgy, mining, synthetic fiber, paper, power generation and more.",
-      es:"Nuestros productos principales incluyen válvulas de globo angulares de alta presión, válvulas de retención, válvulas de equilibrado, válvulas de compuerta, válvulas aisladas, válvulas de bola de asiento metálico, accesorios de alta presión y válvulas de aleación de titanio—cientos de especificaciones de media y alta presión. Se utilizan ampliamente en química, fertilizantes, farmacéutica, calefacción, petroquímica, refino, metalurgia, minería, fibra química, papel, generación eléctrica, etc.",
-      de:"Zu unseren Hauptprodukten zählen Hochdruck‑Eck‑Absperrventile (Globe), Rückschlagventile, Ausgleichsventile, Schieber, isolierte Armaturen, metallisch dichtende Kugelhähne, Hochdruck‑Fittings sowie Titanlegierungs‑Armaturen – hunderte Ausführungen im Mittel‑ bis Hochdruckbereich. Einsatzbereiche: Chemie, Düngemittel, Pharma, Wärmeversorgung, Petrochemie, Raffinerien, Metallurgie, Bergbau, Chemiefaser, Papier, Energieerzeugung u.v.m."
-    },
-    p5: {
-      zh:"公司始终坚持“以质量求生存，以改革求发展”和以“科技强司，聚贤兴企”的思想理念，不断研发用户急需的高新产品。与您合作，互惠共赢，我们在全国各大中城市都设有销售中心和服务部门，随时为您提供超值 service。",
-      en:"We adhere to the principles of “survive by quality and grow by innovation”, investing in technology and talent to develop products customers need. We value long-term cooperation and win-win partnerships, supported by sales and service teams across major cities in China to provide responsive support.",
-      es:"Seguimos los principios de “sobrevivir por la calidad y crecer con la innovación”, invirtiendo en tecnología y talento para desarrollar productos que el cliente necesita. Valoramos la cooperación a largo plazo y las relaciones ganar‑ganar, con equipos de ventas y servicio en las principales ciudades de China para ofrecer soporte ágil.",
-      de:"Wir folgen dem Grundsatz „Bestand durch Qualität, Wachstum durch Innovation“ und investieren in Technologie und Talente, um praxisnahe Produkte zu entwickeln. Wir setzen auf langfristige Zusammenarbeit und Win‑Win‑Partnerschaften, unterstützt durch Vertriebs‑ und Serviceteams in großen Städten Chinas für schnellen Support."
+    .note{
+      margin-top:14px;
+      font-size:13px;color:var(--muted);
     }
-  };
-
-  // 3. 获取当前语言
-  function getLang() {
-    const u = new URL(location.href);
-    const q = (u.searchParams.get("lang") || "").toLowerCase();
-    const stored = (localStorage.getItem("lang") || "").toLowerCase();
-    return SUPPORTED.includes(q) ? q : (SUPPORTED.includes(stored) ? stored : "zh");
-  }
-
-  // 4. 应用翻译的核心函数
-  function setLang(lang){
-    localStorage.setItem("lang", lang);
-    
-    // 更新 URL 参数而不刷新页面
-    const u = new URL(location.href);
-    u.searchParams.set("lang", lang);
-    history.replaceState(null, "", u.toString());
-    
-    // 切换按钮高亮
-    document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('active', b.dataset.lang===lang));
-    document.documentElement.lang = (lang==='zh') ? 'zh-CN' : lang;
-    
-    // A. 翻译导航栏文本与同步博客链接
-    document.querySelectorAll('[data-nav]').forEach(a=>{
-      const key = a.getAttribute('data-nav');
-      const map = NAV_I18N[key];
-      if(map) a.textContent = map[lang] || map.en || a.textContent;
-    });
-    const blogLink = document.getElementById("navBlog");
-    if(blogLink) blogLink.href = `blog/blog.html?lang=${encodeURIComponent(lang)}`;
-
-    // B. 确保导航返回主页时带上语言参数
-    document.querySelectorAll('.navRow a').forEach(a=>{
-      const href = a.getAttribute('href') || '';
-      if(href.startsWith('index.html')){
-        const parts = href.split('#');
-        const base = parts[0];
-        const hash = parts[1] ? ('#' + parts[1]) : '';
-        const indexUrl = new URL(base, location.href);
-        indexUrl.searchParams.set('lang', lang);
-        a.setAttribute('href', indexUrl.pathname + indexUrl.search + hash);
-      }
-    });
-
-    // C. 翻译正文与 Meta 描述
-    const sub = document.getElementById("brandSub");
-    if(sub) sub.textContent = I18N_ABOUT.brandSub[lang] || I18N_ABOUT.brandSub.en;
-
-    document.title = I18N_ABOUT.title[lang] || I18N_ABOUT.title.en;
-    const meta = document.getElementById("metaDesc");
-    if(meta) meta.setAttribute("content", I18N_ABOUT.metaDesc[lang] || I18N_ABOUT.metaDesc.en);
-
-    document.querySelectorAll("[data-i18n]").forEach(el=>{
-      const k = el.getAttribute("data-i18n");
-      const dict = I18N_ABOUT[k];
-      if(dict) el.textContent = dict[lang] || dict.en || el.textContent;
-    });
-  }
-
-  // 5. 绑定切换事件
-  document.querySelectorAll('.lang button').forEach(b => {
-    b.addEventListener('click', () => setLang(b.dataset.lang));
-  });
-
-  // 6. 初始化执行
-  setLang(getLang());
-</script>
-</body>
-</html>
+    footer{border-top:1px solid var(--line);padding:18px 0;color:var(--muted);font-size:13px}
+  
+/* ===== Header styles synced with index ===== */
+.wrap{max-width:1150px;margin:0 auto;padding:14px 18px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{height:34px;width:auto;display:block;border-radius:10px;object-fit:contain;box-shadow:0 8px 20px rgba(17,24,39,.12)}
+.brandTitle{font-weight:800;letter-spacing:.2px}
+.brandSub{font-size:12px;color:var(--muted);margin-top:2px}
+.lang{display:inline-flex;gap:6px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px}
+.lang button{border:0;background:transparent;padding:7px 10px;
