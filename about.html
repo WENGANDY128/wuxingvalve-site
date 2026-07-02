@@ -22,25 +22,27 @@
       background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(10px);
       border-bottom:1px solid var(--line)
     }
-    .wrap{max-width:var(--max);margin:0 auto;padding:0 16px}
-    .nav{
-      display:flex;align-items:center;justify-content:space-between;gap:12px;
-      padding:12px 0;
+    .wrap{max-width:1150px;margin:0 auto;padding:14px 18px}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{height:34px;width:auto;display:block;border-radius:10px;object-fit:contain;box-shadow:0 8px 20px rgba(17,24,39,.12)}
+    .brandTitle{font-weight:800;letter-spacing:.2px}
+    .brandSub{font-size:12px;color:var(--muted);margin-top:2px}
+    .lang{display:inline-flex;gap:6px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px}
+    .lang button{border:0;background:transparent;padding:7px 10px;border-radius:999px;cursor:pointer;font-weight:700;color:#374151}
+    .lang button.active{background:var(--brand);color:#fff}
+
+    /* ===== Primary navigation ===== */
+    .navRow{display:flex;gap:14px;align-items:center;justify-content:flex-end;flex-wrap:wrap;margin-top:12px;padding-top:10px;border-top:1px solid var(--line)}
+    .navLink{font-weight:700;color:#374151;padding:8px 10px;border-radius:999px;line-height:1}
+    .navLink:hover{background:rgba(37,99,235,.10);color:#1f2937}
+    .navCta{background:var(--brand);color:#fff}
+    .navCta:hover{background:#1d4ed8;color:#fff}
+    @media (max-width: 720px){
+      .navRow{gap:10px}
+      .navLink{padding:8px 9px;font-size:14px}
     }
-    .brand{display:flex;align-items:center;gap:10px}
-    .logo{
-      width:34px;height:34px;border-radius:10px;
-      display:block;object-fit:contain;
-      box-shadow:0 8px 20px rgba(17,24,39,.12);
-    }
-    .brand b{letter-spacing:.2px}
-    .links{display:flex;gap:14px;flex-wrap:wrap}
-    .btn{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:10px 12px;border-radius:12px;border:1px solid var(--line);
-      background:#fff;
-    }
-    .btn.primary{border-color:rgba(37,99,235,.35);background:rgba(37,99,235,.06)}
+
     main{padding:28px 0 56px}
     .hero{
       background:linear-gradient(135deg, rgba(37,99,235,.10), rgba(96,165,250,.08));
@@ -62,46 +64,18 @@
     .card h2{margin:0 0 10px;font-size:18px}
     .card p{margin:0 0 12px;line-height:1.85}
     .card p:last-child{margin-bottom:0}
-    .note{
-      margin-top:14px;
-      font-size:13px;color:var(--muted);
-    }
-    footer{border-top:1px solid var(--line);padding:18px 0;color:var(--muted);font-size:13px}
-  
-/* ===== Header styles synced with index ===== */
-.wrap{max-width:1150px;margin:0 auto;padding:14px 18px}
-.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.brand{display:flex;align-items:center;gap:12px}
-.logo{height:34px;width:auto;display:block;border-radius:10px;object-fit:contain;box-shadow:0 8px 20px rgba(17,24,39,.12)}
-.brandTitle{font-weight:800;letter-spacing:.2px}
-.brandSub{font-size:12px;color:var(--muted);margin-top:2px}
-.lang{display:inline-flex;gap:6px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px}
-.lang button{border:0;background:transparent;padding:7px 10px;border-radius:999px;cursor:pointer;font-weight:700;color:#374151}
-.lang button.active{background:var(--brand);color:#fff}
 
-/* ===== Primary navigation (same row as index) ===== */
-.navRow{display:flex;gap:14px;align-items:center;justify-content:flex-end;flex-wrap:wrap;margin-top:12px;padding-top:10px;border-top:1px solid var(--line)}
-.navLink{font-weight:700;color:#374151;padding:8px 10px;border-radius:999px;line-height:1}
-.navLink:hover{background:rgba(37,99,235,.10);color:#1f2937}
-.navCta{background:var(--brand);color:#fff}
-.navCta:hover{background:#1d4ed8;color:#fff}
-@media (max-width: 720px){
-  .navRow{gap:10px}
-  .navLink{padding:8px 9px;font-size:14px}
-}
-
-/* ===== 新增地图样式 ===== */
-.map-section { margin-top:24px; text-align:center; padding-top:16px; border-top:1px dashed var(--line); }
-.map-link { display:inline-block; border-radius:16px; overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--line); transition:transform 0.2s; max-width: 800px; width: 100%; }
-.map-link:hover { transform:translateY(-2px); box-shadow:0 15px 35px rgba(0,0,0,.12); }
-.map-img { width:100%; height:auto; display:block; }
-.map-hint { margin-top:12px; font-size:14px; color:var(--brand); font-weight:600; display:flex; align-items:center; justify-content:center; gap:6px;}
+    /* ===== 地图样式 ===== */
+    .map-section { margin-top:24px; text-align:center; padding-top:16px; border-top:1px dashed var(--line); }
+    .map-link { display:inline-block; border-radius:16px; overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--line); transition:transform 0.2s; max-width: 800px; width: 100%; }
+    .map-link:hover { transform:translateY(-2px); box-shadow:0 15px 35px rgba(0,0,0,.12); }
+    .map-img { width:100%; height:auto; display:block; }
+    .map-hint { margin-top:12px; font-size:14px; color:var(--brand); font-weight:600; display:flex; align-items:center; justify-content:center; gap:6px;}
   </style>
 </head>
 <body>
 <div id="top"></div>
 
-  
 <header id="siteHeader">
   <div class="wrap">
     <div class="topbar">
@@ -132,142 +106,65 @@
   </div>
 </header>
 
+<main>
+  <div class="wrap">
+    <section class="hero">
+      <h1 data-i18n="hero_title">关于我们</h1>
+      <p data-i18n="hero_lead">浙江五星阀门有限公司原系永嘉五星阀门总厂。始建于上个世纪80年代，地处“泵阀之乡”的温州瓯北。</p>
+    </section>
 
-  
-  <main>
-    <div class="wrap">
-      <section class="hero">
-        <h1 data-i18n="hero_title">关于我们</h1>
-        <p data-i18n="hero_lead">浙江五星阀门有限公司原系永嘉五星阀门总厂。始建于上个世纪80年代，地处“泵阀之乡”的温州瓯北。</p>
-      </section>
+    <section class="card" aria-label="公司介绍">
+      <h2 data-i18n="sec_title">公司简介</h2>
+      <p data-i18n="p1">浙江五星阀门有限公司原系永嘉五星阀门总厂。始建于上个世纪80年代，地处“泵阀之乡”的温州瓯北。位于风景迷人的瓯江东畔，这里是温福铁路与杭温高速公路的交叉口，门前的水运码头可载货直达世界各地。航空、铁路、公路、码头等多种交通交汇，形成了立体的交通枢纽，保证物流的快速集散。</p>
+      <p data-i18n="p2">公司整体工业园区占地15000平方米，建筑面积18000平方米；拥有数控机床，精密磨床、镗床、大型立体车床、包装流水线等各种设备，其中金属切割机床占85%以上。设有理化室、计量室、物理实验室，可对产品内在质量分析和实施无损探伤检验。企业管理已与世界阀门行业接轨，通过了ISO9001及国家特种设备（压力管道）TS安全注册认证。</p>
+      <p data-i18n="p3">明亮的厂房，精良的设备，精密的检测手段，现代化的管理系统，对产品形成了可靠的质量保证。我们可以生产国标、美标、日标、德标等各种高科技的阀门产品，造就了一批科技素养高的五星人精粹，现我公司已成为集产品研发、生产、销售为一体的经济实体，高新技术企业。</p>
+      <p data-i18n="p4">我们主要生产各种高压角式截止阀、止回阀、平衡阀、闸阀、保温阀、硬密封球阀、高压管件及各类钛合金材质阀门，约数百种规格的高中压阀门产品；广泛用于化工、化肥、制药、供热、石化、炼油、冶金、矿山、化纤、造纸、发电等国民经济领域。</p>
+      <p data-i18n="p5">公司始终坚持“以质量求生存，以改革求发展”和以“科技强司，聚贤兴企”的思想理念，不断研发用户急需的高新产品。与您合作，互惠共赢，我们在全国各大中城市都设有销售中心和服务部门，随时为您提供超值服务。</p>
 
-      <section class="card" aria-label="公司介绍">
-        <h2 data-i18n="sec_title">公司简介</h2>
-
-        <p data-i18n="p1">浙江五星阀门有限公司原系永嘉五星阀门总厂。始建于上个世纪80年代，地处“泵阀之乡”的温州瓯北。位于风景迷人的瓯江东畔，这里是温福铁路与杭温高速公路的交叉口，门前的水运码头可载货直达世界各地。航空、铁路、公路、码头等多种交通交汇，形成了立体的交通枢纽，保证物流的快速集散。</p>
-
-        <p data-i18n="p2">公司整体工业园区占地15000平方米，建筑面积18000平方米；拥有数控机床，精密磨床、镗床、大型立体车床、包装流水线等各种设备，其中金属切割机床占85%以上。设有理化室、计量室、物理实验室，可对产品内在质量分析和实施无损探伤检验。企业管理已与世界阀门行业接轨，通过了ISO9001及国家特种设备（压力管道）TS安全注册认证。</p>
-
-        <p data-i18n="p3">明亮的厂房，精良的设备，精密的检测手段，现代化的管理系统，对产品形成了可靠的质量保证。我们可以生产国标、美标、日标、德标等各种高科技的阀门产品，造就了一批科技素养高的五星人精粹，现我公司已成为集产品研发、生产、销售为一体的经济实体，高新技术企业。</p>
-
-        <p data-i18n="p4">我们主要生产各种高压角式截止阀、止回阀、平衡阀、闸阀、保温阀、硬密封球阀、高压管件及各类钛合金材质阀门，约数百种规格的高中压阀门产品；广泛用于化工、化肥、制药、供热、石化、炼油、冶金、矿山、化纤、造纸、发电等国民经济领域。</p>
-
-        <p data-i18n="p5">公司始终坚持“以质量求生存，以改革求发展”和以“科技强司，聚贤兴企”的思想理念，不断研发用户急需的高新产品。与您合作，互惠共赢，我们在全国各大中城市都设有销售中心和服务部门，随时为您提供超值服务。</p>
-
-        <div class="map-section">
-          <a class="map-link" href="https://maps.apple.com.cn/place?place-id=H2710I3F83380F991E5&_provider=57879" target="_blank" rel="noopener noreferrer" aria-label="View on Apple Maps">
-            
-            <img class="map-img" src="Map.jpg" alt="Company Location Map" loading="lazy" />
-          </a>
-          
-          <div class="map-hint">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-            <span data-i18n="map_hint">点击图片在 Apple Maps 中查看详细路线</span>
-          </div>
+      <div class="map-section">
+        <a class="map-link" href="https://maps.apple.com.cn/place?place-id=H2710I3F83380F991E5&_provider=57879" target="_blank" rel="noopener noreferrer" aria-label="View on Apple Maps">
+          <img class="map-img" src="Map.jpg" alt="Company Location Map" loading="lazy" />
+        </a>
+        <div class="map-hint">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          <span data-i18n="map_hint">点击图片在 Apple Maps 中查看详细路线</span>
         </div>
-        </section>
-    </div>
-  </main>
+      </div>
+    </section>
+  </div>
+</main>
 
-
-  <footer>
-    <div class="wrap">
-      © <span id="y"></span> Zhejiang Wuxing Valve Co., Ltd. All rights reserved.
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+<footer>
+  <div class="wrap">
+    © <span id="y"></span> Zhejiang Wuxing Valve Co., Ltd. All rights reserved.
+  </div>
+</footer>
 
 <script>
+  // 1. 设置年份
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  // 2. 国际化数据字典
   const SUPPORTED = ["zh","en","es","de"];
   const NAV_I18N = {
-    home:        { zh: "首页",     en: "Home",        es: "Inicio",      de: "Start" },
-    products:    { zh: "产品",     en: "Products",    es: "Productos",   de: "Produkte" },
+    home:       { zh: "首页",     en: "Home",        es: "Inicio",      de: "Start" },
+    products:   { zh: "产品",     en: "Products",    es: "Productos",   de: "Produkte" },
     applications:{ zh: "应用",     en: "Applications",es: "Aplicaciones",de: "Anwendungen" },
     certificates:{ zh: "证书",     en: "Certificates",es: "Certificados",de: "Zertifikate" },
-    blog:        { zh: "资讯",     en: "Insights",    es: "Recursos",    de: "Insights" },
+    blog:       { zh: "资讯",     en: "Insights",    es: "Recursos",    de: "Insights" },
     about:       { zh: "关于我们", en: "About",       es: "Sobre nosotros",de:"Über uns" },
     contact:     { zh: "联系我们", en: "Contact",     es: "Contacto",    de: "Kontakt" },
   };
 
-  function getLang() {
-    const u = new URL(location.href);
-    const q = (u.searchParams.get("lang") || "").toLowerCase();
-    const stored = (localStorage.getItem("lang") || "").toLowerCase();
-    return SUPPORTED.includes(q) ? q : (SUPPORTED.includes(stored) ? stored : "zh");
-  }
-
-  function applyNavLabels(lang){
-    document.querySelectorAll('[data-nav]').forEach(a=>{
-      const key = a.getAttribute('data-nav');
-      const map = NAV_I18N[key];
-      if(map) a.textContent = map[lang] || map.en || a.textContent;
-    });
-    // Keep blog link language in sync (same behavior as index)
-    const blogLink = document.getElementById("navBlog");
-    if(blogLink){
-      blogLink.href = `blog/blog.html?lang=${encodeURIComponent(lang)}`;
-    }
-  }
-
-  function applyNavHrefs(lang){
-    // Ensure links back to index carry lang param, but keep the same destinations as index.
-    document.querySelectorAll('.navRow a').forEach(a=>{
-      const href = a.getAttribute('href') || '';
-      if(href.startsWith('index.html')){
-        const parts = href.split('#');
-        const base = parts[0];
-        const hash = parts[1] ? ('#' + parts[1]) : '';
-        const u = new URL(base, location.href);
-        u.searchParams.set('lang', lang);
-        a.setAttribute('href', u.pathname + u.search + hash);
-      }
-    });
-  }
-
-  function setLang(lang){
-    localStorage.setItem("lang", lang);
-    const u = new URL(location.href);
-    u.searchParams.set("lang", lang);
-    history.replaceState(null, "", u.toString());
-    document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('active', b.dataset.lang===lang));
-    document.documentElement.lang = (lang==='zh') ? 'zh-CN' : lang;
-    applyNavLabels(lang);
-    applyNavHrefs(lang);
-  }
-
-  document.querySelectorAll('.lang button').forEach(b => {
-    b.addEventListener('click', () => setLang(b.dataset.lang));
-  });
-
-  // init
-  setLang(getLang());
-</script>
-
-
-<script>
-  // ===== About page i18n (ZH/EN/ES/DE) =====
   const I18N_ABOUT = {
-    title: {
-      zh: "关于我们 · Wuxing Valve",
-      en: "About Us · Wuxing Valve",
-      es: "Sobre nosotros · Wuxing Valve",
-      de: "Über uns · Wuxing Valve"
-    },
+    title: { zh: "关于我们 · Wuxing Valve", en: "About Us · Wuxing Valve", es: "Sobre nosotros · Wuxing Valve", de: "Über uns · Wuxing Valve" },
     metaDesc: {
       zh: "浙江五星阀门有限公司（原永嘉五星阀门总厂）关于我们：公司介绍、厂区与设备、资质与管理体系、产品与应用领域。",
       en: "About Zhejiang Wuxing Valve Co., Ltd.: company profile, facilities & equipment, certifications & quality system, products and applications.",
       es: "Sobre Zhejiang Wuxing Valve Co., Ltd.: perfil de la empresa, instalaciones y equipos, certificaciones y sistema de calidad, productos y aplicaciones.",
       de: "Über Zhejiang Wuxing Valve Co., Ltd.: Unternehmensprofil, Anlagen & Ausrüstung, Zertifizierungen & Qualitätsmanagement, Produkte und Anwendungen."
     },
-    brandSub: {
-      zh: "工业阀门 · 外贸供应",
-      en: "Industrial Valves · Export Supply",
-      es: "Válvulas industriales · Suministro de exportación",
-      de: "Industriearmaturen · Exportlieferant"
-    },
+    brandSub: { zh: "工业阀门 · 外贸供应", en: "Industrial Valves · Export Supply", es: "Válvulas industriales · Suministro de exportación", de: "Industriearmaturen · Exportlieferant" },
     hero_title: { zh:"关于我们", en:"About Us", es:"Sobre nosotros", de:"Über uns" },
     hero_lead: {
       zh:"浙江五星阀门有限公司原系永嘉五星阀门总厂。始建于上个世纪80年代，地处“泵阀之乡”的温州瓯北。",
@@ -285,7 +182,7 @@
     p2: {
       zh:"公司整体工业园区占地15000平方米，建筑面积18000平方米；拥有数控机床，精密磨床、镗床、大型立体车床、包装流水线等各种设备，其中金属切割机床占85%以上。设有理化室、计量室、物理实验室，可对产品内在质量分析和实施无损探伤检验。企业管理已与世界阀门行业接轨，通过了ISO9001及国家特种设备（压力管道）TS安全注册认证。",
       en:"Our industrial park covers about 15,000 m² with 18,000 m² of built-up area. We operate CNC machines, precision grinders, boring machines, large vertical lathes and packaging lines, with metal cutting equipment accounting for over 85%. In-house labs and metrology capability support material/quality analysis and NDT inspection. Our management system is aligned with global practices and certified to ISO 9001 and relevant national TS registrations for special equipment (pressure piping).",
-      es:"Nuestro parque industrial ocupa aproximadamente 15.000 m², con 18.000 m² de área construida. Contamos con CNC, rectificadoras de precisión, mandrinadoras, tornos verticales de gran tamaño y líneas de empaquetado; los equipos de corte de metal superan el 85%. Disponemos de laboratorios y metrología para análisis de materiales/calidad e inspección END. Nuestro sistema de gestión está alineado con prácticas internacionales y cuenta con certificación ISO 9001 y registros TS aplicables para equipos especiales (tuberías a presión).",
+      es:"Nuestro parque industrial ocupa aproximadamente 15.000 m², con 18.000 m² de área construida. Contamos con CNC, rectificadoras de precisión, mandrinadoras, tornos verticales de gran tamaño y líneas de empaquetado; los equipos de corte de metal superan el 85%. Disponemos de laboratorios y metrología para análisis de materiales/calidad e inspección END. Nuestro sistema de gestión está alinado con prácticas internacionales y cuenta con certificación ISO 9001 y registros TS aplicables para equipos especiales (tuberías a presión).",
       de:"Unser Industriepark umfasst ca. 15.000 m², die bebaute Fläche ca. 18.000 m². Wir verfügen über CNC‑Maschinen, Präzisionsschleifmaschinen, Bohrwerke, große Vertikaldrehmaschinen sowie Verpackungslinien; über 85% sind Metallbearbeitungsmaschinen. Eigene Labore und Messtechnik ermöglichen Material‑/Qualitätsanalysen sowie ZfP‑Prüfungen. Unser Managementsystem ist an internationale Standards angelehnt und nach ISO 9001 sowie den relevanten TS‑Registrierungen für Sonderanlagen (Druckrohrleitungen) zertifiziert."
     },
     p3: {
@@ -306,26 +203,65 @@
       es:"Seguimos los principios de “sobrevivir por la calidad y crecer con la innovación”, invirtiendo en tecnología y talento para desarrollar productos que el cliente necesita. Valoramos la cooperación a largo plazo y las relaciones ganar‑ganar, con equipos de ventas y servicio en las principales ciudades de China para ofrecer soporte ágil.",
       de:"Wir folgen dem Grundsatz „Bestand durch Qualität, Wachstum durch Innovation“ und investieren in Technologie und Talente, um praxisnahe Produkte zu entwickeln. Wir setzen auf langfristige Zusammenarbeit und Win‑Win‑Partnerschaften, unterstützt durch Vertriebs‑ und Serviceteams in großen Städten Chinas für schnellen Support."
     },
-    // ====== 已修改为 Apple Maps ======
     map_hint: {
       zh: "点击图片在 Apple Maps 中查看详细路线",
       en: "Click the image to view detailed routes on Apple Maps",
-      es: "Haga clic en la imagen para ver rutas detalladas en Apple Maps",
+      es: "Haga clic en la imagen para ver rutas detalladas in Apple Maps",
       de: "Klicken Sie auf das Bild, um detaillierte Routen auf Apple Maps anzuzeigen"
     }
   };
 
-  function applyAboutContent(lang){
-    // brand subtitle
+  // 3. 获取当前语言
+  function getLang() {
+    const u = new URL(location.href);
+    const q = (u.searchParams.get("lang") || "").toLowerCase();
+    const stored = (localStorage.getItem("lang") || "").toLowerCase();
+    return SUPPORTED.includes(q) ? q : (SUPPORTED.includes(stored) ? stored : "zh");
+  }
+
+  // 4. 应用翻译的核心函数
+  function setLang(lang){
+    localStorage.setItem("lang", lang);
+    
+    // 更新 URL 参数而不刷新页面
+    const u = new URL(location.href);
+    u.searchParams.set("lang", lang);
+    history.replaceState(null, "", u.toString());
+    
+    // 切换按钮高亮
+    document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('active', b.dataset.lang===lang));
+    document.documentElement.lang = (lang==='zh') ? 'zh-CN' : lang;
+    
+    // A. 翻译导航栏文本与同步博客链接
+    document.querySelectorAll('[data-nav]').forEach(a=>{
+      const key = a.getAttribute('data-nav');
+      const map = NAV_I18N[key];
+      if(map) a.textContent = map[lang] || map.en || a.textContent;
+    });
+    const blogLink = document.getElementById("navBlog");
+    if(blogLink) blogLink.href = `blog/blog.html?lang=${encodeURIComponent(lang)}`;
+
+    // B. 确保导航返回主页时带上语言参数
+    document.querySelectorAll('.navRow a').forEach(a=>{
+      const href = a.getAttribute('href') || '';
+      if(href.startsWith('index.html')){
+        const parts = href.split('#');
+        const base = parts[0];
+        const hash = parts[1] ? ('#' + parts[1]) : '';
+        const indexUrl = new URL(base, location.href);
+        indexUrl.searchParams.set('lang', lang);
+        a.setAttribute('href', indexUrl.pathname + indexUrl.search + hash);
+      }
+    });
+
+    // C. 翻译关于我们的正文内容与 Meta 信息
     const sub = document.getElementById("brandSub");
     if(sub) sub.textContent = I18N_ABOUT.brandSub[lang] || I18N_ABOUT.brandSub.en;
 
-    // title + meta description
     document.title = I18N_ABOUT.title[lang] || I18N_ABOUT.title.en;
     const meta = document.getElementById("metaDesc");
     if(meta) meta.setAttribute("content", I18N_ABOUT.metaDesc[lang] || I18N_ABOUT.metaDesc.en);
 
-    // main content
     document.querySelectorAll("[data-i18n]").forEach(el=>{
       const k = el.getAttribute("data-i18n");
       const dict = I18N_ABOUT[k];
@@ -333,16 +269,13 @@
     });
   }
 
-  // Hook into existing language setter
-  const _oldSetLang = window.setLang;
-  window.setLang = function(lang){
-    _oldSetLang(lang);
-    applyAboutContent(lang);
-  };
+  // 5. 绑定事件
+  document.querySelectorAll('.lang button').forEach(b => {
+    b.addEventListener('click', () => setLang(b.dataset.lang));
+  });
 
-  // initial render (in case setLang already executed)
-  applyAboutContent(getLang());
+  // 6. 初始化执行
+  setLang(getLang());
 </script>
-
 </body>
 </html>
