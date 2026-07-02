@@ -65,12 +65,10 @@
     .card p{margin:0 0 12px;line-height:1.85}
     .card p:last-child{margin-bottom:0}
 
-    /* ===== 地图样式 ===== */
+    /* ===== 地图容器样式（去除了点击和悬浮位移） ===== */
     .map-section { margin-top:24px; text-align:center; padding-top:16px; border-top:1px dashed var(--line); }
-    .map-link { display:inline-block; border-radius:16px; overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--line); transition:transform 0.2s; max-width: 800px; width: 100%; }
-    .map-link:hover { transform:translateY(-2px); box-shadow:0 15px 35px rgba(0,0,0,.12); }
+    .map-wrapper { display:inline-block; border-radius:16px; overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--line); max-width: 800px; width: 100%; }
     .map-img { width:100%; height:auto; display:block; }
-    .map-hint { margin-top:12px; font-size:14px; color:var(--brand); font-weight:600; display:flex; align-items:center; justify-content:center; gap:6px;}
   </style>
 </head>
 <body>
@@ -122,12 +120,8 @@
       <p data-i18n="p5">公司始终坚持“以质量求生存，以改革求发展”和以“科技强司，聚贤兴企”的思想理念，不断研发用户急需的高新产品。与您合作，互惠共赢，我们在全国各大中城市都设有销售中心和服务部门，随时为您提供超值服务。</p>
 
       <div class="map-section">
-        <a class="map-link" href="https://maps.apple.com.cn/place?place-id=H2710I3F83380F991E5&_provider=57879" target="_blank" rel="noopener noreferrer" aria-label="View on Apple Maps">
+        <div class="map-wrapper">
           <img class="map-img" src="Map.jpg" alt="Company Location Map" loading="lazy" />
-        </a>
-        <div class="map-hint">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-          <span data-i18n="map_hint">点击图片在 Apple Maps 中查看详细路线</span>
         </div>
       </div>
     </section>
@@ -180,9 +174,9 @@
       de:"Zhejiang Wuxing Valve Co., Ltd., ehemals Yongjia Wuxing Valve General Factory, wurde in den 1980er‑Jahren in Oubei, Wenzhou gegründet. Am Ostufer des Oujiang‑Flusses gelegen und nahe wichtiger Bahn‑ und Schnellstraßenverbindungen sowie eines Flusshafens, bieten wir bequemen Zugang per Luft, Schiene, Straße und Schiff – für eine effiziente Logistik."
     },
     p2: {
-      zh:"公司整体工业园区占地15000平方米，建筑面积18000平方米；拥有数控机床，精密磨床、镗床、大型立体车床、包装流水线等各种设备，其中金属切割机床占85%以上。设有理化室、计量室、物理实验室，可对产品内在质量分析和实施无损探伤检验。企业管理已与世界阀门行业接轨，通过了ISO9001及国家特种设备（压力管道）TS安全注册认证。",
+      zh:"公司整体工业园区占地15000平方米，建筑面积18000平方米；拥有数控机床，精密磨床、镗床、大型立体车床、包装流水线等各种设备，其中金属切割机床占 85% 以上。设有理化室、计量室、物理实验室，可对产品内在质量分析和实施无损探伤检验。企业管理已与世界阀门行业接轨，通过了ISO9001及国家特种设备（压力管道）TS安全注册认证。",
       en:"Our industrial park covers about 15,000 m² with 18,000 m² of built-up area. We operate CNC machines, precision grinders, boring machines, large vertical lathes and packaging lines, with metal cutting equipment accounting for over 85%. In-house labs and metrology capability support material/quality analysis and NDT inspection. Our management system is aligned with global practices and certified to ISO 9001 and relevant national TS registrations for special equipment (pressure piping).",
-      es:"Nuestro parque industrial ocupa aproximadamente 15.000 m², con 18.000 m² de área construida. Contamos con CNC, rectificadoras de precisión, mandrinadoras, tornos verticales de gran tamaño y líneas de empaquetado; los equipos de corte de metal superan el 85%. Disponemos de laboratorios y metrología para análisis de materiales/calidad e inspección END. Nuestro sistema de gestión está alinado con prácticas internacionales y cuenta con certificación ISO 9001 y registros TS aplicables para equipos especiales (tuberías a presión).",
+      es:"Nuestro parque industrial ocupa aproximadamente 15.000 m², con 18.000 m² de área construida. Contamos con CNC, rectificadoras de precisión, mandrinadoras, tornos verticales de gran tamaño y líneas de empaquetado; los equipos de corte de metal superan el 85%. Disponemos de laboratorios y metrología para análisis de materiales/calidad e inspección END. Nuestro sistema de gestión está alineado con prácticas internacionales y cuenta con certificación ISO 9001 y registros TS aplicables para equipos especiales (tuberías a presón).",
       de:"Unser Industriepark umfasst ca. 15.000 m², die bebaute Fläche ca. 18.000 m². Wir verfügen über CNC‑Maschinen, Präzisionsschleifmaschinen, Bohrwerke, große Vertikaldrehmaschinen sowie Verpackungslinien; über 85% sind Metallbearbeitungsmaschinen. Eigene Labore und Messtechnik ermöglichen Material‑/Qualitätsanalysen sowie ZfP‑Prüfungen. Unser Managementsystem ist an internationale Standards angelehnt und nach ISO 9001 sowie den relevanten TS‑Registrierungen für Sonderanlagen (Druckrohrleitungen) zertifiziert."
     },
     p3: {
@@ -198,16 +192,10 @@
       de:"Zu unseren Hauptprodukten zählen Hochdruck‑Eck‑Absperrventile (Globe), Rückschlagventile, Ausgleichsventile, Schieber, isolierte Armaturen, metallisch dichtende Kugelhähne, Hochdruck‑Fittings sowie Titanlegierungs‑Armaturen – hunderte Ausführungen im Mittel‑ bis Hochdruckbereich. Einsatzbereiche: Chemie, Düngemittel, Pharma, Wärmeversorgung, Petrochemie, Raffinerien, Metallurgie, Bergbau, Chemiefaser, Papier, Energieerzeugung u.v.m."
     },
     p5: {
-      zh:"公司始终坚持“以质量求生存，以改革求发展”和以“科技强司，聚贤兴企”的思想理念，不断研发用户急需的高新产品。与您合作，互惠共赢，我们在全国各大中城市都设有销售中心和服务部门，随时为您提供超值服务。",
+      zh:"公司始终坚持“以质量求生存，以改革求发展”和以“科技强司，聚贤兴企”的思想理念，不断研发用户急需的高新产品。与您合作，互惠共赢，我们在全国各大中城市都设有销售中心和服务部门，随时为您提供超值 service。",
       en:"We adhere to the principles of “survive by quality and grow by innovation”, investing in technology and talent to develop products customers need. We value long-term cooperation and win-win partnerships, supported by sales and service teams across major cities in China to provide responsive support.",
       es:"Seguimos los principios de “sobrevivir por la calidad y crecer con la innovación”, invirtiendo en tecnología y talento para desarrollar productos que el cliente necesita. Valoramos la cooperación a largo plazo y las relaciones ganar‑ganar, con equipos de ventas y servicio en las principales ciudades de China para ofrecer soporte ágil.",
       de:"Wir folgen dem Grundsatz „Bestand durch Qualität, Wachstum durch Innovation“ und investieren in Technologie und Talente, um praxisnahe Produkte zu entwickeln. Wir setzen auf langfristige Zusammenarbeit und Win‑Win‑Partnerschaften, unterstützt durch Vertriebs‑ und Serviceteams in großen Städten Chinas für schnellen Support."
-    },
-    map_hint: {
-      zh: "点击图片在 Apple Maps 中查看详细路线",
-      en: "Click the image to view detailed routes on Apple Maps",
-      es: "Haga clic en la imagen para ver rutas detalladas in Apple Maps",
-      de: "Klicken Sie auf das Bild, um detaillierte Routen auf Apple Maps anzuzeigen"
     }
   };
 
@@ -254,7 +242,7 @@
       }
     });
 
-    // C. 翻译关于我们的正文内容与 Meta 信息
+    // C. 翻译正文与 Meta 描述
     const sub = document.getElementById("brandSub");
     if(sub) sub.textContent = I18N_ABOUT.brandSub[lang] || I18N_ABOUT.brandSub.en;
 
@@ -269,7 +257,7 @@
     });
   }
 
-  // 5. 绑定事件
+  // 5. 绑定切换事件
   document.querySelectorAll('.lang button').forEach(b => {
     b.addEventListener('click', () => setLang(b.dataset.lang));
   });
