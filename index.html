@@ -140,7 +140,7 @@ header.compact{box-shadow:0 6px 20px rgba(0,0,0,.06)}
     .contactSection{padding:34px 0;background:#fff;border-top:1px solid var(--line)}
     .contactSection h2{margin:0 0 10px 0;font-size:28px}
     .contactDesc{margin:0 0 16px 0;color:var(--muted);line-height:1.6}
-    .contactGrid{display:grid;grid-template-columns:repeat(5, minmax(0, 1fr));gap:12px}
+    .contactGrid{display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:12px}
     .contactItem{display:block;text-align:left;background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:14px 14px;cursor:pointer}
     .contactItem .k{font-size:12px;color:var(--muted);font-weight:800;letter-spacing:.02em}
     .contactItem .v{margin-top:6px;font-weight:800;color:#111827}
@@ -194,6 +194,8 @@ header.compact{box-shadow:0 6px 20px rgba(0,0,0,.06)}
     <a class="chip" href="https://wa.me/8615888791812" target="_blank" rel="noopener">💬 <small data-i18n-contact="whatsapp">WhatsApp</small> +86 15888791812</a>
     <a class="chip" href="tel:+8615888791812">📞 <small data-i18n-contact="phone">电话:</small> +86 15888791812</a>
     <a class="chip wechatChip" href="#wechat" id="wechatBtnTop" role="button" aria-haspopup="dialog" aria-controls="wechatModal">🟩 <small data-i18n-contact="wechat">微信:</small> 15888791812</a>
+    <a class="chip" href="https://linkedin.com/company/zhejiang-wuxing-valve-co-ltd" target="_blank" rel="noopener">💼 <small data-i18n-contact="linkedin">领英:</small> Wuxing Valve</a>
+    <a class="chip" href="https://www.youtube.com/channel/UCE0wDbjyPIJTXeegCD43xdw" target="_blank" rel="noopener">📺 <small data-i18n-contact="youtube">油管:</small> YouTube</a>
   </div>
 
     <nav class="navRow" aria-label="Primary">
@@ -273,6 +275,14 @@ header.compact{box-shadow:0 6px 20px rgba(0,0,0,.06)}
         <div class="k">WeChat</div>
         <div class="v">15888791812 · 点击显示二维码</div>
       </button>
+      <a class="contactItem" href="https://linkedin.com/company/zhejiang-wuxing-valve-co-ltd" target="_blank" rel="noopener">
+        <div class="k">LinkedIn</div>
+        <div class="v">Zhejiang Wuxing Valve</div>
+      </a>
+      <a class="contactItem" href="https://www.youtube.com/channel/UCE0wDbjyPIJTXeegCD43xdw" target="_blank" rel="noopener">
+        <div class="k">YouTube</div>
+        <div class="v">Wuxing Valve Channel</div>
+      </a>
     </div>
   </div>
 </section>
@@ -318,7 +328,9 @@ header.compact{box-shadow:0 6px 20px rgba(0,0,0,.06)}
     email:   { zh: "邮箱:",   en: "Email:",    es: "Correo:",    de: "E‑Mail:" },
     phone:   { zh: "电话:",   en: "Phone:",    es: "Teléfono:",  de: "Telefon:" },
     wechat:  { zh: "微信:",   en: "WeChat:",   es: "WeChat:",    de: "WeChat:" },
-    whatsapp:{ zh: "WhatsApp",en: "WhatsApp",  es: "WhatsApp",   de: "WhatsApp" }
+    whatsapp:{ zh: "WhatsApp",en: "WhatsApp",  es: "WhatsApp",   de: "WhatsApp" },
+    linkedin:{ zh: "领英:",   en: "LinkedIn:", es: "LinkedIn:",  de: "LinkedIn:" },
+    youtube: { zh: "油管:",   en: "YouTube:",  es: "YouTube:",   de: "YouTube:" }
   };
 
 const NAV_I18N = {
