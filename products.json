@@ -1532,18 +1532,18 @@
     },
     {
       "id": "fert-024",
-      "family": "gate",
+      "family": "globe",
       "family_title": {
-        "zh": "闸阀类",
-        "en": "Gate Valves",
-        "es": "Válvulas de compuerta",
-        "de": "Schieber"
+        "zh": "截止阀",
+        "en": "Globe Valves",
+        "es": "Válvulas de globo",
+        "de": "Durchgangsventile"
       },
       "title": {
-        "zh": "J/L41Y-2500Lb 闸阀",
-        "en": "J/L41Y-2500Lb Gate Valve",
-        "es": "Válvula de compuerta J/L41Y-2500Lb",
-        "de": "Schieber J/L41Y-2500Lb"
+          "zh": "J/L41Y-2500Lb 截止阀",
+        "en": "J/L41Y-2500Lb Globe Valve",
+        "es": "Válvula de globo J/L41Y-2500Lb",
+        "de": "Durchgangsventil J/L41Y-2500Lb"
       },
       "sub": {
         "zh": "超高压工况 / 手轮操作",
