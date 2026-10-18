@@ -15,7 +15,7 @@
   <style>
 :root{--bg:#ffffff;--text:#0f172a;--muted:#64748b;--line:#e5e7eb;--card:#ffffff;--primary:#2563eb;--radius:18px;--max:900px;}
 *{box-sizing:border-box}
-body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:linear-gradient(180deg,#f8fafc 0%,#ffffff 35%);}
+body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;color:var(--text);background:linear-gradient(180deg,#f8fafc 0%,#ffffff 35%);}
 a{color:inherit;text-decoration:none}
 .container{max-width:var(--max);margin:0 auto;padding:0 18px;}
 .top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.86);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid var(--line);}
@@ -35,7 +35,7 @@ a{color:inherit;text-decoration:none}
 .hero{padding:22px 0 10px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 30px rgba(2,6,23,.08);overflow:hidden}
 
-/* Draggable Media Window Styles */
+/* 原有照片轮播图样式保持不变 */
 .slider-container {
   position: relative;
   width: 100%;
@@ -44,47 +44,7 @@ a{color:inherit;text-decoration:none}
   background: #0f172a;
   user-select: none;
   border-radius: var(--radius) var(--radius) 0 0;
-  transition: box-shadow 0.2s ease;
 }
-.slider-container.is-dragging {
-  position: fixed !important;
-  z-index: 9000 !important;
-  width: 420px !important;
-  height: 230px !important;
-  aspect-ratio: auto !important;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.5) !important;
-  border-radius: 12px !important;
-  border: 2px solid var(--primary) !important;
-}
-@media (max-width: 520px) {
-  .slider-container.is-dragging {
-    width: 300px !important;
-    height: 170px !important;
-  }
-}
-
-/* Drag Bar */
-.drag-bar {
-  position: absolute;
-  top: 10px;
-  right: 12px;
-  z-index: 25;
-  background: rgba(15, 23, 42, 0.75);
-  backdrop-filter: blur(8px);
-  color: #fff;
-  padding: 6px 12px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: move;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  border: 1px solid rgba(255,255,255,0.2);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-.drag-bar:hover { background: var(--primary); }
-
 .slider-wrapper {
   display: flex;
   height: 100%;
@@ -96,7 +56,7 @@ a{color:inherit;text-decoration:none}
   height: 100%;
   position: relative;
 }
-.slide img, .slide video {
+.slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -125,7 +85,11 @@ a{color:inherit;text-decoration:none}
   z-index: 15;
   user-select: none;
 }
-.slider-btn:hover { background: var(--primary); border-color: transparent; transform: translateY(-50%) scale(1.05); }
+.slider-btn:hover {
+  background: var(--primary);
+  border-color: transparent;
+  transform: translateY(-50%) scale(1.05);
+}
 .slider-btn.prev { left: 16px; }
 .slider-btn.next { right: 16px; }
 .slider-dots {
@@ -138,28 +102,104 @@ a{color:inherit;text-decoration:none}
   z-index: 15;
 }
 .dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: rgba(255, 255, 255, 0.4); cursor: pointer; transition: all 0.3s ease;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
-.dot.active { background: #fff; width: 22px; border-radius: 4px; }
+.dot.active {
+  background: #fff;
+  width: 22px;
+  border-radius: 4px;
+}
 
-/* Article Typography */
-.head {padding:20px 20px 10px}
+/* ================= 网页内可自由拖动的 YouTube 视频浮动框样式 ================= */
+.yt-float-box {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 260px;
+  height: 462px; /* Shorts 9:16 黄金比例 */
+  background: #000;
+  border-radius: 14px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+  z-index: 999;
+  overflow: hidden;
+  border: 2px solid rgba(37,99,235,0.5);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s;
+}
+.yt-float-box:hover {
+  box-shadow: 0 20px 45px rgba(37,99,235,0.4);
+}
+.yt-drag-bar {
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+.yt-drag-bar:active {
+  cursor: grabbing;
+}
+.yt-content {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  background: #0f172a;
+}
+.yt-content iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* 手机端响应式适配：固定死在页面流中，取消拖拽悬浮 */
+@media (max-width: 768px) {
+  .yt-float-box {
+    position: relative !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 420px !important;
+    margin: 20px 0;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    border-radius: 12px;
+  }
+  .yt-drag-bar {
+    display: none; /* 手机端不需要拖拽把手 */
+  }
+}
+
+/* 文章正文基本排版 */
+.head {padding:16px 16px 10px}
 .kicker{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;background:rgba(37,99,235,.10);color:var(--primary);font-weight:900;font-size:12px;}
-h1{margin:12px 0 10px;font-size:26px;letter-spacing:-.02em;line-height:1.3}
-.meta{color:var(--muted);font-size:13px;display:flex;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+h1{margin:10px 0 8px;font-size:28px;letter-spacing:-.02em;line-height:1.2}
+.meta{color:var(--muted);font-size:13px;display:flex;gap:10px;flex-wrap:wrap}
 .meta span{padding:6px 10px;border:1px dashed var(--line);border-radius:999px;background:#fff}
-.article {padding:0 20px 22px}
-.article h2{margin:26px 0 12px;font-size:19px;color:#0f172a;border-left:4px solid var(--primary);padding-left:10px}
-.article p{margin:12px 0;color:#334155;line-height:1.8;font-size:15px}
-.article ul{margin:12px 0 12px 20px;line-height:1.8;color:#334155;font-size:15px}
-.callout{margin:22px 0;padding:16px 18px;border-radius:16px;border:1px solid rgba(37,99,235,.22);background:rgba(37,99,235,.06)}
-.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 16px;border-radius:999px;border:1px solid var(--line);background:#fff;font-weight:800;font-size:14px}
+.article {padding:0 16px 18px}
+.article h2{margin:22px 0 10px;font-size:18px}
+.article p{margin:10px 0;color:#0f172a;line-height:1.75}
+.article ul{margin:10px 0 10px 18px;line-height:1.75}
+.callout{margin:18px 0;padding:14px 14px;border-radius:16px;border:1px solid rgba(37,99,235,.22);background:rgba(37,99,235,.06)}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:#fff;font-weight:800}
 .btn.primary{background:var(--primary);color:#fff;border-color:transparent}
 .footer{border-top:1px solid var(--line);padding:18px 0 26px;color:var(--muted);font-size:13px;margin-top:30px}
 
-/* Fullscreen Overlay */
+/* 点击图片放大遮罩 */
 .img-overlay {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
   background: rgba(15, 23, 42, 0.9); z-index: 9999;
@@ -175,16 +215,47 @@ h1{margin:12px 0 10px;font-size:26px;letter-spacing:-.02em;line-height:1.3}
 </head>
 <body>
 
+  <!-- 照片轮播图配置 -->
   <script>
-    // Media configuration (Currently 1 showcase media, auto-adapts dynamically)
     window.SLIDER_CONFIG = [
       {
         filename: "1.jpg", 
-        alt: "Wuxing Valve Technical Team Visiting International Industrial Exhibition", 
-        title: "International Industrial Expo: On-Site Technical Discussion on High-Pressure Valves & Pneumatic Actuators" 
+        alt: "Pneumatic tank bottom discharge valves with red cylinders", 
+        title: "Bright Red Efficient Pneumatic Actuators - Intelligent Automatic Discharge Valve Series" 
+      },
+      {
+        filename: "2.jpg",
+        alt: "Array of forged steel high pressure needle valves",
+        title: "Precision Grade High-Pressure Forged Steel Needle Valve Array - Seamless Ultra-High Pressure Control"
+      },
+      {
+        filename: "3.jpg",
+        alt: "Precision machined forged pipe flanges on pallets",
+        title: "Machining Finished Product Area - Large Batch Precision Forged High-Pressure Flange Components"
+      },
+      {
+        filename: "4.jpg",
+        alt: "Stainless steel high pressure instrumentation valves with blue bolted bonnets",
+        title: "High-End Stainless Steel High-Pressure Special Valves for Instrumentation - Equipped with High-Strength Anti-Loosening Blue Nuts"
+      },
+      {
+        filename: "5.jpg",
+        alt: "Heavy duty DN200 PN40 cast steel globe valves with blue coating",
+        title: "Heavy-Duty GB/ASME Large-Diameter Globe Valves - High-Quality Industrial Sky Blue Anti-Corrosion Coating"
       }
     ];
   </script>
+
+  <!-- YouTube 视频可拖动浮动窗口 -->
+  <div class="yt-float-box" id="ytFloatBox">
+    <div class="yt-drag-bar" id="ytDragBar">
+      <span>🎬 Live Video (Draggable)</span>
+      <span>⇕</span>
+    </div>
+    <div class="yt-content">
+      <iframe src="https://www.youtube.com/embed/Xcpnx-wvl5E" title="YouTube Shorts Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
 
   <div class="top">
     <div class="container">
@@ -214,14 +285,10 @@ h1{margin:12px 0 10px;font-size:26px;letter-spacing:-.02em;line-height:1.3}
     <div class="container">
       <div class="card">
         
-        <!-- Draggable Media Window -->
+        <!-- 原有照片轮播展示区 -->
         <div class="slider-container" id="sliderContainer">
-          <div class="drag-bar" id="dragBar" title="Hold to drag this window anywhere on the page">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 9l-3 3 3 3M9 5l3-3 3 3M15 19l-3 3-3-3M19 9l3 3-3 3M2 12h20M12 2v20"/></svg>
-            Hold to Drag Window
-          </div>
           <div class="slider-wrapper" id="sliderWrapper">
-            <div class="slide"><img src="1.jpg" alt="Exhibition Technical Exchange" fetchpriority="high"></div>
+            <div class="slide"><img src="1.jpg" alt="Wuxing Valve Showcase" fetchpriority="high"></div>
           </div>
           <button class="slider-btn prev" aria-label="Previous">&#10094;</button>
           <button class="slider-btn next" aria-label="Next">&#10095;</button>
@@ -229,22 +296,22 @@ h1{margin:12px 0 10px;font-size:26px;letter-spacing:-.02em;line-height:1.3}
         </div>
 
         <div class="head">
-          <span class="kicker">Exhibition Updates · Technical Exchange</span>
+          <span class="kicker">Exhibition Insights · Technical Exchange</span>
           <h1>Focusing on Innovation & Global Alliances: Wuxing Valve’s On-Site Visit & Technical Exchange at International Industrial Expo</h1>
           <div class="meta">
             <span>2026-06-29</span>
             <span>Source: Engineering Dept / Foreign Trade Division</span>
-            <span>Tags: Exhibition Visit / Fluid Control / Pneumatic Discharge Valve / High-Pressure Forged Steel / Source Factory</span>
+            <span>Tags: Exhibition Visit / Fluid Control / Pneumatic Discharge Valve / Forged High-Pressure / Source Factory</span>
           </div>
         </div>
 
         <article class="article" id="post-content">
-          <p>As a seasoned manufacturer and exporter in the industrial valve industry, Wuxing Valve has always maintained sharp insights into cutting-edge fluid control technologies and evolving market demand. Recently, Wuxing Valve's technical engineering and foreign trade delegations conducted a professional visit to the International Industrial Exhibition, engaging in deep technical exchanges with global EPC contractors, chemical plant engineers, and industrial buyers.</p>
+          <p>As a seasoned manufacturer and exporter deeply rooted in industrial valve manufacturing and international trade, Wuxing Valve has always maintained sharp insights into cutting-edge fluid control technologies and global market dynamics. Recently, Wuxing Valve's technical engineering and foreign trade delegations conducted a professional visit to the International Industrial Exhibition, engaging in deep technical exchanges with global EPC contractors, chemical plant engineers, and industrial buyers.</p>
 
           <p>The exhibition showcased world-class fluid control equipment and automation solutions. Through in-depth observation of live product exhibits—such as pneumatic tank bottom discharge valves equipped with bright red actuators, forged steel high-pressure instrument needle valve arrays, precision forged flanges, and large-diameter cast steel globe valves—our team gained valuable insights into international market trends and reinforced our commitment to high-standard OEM/ODM manufacturing.</p>
 
           <h2>1. Fluid Automation: Observations on Pneumatic Tank Bottom Discharge Valves</h2>
-          <p>At the automation control pavilion, **pneumatic tank bottom discharge valves** with bright red high-thrust pneumatic actuators drew significant interest from our technical team:</p>
+          <p>At the automation control pavilion, <b>pneumatic tank bottom discharge valves</b> with bright red high-thrust pneumatic actuators drew significant interest from our technical team:</p>
           <ul>
             <li><b>High-Frequency Response & Anti-Clogging:</b> Engineered specifically for reactor and storage vessel bottom drainage, the downward-opening disc design effectively eliminates media crystallization and dead angles. Equipped with electro-pneumatic positioners, they ensure fast shut-off and continuous throttling accuracy.</li>
             <li><b>Wuxing Valve Manufacturing Alignment:</b> Wuxing Valve possesses extensive experience in manufacturing jacketed heating and pneumatic discharge valves. Cast from premium stainless steel with stellite hardfaced seating, all our valves undergo rigorous 10,000+ cycle fatigue tests and dual pneumatic-hydraulic pressure leakage checks before shipment.</li>
@@ -260,12 +327,12 @@ h1{margin:12px 0 10px;font-size:26px;letter-spacing:-.02em;line-height:1.3}
           <h2>3. Heavy Pipeline Equipment: Precision Forged Flanges & Large Globe Valves</h2>
           <p>Beyond control valves, the exhibition highlighted high-precision piping components essential for complete system integration:</p>
           <ul>
-            <li><b>Precision Machined Forged Flanges:</b> Neatly arranged in the finished goods area, forged flanges executed strictly to ASME / DIN / GB standards featuring smooth sealing faces and precise bolt-hole alignment, ensuring a 100% first-time connection rate on-site.</li>
+            <li><b>Precision Machined Forged Flanges:</b> Neatly arranged in the finished goods area, forged flanges executed strictly to ASME / DIN / GB standards feature smooth sealing faces and precise bolt-hole alignment, ensuring a 100% first-time connection rate on-site.</li>
             <li><b>DN200 PN40 Cast Steel Globe Valves:</b> Featuring dense body castings coated in sky-blue anti-corrosion industrial paint for superior salt spray and weather resistance. Impact-type handwheels with bold "OPEN/SHUT" directional indicators significantly reduce manual operation torque.</li>
           </ul>
 
           <h2>4. Aligning with Global Standards: Empowering OEM/ODM Supply Chains</h2>
-          <p>Through this technical visit, Wuxing Valve established valuable connections with global engineering partners and reaffirmed our core strategy: **Strict Quality Standards Combined with Flexible Factory Customization**.</p>
+          <p>Through this technical visit, Wuxing Valve established valuable connections with global engineering partners and reaffirmed our core strategy: <b>Strict Quality Standards Combined with Flexible Factory Customization</b>.</p>
 
           <p>Whether adhering to ANSI/API, DIN, or GB standards, Wuxing Valve delivers one-stop export solutions—including CAD/SolidWorks 3D design customization, Material Test Reports (MTC), and 100% pressure testing. We remain dedicated to providing high-performance, cost-effective industrial valve solutions to global clients.</p>
 
@@ -287,32 +354,23 @@ h1{margin:12px 0 10px;font-size:26px;letter-spacing:-.02em;line-height:1.3}
 
   <script>
   document.addEventListener('DOMContentLoaded', () => {
+    // 1. 照片轮播图脚本
     const wrapper = document.getElementById('sliderWrapper');
     const dotsContainer = document.getElementById('sliderDots');
     const prevBtn = document.querySelector('.slider-btn.prev');
     const nextBtn = document.querySelector('.slider-btn.next');
-    const sliderContainer = document.getElementById('sliderContainer');
-    const dragBar = document.getElementById('dragBar');
     
     const config = window.SLIDER_CONFIG || [];
-    if (config.length === 0) return;
+    if (config.length > 0) {
+      wrapper.innerHTML = config.map((img, index) => {
+        const priorityAttr = index === 0 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"';
+        return `
+          <div class="slide">
+            <img src="${img.filename}" alt="${img.alt}" title="${img.title}" ${priorityAttr} onerror="this.style.background='#1e293b'">
+          </div>
+        `;
+      }).join('');
 
-    // 1. Dynamic Media Rendering
-    wrapper.innerHTML = config.map((img, index) => {
-      const priorityAttr = index === 0 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"';
-      return `
-        <div class="slide">
-          <img src="${img.filename}" alt="${img.alt}" title="${img.title}" ${priorityAttr} onerror="this.style.background='#1e293b'">
-        </div>
-      `;
-    }).join('');
-
-    // Hide controls if only 1 media item is present
-    if (config.length <= 1) {
-      if (prevBtn) prevBtn.style.display = 'none';
-      if (nextBtn) nextBtn.style.display = 'none';
-      if (dotsContainer) dotsContainer.style.display = 'none';
-    } else {
       dotsContainer.innerHTML = ''; 
       config.forEach((_, index) => {
         const dot = document.createElement('span');
@@ -321,82 +379,49 @@ h1{margin:12px 0 10px;font-size:26px;letter-spacing:-.02em;line-height:1.3}
         dot.addEventListener('click', () => {
           currentIndex = index;
           updateSlider();
+          startAutoPlay();
         });
         dotsContainer.appendChild(dot);
       });
-    }
 
-    let currentIndex = 0;
-    function updateSlider() {
-      wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+      const slides = document.querySelectorAll('.slide');
       const dots = document.querySelectorAll('.dot');
-      dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
-    }
+      let currentIndex = 0;
+      let timer = null;
+      const duration = 4000;
 
-    if (config.length > 1) {
-      nextBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % config.length;
-        updateSlider();
-      });
-      prevBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + config.length) % config.length;
-        updateSlider();
-      });
-    }
-
-    // 2. Draggable Window Logic
-    let isDragging = false;
-    let startX, startY, initialLeft, initialTop;
-
-    dragBar.addEventListener('mousedown', startDrag);
-    dragBar.addEventListener('touchstart', startDrag, { passive: false });
-
-    function startDrag(e) {
-      isDragging = true;
-      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-
-      const rect = sliderContainer.getBoundingClientRect();
-      if (!sliderContainer.classList.contains('is-dragging')) {
-        sliderContainer.classList.add('is-dragging');
-        sliderContainer.style.left = rect.left + 'px';
-        sliderContainer.style.top = rect.top + 'px';
+      function updateSlider() {
+        wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === currentIndex);
+        });
       }
 
-      startX = clientX;
-      startY = clientY;
-      initialLeft = parseFloat(sliderContainer.style.left) || rect.left;
-      initialTop = parseFloat(sliderContainer.style.top) || rect.top;
+      function nextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateSlider();
+      }
 
-      document.addEventListener('mousemove', onDrag);
-      document.addEventListener('mouseup', stopDrag);
-      document.addEventListener('touchmove', onDrag, { passive: false });
-      document.addEventListener('touchend', stopDrag);
+      function prevSlide() {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateSlider();
+      }
+
+      function startAutoPlay() {
+        stopAutoPlay();
+        timer = setInterval(nextSlide, duration);
+      }
+
+      function stopAutoPlay() {
+        if (timer) clearInterval(timer);
+      }
+
+      nextBtn.addEventListener('click', () => { nextSlide(); startAutoPlay(); });
+      prevBtn.addEventListener('click', () => { prevSlide(); startAutoPlay(); });
+      startAutoPlay();
     }
 
-    function onDrag(e) {
-      if (!isDragging) return;
-      if (e.cancelable) e.preventDefault();
-
-      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-
-      const deltaX = clientX - startX;
-      const deltaY = clientY - startY;
-
-      sliderContainer.style.left = (initialLeft + deltaX) + 'px';
-      sliderContainer.style.top = (initialTop + deltaY) + 'px';
-    }
-
-    function stopDrag() {
-      isDragging = false;
-      document.removeEventListener('mousemove', onDrag);
-      document.removeEventListener('mouseup', stopDrag);
-      document.removeEventListener('touchmove', onDrag);
-      document.removeEventListener('touchend', stopDrag);
-    }
-
-    // 3. Zoom-in Overlay
+    // 2. 照片点击放大逻辑
     wrapper.addEventListener('click', (e) => {
       if (e.target.tagName === 'IMG') {
         let overlay = document.getElementById('globalImgOverlay');
@@ -412,6 +437,46 @@ h1{margin:12px 0 10px;font-size:26px;letter-spacing:-.02em;line-height:1.3}
         overlay.classList.add('active');
       }
     });
+
+    // 3. YouTube 视频框网页内自由拖拽交互逻辑（仅限 PC 端生效）
+    const ytBox = document.getElementById('ytFloatBox');
+    const ytBar = document.getElementById('ytDragBar');
+    let isYtDragging = false;
+    let startX, startY, initialLeft, initialTop;
+
+    if (ytBar && ytBox) {
+      ytBar.addEventListener('mousedown', (e) => {
+        if (window.innerWidth <= 768) return; // 手机端禁用拖拽
+        isYtDragging = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        const rect = ytBox.getBoundingClientRect();
+        initialLeft = rect.left;
+        initialTop = rect.top;
+
+        ytBox.style.right = 'auto';
+        ytBox.style.bottom = 'auto';
+        ytBox.style.left = initialLeft + 'px';
+        ytBox.style.top = initialTop + 'px';
+
+        document.addEventListener('mousemove', onYtDrag);
+        document.addEventListener('mouseup', stopYtDrag);
+      });
+    }
+
+    function onYtDrag(e) {
+      if (!isYtDragging) return;
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
+      ytBox.style.left = (initialLeft + dx) + 'px';
+      ytBox.style.top = (initialTop + dy) + 'px';
+    }
+
+    function stopYtDrag() {
+      isYtDragging = false;
+      document.removeEventListener('mousemove', onYtDrag);
+      document.removeEventListener('mouseup', stopYtDrag);
+    }
   });
   </script>
 </body>
