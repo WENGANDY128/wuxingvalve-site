@@ -298,39 +298,39 @@
       }
     }
     /* 高清屏 & 手机端清晰度/排版优化代码 */
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
-img {
-  image-rendering: -webkit-optimize-contrast;
-  max-width: 100%;
-  height: auto;
-}
-.blogGrid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 18px;
-}
-.blogCardImg {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 12px;
-  background: #f3f4f6;
-  display: block;
-}
-@media (max-width: 768px) {
-  .blogGrid {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
-  .blogCardImg {
-    height: 180px;
-  }
-}
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+    img {
+      image-rendering: -webkit-optimize-contrast;
+      max-width: 100%;
+      height: auto;
+    }
+    .blogGrid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .blogCardImg {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 12px;
+      background: #f3f4f6;
+      display: block;
+    }
+    @media (max-width: 768px) {
+      .blogGrid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .blogCardImg {
+        height: 180px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -396,13 +396,13 @@ img {
 
 <main>
   <div class="wrap">
-<section class="blogSection" id="blogSection" style="margin-bottom: 30px;">
-  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
-    <h2 style="margin: 0; font-size: 24px; font-weight: 800;" id="blogSectionTitle">最新资讯 & 技术文章</h2>
-    <a href="blog/blog.html" id="blogMoreLink" style="color: var(--brand); font-weight: 700; font-size: 14px;">查看更多 →</a>
-  </div>
-  <div class="blogGrid" id="blogGrid"></div>
-</section>
+    <section class="blogSection" id="blogSection" style="margin-bottom: 30px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+        <h2 style="margin: 0; font-size: 24px; font-weight: 800;" id="blogSectionTitle">最新资讯 & 技术文章</h2>
+        <a href="blog/blog.html" id="blogMoreLink" style="color: var(--brand); font-weight: 700; font-size: 14px;">查看更多 →</a>
+      </div>
+      <div class="blogGrid" id="blogGrid"></div>
+    </section>
     <div id="products"></div>
     <h1 id="pageTitle">产品展示</h1>
     <p class="intro">
@@ -963,6 +963,8 @@ img {
   });
 })();
 </script>
+
+<!-- 修复后的 Blog 随机拉取与封面图片路径对齐逻辑 -->
 <script>
 async function loadFeaturedBlogs() {
   const lang = typeof getLang === 'function' ? getLang() : 'zh';
@@ -976,15 +978,26 @@ async function loadFeaturedBlogs() {
     
     if (!Array.isArray(posts) || posts.length === 0) return;
 
+    // 随机打乱文章列表
     const shuffled = [...posts].sort(() => 0.5 - Math.random());
+    // 随机抓取 3 篇 (如需 7、8、9 等往后的更多篇，可自行改动 slice 数量)
     const selectedPosts = shuffled.slice(0, 3);
 
     blogGrid.innerHTML = "";
-    selectedPosts.forEach(post => {
-      const postUrl = `blog/${post.id}/index.${lang}.html`;
+    selectedPosts.forEach((post, index) => {
+      const postId = post.id || post.slug || `blog${index + 1}`;
+      const postUrl = `blog/${postId}/index.${lang}.html`;
+      
       const title = post.title?.[lang] || post.title?.en || post.title || "Blog Post";
       const summary = post.summary?.[lang] || post.summary?.en || post.description || "";
-      const cover = post.cover || `blog/${post.id}/cover.jpg`;
+      
+      // 自动修正并对齐各个 blog 文件夹下的 cover.jpg 相对路径
+      let cover = post.cover;
+      if (!cover || cover === "cover.jpg") {
+        cover = `blog/${postId}/cover.jpg`;
+      } else if (!cover.startsWith("blog/") && !cover.startsWith("http")) {
+        cover = `blog/${postId}/${cover}`;
+      }
 
       const a = document.createElement("a");
       a.className = "card";
@@ -996,7 +1009,7 @@ async function loadFeaturedBlogs() {
           <span class="tag">${post.date || "Insight"}</span>
         </div>
         <div class="imgWrap" style="padding: 10px 14px 0;">
-          <img class="blogCardImg" src="${cover}" alt="${title}" loading="lazy" />
+          <img class="blogCardImg" src="${cover}" alt="${title}" loading="lazy" onerror="this.src='assets/banner1.jpg';" />
         </div>
         <div class="cardBody">
           <div class="cardTitle" style="font-size: 16px; font-weight: 800;">${title}</div>
