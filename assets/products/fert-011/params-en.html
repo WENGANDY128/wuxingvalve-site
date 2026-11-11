@@ -4,58 +4,73 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Valve Parameters - High Pressure Check & Globe Valves | Wuxing Valve</title>
-<meta name="description" content="Technical parameters, structural features, material specifications (ASTM A182 F316L, A105) and dimensions for industrial valves." />
+<meta name="description" content="Technical parameters, structural features, material specifications and dimensions for industrial valves." />
 <style>
-:root{--border:#777;--text:#6f6f6f;--brand:#2563eb}
+:root{--border:#777;--text:#6f6f6f}
 *{box-sizing:border-box}
 body{margin:0;padding:22px 12px 40px;font-family:Arial,"Microsoft YaHei","PingFang SC",sans-serif;color:var(--text);background:#fff}
 .container{max-width:1280px;margin:0 auto}
-h2{font-size:18px;margin:0 0 12px;font-weight:700;color:#111827}
+h2{font-size:18px;margin:0 0 12px;font-weight:700}
 .section{margin-bottom:26px}
 .feature-list{margin:0;padding-left:32px;line-height:2.25}
 .feature-list li{margin:10px 0}
 
-/* ====== 电脑端原有表格样式（完全保持不变） ====== */
+/* ====== 电脑端原有表格样式（完全保持不变）[cite: 5] ====== */
 table{width:100%;border-collapse:collapse;table-layout:fixed}
 th,td{border:1px solid var(--border);padding:8px 6px;text-align:center;vertical-align:middle;line-height:1.45;word-break:break-word}
-th{font-weight:500;background:#f9fafb}
+th{font-weight:500}
 .small{font-size:13px}
 
-/* ====== 新增：手机端表格响应式优化（仅在 <= 768px 生效） ====== */
+/* ====== 手机端专属优化（仅在屏幕宽度 <= 768px 时生效） ====== */
 @media (max-width: 768px) {
-  /* 1. 允许表格区域水平滚动，防止挤压变形 */
+  body {
+    font-size: 15px !important; /* 提升手机端默认字号，告别字小需缩放 */
+    padding: 16px 12px 40px !important;
+  }
+  h2 {
+    font-size: 17px !important;
+    margin-bottom: 10px !important;
+  }
+  .feature-list {
+    padding-left: 20px !important;
+    line-height: 1.8 !important;
+  }
+  .feature-list li {
+    font-size: 14px !important;
+    margin: 8px 0 !important;
+  }
+  th, td {
+    font-size: 13px !important; /* 放大表格文字，清晰易辨 */
+    padding: 10px 6px !important; /* 增加点击触控区 */
+  }
+  .small {
+    font-size: 12px !important;
+  }
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
   .table-scroll-wrapper {
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    margin-bottom: 10px;
+    margin-bottom: 14px;
     border: 1px solid #e5e7eb;
     border-radius: 8px;
+    background: #fff;
   }
-  
-  /* 2. 提示用户可以左右滑动查看完整数据 */
   .table-scroll-wrapper::after {
-    content: "← Scroll horizontally to view more →";
+    content: "← 左右滑动查看完整参数 →";
     display: block;
     text-align: center;
     font-size: 11px;
-    color: #9ca3af;
+    color: #6b7280;
     padding: 6px 0;
     background: #f9fafb;
     border-top: 1px solid #e5e7eb;
   }
-
-  /* 3. 手机端表格内部强制最小宽度，确保多列不挤压错位 */
   .table-scroll-wrapper table {
-    min-width: 650px; 
-  }
-
-  body {
-    padding: 14px 8px 30px;
-  }
-  
-  h2 {
-    font-size: 16px;
+    min-width: 600px; /* 防止多列表格被强行压缩变形 */
   }
 }
 </style>
@@ -63,86 +78,86 @@ th{font-weight:500;background:#f9fafb}
 <body>
 <div class="container">
 
-  <div class="section">
-    <h2>Structural Features</h2>
-    <ol class="feature-list">
-      <li>The connection ends adopt a butt-welded design.</li>
-      <li>Integral body structure, compact appearance, and no leakage.</li>
-      <li>The disc and stem are integrated, and the medium passage inside the body is smooth, reducing pressure loss.</li>
-      <li>The stem is of rising type, improving the sealing performance of the packing.</li>
-      <li>Valves larger than DN50 are equipped with an impact handwheel.</li>
-      <li>Manufacturing and acceptance requirements comply with JB450-1992.</li>
-    </ol>
-  </div>
+<div class="section">
+  <h2>Structural Features</h2>
+  <ol class="feature-list">
+    <li>The connection ends adopt a butt-welded design.[cite: 5]</li>
+    <li>Integral body structure, compact appearance, and no leakage.[cite: 5]</li>
+    <li>The disc and stem are integrated, and the medium passage inside the body is smooth, reducing pressure loss.[cite: 5]</li>
+    <li>The stem is of rising type, improving the sealing performance of the packing.[cite: 5]</li>
+    <li>Valves larger than DN50 are equipped with an impact handwheel.[cite: 5]</li>
+    <li>Manufacturing and acceptance requirements comply with JB450-1992.[cite: 5]</li>
+  </ol>
+</div>
 
-  <div class="section">
-    <h2>Performance Specification</h2>
-    <div class="table-scroll-wrapper">
-      <table>
-        <thead>
-          <tr>
-            <th rowspan="2" style="width:19%">Model</th>
-            <th rowspan="2" style="width:20%">Nominal Pressure (MPa)</th>
-            <th colspan="2" style="width:25%">Test Pressure (MPa)</th>
-            <th rowspan="2" style="width:9%">Working Pressure (MPa)</th>
-            <th rowspan="2" style="width:10%">Working Temperature</th>
-            <th rowspan="2" style="width:7%"></th>
-            <th rowspan="2" style="width:10%">Working Medium</th>
-          </tr>
-          <tr><th>Shell</th><th>Seat</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>VH56-250</td><td>25</td><td>27.5</td><td>37.5</td><td>18</td><td>≤220°C</td><td></td><td>Urea and methylamine solution</td></tr>
-        </tbody>
-      </table>
-    </div>
+<div class="section">
+  <h2>Performance Specification</h2>
+  <div class="table-scroll-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th rowspan="2" style="width:19%">Model</th>
+          <th rowspan="2" style="width:20%">Nominal Pressure (MPa)</th>
+          <th colspan="2" style="width:25%">Test Pressure (MPa)</th>
+          <th rowspan="2" style="width:9%">Working Pressure (MPa)</th>
+          <th rowspan="2" style="width:10%">Working Temperature</th>
+          <th rowspan="2" style="width:7%"></th>
+          <th rowspan="2" style="width:10%">Working Medium</th>
+        </tr>
+        <tr><th>Shell</th><th>Seat</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>VH56-250</td><td>25</td><td>27.5</td><td>37.5</td><td>18</td><td>≤220°C</td><td></td><td>Urea and methylamine solution</td></tr>
+      </tbody>
+    </table>
   </div>
+</div>
 
-  <div class="section">
-    <h2>Main Parts Materials</h2>
-    <div class="table-scroll-wrapper">
-      <table>
-        <thead>
-          <tr>
-            <th style="width:33%">Part Name</th>
-            <th style="width:34%">Material Name</th>
-            <th style="width:33%">Material Standard & Grade</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Body, stem, stuffing box</td><td>Stainless steel</td><td>ASTM A182 F316L</td></tr>
-          <tr><td>Bonnet</td><td>High-quality carbon steel</td><td>ASTM A105</td></tr>
-          <tr><td>Stem nut</td><td>High-strength aluminum brass</td><td>ASTM B147 Alloy N8B</td></tr>
-          <tr><td>Operating screw</td><td>Minggang</td><td>ASTM A276-420</td></tr>
-          <tr><td>Packing</td><td>PTFE</td><td>Japan VALQUA Product 7631</td></tr>
-          <tr><td>Handle</td><td>Carbon steel</td><td>WCB</td></tr>
-        </tbody>
-      </table>
-    </div>
+<div class="section">
+  <h2>Main Parts Materials</h2>
+  <div class="table-scroll-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:33%">Part Name</th>
+          <th style="width:34%">Material Name</th>
+          <th style="width:33%">Material Standard & Grade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Body, stem, stuffing box</td><td>Stainless steel</td><td>ASTM A182 F316L</td></tr>
+        <tr><td>Bonnet</td><td>High-quality carbon steel</td><td>ASTM A105</td></tr>
+        <tr><td>Stem nut</td><td>High-strength aluminum brass</td><td>ASTM B147 Alloy N8B</td></tr>
+        <tr><td>Operating screw</td><td>Minggang</td><td>ASTM A276-420</td></tr>
+        <tr><td>Packing</td><td>PTFE</td><td>Japan VALQUA Product 7631</td></tr>
+        <tr><td>Handle</td><td>Carbon steel</td><td>WCB</td></tr>
+      </tbody>
+    </table>
   </div>
+</div>
 
-  <div class="section">
-    <h2>Main Structural Dimensions, Connection Dimensions and Weight</h2>
-    <div class="table-scroll-wrapper">
-      <table class="small">
-        <thead>
-          <tr>
-            <th rowspan="2" style="width:18%">Nominal Diameter (DN)</th>
-            <th colspan="7">Dimensions (mm)</th>
-            <th rowspan="2" style="width:7%">Weight (kg)</th>
-          </tr>
-          <tr><th>L</th><th>do</th><th>d</th><th>D</th><th>Hg</th><th>Hk</th><th>Lo</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>15</td><td>75</td><td>14</td><td>14</td><td>24</td><td>191</td><td>200</td><td>250</td><td>10</td></tr>
-          <tr><td>25</td><td>92</td><td>24</td><td>26</td><td>37</td><td>224</td><td>238</td><td>350</td><td>14</td></tr>
-          <tr><td>50</td><td>105</td><td>40</td><td>43</td><td>64</td><td>350</td><td>380</td><td>650</td><td>43</td></tr>
-          <tr><td>100</td><td>178</td><td>85</td><td>94</td><td>124</td><td>650</td><td>705</td><td>650</td><td>326</td></tr>
-          <tr><td>150</td><td>255</td><td>130</td><td>136</td><td>185</td><td>710</td><td>775</td><td>650</td><td>438</td></tr>
-        </tbody>
-      </table>
-    </div>
+<div class="section">
+  <h2>Main Structural Dimensions, Connection Dimensions and Weight</h2>
+  <div class="table-scroll-wrapper">
+    <table class="small">
+      <thead>
+        <tr>
+          <th rowspan="2" style="width:18%">Nominal Diameter (DN)</th>
+          <th colspan="7">Dimensions (mm)</th>
+          <th rowspan="2" style="width:7%">Weight (kg)</th>
+        </tr>
+        <tr><th>L</th><th>do</th><th>d</th><th>D</th><th>Hg</th><th>Hk</th><th>Lo</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>15</td><td>75</td><td>14</td><td>14</td><td>24</td><td>191</td><td>200</td><td>250</td><td>10</td></tr>
+        <tr><td>25</td><td>92</td><td>24</td><td>26</td><td>37</td><td>224</td><td>238</td><td>350</td><td>14</td></tr>
+        <tr><td>50</td><td>105</td><td>40</td><td>43</td><td>64</td><td>350</td><td>380</td><td>650</td><td>43</td></tr>
+        <tr><td>100</td><td>178</td><td>85</td><td>94</td><td>124</td><td>650</td><td>705</td><td>650</td><td>326</td></tr>
+        <tr><td>150</td><td>255</td><td>130</td><td>136</td><td>185</td><td>710</td><td>775</td><td>650</td><td>438</td></tr>
+      </tbody>
+    </table>
   </div>
+</div>
 
 </div>
 </body>
