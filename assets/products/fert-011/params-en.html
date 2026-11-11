@@ -2,31 +2,92 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Valve Parameters - High Pressure Check & Globe Valves | Wuxing Valve</title>
 <meta name="description" content="Technical parameters, structural features, material specifications (ASTM A182 F316L, A105) and dimensions for industrial valves." />
 <style>
 :root{--border:#777;--text:#6f6f6f;--brand:#2563eb}
-*{box-sizing:border-box}
-body{margin:0;padding:20px 12px 40px;font-family:Arial,"Microsoft YaHei","PingFang SC",sans-serif;color:var(--text);background:#fff;overflow-x:hidden}
-.container{max-width:1280px;margin:0 auto;width:100%}
-img{max-width:100%;height:auto}
-h2{font-size:18px;margin:0 0 12px;font-weight:700;color:#111827}
-.section{margin-bottom:26px}
-.feature-list{margin:0;padding-left:24px;line-height:2.2;font-size:15px}
-.feature-list li{margin:8px 0}
+*, *:before, *:after {box-sizing:border-box}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: Arial, "Microsoft YaHei", "PingFang SC", sans-serif;
+  color: var(--text);
+  background: #fff;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  padding: 16px 12px 40px;
+}
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 18px;
+  margin: 0 0 12px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.section {
+  margin-bottom: 26px;
+  width: 100%;
+}
+
+.feature-list {
+  margin: 0;
+  padding-left: 24px;
+  line-height: 2.2;
+  font-size: 15px;
+}
+
+.feature-list li {
+  margin: 8px 0;
+}
 
 /* ====== 电脑端原有表格样式（完全保持不变） ====== */
-table{width:100%;border-collapse:collapse;table-layout:fixed}
-th,td{border:1px solid var(--border);padding:8px 6px;text-align:center;vertical-align:middle;line-height:1.45;word-break:break-word}
-th{font-weight:500;background:#f9fafb;font-size:14px}
-td{font-size:14px}
-.small{font-size:13px}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
 
-/* ====== 手机端响应式完美适配（<= 768px） ====== */
+th, td {
+  border: 1px solid var(--border);
+  padding: 8px 6px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 1.45;
+  word-break: break-word;
+}
+
+th {
+  font-weight: 500;
+  background: #f9fafb;
+  font-size: 14px;
+}
+
+td {
+  font-size: 14px;
+}
+
+.small {
+  font-size: 13px;
+}
+
+/* ====== 手机端绝对平铺与横向滚动保护（<= 768px） ====== */
 @media (max-width: 768px) {
   body {
-    padding: 12px 10px 30px;
+    padding: 12px 8px 30px;
   }
   
   h2 {
@@ -39,9 +100,10 @@ td{font-size:14px}
     font-size: 14px;
   }
 
-  /* 优化手机端表格：自动撑满，允许平滑滚动，绝不挤压变形 */
+  /* 核心：独立滚动容器，确保手机满宽展示，内部表格可划动 */
   .table-scroll-wrapper {
     width: 100%;
+    max-width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     margin-bottom: 12px;
@@ -50,9 +112,9 @@ td{font-size:14px}
     background: #fff;
   }
 
-  /* 提示滑动文案 */
+  /* 底部滑动提示标签 */
   .table-scroll-wrapper::after {
-    content: "← Swipe horizontally for more details →";
+    content: "← Swipe horizontally to view full parameters →";
     display: block;
     text-align: center;
     font-size: 11px;
@@ -62,12 +124,12 @@ td{font-size:14px}
     border-top: 1px solid #e5e7eb;
   }
 
-  /* 手机端表格赋予合理的最小宽度，保证多列不乱码 */
+  /* 保证手机端表格不会被压缩变形，通过横向滚动查看 */
   .table-scroll-wrapper table {
-    min-width: 580px;
+    min-width: 620px;
   }
 
-  /* 缩小手机端表格字号，提升单屏信息密度 */
+  /* 手机端表格字号微调 */
   th, td {
     padding: 6px 4px;
     font-size: 12px;
