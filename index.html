@@ -166,18 +166,72 @@
     .wechatId span{color:var(--muted);font-weight:800}
 
     /* =========================================================
-       新增：纯手机端增强适配样式 (仅在屏幕宽度 <= 768px 生效)
-       电脑端 (> 768px) 完全无任何影响
+       手机端双列瀑布流增强适配样式 (仅在屏幕宽度 <= 768px 生效)
        ========================================================= */
     .mobileMenuBtn {
       display: none; /* 电脑端隐去 */
     }
 
     @media (max-width: 768px) {
-      /* 1. 顶部 Header 与 汉堡包菜单 */
+      /* 1. 强制手机端产品网格与博客网格变为双列瀑布流 */
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+      }
+      .blogGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+      }
+
+      /* 2. 卡片与内部元素精细化排版（小红书风格紧凑、精致） */
+      .card {
+        min-height: auto !important;
+        border-radius: 12px !important;
+      }
+      .cardTop {
+        padding: 8px 8px 0 !important;
+        gap: 4px !important;
+      }
+      .badge, .tag {
+        font-size: 10px !important;
+        padding: 2px 6px !important;
+      }
+      .imgWrap {
+        padding: 6px 8px 0 !important;
+      }
+      .imgWrap img {
+        max-height: 140px !important;
+        object-fit: contain;
+      }
+      .blogCardImg {
+        height: 110px !important;
+        object-fit: cover;
+      }
+      .cardBody {
+        padding: 8px 8px 10px !important;
+      }
+      .cardTitle {
+        font-size: 13px !important;
+        line-height: 1.3 !important;
+        margin-bottom: 4px !important;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .cardSub {
+        font-size: 11px !important;
+        line-height: 1.3 !important;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      /* 3. 顶部 Header 与 汉堡包菜单 */
       .wrap { padding: 10px 14px; }
       .brandTitle { font-size: 16px; }
-      .brandSub { display: none !important; } /* 手机端隐藏过长的公司名小字，省空间 */
+      .brandSub { display: none !important; }
       .lang { padding: 3px; gap: 2px; }
       .lang button { padding: 4px 7px; font-size: 11px; }
 
@@ -237,7 +291,7 @@
         border-radius: 10px;
       }
 
-      /* 2. 产品分类筛选按钮：手机端横向滑动，防止堆叠3-4行 */
+      /* 4. 产品分类筛选按钮：手机端横向滑动 */
       .filters {
         display: flex;
         flex-wrap: nowrap;
@@ -256,7 +310,7 @@
         font-size: 13px;
       }
 
-      /* 3. 微信二维码弹窗：增加安全高度，防止矮屏截断 */
+      /* 5. 微信二维码弹窗：增加安全高度 */
       .modalPanel {
         width: 90%;
         max-width: 380px;
@@ -269,13 +323,13 @@
         max-width: 180px;
       }
 
-      /* 4. 底部 Contact 网格 */
+      /* 6. 底部 Contact 网格 */
       .contactGrid {
         grid-template-columns: 1fr;
         gap: 8px;
       }
 
-      /* 5. GA4 Consent 弹窗 mobile */
+      /* 7. GA4 Consent 弹窗 mobile */
       .consent {
         left: 10px;
         right: 10px;
@@ -297,6 +351,7 @@
         justify-content: center;
       }
     }
+    
     /* 高清屏 & 手机端清晰度/排版优化代码 */
     body {
       -webkit-font-smoothing: antialiased;
@@ -321,15 +376,6 @@
       border-radius: 12px;
       background: #f3f4f6;
       display: block;
-    }
-    @media (max-width: 768px) {
-      .blogGrid {
-        grid-template-columns: 1fr;
-        gap: 14px;
-      }
-      .blogCardImg {
-        height: 180px;
-      }
     }
   </style>
 </head>
@@ -926,7 +972,7 @@
 })();
 </script>
 
-<!-- 新增：手机端汉堡包菜单交互逻辑 -->
+<!-- 手机端汉堡包菜单交互逻辑 -->
 <script>
 (function(){
   const mobileBtn = document.getElementById('mobileMenuBtn');
@@ -964,7 +1010,7 @@
 })();
 </script>
 
-<!-- 修复后的 Blog 随机拉取与封面图片路径对齐逻辑 -->
+<!-- Blog 随机拉取与封面图片路径对齐逻辑 -->
 <script>
 async function loadFeaturedBlogs() {
   const lang = typeof getLang === 'function' ? getLang() : 'zh';
@@ -980,7 +1026,6 @@ async function loadFeaturedBlogs() {
 
     // 随机打乱文章列表
     const shuffled = [...posts].sort(() => 0.5 - Math.random());
-    // 随机抓取 3 篇 (如需 7、8、9 等往后的更多篇，可自行改动 slice 数量)
     const selectedPosts = shuffled.slice(0, 3);
 
     blogGrid.innerHTML = "";
@@ -991,7 +1036,6 @@ async function loadFeaturedBlogs() {
       const title = post.title?.[lang] || post.title?.en || post.title || "Blog Post";
       const summary = post.summary?.[lang] || post.summary?.en || post.description || "";
       
-      // 自动修正并对齐各个 blog 文件夹下的 cover.jpg 相对路径
       let cover = post.cover;
       if (!cover || cover === "cover.jpg") {
         cover = `blog/${postId}/cover.jpg`;
