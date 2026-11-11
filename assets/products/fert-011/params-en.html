@@ -2,119 +2,40 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Valve Parameters - High Pressure Check & Globe Valves | Wuxing Valve</title>
 <meta name="description" content="Technical parameters, structural features, material specifications (ASTM A182 F316L, A105) and dimensions for industrial valves." />
 <style>
 :root{--border:#777;--text:#6f6f6f;--brand:#2563eb}
-*, *:before, *:after {box-sizing:border-box}
-
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  max-width: 100vw;
-  overflow-x: hidden;
-  font-family: Arial, "Microsoft YaHei", "PingFang SC", sans-serif;
-  color: var(--text);
-  background: #fff;
-  -webkit-text-size-adjust: 100%;
-}
-
-body {
-  padding: 16px 12px 40px;
-}
-
-.container {
-  width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-}
-
-h2 {
-  font-size: 18px;
-  margin: 0 0 12px;
-  font-weight: 700;
-  color: #111827;
-}
-
-.section {
-  margin-bottom: 26px;
-  width: 100%;
-}
-
-.feature-list {
-  margin: 0;
-  padding-left: 24px;
-  line-height: 2.2;
-  font-size: 15px;
-}
-
-.feature-list li {
-  margin: 8px 0;
-}
+*{box-sizing:border-box}
+body{margin:0;padding:22px 12px 40px;font-family:Arial,"Microsoft YaHei","PingFang SC",sans-serif;color:var(--text);background:#fff}
+.container{max-width:1280px;margin:0 auto}
+h2{font-size:18px;margin:0 0 12px;font-weight:700;color:#111827}
+.section{margin-bottom:26px}
+.feature-list{margin:0;padding-left:32px;line-height:2.25}
+.feature-list li{margin:10px 0}
 
 /* ====== 电脑端原有表格样式（完全保持不变） ====== */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed;
-}
+table{width:100%;border-collapse:collapse;table-layout:fixed}
+th,td{border:1px solid var(--border);padding:8px 6px;text-align:center;vertical-align:middle;line-height:1.45;word-break:break-word}
+th{font-weight:500;background:#f9fafb}
+.small{font-size:13px}
 
-th, td {
-  border: 1px solid var(--border);
-  padding: 8px 6px;
-  text-align: center;
-  vertical-align: middle;
-  line-height: 1.45;
-  word-break: break-word;
-}
-
-th {
-  font-weight: 500;
-  background: #f9fafb;
-  font-size: 14px;
-}
-
-td {
-  font-size: 14px;
-}
-
-.small {
-  font-size: 13px;
-}
-
-/* ====== 手机端绝对平铺与横向滚动保护（<= 768px） ====== */
+/* ====== 新增：手机端表格响应式优化（仅在 <= 768px 生效） ====== */
 @media (max-width: 768px) {
-  body {
-    padding: 12px 8px 30px;
-  }
-  
-  h2 {
-    font-size: 16px;
-    margin-bottom: 8px;
-  }
-
-  .feature-list {
-    padding-left: 20px;
-    font-size: 14px;
-  }
-
-  /* 核心：独立滚动容器，确保手机满宽展示，内部表格可划动 */
+  /* 1. 允许表格区域水平滚动，防止挤压变形 */
   .table-scroll-wrapper {
     width: 100%;
-    max-width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    margin-bottom: 12px;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    background: #fff;
+    margin-bottom: 10px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
   }
-
-  /* 底部滑动提示标签 */
+  
+  /* 2. 提示用户可以左右滑动查看完整数据 */
   .table-scroll-wrapper::after {
-    content: "← Swipe horizontally to view full parameters →";
+    content: "← Scroll horizontally to view more →";
     display: block;
     text-align: center;
     font-size: 11px;
@@ -124,15 +45,17 @@ td {
     border-top: 1px solid #e5e7eb;
   }
 
-  /* 保证手机端表格不会被压缩变形，通过横向滚动查看 */
+  /* 3. 手机端表格内部强制最小宽度，确保多列不挤压错位 */
   .table-scroll-wrapper table {
-    min-width: 620px;
+    min-width: 650px; 
   }
 
-  /* 手机端表格字号微调 */
-  th, td {
-    padding: 6px 4px;
-    font-size: 12px;
+  body {
+    padding: 14px 8px 30px;
+  }
+  
+  h2 {
+    font-size: 16px;
   }
 }
 </style>
@@ -158,28 +81,18 @@ td {
       <table>
         <thead>
           <tr>
-            <th rowspan="2" style="width:18%">Model</th>
-            <th rowspan="2" style="width:16%">Nominal Pressure (MPa)</th>
-            <th colspan="2" style="width:24%">Test Pressure (MPa)</th>
-            <th rowspan="2" style="width:14%">Working Pressure (MPa)</th>
-            <th rowspan="2" style="width:13%">Working Temperature</th>
-            <th rowspan="2" style="width:15%">Working Medium</th>
+            <th rowspan="2" style="width:19%">Model</th>
+            <th rowspan="2" style="width:20%">Nominal Pressure (MPa)</th>
+            <th colspan="2" style="width:25%">Test Pressure (MPa)</th>
+            <th rowspan="2" style="width:9%">Working Pressure (MPa)</th>
+            <th rowspan="2" style="width:10%">Working Temperature</th>
+            <th rowspan="2" style="width:7%"></th>
+            <th rowspan="2" style="width:10%">Working Medium</th>
           </tr>
-          <tr>
-            <th>Shell</th>
-            <th>Seat</th>
-          </tr>
+          <tr><th>Shell</th><th>Seat</th></tr>
         </thead>
         <tbody>
-          <tr>
-            <td>VH56-250</td>
-            <td>25</td>
-            <td>27.5</td>
-            <td>37.5</td>
-            <td>18</td>
-            <td>≤220°C</td>
-            <td>Urea and methylamine solution</td>
-          </tr>
+          <tr><td>VH56-250</td><td>25</td><td>27.5</td><td>37.5</td><td>18</td><td>≤220°C</td><td></td><td>Urea and methylamine solution</td></tr>
         </tbody>
       </table>
     </div>
@@ -191,42 +104,18 @@ td {
       <table>
         <thead>
           <tr>
-            <th style="width:30%">Part Name</th>
-            <th style="width:35%">Material Name</th>
-            <th style="width:35%">Material Standard & Grade</th>
+            <th style="width:33%">Part Name</th>
+            <th style="width:34%">Material Name</th>
+            <th style="width:33%">Material Standard & Grade</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Body, stem, stuffing box</td>
-            <td>Stainless steel</td>
-            <td>ASTM A182 F316L</td>
-          </tr>
-          <tr>
-            <td>Bonnet</td>
-            <td>High-quality carbon steel</td>
-            <td>ASTM A105</td>
-          </tr>
-          <tr>
-            <td>Stem nut</td>
-            <td>High-strength aluminum brass</td>
-            <td>ASTM B147 Alloy N8B</td>
-          </tr>
-          <tr>
-            <td>Operating screw</td>
-            <td>Stainless steel / Alloy steel</td>
-            <td>ASTM A276-420</td>
-          </tr>
-          <tr>
-            <td>Packing</td>
-            <td>PTFE</td>
-            <td>Japan VALQUA Product 7631</td>
-          </tr>
-          <tr>
-            <td>Handle</td>
-            <td>Carbon steel</td>
-            <td>WCB</td>
-          </tr>
+          <tr><td>Body, stem, stuffing box</td><td>Stainless steel</td><td>ASTM A182 F316L</td></tr>
+          <tr><td>Bonnet</td><td>High-quality carbon steel</td><td>ASTM A105</td></tr>
+          <tr><td>Stem nut</td><td>High-strength aluminum brass</td><td>ASTM B147 Alloy N8B</td></tr>
+          <tr><td>Operating screw</td><td>Minggang</td><td>ASTM A276-420</td></tr>
+          <tr><td>Packing</td><td>PTFE</td><td>Japan VALQUA Product 7631</td></tr>
+          <tr><td>Handle</td><td>Carbon steel</td><td>WCB</td></tr>
         </tbody>
       </table>
     </div>
@@ -238,19 +127,11 @@ td {
       <table class="small">
         <thead>
           <tr>
-            <th rowspan="2" style="width:16%">Nominal Diameter (DN)</th>
+            <th rowspan="2" style="width:18%">Nominal Diameter (DN)</th>
             <th colspan="7">Dimensions (mm)</th>
-            <th rowspan="2" style="width:12%">Weight (kg)</th>
+            <th rowspan="2" style="width:7%">Weight (kg)</th>
           </tr>
-          <tr>
-            <th>L</th>
-            <th>do</th>
-            <th>d</th>
-            <th>D</th>
-            <th>Hg</th>
-            <th>Hk</th>
-            <th>Lo</th>
-          </tr>
+          <tr><th>L</th><th>do</th><th>d</th><th>D</th><th>Hg</th><th>Hk</th><th>Lo</th></tr>
         </thead>
         <tbody>
           <tr><td>15</td><td>75</td><td>14</td><td>14</td><td>24</td><td>191</td><td>200</td><td>250</td><td>10</td></tr>
